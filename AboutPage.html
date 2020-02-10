@@ -7,14 +7,45 @@
     </title>
     <link rel="shortcut icon" type="image/png" href="favicon_logo.png">
     <style>
-      img{
-          display: none
-       }
+      .container {
+  position: relative;
+  width: 50%;
+}
 
-      span:hover + img{
-          display: block;
-      }
-      
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
       
       a.one:link {color:white; font-family:Bio Sans }
       a.one:hover {color:#FFB81C}
@@ -65,9 +96,16 @@
     </p>
   <p style="font-family:Bio Sans; color:#FFB81C; font-size:20px"> 
       *Pic here*
-    <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px"> <span>Leighton Glim</span>
+<!--    <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px"> <span>Leighton Glim</span>
 <img src="leightonglim_headshot.JPG"/>
-      Leighton Glim
+      Leighton Glim -->
+    
+    <div class="container">
+  <img src="leightonglim_headshot.jpg" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">Leighton Glim</div>
+  </div>
+      
       <p style="font-family:Bio Sans; color:white; font-size:20px; text-indent:5px">
         Role/Use Cases
     </p>

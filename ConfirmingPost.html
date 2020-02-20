@@ -9,129 +9,33 @@
     <p style="color:black; font-size:20px"> This is iteration 1.</p>
   </body>
 </html> -->
-$('a').on('click', function(){
-  $('.wrap, a').toggleClass('active');
-  
-  return false;
-});
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
 
-body {
-  background: #e6e6e6;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-}
-
-h1 {
-  color: #c7c7c7;
-  font-weight: 200;
-  text-align: center;
-  position: absolute;
-  top: 45%;
-  width: 100%;
-}
-
-h2 {
-  color: #007fed;
-  font-weight: bold;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-
-p {
-  color: #001818;
-}
-
-.wrap {
-  position: absolute;
-  overflow: hidden;
-  top: 10%;
-  right: 10%;
-  bottom: 85px;
-  left: 10%;
-  padding: 20px 50px;
-  display: block;
-  border-radius: 4px;
-  transform: translateY(20px);
-  transition: all 0.5s;
-  visibility: hidden;
-}
-.wrap .content {
-  opacity: 0;
-}
-.wrap:before {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: white;
-  content: "";
-  bottom: 10px;
-  left: 50%;
-  top: 95%;
-  color: #fff;
-  border-radius: 50%;
-  -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.wrap.active {
-  display: block;
-  visibility: visible;
-  box-shadow: 2px 3px 16px silver;
-  transition: all 600ms;
-  transform: translateY(0px);
-  transition: all 0.5s;
-}
-.wrap.active:before {
-  height: 2000px;
-  width: 2000px;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  margin-left: -1000px;
-  margin-top: -1000px;
-  display: block;
-  -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.wrap.active .content {
-  position: relative;
-  z-index: 1;
-  opacity: 1;
-  transition: all 600ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
-
-a.button {
-  padding: 11px 11px 13px 13px;
-  outline: none;
-  border-radius: 50%;
-  background: #007fed;
-  color: #fff;
-  font-size: 24px;
-  display: block;
-  position: fixed;
-  left: 50%;
-  bottom: 20px;
-  top: auto;
-  margin-left: -25px;
-  text-decoration: none;
-  transition: transform 0.25s;
-}
-a.button:hover {
-  text-decoration: none;
-  background: #2198ff;
-}
-a.button.active {
-  transform: rotate(135deg);
-  transition: transform 0.5s;
-}
-
-<h1>Lollipop Transition</h1>
-<div class='wrap'>
-  <div class='content'>
-    <h2>Well Hello!</h2>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-  </div>
+<div class="container" ng-class="{'no-scroll': selected.length}" ng-app="app" ng-controller="mainCtrl">
+	<div class="page">
+		<div class="grid">
+			<div class="grid-item" ng-repeat="item in boxes">
+				<box class="box" item="item" on-select="selectBox" ng-class="{'selected': selected[0].item.name == item.name}"></box>
+			</div>
+		</div>
+	</div>
+	<div class="fullscreen-background top-up" ng-show="selected.length" ng-style="{'background-image': 'url(' + selected[0].item.image + ')'}"></div>
+	<div class="scroller" ng-show="selected.length">
+		<a class="close-button" ng-click="clearSelection()">
+			<i class="material-icons">close</i>
+		</a>
+		<h1>{{selected[0].item.name}}</h1>
+		<div big-box ng-repeat="item in selected" class="box on-top" position="item.position" selected="item.item">
+			<img ng-src="{{item.item.image}}" alt="" />
+			<div class="content">
+				<h2>Lorem ipsum dolor</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime laborum perferendis, ullam minus. Illo ad aliquid ab magni, enim nesciunt at consequuntur dolores explicabo nisi. Dolor, reiciendis suscipit alias nemo.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus consequatur, sit saepe reprehenderit nisi dolorem, voluptates amet quos ab assumenda non id accusamus, dicta soluta laboriosam voluptas fuga sint deleniti. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam officiis minus tenetur ex molestias qui possimus sit facilis dolorum suscipit. Cumque, aperiam inventore nobis? Veniam voluptatibus sapiente ea, voluptate dolores?</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur dicta ducimus ratione reiciendis officia odit omnis distinctio, eveniet et modi fuga nisi voluptatem nihil aliquam ex pariatur possimus repudiandae vero?</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, quos ducimus nobis. Necessitatibus provident impedit, neque quia dolores? Quas, architecto id. Iure distinctio, illum eaque at quia assumenda modi saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero soluta quisquam autem quasi ut ex ab modi. Sit soluta dicta incidunt quaerat tenetur fugiat, natus perspiciatis illo. Totam, quo, minus.</p>
+			</div>
+		</div>
+		
+	</div>
 </div>
-<a class='button glyphicon glyphicon-plus' href='#'></a>

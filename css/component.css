@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans&display=swap);
 
 @font-face {
 	font-family: 'icomoon';
@@ -50,19 +51,22 @@ a:hover {
 	width: 100%;
 	height: 90%;
 	overflow: hidden;
-
+	font-family: "Open Sans";
 }
 
 .bl-main > section {
 	position: absolute;
 	width: 50%;
 	height: 50%;
+	opacity: 0.9;
 }
 
 .bl-main > section:first-child {
 	top: 0;
 	left: 0;
 	background: #154734;
+	font-family: "Open Sans";
+
 }
 
 .bl-main > section:nth-child(2) {
@@ -139,6 +143,7 @@ a:hover {
 
 .bl-icon-about {
 	color:#FFB81C;
+
 }
 
 .bl-icon-works {
@@ -302,7 +307,7 @@ div.bl-panel-items {
 }
 
 div.bl-panel-items > div {
-	background: #3ba5db;
+	background: #FFB81C;
 	z-index: 0;
 	opacity: 0;
 	-webkit-transform: translateY(0);
@@ -392,16 +397,17 @@ div.bl-panel-items > div.bl-hide-current-work {
 }
 
 .bl-main > section:first-child.bl-expand {
-	background: #EE4444;
+
+	background: #FFB81C;
 }
 .bl-main > section:nth-child(2).bl-expand {
-	background: #F98262;
+	background: #FFB81C;
 }
 .bl-main > section:nth-child(3).bl-expand {
-	background: #4BBE8E;
+	background: #FFB81C;
 }
 .bl-main > section:nth-child(4).bl-expand {
-	background: #0D8278;
+	background: #004A33;
 }
 
 .bl-main.bl-expand-item > section:not(.bl-expand),

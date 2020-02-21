@@ -1,11 +1,11 @@
-<html>
+<!-- <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       BURS
     </title>
-    <link rel="shortcut icon" type="image/png" href="favicon_logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/favicon_logo.png">
     <style>
       .bgimg {
   height: 100%;
@@ -56,17 +56,12 @@
       
     </style>
   </head>
- <!-- <body style="background-color:#004A33;"> -->
+
     <div class="bgimg">
     <h1 style="font-family:Open Sans; text-align:center; color:#FFB81C">BURS</h1>
 
- <!--     <p style="font-family:Bio Sans; text-align:center; color:white; font-size:20px;">
-        Our motto at RideShare™: 
-        <b><u>Don't make the code retarded</u></b>
-      </p> . -->
-    
-    <!--  <img src="https://baylorbears.com/images/logos/site/site.png" width="86" height="100"> -->
-      <img src="favicon_logo.png" width="86" height="100">
+
+      <img src="images/favicon_logo.png" width="86" height="100">
   
       <p style="text-align:center;">
         <a href="AboutPage.html" class="button button1">About</a>
@@ -86,4 +81,441 @@
       <a href="Information.html" class="button button2">Information</a>
       </div>
   </body>
+</html>
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    html, body {margin: 0; height: 100%; overflow: hidden; background-image: url('images/favicon_logo.png');}
+
+    .container1 {
+      position: relative;
+      width: 34%;
+    }
+
+    .image {
+      opacity: 1;
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: .5s ease;
+      backface-visibility: hidden;
+      opacity: 100%;
+    }
+
+    .middle {
+      transition: .5s ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .container1:hover .image {
+      opacity: 0.3;
+    }
+
+    .container1:hover .middle {
+      opacity: 1;
+    }
+
+    .text {
+      background-color: #FFB81C;
+      color: #004A33;
+      font-family: Open Sans;
+      font-size: 20px;
+      padding: 16px 32px;
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      top: 50%;
+    }
+
+    .bgimg {
+      height: 100%;
+      background-color: #FFB81C;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      color: #004A33;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 40px;
+      overflow: hidden;
+    }
+
+    .bgimg1 {
+      height: 100%;
+      background-color: #004A33;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      color: #FFB81C;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 40px;
+      overflow: hidden;
+    }
+
+    .middle1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      overflow: hidden;
+    }
+    hr {
+      margin: auto;
+      width: 40%;
+    }
+
+    a.one:link {color:white; font-family:Open Sans }
+    a.one:hover {color:#FFB81C}
+    a.one:visited {color:#707372}
+
+    a.two:link {color:#004A33; font-family:Open Sans; text-align:center }
+    a.two:hover {color:white}
+    a.two:visited {color:#707372}
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    .column {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .hangingindent {
+      padding-left: 22px ;
+      text-indent: -22px ;
+    }
+  </style>
+
+  <title>
+    About
+  </title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="images/favicon_logo.png">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fullscreen Layout with Page Transitions</title>
+  <meta name="description" content="Fullscreen Layout with Page Transitions" />
+  <meta name="keywords" content="fullscreen layout, boxes, responsive, page transitions, css transitions, jquery, portfolio, template" />
+  <meta name="author" content="Codrops" />
+  <link rel="stylesheet" type="text/css" href="css/component.css" />
+  <script src="js/modernizr.custom.js"></script>
+</head>
+
+<body style="background-color: #707372">
+
+<div class="container">
+  <h1 style="background-color: #707372; text-align: center">BURS</h1>
+
+  <div id="bl-main" class="bl-main">
+
+
+    <section style="background-color:#004A33" >
+      <div class="bl-box" style="font-family: 'Open Sans'">
+        <h2 class="bl-icon bl-icon-about">About</h2>
+      </div>
+      <div class="bl-content" style="background-color:#004A33;">
+        <h2>About</h2>
+        <div class="row" style="opacity: 1;">
+          <div class="column" style="opacity: 1;">
+            <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+            <div class="container1"  style="opacity: 1;">
+              <img src="ProfilePic.jpg" alt="Avatar" class="image" style="opacity: 1">
+              <div class="middle">
+                <div class="text">Josh Huertas</div>
+              </div>
+              </img>
+            </div>
+            <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+              Role/Use Cases
+            </div>
+            <ul style="font-family:Open Sans; color:white; font-size:16px">
+              <li>Project Manager</li>
+            </ul>
+            <ol style="font-family:Open Sans; color:white; font-size:16px">
+              <li><a class="one" href="SearchForDriver.html">Search for Driver</a></li>
+              <li><a class="one" href="SearchForRiders.html">Search for Riders</a></li>
+              <li><a class="one" href="SearchDatabaseForPost.html">Search Database for Post</a></li>
+              Time: 13 hrs
+              <br>
+              Meetings Attended: 3/3
+            </ol>
+            <!--     </p> -->
+            <!--    </p> -->
+            </p>
+            <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+            <div class="container1">
+              <img src="leightonglim_headshot.JPG" alt="Avatar" class="image">
+              <div class="middle">
+                <div class="text">Leighton Glim</div>
+              </div>
+              </img>
+            </div>
+
+            <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+              Role/Use Cases
+            </div>
+            <ul style="font-family:Open Sans; color:white; font-size:16px">
+              <li>Web Designer</li>
+            </ul>
+            <ol style="font-family:Open Sans; color:white; font-size:16px">
+              <li><a class="one" href="ReportUser.html">Report User</a></li>
+              <li><a class="one" href="MakingProfile.html">Making Profile</a></li>
+              <li><a class="one" href="CustomizeProfile.html">Customize Profile</a></li>
+              Time: 15 hrs
+              <br>
+              Meetings Attended: 3/3
+            </ol>
+            </p>
+
+            <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+
+              <!-- <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px">
+                    Mohsen Soltani . -->
+            <div class="container1">
+              <img src="leightonglim_headshot-copy.JPG" alt="Avatar" class="image">
+              <div class="middle">
+                <div class="text">Mohsen Soltani</div>
+              </div>
+              </img>
+            </div>
+
+            <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+              Role/Use Cases
+            </div>
+            <ul style="font-family:Open Sans; color:white; font-size:16px">
+              <li>Developer</li>
+            </ul>
+            <ol style="font-family:Open Sans; color:white; font-size:16px">
+              <li><a class="one" href="DeleteAccount.html">Delete Account</a></li>
+              <li><a class="one" href="RemovePost.html">Remove a Post</a></li>
+              <li><a class="one" href="SuspendUser.html">Suspend User</a></li>
+              Time: 10 hrs
+              <br>
+              Meetings Attended: 3/3
+            </ol>
+            </p>
+
+          </div>
+          <div class="column">
+            <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+
+              <!--  <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px">
+                  Andrew Ammentorp -->
+            <div class="container1">
+              <img src="leightonglim_headshot-copy.JPG" alt="Avatar" class="image" style="opacity: 1;">
+              <div class="middle">
+                <div class="text">Andrew Ammentorp</div>
+              </div>
+              </img>
+            </div>
+            <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+              Role/Use Cases
+            </div>
+            <ul style="font-family:Open Sans; color:white; font-size:16px">
+              <li>Developer</li>
+            </ul>
+            <ol style="font-family:Open Sans; color:white; font-size:16px">
+              <li><a class="one" href="GenerateReport.html">Generate Report</a></li>
+              <li><a class="one" href="UpdatePostDatabase.html">Update Post Database</a></li>
+              <li><a class="one" href="UpdateUserDatabase.html">Update User Database</a></li>
+              Time: 13 hrs
+              <br>
+              Meetings Attended: 3/3
+            </ol>
+            </p>
+
+            <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+
+              <!--   <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px">
+                   Joseph Perez  -->
+            <div class="container1">
+              <img src="leightonglim_headshot-copy.JPG" alt="Avatar" class="image">
+              <div class="middle">
+                <div class="text">Joseph Perez</div>
+              </div>
+              </img>
+            </div>
+            <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+              Role/Use Cases
+            </div>
+            <ul style="font-family:Open Sans; color:white; font-size:16px">
+              <li>Web Designer</li>
+            </ul>
+            <ol style="font-family:Open Sans; color:white; font-size:16px">
+              <li><a class="one" href="SurveyUser.html">Survey User</a></li>
+              <li><a class="one" href="ConfirmingPost.html">Confirming Post</a></li>
+              <li><a class="one" href="RemoveInappropPost.html">Remove Inappropriate Posts</a></li>
+              Time: 12 hrs
+              <br>
+              Meetings Attended: 2/3
+            </ol>
+            </p>
+
+            <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+
+              <!-- <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px">
+                    Joseph Yu . -->
+            <div class="container1">
+              <img src="leightonglim_headshot-copy.JPG" alt="Avatar" class="image">
+              <div class="middle">
+                <div class="text">Joseph Yu</div>
+              </div>
+              </img>
+            </div>
+
+            <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+              Role/Use Cases
+            </div>
+            <ul style="font-family:Open Sans; color:white; font-size:16px">
+              <li>Analysis</li>
+            </ul>
+            <ol style="font-family:Open Sans; color:white; font-size:16px">
+              <li><a class="one" href="MakeRiderPost.html">Make Rider Post</a></li>
+              <li><a class="one" href="MakeDriverPost.html">Make Driver Post</a></li>
+              <li><a class="one" href="MakeUberPost.html">Make Uber Post</a></li>
+              Time: 12 hrs
+              <br>
+              Meetings Attended: 3/3
+            </ol>
+            </p>
+          </div>
+        </div>
+      </div>
+      <span class="bl-icon bl-icon-close" style="background-color:#004A33;"></span>
+    </section>
+
+    <!-- <body style="background-color:#004A33;">  -->
+
+
+    <section id="bl-work-section" >
+      <div class="bl-box">
+        <h2 class="bl-icon bl-icon-works">Iteration 1</h2>
+      </div>
+      <div class="bl-content" style="background-color:#FFB81C;">
+        <h2 style="font-family:Open Sans; color:#004A33"> Iteration 1 </h2>
+
+
+        <p class="hangingindent" style="color:#004A33; font-family:Open Sans; font-size:20px"><u> Project Vision</u>
+          <br>
+          Our goal is to create an app that implements a similar vision to the Baylor University Ride Share Facebook group but
+          provides a more friendly user experience for ridesharing.</p>
+        <p>
+          <a class="two" href="https://docs.google.com/presentation/d/1uSCxCazYMq4vvT5p_K2fvTMmmlgYkupvlZgRF1PxG3U/edit?usp=sharing">
+            Presentation link</a>
+        </p>
+        <p>
+          <a class="two" href="https://github.com/BURS-co/Baylor-Ride-Share">Git link</a>
+        </p>
+        <!--  <p class="hangingindent" style="color:white; font-family:Bio Sans; font-size:20px"><u> Git link</u></p> -->
+        <p>
+          <a class="two" href="Squirmy for Cerny (2).pdf" download="BURS - Iteration 1.pdf">Download Iteration 1 PDF</a>
+        </p>
+
+      </div>
+      <span class="bl-icon bl-icon-close" style="background-color:#FFB81C;"></span>
+    </section>
+    <section>
+      <div class="bl-box">
+        <h2 class="bl-icon bl-icon-blog">Iteration 2</h2>
+      </div>
+      <div class="bl-content" style="background-color:#FFB81C;">
+
+        <div class="bgimg">
+          <div class="middle1">
+            <h1>COMING SOON</h1>
+            <hr>
+            <p>3/24/2020</p>
+          </div>
+        </div>
+      </div>
+      <span class="bl-icon bl-icon-close" style="background-color:#FFB81C;"></span>
+    </section>
+    <section>
+      <div class="bl-box">
+        <h2 class="bl-icon bl-icon-contact">Iteration 3</h2>
+      </div>
+      <div class="bl-content" style="background-color:#004A33;">
+        <div class="bgimg1">
+          <div class="middle1">
+            <h1>COMING SOON</h1>
+            <hr>
+            <p>3/24/2020</p>
+          </div>
+        </div>
+      </div>
+      <span class="bl-icon bl-icon-close" style="background-color:#004A33;"></span>
+    </section>
+    <!-- Panel items for the works -->
+    <!--			<div class="bl-panel-items" id="bl-panel-work-items">
+                    <div data-panel="panel-1">
+                        <div>
+                            <img src="images/1.jpg" />
+                            <h3>Fixie bespoke</h3>
+                            <p>Iphone artisan direct trade ethical Austin. Fixie bespoke banh mi ugh, deep v vinyl hashtag. Tumblr gentrify keffiyeh pop-up iphone twee biodiesel. Occupy american apparel freegan cliche. Mustache trust fund 8-bit jean shorts mumblecore thundercats. Pour-over small batch forage cray, banjo post-ironic flannel keffiyeh cred ethnic semiotics next level tousled fashion axe. Sustainable cardigan keytar fap bushwick bespoke.</p>
+                        </div>
+                    </div>
+                    <div data-panel="panel-2">
+                        <div>
+                            <img src="images/2.jpg" />
+                            <h3>Chillwave mustache</h3>
+                            <p>Squid vinyl scenester literally pug, hashtag tofu try-hard typewriter polaroid craft beer mlkshk cardigan photo booth PBR. Chillwave 90's gentrify american apparel carles disrupt. Pinterest semiotics single-origin coffee craft beer thundercats irony, tumblr bushwick intelligentsia pickled. Narwhal mustache godard master cleanse street art, occupy ugh selfies put a bird on it cray salvia four loko gluten-free shoreditch.</p>
+                        </div>
+                    </div>
+                    <div data-panel="panel-3">
+                        <div>
+                            <img src="images/3.jpg" />
+                            <h3>Austin hella</h3>
+                            <p>Ethical cray wayfarers leggings vice, seitan banksy small batch ethnic master cleanse. Pug chillwave etsy, scenester meh occupy blue bottle tousled blog tonx pinterest selvage mixtape swag cosby sweater. Synth tousled direct trade, hella Austin craft beer ugh chambray.</p>
+                        </div>
+                    </div>
+                    <div data-panel="panel-4">
+                        <div>
+
+
+                            <h3>Brooklyn dreamcatcher</h3>
+                            <p>Fashion axe 90's pug fap. Blog wayfarers brooklyn dreamcatcher, bicycle rights retro YOLO. Wes anderson lomo 90's food truck 3 wolf moon, twee jean shorts. Iphone small batch twee wolf yr before they sold out. Brooklyn echo park cred, portland pug selvage flannel seitan tousled mcsweeney's.</p>
+                        </div>
+                    </div>
+                    <nav>
+                        <span class="bl-next-work">&gt; Next Project</span>
+                        <span class="bl-icon bl-icon-close"></span>
+                    </nav>
+                </div> -->
+    <img src="images/favicon_logo.png" class="center">
+  </div>
+
+</div><!-- /container -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="js/boxlayout.js"></script>
+<script>
+  $(function() {
+    Boxlayout.init();
+  });
+</script>
+
+</body>
 </html>

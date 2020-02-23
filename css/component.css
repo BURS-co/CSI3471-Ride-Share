@@ -170,15 +170,15 @@ a:hover {
 }
 
 .bl-icon-works:before {
-	content: "\e001";
+	content: "\e926";
 }
 
 .bl-icon-blog:before {
-	content: "\e002";
+	content: "\e930";
 }
 
 .bl-icon-contact:before {
-	content: "\e003";
+	content: "\e959";
 }
 
 .bl-main > section .bl-icon-close {

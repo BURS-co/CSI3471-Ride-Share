@@ -1,0 +1,60 @@
+Mar 30, 2020 10:21:01 PM projectPackage.Runner main
+INFO: Exited login screen.
+Mar 30, 2020 10:26:37 PM projectPackage.AccountCreateDialog$1 actionPerformed
+INFO: Leighton Glim Login successful!
+Mar 30, 2020 10:29:34 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login failed!
+Mar 30, 2020 10:29:36 PM projectPackage.Runner main
+INFO: Exited login screen.
+Mar 30, 2020 10:30:23 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login failed!
+Mar 30, 2020 10:30:36 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login failed!
+Mar 30, 2020 10:32:45 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login failed!
+Mar 30, 2020 10:32:59 PM projectPackage.Runner main
+INFO: Exited login screen.
+Mar 30, 2020 10:33:33 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login failed!
+Mar 30, 2020 10:33:41 PM projectPackage.LoginDialog$1 actionPerformed
+INFO:  Login failed!
+Mar 30, 2020 10:34:07 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login failed!
+Mar 30, 2020 10:34:11 PM projectPackage.Runner main
+INFO: Exited login screen.
+Mar 30, 2020 10:36:02 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!
+Mar 30, 2020 11:10:47 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:11:47 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:14:17 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:16:25 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:17:30 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:17:50 PM projectPackage.Runner main
+INFO: Exited login screen.
+Mar 30, 2020 11:18:13 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:19:05 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:22:37 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:23:25 PM projectPackage.Runner main
+INFO: Exited login screen.
+Mar 30, 2020 11:33:15 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:37:48 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:38:39 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:39:34 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:43:32 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:45:05 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!
+Mar 30, 2020 11:45:40 PM projectPackage.LoginDialog$1 actionPerformed
+INFO: leighton_glim1@baylor.edu Login successful!

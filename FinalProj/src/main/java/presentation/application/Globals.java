@@ -1,4 +1,4 @@
-package application;
+package presentation.application;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;

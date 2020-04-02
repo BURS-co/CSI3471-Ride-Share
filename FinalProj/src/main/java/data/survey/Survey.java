@@ -1,4 +1,4 @@
-package survey;
+package data.survey;
 
 public class Survey {
 	private String name;

@@ -1,4 +1,4 @@
-package application;
+package presentation.application;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -8,8 +8,8 @@ import java.util.logging.Level;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import databaseControllers.UserDatabase;
-import user.User;
+import data.databaseControllers.UserDatabase;
+import data.user.User;
  
 public class LoginDialog extends JDialog {
  

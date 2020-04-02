@@ -1,4 +1,4 @@
-package databaseControllers;
+package data.databaseControllers;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import user.User;
+import data.user.User;
 
 public class UserDatabase{
 	static ArrayList<User> userData = new ArrayList<User>();

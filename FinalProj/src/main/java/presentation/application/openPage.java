@@ -1,4 +1,4 @@
-package application;
+package presentation.application;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

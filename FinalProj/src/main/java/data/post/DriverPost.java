@@ -1,4 +1,4 @@
-package post;
+package data.post;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

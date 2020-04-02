@@ -1,4 +1,4 @@
-package user;
+package data.user;
 
 public class Report {
 	private User reportee;

@@ -1,4 +1,4 @@
-package application;
+package presentation.application;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,8 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import databaseControllers.UserDatabase;
-import user.User;
+import data.databaseControllers.UserDatabase;
+import data.user.User;
 
 public class AccountCreateDialog extends JDialog {
 

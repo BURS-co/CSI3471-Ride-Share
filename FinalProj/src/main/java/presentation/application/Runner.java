@@ -1,4 +1,4 @@
-package application;
+package presentation.application;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -16,8 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 
-import databaseControllers.PostDatabase;
-import databaseControllers.UserDatabase;
+import data.databaseControllers.PostDatabase;
+import data.databaseControllers.UserDatabase;
 
 public class Runner {
 	

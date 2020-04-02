@@ -9,20 +9,18 @@ public class User {
 	protected String password;
 	protected String email;
 	protected String phoneNumber;
-	protected boolean isAdmin;
 	
 	public User() {
 		username = null;
 		password = null;
 		email = null;
 		phoneNumber = null;
-		isAdmin = false;
 	}
 	
 	@Override
 	public String toString() {
 		return username + " " + email + " " + phoneNumber + " " + password
-				+ " " + isAdmin + "\n";
+				+ " false\n";
 	}
 
 	/**
@@ -73,20 +71,5 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	/**
-	 * @return the isAdmin
-	 */
-	public boolean isAdmin() {
-		return isAdmin;
-	}
-
-	/**
-	 * @param isAdmin the isAdmin to set
-	 */
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
-	
 	
 }

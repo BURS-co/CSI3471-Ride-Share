@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import data.user.Admin;
 import data.user.User;
 
 public class UserDatabase{
@@ -26,7 +27,14 @@ public class UserDatabase{
 			while ((line = loader.readLine()) != null) {
 				
 				String[] split = line.split(" ");
-				User u = new User();
+				User u = null;
+				
+				if(split[5].equals("true")) {
+					u = new Admin();
+				} else {
+					u = new User();
+				}
+				
 				for(int i = 0; i < split.length; i++) {
 					if(i == 0) {
 						u.setUsername(split[i] + " " + split[i+1]);
@@ -40,9 +48,6 @@ public class UserDatabase{
 					else if(i == 4) {
 						u.setPassword(split[i]);
 					}
-					else if(i == 5) {
-						u.setAdmin(Boolean.valueOf(split[i]));
-					}
 				}
 				//Add data
 				userData.add(u);
@@ -54,14 +59,10 @@ public class UserDatabase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//while getline
-		//split by spaces
-		//read in
-		//add to list
 	}
+	
 	public static void write() throws IOException {
 		//open file
-		//iterate arraylist
 		BufferedWriter write = new BufferedWriter(new FileWriter(
                 "userDatabase.txt"));
 		

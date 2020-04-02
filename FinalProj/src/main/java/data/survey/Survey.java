@@ -2,22 +2,15 @@ package data.survey;
 
 public class Survey {
 	private String name;
-	private static String[] questions;
 	private String[] responses;
 	
 	
 	/**
 	 * Initialize the survey
 	 */
-	public Survey(){
-		name = null;
-		questions = new String[5];
-		questions[1] = "How would you rate your ride?";
-		questions[2] = "Were you able to find a ride with ease?";
-		responses = new String[5];
-		for (int i = 0; i < 5; i++) {
-			responses[i] = null;
-		}
+	public Survey(String name, String[] responses){
+		this.name = name;
+		this.responses = responses;
 	}
 
 

@@ -4,6 +4,7 @@ public class Report {
 	private User reportee;
 	private User reporter;
 	private String reason;
+	
 	/**
 	 * @return the reportee
 	 */

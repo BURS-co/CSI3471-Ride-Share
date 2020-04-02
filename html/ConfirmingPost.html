@@ -1,0 +1,408 @@
+<!-- <html>
+  <head>
+    <title>
+      Iteration 1
+    </title>
+  </head>
+  <body style="background-color:#004A33;">
+    <h1> Iteration 1 </h1>
+    <p style="color:black; font-size:20px"> This is iteration 1.</p>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<style>
+            html, body {margin: 0; height: 100%; overflow: hidden; background-image: url('images/favicon_logo.png');}
+
+        .container1 {
+            position: relative;
+            width: 34%;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+            opacity: 100%;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .container1:hover .image {
+            opacity: 0.3;
+        }
+
+        .container1:hover .middle {
+            opacity: 1;
+        }
+
+        .text {
+            background-color: #FFB81C;
+            color: #004A33;
+            font-family: Open Sans;
+            font-size: 20px;
+            padding: 16px 32px;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            top: 50%;
+        }
+      
+        a.one:link {color:white; font-family:Open Sans }
+        a.one:hover {color:#FFB81C}
+        a.one:visited {color:#707372}
+      
+        a.two:link {color:white; font-family:Open Sans; text-align:center }
+        a.two:hover {color:#FFB81C}
+        a.two:visited {color:#707372}
+      
+        * {
+            box-sizing: border-box;
+        }
+
+      
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+		</style>
+
+		<title>
+            About
+        </title>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="images/favicon_logo.png">
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Fullscreen Layout with Page Transitions</title>
+		<meta name="description" content="Fullscreen Layout with Page Transitions" />
+		<meta name="keywords" content="fullscreen layout, boxes, responsive, page transitions, css transitions, jquery, portfolio, template" />
+		<meta name="author" content="Codrops" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+
+	<body style="background-color: #707372">
+
+		<div class="container">
+            <h1 style="background-color: #707372; text-align: center">BURS</h1>
+
+			<div id="bl-main" class="bl-main">
+
+
+				<section style="background-color:#004A33" >
+                        <div class="bl-box">
+                            <h2 class="bl-icon bl-icon-about">About</h2>
+                        </div>
+                        <div class="bl-content" style="background-color:#004A33;">
+                            <h2>About</h2>
+                            <div class="row" style="opacity: 1;">
+                                <div class="column" style="opacity: 1;">
+                                    <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+                                        <div class="container1"  style="opacity: 1;">
+                                            <img src="ProfilePic.jpg" alt="Avatar" class="image">
+                                                <div class="middle">
+                                                    <div class="text">Josh Huertas</div>
+                                                </div>
+                                            </img>
+                                        </div>
+                                        <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+                                            Role/Use Cases
+                                        </div>
+                                        <ul style="font-family:Open Sans; color:white; font-size:16px">
+                                            <li>Project Manager</li>
+                                        </ul>
+                                        <ol style="font-family:Open Sans; color:white; font-size:16px">
+                                            <li><a class="one" href="SearchForDriver.html">Search for Driver</a></li>
+                                            <li><a class="one" href="SearchForRiders.html">Search for Riders</a></li>
+                                            <li><a class="one" href="SearchDatabaseForPost.html">Search Database for Post</a></li>
+                                            Time: 13 hrs
+                                            <br>
+                                            Meetings Attended: 3/3
+                                        </ol>
+                               <!--     </p> -->
+                                <!--    </p> -->
+                                    </p>
+                                    <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+                                    <div class="container1">
+                                        <img src="leightonglim_headshot.JPG" alt="Avatar" class="image">
+                                        <div class="middle">
+                                            <div class="text">Leighton Glim</div>
+                                        </div>
+                                        </img>
+                                    </div>
+
+                                    <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+                                        Role/Use Cases
+                                    </div>
+                                    <ul style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li>Web Designer</li>
+                                    </ul>
+                                    <ol style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li><a class="one" href="ReportUser.html">Report User</a></li>
+                                        <li><a class="one" href="MakingProfile.html">Making Profile</a></li>
+                                        <li><a class="one" href="CustomizeProfile.html">Customize Profile</a></li>
+                                        Time: 15 hrs
+                                        <br>
+                                        Meetings Attended: 3/3
+                                    </ol>
+                                    </p>
+
+                                    <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+
+                                        <!-- <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px">
+                                              Mohsen Soltani . -->
+                                    <div class="container1">
+                                        <img src="leightonglim_headshot-copy.JPG" alt="Avatar" class="image">
+                                        <div class="middle">
+                                            <div class="text">Mohsen Soltani</div>
+                                        </div>
+                                        </img>
+                                    </div>
+
+                                    <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+                                        Role/Use Cases
+                                    </div>
+                                    <ul style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li>Developer</li>
+                                    </ul>
+                                    <ol style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li><a class="one" href="DeleteAccount.html">Delete Account</a></li>
+                                        <li><a class="one" href="RemovePost.html">Remove a Post</a></li>
+                                        <li><a class="one" href="SuspendUser.html">Suspend User</a></li>
+                                        Time: 10 hrs
+                                        <br>
+                                        Meetings Attended: 3/3
+                                    </ol>
+                                    </p>
+
+                                </div>
+                                <div class="column">
+                                    <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+
+                                        <!--  <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px">
+                                            Andrew Ammentorp -->
+                                    <div class="container1">
+                                        <img src="leightonglim_headshot-copy.JPG" alt="Avatar" class="image">
+                                        <div class="middle">
+                                            <div class="text">Andrew Ammentorp</div>
+                                        </div>
+                                        </img>
+                                    </div>
+                                    <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+                                        Role/Use Cases
+                                    </div>
+                                    <ul style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li>Developer</li>
+                                    </ul>
+                                    <ol style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li><a class="one" href="GenerateReport.html">Generate Report</a></li>
+                                        <li><a class="one" href="UpdatePostDatabase.html">Update Post Database</a></li>
+                                        <li><a class="one" href="UpdateUserDatabase.html">Update User Database</a></li>
+                                        Time: 13 hrs
+                                        <br>
+                                        Meetings Attended: 3/3
+                                    </ol>
+                                    </p>
+
+                                    <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+
+                                        <!--   <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px">
+                                             Joseph Perez  -->
+                                    <div class="container1">
+                                        <img src="leightonglim_headshot-copy.JPG" alt="Avatar" class="image">
+                                        <div class="middle">
+                                            <div class="text">Joseph Perez</div>
+                                        </div>
+                                        </img>
+                                    </div>
+                                    <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+                                        Role/Use Cases
+                                    </div>
+                                    <ul style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li>Web Designer</li>
+                                    </ul>
+                                    <ol style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li><a class="one" href="SurveyUser.html">Survey User</a></li>
+                                        <li><a class="one" href="ConfirmingPost.html">Confirming Post</a></li>
+                                        <li><a class="one" href="RemoveInappropPost.html">Remove Inappropriate Posts</a></li>
+                                        Time: 12 hrs
+                                        <br>
+                                        Meetings Attended: 2/3
+                                    </ol>
+                                    </p>
+
+                                    <p style="font-family:Open Sans; color:#FFB81C; font-size:20px">
+
+                                        <!-- <p style="font-family:Bio Sans; color:#FFB81C; font-size:30px">
+                                              Joseph Yu . -->
+                                    <div class="container1">
+                                        <img src="leightonglim_headshot-copy.JPG" alt="Avatar" class="image">
+                                        <div class="middle">
+                                            <div class="text">Joseph Yu</div>
+                                        </div>
+                                        </img>
+                                    </div>
+
+                                    <div style="font-family:Open Sans; color:white; font-size:20px; text-indent:5px">
+                                        Role/Use Cases
+                                    </div>
+                                    <ul style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li>Analysis</li>
+                                    </ul>
+                                    <ol style="font-family:Open Sans; color:white; font-size:16px">
+                                        <li><a class="one" href="MakeRiderPost.html">Make Rider Post</a></li>
+                                        <li><a class="one" href="MakeDriverPost.html">Make Driver Post</a></li>
+                                        <li><a class="one" href="MakeUberPost.html">Make Uber Post</a></li>
+                                        Time: 12 hrs
+                                        <br>
+                                        Meetings Attended: 3/3
+                                    </ol>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bl-icon bl-icon-close" style="background-color:#004A33;"></span>
+                    </section>
+						
+<!-- <body style="background-color:#004A33;">  -->
+    
+
+				<section id="bl-work-section">
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-works">Iteration 1</h2>
+					</div>
+					<div class="bl-content">
+						<h2>My Works</h2>
+						<p>Mung bean maize dandelion sea lettuce catsear bunya nuts ricebean tatsoi caulie horseradish pea.</p>
+						<ul id="bl-work-items">
+							<li data-panel="panel-1"><a href="#"><img src="images/1.jpg" /></a></li>
+							<li data-panel="panel-2"><a href="#"><img src="images/2.jpg" /></a></li>
+							<li data-panel="panel-3"><a href="#"><img src="images/3.jpg" /></a></li>
+							<li data-panel="panel-4"><a href="#"><img src="images/4.jpg" /></a></li>
+						</ul>
+						<p>Illustrations by <a href="http://dribbble.com/isaac317/click">Isaac Montemayor</a></p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-blog">Iteration 2</h2>
+					</div>
+					<div class="bl-content">
+						<h2>My Musings</h2>
+						<article>
+							<h3>Being a Freelance Designer</h3>
+							<p>Stumptown helvetica cardigan, odd future seitan tattooed flannel. Kale chips direct trade cray beard. 8-bit etsy butcher post-ironic blog lo-fi mcsweeney's, sustainable pickled umami flexitarian DIY ethical plaid trust fund. Wolf cred organic, terry richardson aesthetic four loko occupy vegan chillwave readymade deep... <a href="#">Read more</a></p>
+						</article>
+						<article>
+							<h3>Working with Photoshop</h3>
+							<p>Cosby sweater odd future gluten-free actually dreamcatcher. Fixie cray vice sriracha disrupt, lo-fi pitchfork mcsweeney's swag YOLO meh chambray etsy. Keytar sriracha fanny pack church-key hashtag vice blog. 3 wolf moon VHS helvetica, raw denim deep v shoreditch seitan twee... <a href="#">Read more</a></p>
+						</article>
+						<article>
+							<h3>Making use of Icon Fonts</h3>
+							<p>Locavore irony gastropub chillwave, butcher meggings flexitarian pinterest master cleanse godard. Intelligentsia pop-up neutra, williamsburg gastropub godard pinterest swag deep v umami lomo. Butcher next level 90's wolf bushwick, narwhal photo booth YOLO kale chips whatever small batch. Meh viral ethical hella cardigan portland, street art mlkshk meggings mixtape kale chips cliche messenger bag pitchfork... <a href="#">Read more</a></p>
+						</article>
+						<article>
+							<h3>Being a Freelance Designer</h3>
+							<p>Stumptown helvetica cardigan, odd future seitan tattooed flannel. Kale chips direct trade cray beard. 8-bit etsy butcher post-ironic blog lo-fi mcsweeney's, sustainable pickled umami flexitarian DIY ethical plaid trust fund. Wolf cred organic, terry richardson aesthetic four loko occupy vegan chillwave readymade deep... <a href="#">Read more</a></p>
+						</article>
+						<article>
+							<h3>Working with Photoshop</h3>
+							<p>Cosby sweater odd future gluten-free actually dreamcatcher. Fixie cray vice sriracha disrupt, lo-fi pitchfork mcsweeney's swag YOLO meh chambray etsy. Keytar sriracha fanny pack church-key hashtag vice blog. 3 wolf moon VHS helvetica, raw denim deep v shoreditch seitan twee... <a href="#">Read more</a></p>
+						</article>
+						<article>
+							<h3>Making use of Icon Fonts</h3>
+							<p>Locavore irony gastropub chillwave, butcher meggings flexitarian pinterest master cleanse godard. Intelligentsia pop-up neutra, williamsburg gastropub godard pinterest swag deep v umami lomo. Butcher next level 90's wolf bushwick, narwhal photo booth YOLO kale chips whatever small batch. Meh viral ethical hella cardigan portland, street art mlkshk meggings mixtape kale chips cliche messenger bag pitchfork... <a href="#">Read more</a></p>
+						</article>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-contact">Iteration 3</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Get in touch</h2>
+						<p>Pinterest semiotics single-origin coffee craft beer thundercats irony, tumblr bushwick intelligentsia pickled. Narwhal mustache godard master cleanse street art, occupy ugh selfies put a bird on it cray salvia four loko gluten-free shoreditch. Occupy american apparel freegan cliche. Mustache trust fund 8-bit jean shorts mumblecore thundercats. Pour-over small batch forage cray, banjo post-ironic flannel keffiyeh cred ethnic semiotics next level tousled fashion axe. Sustainable cardigan keytar fap bushwick bespoke.</p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<!-- Panel items for the works -->
+				<div class="bl-panel-items" id="bl-panel-work-items">
+					<div data-panel="panel-1">
+						<div>
+							<img src="images/1.jpg" />
+							<h3>Fixie bespoke</h3>
+							<p>Iphone artisan direct trade ethical Austin. Fixie bespoke banh mi ugh, deep v vinyl hashtag. Tumblr gentrify keffiyeh pop-up iphone twee biodiesel. Occupy american apparel freegan cliche. Mustache trust fund 8-bit jean shorts mumblecore thundercats. Pour-over small batch forage cray, banjo post-ironic flannel keffiyeh cred ethnic semiotics next level tousled fashion axe. Sustainable cardigan keytar fap bushwick bespoke.</p>
+						</div>
+					</div>
+					<div data-panel="panel-2">
+						<div>
+							<img src="images/2.jpg" />
+							<h3>Chillwave mustache</h3>
+							<p>Squid vinyl scenester literally pug, hashtag tofu try-hard typewriter polaroid craft beer mlkshk cardigan photo booth PBR. Chillwave 90's gentrify american apparel carles disrupt. Pinterest semiotics single-origin coffee craft beer thundercats irony, tumblr bushwick intelligentsia pickled. Narwhal mustache godard master cleanse street art, occupy ugh selfies put a bird on it cray salvia four loko gluten-free shoreditch.</p>
+						</div>
+					</div>
+					<div data-panel="panel-3">
+						<div>
+							<img src="images/3.jpg" />
+							<h3>Austin hella</h3>
+							<p>Ethical cray wayfarers leggings vice, seitan banksy small batch ethnic master cleanse. Pug chillwave etsy, scenester meh occupy blue bottle tousled blog tonx pinterest selvage mixtape swag cosby sweater. Synth tousled direct trade, hella Austin craft beer ugh chambray.</p>
+						</div>
+					</div>
+					<div data-panel="panel-4">
+						<div>
+
+
+							<h3>Brooklyn dreamcatcher</h3>
+							<p>Fashion axe 90's pug fap. Blog wayfarers brooklyn dreamcatcher, bicycle rights retro YOLO. Wes anderson lomo 90's food truck 3 wolf moon, twee jean shorts. Iphone small batch twee wolf yr before they sold out. Brooklyn echo park cred, portland pug selvage flannel seitan tousled mcsweeney's.</p>
+						</div>
+					</div>
+					<nav>
+						<span class="bl-next-work">&gt; Next Project</span>
+						<span class="bl-icon bl-icon-close"></span>
+					</nav>
+				</div>
+
+			</div>
+
+		</div><!-- /container -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/boxlayout.js"></script>
+		<script>
+			$(function() {
+				Boxlayout.init();
+			});
+		</script>
+
+	</body>
+</html>

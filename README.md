@@ -1,1 +1,1 @@
-Welcome to our website repository.
+Welcome to the BearPool repo

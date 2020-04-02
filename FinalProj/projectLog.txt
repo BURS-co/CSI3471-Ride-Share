@@ -58,3 +58,5 @@ Mar 30, 2020 11:45:05 PM projectPackage.LoginDialog$1 actionPerformed
 INFO: leighton_glim1@baylor.edu Login successful!
 Mar 30, 2020 11:45:40 PM projectPackage.LoginDialog$1 actionPerformed
 INFO: leighton_glim1@baylor.edu Login successful!
+Apr 02, 2020 12:33:31 AM application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!

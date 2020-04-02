@@ -60,3 +60,59 @@ Mar 30, 2020 11:45:40 PM projectPackage.LoginDialog$1 actionPerformed
 INFO: leighton_glim1@baylor.edu Login successful!
 Apr 02, 2020 12:33:31 AM application.LoginDialog$1 actionPerformed
 INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 5:49:08 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:49:30 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:49:53 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:50:13 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:50:49 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:51:01 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:51:18 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:51:29 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:52:25 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:53:14 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:54:21 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:55:42 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:57:32 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:57:52 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:58:28 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 5:58:44 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:01:31 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:01:45 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:01:56 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:05:21 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:05:32 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:05:39 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:05:55 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:06:22 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:06:45 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:16:33 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez Login failed!
+Apr 02, 2020 6:16:55 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 6:21:24 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!

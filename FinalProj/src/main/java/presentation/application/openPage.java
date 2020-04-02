@@ -26,7 +26,7 @@ public class openPage extends JDialog {
      * @param parent
      */
     public openPage( final JFrame parent) {
-        super(parent, "Login", true);
+        super(parent, "Bear Pool", true);
         //
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints cs = new GridBagConstraints();
@@ -36,7 +36,7 @@ public class openPage extends JDialog {
         
         panel.setBorder(new LineBorder(Color.GRAY));
  
-        btnLogin = new JButton("Login");
+        btnLogin = new JButton("Log in");
  
         btnLogin.addActionListener(new ActionListener() {
  
@@ -53,7 +53,7 @@ public class openPage extends JDialog {
         	
             }
         });
-        btnCreateAccount = new JButton("Create Account");
+        btnCreateAccount = new JButton("Sign Up");
         btnCreateAccount.addActionListener(new ActionListener() {
  
             /* (non-Javadoc)

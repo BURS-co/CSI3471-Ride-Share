@@ -1,4 +1,4 @@
-package bussiness;
+package business;
 
 public class UserService {
 	

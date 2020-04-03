@@ -5,11 +5,14 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+import data.user.User;
+
 public class Globals {
 	public final static Logger log = Logger.getLogger(Runner.class.getName());
 	static FileHandler fh;  
 	public static boolean accountCreated = false;
 	public static boolean postCreated = false;
+	public static User loggedIn = new User();
 	static {
 		 try {  
 			 

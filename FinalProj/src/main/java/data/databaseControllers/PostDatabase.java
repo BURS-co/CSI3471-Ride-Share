@@ -101,8 +101,8 @@ public class PostDatabase {
 //	}
 	
 	final public static ArrayList<Post> queryDatabase (String type){
-		
-		ArrayList<Post> query = new ArrayList<Post>();
+		//The queryDatabase could be instead searching for a specific post
+		/*ArrayList<Post> query = new ArrayList<Post>();
 		
 		if(type.equals("rider") || type.equals("driver")) {
 			for (Post p: postData) {
@@ -112,7 +112,7 @@ public class PostDatabase {
 			}
 		}
 		
-		return query;
+		return query;*/
 	}
 	
 }

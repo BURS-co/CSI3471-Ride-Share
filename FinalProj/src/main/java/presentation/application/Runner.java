@@ -33,6 +33,8 @@ public class Runner {
 
 		// if login is successful
 		if(openDlg.isSucceeded()){
+			//This is the user logged in
+			//Globals.loggedIn;
 			//Load posts
 			PostDatabase.load();
 			mainFrame.setVisible(true);
@@ -130,8 +132,8 @@ public class Runner {
 			
 			//somehow need to add a view profile at the bottom
 			
-	    mainFrame.pack();
-	    mainFrame.setVisible(true);
+			mainFrame.pack();
+			mainFrame.setVisible(true);
 			
 			UserDatabase.write();
 			PostDatabase.write();

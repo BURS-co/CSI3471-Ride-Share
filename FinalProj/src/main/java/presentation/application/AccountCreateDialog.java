@@ -33,6 +33,10 @@ public class AccountCreateDialog extends JDialog {
     validateAccountInfo vaI;
     private boolean succeeded = false;
     
+    /**
+	 * @param jframe parent
+	 * @return
+	 */
     public AccountCreateDialog( JFrame parent) {
     	super(parent, "Create Account", true);
     	JPanel panel = new JPanel(new GridBagLayout());
@@ -145,6 +149,10 @@ public class AccountCreateDialog extends JDialog {
       setLocationRelativeTo(parent);
     }
 
+    /**
+	 * @param
+	 * @return succeeded
+	 */
     public boolean isSucceeded() {
       return succeeded;
     }

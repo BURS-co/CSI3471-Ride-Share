@@ -14,11 +14,19 @@ import presentation.application.Globals;
 public class validateAccountInfo extends AccountCreateDialog {
 	static boolean succeeded = false;
 	
+	/**
+	 * @param jframe
+	 * @return
+	 */
 	public validateAccountInfo(JFrame parent) {
 		super(parent);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @param name, email, phone, password, reenterpassword, AccountCreateDialog
+	 * @return succeeded
+	 */
 	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password, String reenterPass, AccountCreateDialog a) {
 		if (!(password.equals(reenterPass))) {
           JOptionPane.showMessageDialog(a,

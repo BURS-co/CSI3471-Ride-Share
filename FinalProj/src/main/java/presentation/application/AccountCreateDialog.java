@@ -110,6 +110,7 @@ public class AccountCreateDialog extends JDialog {
         	/* (non-Javadoc)
              * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
              */
+        	//testing
 			public void actionPerformed(ActionEvent event) {
         		if(name.getText().length() > 1 &&
         				baylorEmail.getText().length()>1 && phoneNum.getText().length() > 1 &&

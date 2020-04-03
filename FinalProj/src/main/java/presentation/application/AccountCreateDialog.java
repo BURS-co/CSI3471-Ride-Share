@@ -111,6 +111,9 @@ public class AccountCreateDialog extends JDialog {
              * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
              */
 			public void actionPerformed(ActionEvent event) {
+        		if(name.getText().length() > 1 &&
+        				baylorEmail.getText().length()>1 && phoneNum.getText().length() > 1 &&
+        				password.getText().length() > 1 && confirmPassword.getText().length()>1)
         		if(vaI.validateAccountInfoEntered(name.getText(), 
         				baylorEmail.getText(), phoneNum.getText(), 
         				password.getText(), confirmPassword.getText(), 

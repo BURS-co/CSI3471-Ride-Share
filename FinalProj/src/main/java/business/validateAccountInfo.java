@@ -24,19 +24,39 @@ public class validateAccountInfo extends AccountCreateDialog {
 	}
 
 	/**
-	 * @param name, email, phone, password, reenterpassword, AccountCreateDialog
+	 * @param name, email, phone, password, reenterPass, AccountCreateDialog
 	 * @return succeeded
 	 */
 	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password, String reenterPass, AccountCreateDialog a) {
+		int emailSize = 0;
+		emailSize = email.length() - 11;
+		char ch;
+	    boolean capitalFlag = false;
+	    boolean lowerCaseFlag = false;
+	    boolean numberFlag = false;
+	    for(int i=0;i < password.length();i++) {
+	        ch = password.charAt(i);
+	        if( Character.isDigit(ch)) {
+	            numberFlag = true;
+	        }
+	        else if (Character.isUpperCase(ch)) {
+	            capitalFlag = true;
+	        } else if (Character.isLowerCase(ch)) {
+	            lowerCaseFlag = true;
+	        }
+	    }
+		
+		
+		String partOfEmail = email + emailSize;
 		if (!(password.equals(reenterPass))) {
           JOptionPane.showMessageDialog(a,
           "Your passwords do not match! Try again.",
           "Login",
           JOptionPane.INFORMATION_MESSAGE);
           succeeded = false;
-        } else if (password.length() < 8) {
+        } else if (password.length() < 8 && !numberFlag && !lowerCaseFlag && !capitalFlag) {
             JOptionPane.showMessageDialog(a ,
-                    "That password is not long enough! Try again.",
+                    "Password must contain >8 characters and at least 1 uppercase, 1 lowercase, and a number. Try again.",
                     "Login",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;
@@ -46,7 +66,7 @@ public class validateAccountInfo extends AccountCreateDialog {
                     "Login",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;
-        } else if (!(email.toLowerCase().contains("@baylor.edu"))) {
+        } else if (!(partOfEmail.toLowerCase().matches("@baylor.edu")) && emailSize <= 1) {
         	JOptionPane.showMessageDialog(a,
                     "Invalid email address. Must be a Baylor email.",
                     "Login",

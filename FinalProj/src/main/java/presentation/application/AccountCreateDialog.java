@@ -25,8 +25,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import business.validateAccountInfo;
 import data.databaseControllers.UserDatabase;
-import bussiness.validateAccountInfo;
 import data.user.User;
 
 public class AccountCreateDialog extends JDialog {

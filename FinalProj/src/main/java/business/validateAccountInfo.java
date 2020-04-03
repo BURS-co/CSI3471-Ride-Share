@@ -54,7 +54,7 @@ public class validateAccountInfo extends AccountCreateDialog {
           "Login",
           JOptionPane.INFORMATION_MESSAGE);
           succeeded = false;
-        } else if (password.length() < 8 && !numberFlag && !lowerCaseFlag && !capitalFlag) {
+        } else if (password.length() < 8 || !numberFlag || !lowerCaseFlag || !capitalFlag) {
             JOptionPane.showMessageDialog(a ,
                     "Password must contain >8 characters and at least 1 uppercase, 1 lowercase, and a number. Try again.",
                     "Login",
@@ -66,9 +66,9 @@ public class validateAccountInfo extends AccountCreateDialog {
                     "Login",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;
-        } else if (!(partOfEmail.toLowerCase().matches("@baylor.edu")) && emailSize <= 1) {
+        } else if (!(partOfEmail.toLowerCase().matches("@baylor.edu")) || emailSize <= 1) {
         	JOptionPane.showMessageDialog(a,
-                    "Invalid email address. Must be a Baylor email.",
+                    "Invalid email address. Must be a valid Baylor email.",
                     "Login",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;

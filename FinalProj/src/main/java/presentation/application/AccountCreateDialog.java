@@ -29,7 +29,6 @@ public class AccountCreateDialog extends JDialog {
     JTextField      phoneNum;
     JPasswordField  password;
     JPasswordField  confirmPassword;
-    JLabel          warningLabel;
     validateAccountInfo vaI;
     private boolean succeeded = false;
     

@@ -104,13 +104,12 @@ public class AccountCreateDialog extends JDialog {
         cs.gridwidth = 3;
         panel.add(confirmPassword, cs);
         
-        
-        
-        
-
         JButton createAccount = new JButton("Create account");
         createAccount.addActionListener(new ActionListener() {
         	@SuppressWarnings("static-access")
+        	/* (non-Javadoc)
+             * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+             */
 			public void actionPerformed(ActionEvent event) {
         		if(vaI.validateAccountInfoEntered(name.getText(), 
         				baylorEmail.getText(), phoneNum.getText(), 

@@ -1,17 +1,10 @@
 package presentation.application;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.StringTokenizer;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -22,8 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 import business.validateAccountInfo;
 import data.databaseControllers.UserDatabase;
@@ -31,7 +22,8 @@ import data.user.User;
 
 public class AccountCreateDialog extends JDialog {
 
-    JFrame          frame;
+	private static final long serialVersionUID = 1L;
+	JFrame          frame;
     JTextField      name;
     JTextField      baylorEmail;
     JTextField      phoneNum;
@@ -115,7 +107,8 @@ public class AccountCreateDialog extends JDialog {
 
         JButton createAccount = new JButton("Create account");
         createAccount.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent event) {
+        	@SuppressWarnings("static-access")
+			public void actionPerformed(ActionEvent event) {
         		if(vaI.validateAccountInfoEntered(name.getText(), 
         				baylorEmail.getText(), phoneNum.getText(), 
         				password.getText(), confirmPassword.getText(), 

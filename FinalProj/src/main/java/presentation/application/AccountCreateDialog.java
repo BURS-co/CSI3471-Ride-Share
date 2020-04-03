@@ -33,7 +33,7 @@ public class AccountCreateDialog extends JDialog {
     private boolean succeeded = false;
     
     /**
-	 * @param jframe parent
+	 * @param parent
 	 * @return
 	 */
     public AccountCreateDialog( JFrame parent) {

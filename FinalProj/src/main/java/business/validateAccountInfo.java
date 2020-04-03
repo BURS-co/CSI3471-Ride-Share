@@ -15,7 +15,7 @@ public class validateAccountInfo extends AccountCreateDialog {
 	static boolean succeeded = false;
 	
 	/**
-	 * @param jframe
+	 * @param parent
 	 * @return
 	 */
 	public validateAccountInfo(JFrame parent) {

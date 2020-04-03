@@ -140,3 +140,5 @@ Apr 02, 2020 7:43:57 PM presentation.application.LoginDialog$1 actionPerformed
 INFO: joseph_perez3@baylor.edu Login successful!
 Apr 02, 2020 7:44:46 PM presentation.application.LoginDialog$1 actionPerformed
 INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 9:38:45 PM presentation.application.AccountCreateDialog$1 actionPerformed
+INFO: test test Login successful!

@@ -26,6 +26,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import data.databaseControllers.UserDatabase;
+import bussiness.validateAccountInfo;
 import data.user.User;
 
 public class AccountCreateDialog extends JDialog {
@@ -37,6 +38,7 @@ public class AccountCreateDialog extends JDialog {
     JPasswordField  password;
     JPasswordField  confirmPassword;
     JLabel          warningLabel;
+    validateAccountInfo vaI;
     private boolean succeeded = false;
     
     public AccountCreateDialog( JFrame parent) {
@@ -106,11 +108,15 @@ public class AccountCreateDialog extends JDialog {
         cs.gridy = 4;
         cs.gridwidth = 3;
         panel.add(confirmPassword, cs);
+        
+        
+        
+        
 
         JButton createAccount = new JButton("Create account");
         createAccount.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-                if (!(Arrays.equals(password.getPassword(),
+          /*      if (!(Arrays.equals(password.getPassword(),
                         confirmPassword.getPassword()))) {
                   JOptionPane.showMessageDialog(AccountCreateDialog.this,
                   "Your passwords do not match! Try again.",
@@ -173,7 +179,8 @@ public class AccountCreateDialog extends JDialog {
                       Globals.log.log(Level.INFO, user.getUsername()+" Login successful!");
                       dispose();
                     }
-                } else {
+                } else { */
+        		if(vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(), password.getText(), confirmPassword.getText(), AccountCreateDialog.this)) {
                 	  	
                 	  User user =  new User();
                 		user.setUsername(name.getText());

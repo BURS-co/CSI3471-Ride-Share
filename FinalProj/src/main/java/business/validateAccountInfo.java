@@ -65,21 +65,6 @@ public class validateAccountInfo extends AccountCreateDialog {
                JOptionPane.INFORMATION_MESSAGE);
             	succeeded = false;
             } else {
-          /*  	User user =  new User();
-              user.setUsername(name);
-        		  user.setEmail(email);
-        		  user.setPhoneNumber(phone);
-        		  user.setPassword(password);
-        		
-        		  UserDatabase.getUserData().add(user);
-        		
-        		
-        		  JOptionPane.showMessageDialog(a,
-               "Hi " + user.getUsername() + "! Welcome to Bearpool!",
-               "Login",
-              JOptionPane.INFORMATION_MESSAGE);
-              succeeded = true;
-              Globals.log.log(Level.INFO, user.getUsername()+" Login successful!");*/
             	succeeded = true;
               
             }

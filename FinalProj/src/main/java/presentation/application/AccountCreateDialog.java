@@ -116,73 +116,12 @@ public class AccountCreateDialog extends JDialog {
         JButton createAccount = new JButton("Create account");
         createAccount.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-          /*      if (!(Arrays.equals(password.getPassword(),
-                        confirmPassword.getPassword()))) {
-                  JOptionPane.showMessageDialog(AccountCreateDialog.this,
-                  "Your passwords do not match! Try again.",
-                  "Login",
-                  JOptionPane.INFORMATION_MESSAGE);
-                  succeeded = false;
-                } else if (password.getPassword().length < 8) {
-                    JOptionPane.showMessageDialog(AccountCreateDialog.this,
-                            "That password is not long enough! Try again.",
-                            "Login",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    succeeded = false;
-                } else if (phoneNum.getText().length() != 10) {
-                	JOptionPane.showMessageDialog(AccountCreateDialog.this,
-                            "Invalid phone number. Must be 10 digits.",
-                            "Login",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    succeeded = false;
-                } else if (!(baylorEmail.getText().toLowerCase().contains("@baylor.edu"))) {
-                	JOptionPane.showMessageDialog(AccountCreateDialog.this,
-                            "Invalid email address. Must be a Baylor email.",
-                            "Login",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    succeeded = false;
-                } else if(name.getText() != null) {
-                	String username = name.getText();
-                    int words = 0;
-                    if (!(" ".equals(username.substring(0, 1))) || !(" ".equals(username.substring(username.length() - 1))))
-                    {
-                        for (int i = 0; i < username.length(); i++)
-                        {
-                            if (username.charAt(i) == ' ')
-                            {
-                                words++;
-                            }
-                        }
-                        words = words + 1; 
-                    }
-                    if(words != 2) {
-                    	JOptionPane.showMessageDialog(AccountCreateDialog.this,
-                       "Invalid user name. Enter first and last name.",
-                       "Login",
-                       JOptionPane.INFORMATION_MESSAGE);
-                    	succeeded = false;
-                    } else {
-                    	User user =  new User();
-                      user.setUsername(name.getText());
-                		  user.setEmail(baylorEmail.getText());
-                		  user.setPhoneNumber(phoneNum.getText());
-                		  user.setPassword(new String(password.getPassword()));
-                		
-                		  UserDatabase.getUserData().add(user);
-                		
-                		
-                		  JOptionPane.showMessageDialog(AccountCreateDialog.this,
-                       "Hi " + user.getUsername() + "! Welcome to Bearpool!",
-                       "Login",
-                      JOptionPane.INFORMATION_MESSAGE);
-                      succeeded = true;
-                      Globals.log.log(Level.INFO, user.getUsername()+" Login successful!");
-                      dispose();
-                    }
-                } else { */
-        		if(vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(), password.getText(), confirmPassword.getText(), AccountCreateDialog.this)) {
+        		if(vaI.validateAccountInfoEntered(name.getText(), 
+        				baylorEmail.getText(), phoneNum.getText(), 
+        				password.getText(), confirmPassword.getText(), 
+        				AccountCreateDialog.this)) {
                 	  	
-                	  User user =  new User();
+                	  	User user =  new User();
                 		user.setUsername(name.getText());
                 		user.setEmail(baylorEmail.getText());
                 		user.setPhoneNumber(phoneNum.getText());

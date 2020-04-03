@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -42,7 +43,7 @@ public class Runner {
 			mainFrame.setLayout(new FlowLayout());
 			
 			// query for rider posts
-			ArrayList<Post> rlist = PostDatabase.queryDatabase("rider");
+			ArrayList<Post> rlist = PostDatabase.searchDatabase("rider");
 			
 			//Create table of posts
 			String [] riderPostLabels = {"Poster","Airport","Date"};
@@ -64,7 +65,7 @@ public class Runner {
 			
 			
 			// query for driver posts
-			ArrayList<Post> dlist = PostDatabase.queryDatabase("driver");
+			ArrayList<Post> dlist = PostDatabase.searchDatabase("driver");
 			
 			String [] driverPostLabels = {"Seats","Driver","Airport","Date"};
 			Object[][] driverData = new Object[dlist.size()][driverPostLabels.length];
@@ -86,17 +87,17 @@ public class Runner {
 			
 			// make it so cells cannot be edited for both rider and driver posts
 			JTable riderTable = new JTable(riderData, riderPostLabels) {
-				  @Override
-			    public boolean isCellEditable(int row, int column) {
-			        return false;
-			    }
-			};
+				@Override
+			  public boolean isCellEditable(int row, int column) {
+			    return false;
+	      }
+		  };
 			
 			JTable driverTable = new JTable(driverData, driverPostLabels) {
 			  @Override
-		    public boolean isCellEditable(int row, int column) {
-		        return false;
-		    }
+				public boolean isCellEditable(int row, int column) {
+					return false;
+				}
 			};
 			
 			// make it so columns may not be dragged around for
@@ -126,6 +127,8 @@ public class Runner {
 			columnModel1.getColumn(1).setPreferredWidth(100);
 			columnModel1.getColumn(2).setPreferredWidth(100);
 			columnModel1.getColumn(3).setPreferredWidth(150);
+			
+			//somehow need to add a view profile at the bottom
 			
 	    mainFrame.pack();
 	    mainFrame.setVisible(true);

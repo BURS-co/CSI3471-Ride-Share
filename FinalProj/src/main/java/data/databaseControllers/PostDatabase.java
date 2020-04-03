@@ -94,15 +94,19 @@ public class PostDatabase {
 	public static ArrayList<Post> getPostData() {
 		return postData;
 	}
-
-
-//	public static void setPostData(ArrayList<Post> postData) {
-//		PostDatabase.postData = postData;
-//	}
 	
-	final public static ArrayList<Post> queryDatabase (String type){
+	final public static ArrayList<Post> queryDatabase (){
 		//The queryDatabase could be instead searching for a specific post
-		/*ArrayList<Post> query = new ArrayList<Post>();
+		
+		return null;
+	}
+	
+	/**
+	 * @param type
+	 * @return an array of post of said type
+	 */
+	final public static ArrayList<Post> searchDatabase (String type) {
+		ArrayList<Post> query = new ArrayList<Post>();
 		
 		if(type.equals("rider") || type.equals("driver")) {
 			for (Post p: postData) {
@@ -112,7 +116,7 @@ public class PostDatabase {
 			}
 		}
 		
-		return query;*/
+		return query;
 	}
 	
 }

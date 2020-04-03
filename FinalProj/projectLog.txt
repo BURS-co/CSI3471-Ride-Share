@@ -116,3 +116,27 @@ Apr 02, 2020 6:16:55 PM presentation.application.LoginDialog$1 actionPerformed
 INFO: joseph_perez3@baylor.edu Login successful!
 Apr 02, 2020 6:21:24 PM presentation.application.LoginDialog$1 actionPerformed
 INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 6:31:05 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:32:13 PM presentation.application.Runner main
+INFO: Exited login screen.
+Apr 02, 2020 6:49:59 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 6:55:00 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 6:56:24 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login failed!
+Apr 02, 2020 6:56:48 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 7:14:42 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 7:40:04 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 7:43:23 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez@baylor.edu Login failed!
+Apr 02, 2020 7:43:38 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez@baylor.edu Login failed!
+Apr 02, 2020 7:43:57 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!
+Apr 02, 2020 7:44:46 PM presentation.application.LoginDialog$1 actionPerformed
+INFO: joseph_perez3@baylor.edu Login successful!

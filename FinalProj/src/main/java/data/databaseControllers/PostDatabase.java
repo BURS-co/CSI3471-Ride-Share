@@ -96,8 +96,23 @@ public class PostDatabase {
 	}
 
 
-	public static void setPostData(ArrayList<Post> postData) {
-		PostDatabase.postData = postData;
+//	public static void setPostData(ArrayList<Post> postData) {
+//		PostDatabase.postData = postData;
+//	}
+	
+	final public static ArrayList<Post> queryDatabase (String type){
+		
+		ArrayList<Post> query = new ArrayList<Post>();
+		
+		if(type.equals("rider") || type.equals("driver")) {
+			for (Post p: postData) {
+				if (p.getType().equals(type)) {
+					query.add(p);
+				}
+			}
+		}
+		
+		return query;
 	}
 	
 }

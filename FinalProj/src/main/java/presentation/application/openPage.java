@@ -36,7 +36,7 @@ public class openPage extends JDialog {
         
         panel.setBorder(new LineBorder(Color.GRAY));
  
-        btnLogin = new JButton("Log in");
+        btnLogin = new JButton("Log In");
  
         btnLogin.addActionListener(new ActionListener() {
  

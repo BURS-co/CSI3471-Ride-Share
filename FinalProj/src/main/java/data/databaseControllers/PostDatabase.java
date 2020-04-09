@@ -16,6 +16,17 @@ import data.post.DriverPost;
 import data.post.Post;
 
 public class PostDatabase {
+	//singleton
+	private static PostDatabase postDatabase = null;
+	
+	private PostDatabase() { }
+	
+	public static PostDatabase getInstance() {
+		if(postDatabase == null)
+			postDatabase = new PostDatabase();
+		return postDatabase;
+	}
+	
 	private static ArrayList<Post> postData = new ArrayList<Post>();
 	
 	public static void load() throws ParseException, IOException {

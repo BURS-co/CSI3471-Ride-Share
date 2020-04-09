@@ -84,7 +84,8 @@ public class Application {
 			//This is the user logged in
 			//Globals.loggedIn;
 			//Load posts
-			PostDatabase.load();
+			postDatabase = PostDatabase.getInstance();
+			//PostDatabase.load();
 			mainFrame.setVisible(true);
 			mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -93,7 +94,7 @@ public class Application {
 			mainFrame.setLayout(new FlowLayout());
 			
 			// query for rider posts
-			ArrayList<Post> rlist = PostDatabase.searchDatabase("rider");
+			ArrayList<Post> rlist = postDatabase.searchDatabase("rider");
 			
 			//Create table of posts
 			String [] riderPostLabels = {"Poster","Airport","Date"};
@@ -115,7 +116,7 @@ public class Application {
 			
 			
 			// query for driver posts
-			ArrayList<Post> dlist = PostDatabase.searchDatabase("driver");
+			ArrayList<Post> dlist = postDatabase.searchDatabase("driver");
 			
 			String [] driverPostLabels = {"Seats","Driver","Airport","Date"};
 			Object[][] driverData = new Object[dlist.size()][driverPostLabels.length];
@@ -183,8 +184,8 @@ public class Application {
 			mainFrame.pack();
 			mainFrame.setVisible(true);
 			
-			UserDatabase.write();
-			PostDatabase.write();
+			userDatabase.write();
+			postDatabase.write();
 			
 		} else {
 			log.log(Level.INFO, "Application Closed");

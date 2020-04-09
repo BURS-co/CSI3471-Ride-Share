@@ -29,7 +29,7 @@ public class PostDatabase {
 	
 	private static ArrayList<Post> postData = new ArrayList<Post>();
 	
-	public static void load() throws ParseException, IOException {
+	public void load() throws ParseException, IOException {
 		try {
 			BufferedReader loader = new BufferedReader(new FileReader (new File(
 			        "postDatabase.txt")));
@@ -83,7 +83,7 @@ public class PostDatabase {
 	}
 	
 	
-	public static void write() throws IOException {
+	public void write() throws IOException {
 		//Write to .txt file (postDatabase.txt)
 		BufferedWriter write = new BufferedWriter(new FileWriter(
                 "postDatabase.txt"));
@@ -106,7 +106,7 @@ public class PostDatabase {
 		return postData;
 	}
 	
-	final public static ArrayList<Post> queryDatabase (){
+	final public ArrayList<Post> queryDatabase (){
 		//The queryDatabase could be instead searching for a specific post
 		
 		return null;
@@ -116,7 +116,7 @@ public class PostDatabase {
 	 * @param type
 	 * @return an array of post of said type
 	 */
-	final public static ArrayList<Post> searchDatabase (String type) {
+	final public ArrayList<Post> searchDatabase (String type) {
 		ArrayList<Post> query = new ArrayList<Post>();
 		
 		if(type.equals("rider") || type.equals("driver")) {

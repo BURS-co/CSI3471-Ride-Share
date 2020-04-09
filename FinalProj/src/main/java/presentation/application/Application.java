@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -21,10 +23,38 @@ import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.DriverPost;
 import data.post.Post;
+import data.user.User;
 
-public class Runner {
-	public static UserDatabase userDatabase = null;
+public class Application {
+	public final static Logger log = Logger.getLogger(Application.class.getName());
+	static FileHandler fh;
+	static {
+		 try {  
+		        fh = new FileHandler("projectLog.txt",true);  
+		        log.addHandler(fh);
+		        SimpleFormatter formatter = new SimpleFormatter();  
+		        fh.setFormatter(formatter);  
+
+		    } catch (SecurityException e) {  
+		        e.printStackTrace();  
+		    } catch (IOException e) {  
+		        e.printStackTrace();  
+		    }  
+	}
 	
+	public static UserDatabase userDatabase = null;
+	public static PostDatabase postDatabase = null;
+	public static boolean accountCreated = false;
+	public static boolean postCreated = false;
+	public static User loggedIn = new User();
+
+	
+	/**
+	 * main method creates the application
+	 * @param args unused
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void main(String[] args) throws IOException, ParseException {
 		final JFrame mainFrame = new JFrame("Bearpool");
 		//Load every user
@@ -143,7 +173,7 @@ public class Runner {
 			PostDatabase.write();
 			
 		} else {
-			Globals.log.log(Level.INFO, "Exited login screen.");
+			log.log(Level.INFO, "Exited login screen.");
 			System.exit(1);
 		}
 		

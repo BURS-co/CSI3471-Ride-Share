@@ -23,7 +23,7 @@
   				<finalName>Iteration2</finalName>
   				<archive>
   					<manifest>
-  						<mainClass>presentation.application.Runner</mainClass>
+  						<mainClass>presentation.application.Application</mainClass>
   					</manifest>
   				</archive>
   				<descriptorRefs>

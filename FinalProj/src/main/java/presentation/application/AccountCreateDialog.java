@@ -128,14 +128,14 @@ public class AccountCreateDialog extends JDialog {
                 		user.setPassword(new String(password.getPassword()));
                 		
                 		//UserDatabase.getUserData().add(user);
-                		Runner.userDatabase.add(user);
+                		Application.userDatabase.add(user);
                 		
                 		JOptionPane.showMessageDialog(AccountCreateDialog.this,
                                 "Hi " + user.getUsername() + "! Welcome to Bearpool!",
                                 "Login",
                                 JOptionPane.INFORMATION_MESSAGE);
                     succeeded = true;
-                    Globals.log.log(Level.INFO, user.getUsername()+" Login successful!");
+                    Application.log.log(Level.INFO, user.getUsername()+" Login successful!");
                     dispose();
                         
                 }

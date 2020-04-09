@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import data.databaseControllers.UserDatabase;
 import data.user.User;
 import presentation.application.AccountCreateDialog;
-import presentation.application.Globals;
 
 public class validateAccountInfo extends AccountCreateDialog {
 	static boolean succeeded = false;

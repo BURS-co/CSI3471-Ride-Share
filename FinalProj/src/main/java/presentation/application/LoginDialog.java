@@ -75,7 +75,7 @@ public class LoginDialog extends JDialog {
                             "Login",
                             JOptionPane.INFORMATION_MESSAGE);
                     succeeded = true;
-                    Globals.log.log(Level.INFO, getUsername()+" Login successful!");
+                    Application.log.log(Level.INFO, getUsername()+" Login successful!");
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(LoginDialog.this,
@@ -83,7 +83,7 @@ public class LoginDialog extends JDialog {
                             "Login",
                             JOptionPane.ERROR_MESSAGE);
                     
-                    Globals.log.log(Level.INFO, getUsername()+" Login failed!");
+                    Application.log.log(Level.INFO, getUsername()+" Login failed!");
                     
                     // reset username and password
                     tfUsername.setText("");

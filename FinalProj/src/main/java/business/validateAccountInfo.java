@@ -32,7 +32,7 @@ public class validateAccountInfo extends AccountCreateDialog {
 		ArrayList<User> users = Application.userDatabase.getUserData();
 		boolean emailUsed = false;
 		for(User u : users) {
-			if(u.getEmail().equals(email)) {
+			if(u.getEmail().toLowerCase().equals(email.toLowerCase())) {
 				emailUsed = true;
 			}
 		}
@@ -56,7 +56,7 @@ public class validateAccountInfo extends AccountCreateDialog {
 	    }
 		
 		
-		String partOfEmail = email + emailSize;
+		String partOfEmail = email.substring(emailSize, email.length());
 		if (!(password.equals(reenterPass))) {
           JOptionPane.showMessageDialog(a,
           "Your passwords do not match! Try again.",

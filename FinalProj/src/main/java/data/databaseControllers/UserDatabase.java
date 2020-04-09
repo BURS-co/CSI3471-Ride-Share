@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.locks.ReentrantLock;
 
 import data.user.Admin;
 import data.user.User;
@@ -15,13 +16,19 @@ import data.user.User;
 public class UserDatabase{
 	//singleton
 	private static UserDatabase userDatabase = null;// new UserDatabase();
+	private static ReentrantLock lock = new ReentrantLock();
 	
 	//prevents from making others
 	private UserDatabase() { }
 	
 	public static UserDatabase getInstance() {
-		if(userDatabase == null)
-			userDatabase = new UserDatabase();
+		if(userDatabase == null) {
+			lock.lock();
+			if(userDatabase == null)
+				userDatabase = new UserDatabase();
+		}
+		
+			
 		return userDatabase;
 	}
 	

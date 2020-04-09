@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.locks.ReentrantLock;
 
 import data.post.DriverPost;
 import data.post.Post;
@@ -19,11 +20,16 @@ public class PostDatabase {
 	//singleton
 	private static PostDatabase postDatabase = null;
 	
+	private static ReentrantLock lock = new ReentrantLock();
 	private PostDatabase() { }
 	
 	public static PostDatabase getInstance() {
-		if(postDatabase == null)
-			postDatabase = new PostDatabase();
+		if(postDatabase == null) {
+			lock.lock();
+			if(postDatabase == null)
+				postDatabase = new PostDatabase();
+		}
+			
 		return postDatabase;
 	}
 	

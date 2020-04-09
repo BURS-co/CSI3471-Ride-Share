@@ -98,7 +98,7 @@ public class UserDatabase{
 		userData.add(u);
 	}
 	
-	public static ArrayList<User> getUserData(){
+	public ArrayList<User> getUserData(){
 		return userData;
 	}
 	

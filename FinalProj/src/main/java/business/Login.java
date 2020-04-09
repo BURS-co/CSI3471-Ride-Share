@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import data.databaseControllers.UserDatabase;
 import data.user.User;
 import presentation.application.Globals;
+import presentation.application.Runner;
 
 public class Login {
 	/**
@@ -16,7 +17,8 @@ public class Login {
 	 * @return
 	 */
 	public static boolean authenticate(String email, String password) {
-		ArrayList<User> users = UserDatabase.getUserData();
+		ArrayList<User> users = Runner.userDatabase.getUserData();
+		//ArrayList<User> users = UserDatabase.getUserData();
 		
 		for(User u : users) {
 			if(u.getEmail().equals(email)) {

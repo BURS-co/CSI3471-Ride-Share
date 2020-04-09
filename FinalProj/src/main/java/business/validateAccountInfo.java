@@ -1,5 +1,6 @@
 package business;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 
@@ -10,6 +11,7 @@ import data.databaseControllers.UserDatabase;
 import data.user.User;
 import presentation.application.AccountCreateDialog;
 import presentation.application.Globals;
+import presentation.application.Runner;
 
 public class validateAccountInfo extends AccountCreateDialog {
 	static boolean succeeded = false;
@@ -28,6 +30,14 @@ public class validateAccountInfo extends AccountCreateDialog {
 	 * @return succeeded
 	 */
 	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password, String reenterPass, AccountCreateDialog a) {
+		ArrayList<User> users = Runner.userDatabase.getUserData();
+		boolean emailUsed = false;
+		for(User u : users) {
+			if(u.getEmail().equals(email)) {
+				emailUsed = true;
+			}
+		}
+		
 		int emailSize = 0;
 		emailSize = email.length() - 11;
 		char ch;
@@ -69,6 +79,12 @@ public class validateAccountInfo extends AccountCreateDialog {
         } else if (!(partOfEmail.toLowerCase().matches("@baylor.edu")) || emailSize <= 1) {
         	JOptionPane.showMessageDialog(a,
                     "Invalid email address. Must be a valid Baylor email.",
+                    "Login",
+                    JOptionPane.INFORMATION_MESSAGE);
+            succeeded = false;
+        } else if(emailUsed) {
+        	JOptionPane.showMessageDialog(a,
+                    "Email is already in use.",
                     "Login",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;

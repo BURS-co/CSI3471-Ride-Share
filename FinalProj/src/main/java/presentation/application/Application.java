@@ -1,6 +1,5 @@
 package presentation.application;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
@@ -12,22 +11,37 @@ import java.util.logging.SimpleFormatter;
 import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
-
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.DriverPost;
 import data.post.Post;
 import data.user.User;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph Yu
+ *
+ * application class responsible for GUI
+ */
 public class Application {
+	
+	/**
+	 * logger log for documenting events
+	 */
 	public final static Logger log = Logger.getLogger(Application.class.getName());
+	
+	/**
+	 * fh enables logging to specified file
+	 */
 	static FileHandler fh;
+	
+	
+	/*
+	 * Initializing logger
+	 */
 	static {
 		 try {  
 		        fh = new FileHandler("projectLog.txt",true);  
@@ -50,7 +64,7 @@ public class Application {
 
 	
 	/**
-	 * main method creates the application
+	 * main method for the application
 	 * @param args unused
 	 * @throws IOException
 	 * @throws ParseException
@@ -173,7 +187,7 @@ public class Application {
 			PostDatabase.write();
 			
 		} else {
-			log.log(Level.INFO, "Exited login screen.");
+			log.log(Level.INFO, "Application Closed");
 			System.exit(1);
 		}
 		

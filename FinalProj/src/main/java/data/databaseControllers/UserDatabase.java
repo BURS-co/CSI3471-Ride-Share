@@ -13,9 +13,29 @@ import data.user.Admin;
 import data.user.User;
 
 public class UserDatabase{
-	static ArrayList<User> userData = new ArrayList<User>();
+	//singleton
+	private static UserDatabase userDatabase = null;// new UserDatabase();
 	
-	public static void load() throws IOException {
+	//prevents from making others
+	private UserDatabase() { }
+	
+	public static UserDatabase getInstance() {
+		if(userDatabase == null)
+			userDatabase = new UserDatabase();
+		return userDatabase;
+	}
+	
+	private static ArrayList<User> userData = new ArrayList<User>();
+	
+	public void addUser(User u) {
+		userData.add(u);
+	}
+	
+	public void removeUser(User u) {
+		userData.remove(u);
+	}
+	
+	public void load() throws IOException {
 		//In order username email phone number password isAdmin
 		//open file
 		try {

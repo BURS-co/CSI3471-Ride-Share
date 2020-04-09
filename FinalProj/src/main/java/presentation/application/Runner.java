@@ -23,11 +23,14 @@ import data.post.DriverPost;
 import data.post.Post;
 
 public class Runner {
+	public static UserDatabase userDatabase = null;
 	
 	public static void main(String[] args) throws IOException, ParseException {
 		final JFrame mainFrame = new JFrame("Bearpool");
 		//Load every user
-		UserDatabase.load();
+		userDatabase = UserDatabase.getInstance();
+		userDatabase.load();
+		//UserDatabase.load();
 
 		openPage openDlg = new openPage(mainFrame);
 		openDlg.setVisible(true);

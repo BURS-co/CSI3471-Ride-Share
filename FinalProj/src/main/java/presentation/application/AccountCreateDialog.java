@@ -127,8 +127,8 @@ public class AccountCreateDialog extends JDialog {
                 		user.setPhoneNumber(phoneNum.getText());
                 		user.setPassword(new String(password.getPassword()));
                 		
-                		UserDatabase.getUserData().add(user);
-                		
+                		//UserDatabase.getUserData().add(user);
+                		Runner.userDatabase.add(user);
                 		
                 		JOptionPane.showMessageDialog(AccountCreateDialog.this,
                                 "Hi " + user.getUsername() + "! Welcome to Bearpool!",

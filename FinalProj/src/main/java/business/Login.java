@@ -19,7 +19,7 @@ public class Login {
 		//ArrayList<User> users = UserDatabase.getUserData();
 		
 		for(User u : users) {
-			if(u.getEmail().equals(email)) {
+			if(u.getEmail().toLowerCase().equals(email.toLowerCase())) {
 				if(u.getPassword().equals(password)) {
 					//Set user data
 					Application.loggedIn.setEmail(email);

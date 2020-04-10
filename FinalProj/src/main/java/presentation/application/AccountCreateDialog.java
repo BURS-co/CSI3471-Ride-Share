@@ -29,8 +29,8 @@ public class AccountCreateDialog extends JDialog {
     JTextField      baylorEmail;
     JTextField      phoneNum;
 //    JTextField		gradYear;
-    String month;
-    String year;
+    String month = new String();
+    String year = new String();
     JPasswordField  password;
     JPasswordField  confirmPassword;
     validateAccountInfo vaI;

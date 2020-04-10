@@ -57,10 +57,10 @@ public class validateAccountInfo extends AccountCreateDialog {
 	        }
 	    }
 	    
-	    Integer year = Calendar.getInstance().get(Calendar.YEAR);
-	    Integer month = Calendar.getInstance().get(Calendar.MONTH);
-	    Integer gradMonthSelect = Integer.valueOf(gradMonth);
-	    Integer gradYearSelect = Integer.valueOf(gradYear);
+	    int year = Calendar.getInstance().get(Calendar.YEAR);
+	    int month = Calendar.getInstance().get(Calendar.MONTH);
+	    int gradMonthSelect = Integer.parseInt(gradMonth);
+	    int gradYearSelect = Integer.parseInt(gradYear);
 		
 		
 		String partOfEmail = email.substring(emailSize, email.length());
@@ -94,6 +94,12 @@ public class validateAccountInfo extends AccountCreateDialog {
                     "Create Account",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;
+        } else if(gradMonthSelect < month && gradYearSelect == year) {
+        	JOptionPane.showMessageDialog(a,
+                    "Invalid graduation month/year.",
+                    "Create Account",
+                    JOptionPane.INFORMATION_MESSAGE);
+            succeeded = false;
         } else if(name != null) {
         	String username = name;
             int words = 0;
@@ -118,13 +124,7 @@ public class validateAccountInfo extends AccountCreateDialog {
             	succeeded = true;
               
             }
-        } else if(gradMonthSelect < month && gradYearSelect == year) {
-        	JOptionPane.showMessageDialog(a,
-                    "Invalid graduation month/year.",
-                    "Create Account",
-                    JOptionPane.INFORMATION_MESSAGE);
-            succeeded = false;
-        }
+        } 
 		return succeeded;
 	}
 }

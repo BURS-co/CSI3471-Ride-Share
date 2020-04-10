@@ -31,6 +31,7 @@ public class AccountCreateDialog extends JDialog {
     JPasswordField  confirmPassword;
     validateAccountInfo vaI;
     private boolean succeeded = false;
+    private JButton btnCancel;
     
     /**
 	 * @param parent
@@ -141,9 +142,21 @@ public class AccountCreateDialog extends JDialog {
                 }
             }
         });
+        btnCancel = new JButton("Cancel");
+        btnCancel.addActionListener(new ActionListener() {
+ 
+            /* (non-Javadoc)
+             * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+             */
+            public void actionPerformed(ActionEvent e) {
+            	Application.log.log(Level.INFO,"Sign up canceled");
+                dispose();
+            }
+        });
         
       JPanel bp = new JPanel();
       bp.add(createAccount);
+      bp.add(btnCancel);
       getContentPane().add(panel, BorderLayout.CENTER);
       getContentPane().add(bp, BorderLayout.PAGE_END);
  

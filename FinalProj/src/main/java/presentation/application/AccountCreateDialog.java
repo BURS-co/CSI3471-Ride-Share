@@ -111,34 +111,44 @@ public class AccountCreateDialog extends JDialog {
              * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
              */
 			public void actionPerformed(ActionEvent event) {
-        		//make sure text entered in all fields
-        		if(name.getText().length() > 1 &&
-        				baylorEmail.getText().length()>1 && phoneNum.getText().length() > 1 &&
-        				password.getText().length() > 1 && confirmPassword.getText().length()>1)
-        		if(vaI.validateAccountInfoEntered(name.getText(), 
-        				baylorEmail.getText(), phoneNum.getText(), 
-        				password.getText(), confirmPassword.getText(), 
-        				AccountCreateDialog.this)) {
-                	  	
-        			
-                	  	User user =  new User();
-                		user.setUsername(name.getText());
-                		user.setEmail(baylorEmail.getText());
-                		user.setPhoneNumber(phoneNum.getText());
-                		user.setPassword(new String(password.getPassword()));
-                		
-                		//UserDatabase.getUserData().add(user);
-                		Application.userDatabase.add(user);
-                		
-                		JOptionPane.showMessageDialog(AccountCreateDialog.this,
-                                "Hi " + user.getUsername() + "! Welcome to Bearpool!",
-                                "Login",
-                                JOptionPane.INFORMATION_MESSAGE);
-                    succeeded = true;
-                    Application.log.log(Level.INFO, user.getUsername()+" Login successful!");
-                    dispose();
-                        
-                }
+        		if(name.getText().length() == 0 &&
+        				baylorEmail.getText().length()== 0 && phoneNum.getText().length() == 0 &&
+        				password.getText().length() == 0 && confirmPassword.getText().length()== 0) {
+        			JOptionPane.showMessageDialog(AccountCreateDialog.this,
+        			          "Please fill in all fields.",
+        			          "Create Account",
+        			          JOptionPane.INFORMATION_MESSAGE);
+        			succeeded = false;
+        		} else {
+	        		//make sure text entered in all fields
+	        		if(name.getText().length() > 1 &&
+	        				baylorEmail.getText().length()>1 && phoneNum.getText().length() > 1 &&
+	        				password.getText().length() > 1 && confirmPassword.getText().length()>1)
+	        		if(vaI.validateAccountInfoEntered(name.getText(), 
+	        				baylorEmail.getText(), phoneNum.getText(), 
+	        				password.getText(), confirmPassword.getText(), 
+	        				AccountCreateDialog.this)) {
+	                	  	
+	        			
+	                	  	User user =  new User();
+	                		user.setUsername(name.getText());
+	                		user.setEmail(baylorEmail.getText());
+	                		user.setPhoneNumber(phoneNum.getText());
+	                		user.setPassword(new String(password.getPassword()));
+	                		
+	                		//UserDatabase.getUserData().add(user);
+	                		Application.userDatabase.add(user);
+	                		
+	                		JOptionPane.showMessageDialog(AccountCreateDialog.this,
+	                                "Hi " + user.getUsername() + "! Welcome to Bearpool!",
+	                                "Login",
+	                                JOptionPane.INFORMATION_MESSAGE);
+	                    succeeded = true;
+	                    Application.log.log(Level.INFO, user.getUsername()+" Login successful!");
+	                    dispose();
+	                        
+	                }
+        		}
             }
         });
         

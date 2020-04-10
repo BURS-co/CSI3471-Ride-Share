@@ -66,25 +66,25 @@ public class validateAccountInfo extends AccountCreateDialog {
         } else if (password.length() < 8 || !numberFlag || !lowerCaseFlag || !capitalFlag) {
             JOptionPane.showMessageDialog(a ,
                     "Password must contain >8 characters and at least 1 uppercase, 1 lowercase, and a number. Try again.",
-                    "Login",
+                    "Create Account",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;
         } else if (phone.length() != 10) {
         	JOptionPane.showMessageDialog(a,
                     "Invalid phone number. Must be 10 digits.",
-                    "Login",
+                    "Create Account",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;
         } else if (!(partOfEmail.toLowerCase().matches("@baylor.edu")) || emailSize <= 1) {
         	JOptionPane.showMessageDialog(a,
                     "Invalid email address. Must be a valid Baylor email.",
-                    "Login",
+                    "Create Account",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;
         } else if(emailUsed) {
         	JOptionPane.showMessageDialog(a,
                     "Email is already in use.",
-                    "Login",
+                    "Create Account",
                     JOptionPane.INFORMATION_MESSAGE);
             succeeded = false;
         } else if(name != null) {
@@ -104,7 +104,7 @@ public class validateAccountInfo extends AccountCreateDialog {
             if(words != 2) {
             	JOptionPane.showMessageDialog(a,
                "Invalid user name. Enter first and last name.",
-               "Login",
+               "Create Account",
                JOptionPane.INFORMATION_MESSAGE);
             	succeeded = false;
             } else {

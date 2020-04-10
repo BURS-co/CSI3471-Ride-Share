@@ -130,11 +130,12 @@ public class Application {
 		gc.weighty = 1;
 		
 		
-		// First Row
+		/*******First Row**********/ 
 		gc.gridx = 0;
 		gc.gridy = 0;
 		gc.insets = new Insets(0,5,0,0);
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
+		gc.fill = GridBagConstraints.BOTH;
 		
 		// Adding Panel to frame
 		mainFrame.add(makePost,gc);
@@ -154,8 +155,12 @@ public class Application {
 		riderTable.getTableHeader().setReorderingAllowed(false);
 		driverTable.getTableHeader().setReorderingAllowed(false);
 
-		mainFrame.add(new JScrollPane(riderTable));
-		mainFrame.add(new JScrollPane(driverTable));
+		gc.gridx = 1;
+		gc.gridy = 0;
+		mainFrame.add(new JScrollPane(riderTable),gc);
+		gc.gridx = 2;
+		gc.gridy = 0;
+		mainFrame.add(new JScrollPane(driverTable),gc);
 
 		riderTable.setFillsViewportHeight(true);
 		driverTable.setFillsViewportHeight(true);

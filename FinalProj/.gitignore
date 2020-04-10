@@ -9,3 +9,4 @@
 
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
+/bin/

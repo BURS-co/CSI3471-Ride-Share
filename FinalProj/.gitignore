@@ -1,4 +1,5 @@
 /projectLog.txt
+/projectLog.lck
 
 # Eclipse Core      
 .project

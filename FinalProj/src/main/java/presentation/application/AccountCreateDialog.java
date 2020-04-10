@@ -131,7 +131,6 @@ public class AccountCreateDialog extends JDialog {
 	        				password.getText(), confirmPassword.getText(), 
 	        				AccountCreateDialog.this)) {
 	                	  	
-	        			
 	                	  	User user =  new User();
 	                		user.setUsername(name.getText());
 	                		user.setEmail(baylorEmail.getText());

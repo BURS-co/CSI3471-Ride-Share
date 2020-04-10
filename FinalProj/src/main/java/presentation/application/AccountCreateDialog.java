@@ -106,7 +106,6 @@ public class AccountCreateDialog extends JDialog {
 			}
         });
         gradYear.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox)e.getSource();

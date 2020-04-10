@@ -85,6 +85,7 @@ public class Application {
 			//Globals.loggedIn;
 			//Load posts
 			postDatabase = PostDatabase.getInstance();
+			postDatabase.load();
 			//PostDatabase.load();
 			mainFrame.setVisible(true);
 			mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

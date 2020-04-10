@@ -121,7 +121,7 @@ public class Application {
 		d.width = 100;
 		d.height = 100;
 		makePost.setPreferredSize(d);
-		Border innerB = BorderFactory.createTitledBorder("Create Post");
+		Border innerB = BorderFactory.createTitledBorder("<html><font color='white' face='Comic Sans MS'>Create a Post</font></html>");
 		Border outerB = BorderFactory.createEmptyBorder(0,0,0,0);
 		makePost.setBorder(BorderFactory.createCompoundBorder(outerB, innerB));
 		

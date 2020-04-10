@@ -2,6 +2,7 @@ package business;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.logging.Level;
 
 import javax.swing.JFrame;
@@ -28,7 +29,8 @@ public class validateAccountInfo extends AccountCreateDialog {
 	 * @param name, email, phone, password, reenterPass, AccountCreateDialog
 	 * @return succeeded
 	 */
-	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password, String reenterPass, AccountCreateDialog a) {
+	public static boolean validateAccountInfoEntered(String name, String email, String phone, 
+			String password, String reenterPass, String gradMonth, String gradYear, AccountCreateDialog a) {
 		ArrayList<User> users = Application.userDatabase.getUserData();
 		boolean emailUsed = false;
 		for(User u : users) {
@@ -54,6 +56,11 @@ public class validateAccountInfo extends AccountCreateDialog {
 	            lowerCaseFlag = true;
 	        }
 	    }
+	    
+	    Integer year = Calendar.getInstance().get(Calendar.YEAR);
+	    Integer month = Calendar.getInstance().get(Calendar.MONTH);
+	    Integer gradMonthSelect = Integer.valueOf(gradMonth);
+	    Integer gradYearSelect = Integer.valueOf(gradYear);
 		
 		
 		String partOfEmail = email.substring(emailSize, email.length());
@@ -111,6 +118,12 @@ public class validateAccountInfo extends AccountCreateDialog {
             	succeeded = true;
               
             }
+        } else if(gradMonthSelect < month && gradYearSelect == year) {
+        	JOptionPane.showMessageDialog(a,
+                    "Invalid graduation month/year.",
+                    "Create Account",
+                    JOptionPane.INFORMATION_MESSAGE);
+            succeeded = false;
         }
 		return succeeded;
 	}

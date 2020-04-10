@@ -9,6 +9,8 @@ public class User {
 	protected String password;
 	protected String email;
 	protected String phoneNumber;
+	protected String gradMonth;
+	protected String gradYear;
 	
 	public User() {
 		username = null;
@@ -19,8 +21,8 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return username + " " + email + " " + phoneNumber + " " + password
-				+ " false\n";
+		return username + " " + email + " " + phoneNumber + " " + gradMonth + " " + gradYear +
+				" " + password + " false\n";
 	}
 
 	/**
@@ -72,4 +74,29 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	/**
+	 * @return the gradMonth
+	 */
+	public String getGradMonth() {
+		return gradMonth;
+	}
+	/**
+	 * @param gradYear the gradYear to set
+	 */
+	public void setGradMonth(String gradMonth) {
+		this.gradMonth = gradMonth;
+	}
+	
+	/**
+	 * @return the gradYear
+	 */
+	public String getGradYear() {
+		return gradYear;
+	}
+	/**
+	 * @param gradYear the gradYear to set
+	 */
+	public void setGradYear(String gradYear) {
+		this.gradYear = gradYear;
+	}
 }

@@ -141,62 +141,14 @@ public class Application {
 		mainFrame.add(makePost,gc);
 
 		// query for rider posts
-		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");
-
-		// Create table of posts
-		String[] riderPostLabels = { "Poster", "Airport", "Date" };
-		Object[][] riderData = new Object[rlist.size()][riderPostLabels.length];
-
-		for (int r = 0; r < rlist.size(); r++) {
-			for (int c = 0; c < 4; c++) {
-				if (c == 0) {
-					riderData[r][c] = new String(rlist.get(r).getPoster());
-				} else if (c == 1) {
-					riderData[r][c] = new String(rlist.get(r).getAirport());
-				} else if (c == 2) {
-					SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
-					String str = df.format(rlist.get(r).getDate());
-					riderData[r][c] = new String(str);
-				}
-			}
-		}
+		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");		
 
 		// query for driver posts
 		ArrayList<Post> dlist = postDatabase.searchDatabase("driver");
 
-		String[] driverPostLabels = { "Seats", "Driver", "Airport", "Date" };
-		Object[][] driverData = new Object[dlist.size()][driverPostLabels.length];
-		for (int r = 0; r < dlist.size(); r++) {
-			for (int c = 0; c < 4; c++) {
-				if (c == 0) {
-					driverData[r][c] = new String(((DriverPost) dlist.get(r)).getRiderLimit().toString());
-				} else if (c == 1) {
-					driverData[r][c] = new String(((DriverPost) dlist.get(r)).getDriver());
-				} else if (c == 2) {
-					driverData[r][c] = new String(dlist.get(r).getAirport());
-				} else if (c == 3) {
-					SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
-					String str = df.format(dlist.get(r).getDate());
-					driverData[r][c] = new String(str);
-				}
-			}
-		}
-
-		// make it so cells cannot be edited for both rider and driver posts
-		JTable riderTable = new JTable(riderData, riderPostLabels) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		
-
-		JTable driverTable = new JTable(driverData, driverPostLabels) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
+		// create table of posts
+		JTable riderTable = createRiderTable.createTable(rlist);
+		JTable driverTable = createDriverTable.createTable(dlist);
 		
 
 		// make it so columns may not be dragged around for

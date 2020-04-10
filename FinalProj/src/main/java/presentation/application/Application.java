@@ -1,21 +1,20 @@
 package presentation.application;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
-import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
+
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.DriverPost;

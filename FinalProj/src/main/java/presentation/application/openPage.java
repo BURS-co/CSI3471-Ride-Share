@@ -35,7 +35,7 @@ public class openPage extends JDialog {
     panel.setBorder(new LineBorder(Color.GRAY));
     btnLogin = new JButton("Log In");
     btnLogin.setBackground(new Color(255,184,25));
-    btnLogin.setFont(new Font("Times New Roman",Font.BOLD,12));
+    btnLogin.setFont(new Font("Gill Sans",Font.BOLD,12));
  
     btnLogin.addActionListener(new ActionListener() {
  
@@ -54,7 +54,7 @@ public class openPage extends JDialog {
    
    btnCreateAccount = new JButton("Sign Up");
    btnCreateAccount.setBackground(new Color(255,184,25));
-   btnCreateAccount.setFont(new Font("Times New Roman",Font.BOLD,12));
+   btnCreateAccount.setFont(new Font("Gill Sans",Font.BOLD,12));
    
    
    btnCreateAccount.addActionListener(new ActionListener() {

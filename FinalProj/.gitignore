@@ -2,6 +2,10 @@
 
 # Eclipse Core      
 .project
+/target/
+/*.project
+/.settings
+/*.springBeans
 
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath

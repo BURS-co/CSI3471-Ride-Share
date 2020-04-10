@@ -150,7 +150,6 @@ public class Application {
 		JTable riderTable = createRiderTable.createTable(rlist);
 		JTable driverTable = createDriverTable.createTable(dlist);
 		
-
 		// make it so columns may not be dragged around for
 		// driver or rider posts
 		riderTable.getTableHeader().setReorderingAllowed(false);

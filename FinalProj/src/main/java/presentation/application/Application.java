@@ -13,6 +13,7 @@ import java.util.logging.SimpleFormatter;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import data.databaseControllers.PostDatabase;
@@ -156,6 +157,7 @@ public class Application {
 				return false;
 			}
 		};
+		
 
 		JTable driverTable = new JTable(driverData, driverPostLabels) {
 			@Override
@@ -163,6 +165,7 @@ public class Application {
 				return false;
 			}
 		};
+		
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -178,7 +181,11 @@ public class Application {
 		// mainFrame.setContentPane(table);
 		riderTable.setOpaque(true);
 		driverTable.setOpaque(true);
-
+		
+		//TODO sorting of rows
+		DefaultTableModel m = new DefaultTableModel();
+		riderTable.setRowSorter(null);
+		driverTable.setRowSorter(null);
 		// TODO make table fit to screen
 
 		TableColumnModel columnModel = riderTable.getColumnModel();

@@ -88,7 +88,7 @@ public class Application {
 
 		// if login is successful
 		if (openDlg.isSucceeded()) {
-			log.log(Level.INFO, "User logged in");
+			log.log(Level.INFO, "User successfully logged in");
 			createRunGUI();
 
 		} else {

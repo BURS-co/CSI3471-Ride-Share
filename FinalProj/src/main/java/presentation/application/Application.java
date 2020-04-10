@@ -125,6 +125,7 @@ public class Application {
 		Border outerB = BorderFactory.createEmptyBorder(0,0,0,0);
 		makePost.setBorder(BorderFactory.createCompoundBorder(outerB, innerB));
 		
+		// weight
 		gc.weightx = 1;
 		gc.weighty = 1;
 		

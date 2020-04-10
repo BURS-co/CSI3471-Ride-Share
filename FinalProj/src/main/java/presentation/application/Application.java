@@ -120,7 +120,6 @@ public class Application {
 		Dimension d = makePost.getPreferredSize();
 		d.width = 100;
 		d.height = 100;
-		System.out.println(d);
 		makePost.setPreferredSize(d);
 		Border innerB = BorderFactory.createTitledBorder("Create Post");
 		Border outerB = BorderFactory.createEmptyBorder(0,0,0,0);

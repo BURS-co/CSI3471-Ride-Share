@@ -121,6 +121,7 @@ public class AccountCreateDialog extends JDialog {
         			          JOptionPane.INFORMATION_MESSAGE);
         			succeeded = false;
         			
+        			
         		} else {
 	        		//make sure text entered in all fields
 	        		if(name.getText().length() > 1 &&

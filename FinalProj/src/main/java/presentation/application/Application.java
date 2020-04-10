@@ -1,6 +1,9 @@
 package presentation.application;
 
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,9 +13,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.Border;
 import javax.swing.table.TableColumnModel;
 
 import data.databaseControllers.PostDatabase;
@@ -105,7 +111,32 @@ public class Application {
 		postDatabase = PostDatabase.getInstance();
 		postDatabase.load();
 
+		// Setting up GridBagLayout
 		mainFrame.setLayout(new GridBagLayout());
+		GridBagConstraints gc = new GridBagConstraints();
+		
+		JPanel makePost = new JPanel();
+		Dimension d = makePost.getPreferredSize();
+		d.width = 100;
+		d.height = 100;
+		System.out.println(d);
+		makePost.setPreferredSize(d);
+		Border innerB = BorderFactory.createTitledBorder("Create Post");
+		Border outerB = BorderFactory.createEmptyBorder(0,0,0,0);
+		makePost.setBorder(BorderFactory.createCompoundBorder(outerB, innerB));
+		
+		gc.weightx = 1;
+		gc.weighty = 1;
+		
+		
+		// First Row
+		gc.gridx = 0;
+		gc.gridy = 0;
+		gc.insets = new Insets(0,5,0,0);
+		gc.anchor = GridBagConstraints.FIRST_LINE_START;
+		
+		// Adding Panel to frame
+		mainFrame.add(makePost,gc);
 
 		// query for rider posts
 		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");

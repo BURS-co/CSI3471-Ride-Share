@@ -1,5 +1,10 @@
 package presentation.application;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -9,7 +14,20 @@ import data.post.DriverPost;
 import data.post.Post;
 
 public class createDriverTable {
+	private static Font customFont = null;
+	
 	public static JTable createTable(ArrayList<Post> dlist) {
+		try {
+	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
+	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	        //register the font
+	        ge.registerFont(customFont);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } catch(FontFormatException e) {
+	        e.printStackTrace();
+	    }
+		
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
 		Object[][] driverData = new Object[dlist.size()][driverPostLabels.length];
 		for (int r = 0; r < dlist.size(); r++) {
@@ -36,6 +54,7 @@ public class createDriverTable {
 				return false;
 			}
 		};
+		driverTable.setFont(customFont);
 
 		return driverTable;
 	}

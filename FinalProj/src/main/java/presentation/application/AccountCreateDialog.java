@@ -1,10 +1,15 @@
 package presentation.application;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -27,7 +32,6 @@ public class AccountCreateDialog extends JDialog {
 	JTextField name;
 	JTextField baylorEmail;
 	JTextField phoneNum;
-//    JTextField		gradYear;
 	String month = new String();
 	String year = new String();
 	JPasswordField password;
@@ -35,6 +39,7 @@ public class AccountCreateDialog extends JDialog {
 	validateAccountInfo vaI;
 	private boolean succeeded = false;
 	private JButton btnCancel;
+	Font customFont = null;
 
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
@@ -57,12 +62,24 @@ public class AccountCreateDialog extends JDialog {
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
 		JLabel passwordLabel = new JLabel("Password: ");
 		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
+		
+	    try {
+	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
+	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	        //register the font
+	        ge.registerFont(customFont);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } catch(FontFormatException e) {
+	        e.printStackTrace();
+	    }
 
 		cs.fill = GridBagConstraints.HORIZONTAL;
 
 		cs.gridx = 0;
 		cs.gridy = 0;
 		cs.gridwidth = 1;
+		userLabel.setFont(customFont);
 		panel.add(userLabel, cs);
 
 		name = new JTextField(12);
@@ -74,6 +91,7 @@ public class AccountCreateDialog extends JDialog {
 		cs.gridx = 0;
 		cs.gridy = 1;
 		cs.gridwidth = 1;
+		emailLabel.setFont(customFont);
 		panel.add(emailLabel, cs);
 
 		baylorEmail = new JTextField(12);
@@ -85,6 +103,7 @@ public class AccountCreateDialog extends JDialog {
 		cs.gridx = 0;
 		cs.gridy = 2;
 		cs.gridwidth = 2;
+		phoneLabel.setFont(customFont);
 		panel.add(phoneLabel, cs);
 
 		phoneNum = new JTextField(12);
@@ -111,6 +130,7 @@ public class AccountCreateDialog extends JDialog {
 		cs.gridx = 0;
 		cs.gridy = 3;
 		cs.gridwidth = 2;
+		gradMonthLabel.setFont(customFont);
 		panel.add(gradMonthLabel, cs);
 
 		cs.gridx = 1;
@@ -121,6 +141,7 @@ public class AccountCreateDialog extends JDialog {
 		cs.gridx = 0;
 		cs.gridy = 4;
 		cs.gridwidth = 2;
+		gradYearLabel.setFont(customFont);
 		panel.add(gradYearLabel, cs);
 
 		cs.gridx = 1;
@@ -131,6 +152,7 @@ public class AccountCreateDialog extends JDialog {
 		cs.gridx = 0;
 		cs.gridy = 5;
 		cs.gridwidth = 2;
+		passwordLabel.setFont(customFont);
 		panel.add(passwordLabel, cs);
 
 		password = new JPasswordField(12);
@@ -142,6 +164,7 @@ public class AccountCreateDialog extends JDialog {
 		cs.gridx = 0;
 		cs.gridy = 6;
 		cs.gridwidth = 1;
+		confirmPasswordLabel.setFont(customFont);
 		panel.add(confirmPasswordLabel, cs);
 
 		confirmPassword = new JPasswordField(12);
@@ -151,6 +174,7 @@ public class AccountCreateDialog extends JDialog {
 		panel.add(confirmPassword, cs);
 
 		JButton createAccount = new JButton("Create account");
+		createAccount.setFont(customFont);
 		createAccount.addActionListener(new ActionListener() {
 			@SuppressWarnings("static-access")
 			/*
@@ -205,6 +229,7 @@ public class AccountCreateDialog extends JDialog {
 			}
 		});
 		btnCancel = new JButton("Cancel");
+		btnCancel.setFont(customFont);
 		btnCancel.addActionListener(new ActionListener() {
 
 			/*

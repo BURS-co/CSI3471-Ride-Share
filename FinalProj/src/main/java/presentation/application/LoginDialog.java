@@ -2,10 +2,15 @@ package presentation.application;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -29,7 +34,7 @@ public class LoginDialog extends JDialog {
 	private JButton btnLogin;
 	private JButton btnCancel;
 	private boolean succeeded;
-
+	private Font customFont;
 	// Sign up variables
 
 	/**
@@ -40,6 +45,17 @@ public class LoginDialog extends JDialog {
 		//
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
+		
+		try {
+	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
+	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	        //register the font
+	        ge.registerFont(customFont);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } catch(FontFormatException e) {
+	        e.printStackTrace();
+	    }
 
 		cs.fill = GridBagConstraints.HORIZONTAL;
 
@@ -47,6 +63,7 @@ public class LoginDialog extends JDialog {
 		cs.gridx = 0;
 		cs.gridy = 0;
 		cs.gridwidth = 1;
+		lbUsername.setFont(customFont);
 		panel.add(lbUsername, cs);
 
 		tfUsername = new JTextField(20);
@@ -59,6 +76,7 @@ public class LoginDialog extends JDialog {
 		cs.gridx = 0;
 		cs.gridy = 1;
 		cs.gridwidth = 1;
+		lbPassword.setFont(customFont);
 		panel.add(lbPassword, cs);
 
 		pfPassword = new JPasswordField(20);

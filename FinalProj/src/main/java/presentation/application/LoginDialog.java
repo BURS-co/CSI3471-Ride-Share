@@ -9,6 +9,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -89,6 +91,75 @@ public class LoginDialog extends JDialog {
 
 		btnLogin = new JButton("Login");// button
 
+		pfPassword.addKeyListener(new KeyListener() {
+
+			public void keyPressed(KeyEvent e) {
+			}
+
+			public void keyTyped(KeyEvent e) {
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					if (Login.authenticate(tfUsername.getText(), getPassword())) {
+						JOptionPane.showMessageDialog(LoginDialog.this,
+								"Hi " + getUsername() + "! Welcome to Bearpool!", "Login",
+								JOptionPane.INFORMATION_MESSAGE);
+						succeeded = true;
+						Application.log.log(Level.INFO, getUsername() + " Login successful!");
+						dispose();
+					} else {
+						JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
+								JOptionPane.ERROR_MESSAGE);
+
+						Application.log.log(Level.INFO, getUsername() + " Login failed!");
+
+						// reset username and password
+						tfUsername.setText("");
+						pfPassword.setText("");
+						succeeded = false;
+
+					}
+				}
+			}
+
+		});
+
+		tfUsername.addKeyListener(new KeyListener() {
+
+			public void keyTyped(KeyEvent e) {
+			}
+
+			public void keyPressed(KeyEvent e) {
+			}
+
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					if (Login.authenticate(tfUsername.getText(), getPassword())) {
+						JOptionPane.showMessageDialog(LoginDialog.this,
+								"Hi " + getUsername() + "! Welcome to Bearpool!", "Login",
+								JOptionPane.INFORMATION_MESSAGE);
+						succeeded = true;
+						Application.log.log(Level.INFO, getUsername() + " Login successful!");
+						dispose();
+					} else {
+						JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
+								JOptionPane.ERROR_MESSAGE);
+
+						Application.log.log(Level.INFO, getUsername() + " Login failed!");
+
+						// reset username and password
+						tfUsername.setText("");
+						pfPassword.setText("");
+						succeeded = false;
+
+					}
+				}
+			}
+
+		});
+
 		btnLogin.addActionListener(new ActionListener() {
 
 			/*
@@ -139,6 +210,8 @@ public class LoginDialog extends JDialog {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(bp, BorderLayout.PAGE_END);
 
+		panel.setFocusable(true);
+		panel.requestFocusInWindow();
 		pack();
 		setResizable(false);
 		setLocationRelativeTo(parent);

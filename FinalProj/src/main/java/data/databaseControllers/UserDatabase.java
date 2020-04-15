@@ -73,6 +73,12 @@ public class UserDatabase{
 						u.setPhoneNumber(split[i]);
 					}
 					else if(i == 4) {
+						u.setGradMonth(split[i]);
+					}
+					else if(i == 5) {
+						u.setGradYear(split[i]);
+					}
+					else if(i == 6) {
 						u.setPassword(split[i]);
 					}
 				}

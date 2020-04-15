@@ -172,9 +172,7 @@ public class Application {
 		driverTable.setOpaque(true);
 
 		// TODO sorting of rows
-		DefaultTableModel m = new DefaultTableModel();
-		riderTable.setRowSorter(null);
-		driverTable.setRowSorter(null);
+		
 		// TODO make table fit to screen
 
 		TableColumnModel columnModel = riderTable.getColumnModel();

@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Panel;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -114,15 +116,14 @@ public class Application {
 		mainFrame.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 
-		JPanel makePost = new JPanel();
-		Dimension d = makePost.getPreferredSize();
+		JPanel selection = new JPanel();
+		Dimension d = selection.getPreferredSize();
 		d.width = 100;
 		d.height = 100;
-		makePost.setPreferredSize(d);
-		Border innerB = BorderFactory
-				.createTitledBorder("<html><font color='white' face='Comic Sans MS'>Create a Post</font></html>");
+		selection.setPreferredSize(d);
+		Border innerB = BorderFactory.createEmptyBorder();
 		Border outerB = BorderFactory.createEmptyBorder(0, 0, 0, 0);
-		makePost.setBorder(BorderFactory.createCompoundBorder(outerB, innerB));
+		selection.setBorder(BorderFactory.createCompoundBorder(outerB, innerB));
 
 		// weight
 		gc.weightx = 1;
@@ -134,9 +135,25 @@ public class Application {
 		gc.insets = new Insets(0, 5, 0, 0);
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		gc.fill = GridBagConstraints.BOTH;
+		
+		
+		/*****First Row of Panel ****/
+		JButton test = new JButton("Click Me!");
+		selection.setLayout(new GridBagLayout());
+		GridBagConstraints pc = new GridBagConstraints();
+		pc.weightx = 1;
+		pc.weighty = 1;
+		
+		pc.gridx = 0;
+		pc.gridy = 0;
+		pc.anchor= GridBagConstraints.FIRST_LINE_START;
+		pc.fill = GridBagConstraints.BOTH;
+		
+		selection.add(test);
+		
 
 		// Adding Panel to frame
-		mainFrame.add(makePost, gc);
+		mainFrame.add(selection, gc);
 
 		// query for rider posts
 		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");

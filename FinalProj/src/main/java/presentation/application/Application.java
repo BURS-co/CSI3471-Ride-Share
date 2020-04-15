@@ -1,8 +1,10 @@
 package presentation.application;
 
 import java.awt.Dimension;
+import java.awt.FontFormatException;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Panel;
 import java.io.IOException;
@@ -75,8 +77,10 @@ public class Application {
 	 * @param args unused
 	 * @throws IOException
 	 * @throws ParseException
+	 * @throws FontFormatException 
+	 * @throws HeadlessException 
 	 */
-	public static void main(String[] args) throws ParseException, IOException {
+	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
 
 		// Load all users from database
 		userDatabase = UserDatabase.getInstance();
@@ -185,9 +189,7 @@ public class Application {
 		driverTable.setOpaque(true);
 
 		// TODO sorting of rows
-		DefaultTableModel m = new DefaultTableModel();
-		riderTable.setRowSorter(null);
-		driverTable.setRowSorter(null);
+		
 		// TODO make table fit to screen
 
 		TableColumnModel columnModel = riderTable.getColumnModel();

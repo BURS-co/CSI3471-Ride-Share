@@ -44,7 +44,7 @@ public class openPage extends JDialog {
     btnLogin.setBackground(new Color(255,184,25));
     Font customFont = null;
     try {
-        //create the font to use. Specify the size!
+        
         customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         //register the font

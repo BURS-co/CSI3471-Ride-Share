@@ -8,7 +8,7 @@ import javax.swing.JTable;
 import data.post.Post;
 
 public class createRiderTable {
-	public static JTable createTable(ArrayList<Post>rlist) {
+	public static JTable createTable(ArrayList<Post> rlist) {
 		String[] riderPostLabels = { "Poster", "Airport", "Date" };
 		Object[][] riderData = new Object[rlist.size()][riderPostLabels.length];
 
@@ -25,14 +25,14 @@ public class createRiderTable {
 				}
 			}
 		}
-		
+
 		JTable riderTable = new JTable(riderData, riderPostLabels) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
-		
+
 		return riderTable;
 	}
 }

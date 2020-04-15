@@ -148,7 +148,7 @@ public class Application {
 		pc.gridx = 0;
 		pc.gridy = 0;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
-		pc.fill = GridBagConstraints.BOTH;
+		pc.fill = GridBagConstraints.CENTER;
 
 		// add button
 		selection.add(ridesBtn,pc);
@@ -158,7 +158,7 @@ public class Application {
 		pc.gridx = 0;
 		pc.gridy = 1;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
-		pc.fill = GridBagConstraints.BOTH;
+		pc.fill = GridBagConstraints.CENTER;
 		
 		selection.add(drivesBtn,pc);
 		
@@ -169,7 +169,7 @@ public class Application {
 		pc.gridx = 0;
 		pc.gridy = 2;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
-		pc.fill = GridBagConstraints.BOTH;
+		pc.fill = GridBagConstraints.CENTER;
 		
 		selection.add(profileBtn,pc);
 		
@@ -178,7 +178,7 @@ public class Application {
 		pc.gridx = 0;
 		pc.gridy = 3;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
-		pc.fill = GridBagConstraints.BOTH;
+		pc.fill = GridBagConstraints.CENTER;
 		
 		selection.add(createBtn,pc);
 		

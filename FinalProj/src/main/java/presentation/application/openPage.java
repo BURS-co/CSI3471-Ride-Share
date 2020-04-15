@@ -65,9 +65,11 @@ public class openPage extends JDialog {
     BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat_copy-removebg-preview.png"));
     JLabel picLabel = new JLabel(new ImageIcon(myPicture));
     picLabel.setBackground(new Color(255, 184, 25));
+    picLabel.setOpaque(true);
     panel.add(picLabel);
     
-
+    btnLogin.setBorderPainted(false);
+    btnLogin.setOpaque(true);
     btnLogin.addActionListener(new ActionListener() {
  
   	 /* (non-Javadoc)
@@ -86,6 +88,8 @@ public class openPage extends JDialog {
    btnCreateAccount = new JButton("Sign Up");
    btnCreateAccount.setBackground(new Color(255,184,25));
    btnCreateAccount.setFont(customFont);
+   btnCreateAccount.setBorderPainted(false);
+   btnCreateAccount.setOpaque(true);
    
    
    btnCreateAccount.addActionListener(new ActionListener() {

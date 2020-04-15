@@ -3,10 +3,15 @@ package presentation.application;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -23,8 +28,10 @@ public class openPage extends JDialog {
  
   /**
   * @param parent
+ * @throws IOException 
+ * @throws FontFormatException 
   */
-  public openPage( final JFrame parent) {
+  public openPage( final JFrame parent) throws FontFormatException, IOException {
     super(parent, "Bear Pool", true);
  
     JPanel panel = new JPanel(new GridBagLayout());
@@ -35,8 +42,25 @@ public class openPage extends JDialog {
     panel.setBorder(new LineBorder(Color.GRAY));
     btnLogin = new JButton("Log In");
     btnLogin.setBackground(new Color(255,184,25));
-    btnLogin.setFont(new Font("Gill Sans",Font.BOLD,12));
- 
+    Font customFont = null;
+    try {
+        //create the font to use. Specify the size!
+        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        //register the font
+        ge.registerFont(customFont);
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch(FontFormatException e) {
+        e.printStackTrace();
+    }
+
+    //use the font
+    btnLogin.setFont(customFont);
+    
+ //   btnLogin.setFont(new Font("Gill Sans",Font.BOLD,12));
+   // btnLogin.setFont(new Font(font, Font.BOLD, 12));
+  //  btnLogin.setFont(font);
     btnLogin.addActionListener(new ActionListener() {
  
   	 /* (non-Javadoc)
@@ -54,7 +78,7 @@ public class openPage extends JDialog {
    
    btnCreateAccount = new JButton("Sign Up");
    btnCreateAccount.setBackground(new Color(255,184,25));
-   btnCreateAccount.setFont(new Font("Gill Sans",Font.BOLD,12));
+   btnCreateAccount.setFont(customFont);
    
    
    btnCreateAccount.addActionListener(new ActionListener() {

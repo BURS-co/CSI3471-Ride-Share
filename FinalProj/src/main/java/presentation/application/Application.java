@@ -1,8 +1,10 @@
 package presentation.application;
 
 import java.awt.Dimension;
+import java.awt.FontFormatException;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.io.IOException;
 import java.text.ParseException;
@@ -73,8 +75,10 @@ public class Application {
 	 * @param args unused
 	 * @throws IOException
 	 * @throws ParseException
+	 * @throws FontFormatException 
+	 * @throws HeadlessException 
 	 */
-	public static void main(String[] args) throws ParseException, IOException {
+	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
 
 		// Load all users from database
 		userDatabase = UserDatabase.getInstance();

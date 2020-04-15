@@ -9,10 +9,12 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
@@ -36,6 +38,7 @@ public class openPage extends JDialog {
  
     JPanel panel = new JPanel(new GridBagLayout());
     GridBagConstraints cs = new GridBagConstraints();
+  
  
     cs.fill = GridBagConstraints.HORIZONTAL;
         
@@ -57,6 +60,11 @@ public class openPage extends JDialog {
 
     //use the font
     btnLogin.setFont(customFont);
+    
+    //Loading the image
+    BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
+    JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+    add(picLabel);
     
  //   btnLogin.setFont(new Font("Gill Sans",Font.BOLD,12));
    // btnLogin.setFont(new Font(font, Font.BOLD, 12));

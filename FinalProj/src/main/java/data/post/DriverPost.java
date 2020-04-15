@@ -62,7 +62,7 @@ public class DriverPost extends Post {
 	public String toString() {
 		SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
 		String str = df.format(getDate()); 
-		String s = getType() + "-" + getPoster() + "-" + getAirport() + "-" + str;
+		String s = getType() + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
 		s += "-" + driver + "-" + riderLimit + "-" + riders;
 		if (riders != null) {
 		  for (String p : riders) {

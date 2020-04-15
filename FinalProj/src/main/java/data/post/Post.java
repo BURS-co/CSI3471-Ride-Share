@@ -7,20 +7,23 @@ public class Post {
 	
 	private String type;	//either driver or rider
 	private String poster;	//username of user
-	private String airport;
+	private String origin;
+	private String dest;
 	private Date date;
 	
 	public Post() {
 		type = "rider";
 		poster = null;
-		airport = null;
+		origin = null;
+		dest = null;
 		date = null;
 	}
 	
 	public Post(String type) {
 		this.type = type;
 		poster = null;
-		airport = null;
+		origin = null;
+		dest = null;
 		date = null;
 	}
 
@@ -53,17 +56,31 @@ public class Post {
 	}
 
 	/**
-	 * @return the airport
+	 * @return the origin
 	 */
-	public String getAirport() {
-		return airport;
+	public String getOrigin() {
+		return origin;
 	}
 
 	/**
-	 * @param airport the airport to set
+	 * @param origin the origin to set
 	 */
-	public void setAirport(String airport) {
-		this.airport = airport;
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+	
+	/**
+	 * @return the dest
+	 */
+	public String getDest() {
+		return dest;
+	}
+
+	/**
+	 * @param dest the dest to set
+	 */
+	public void setDest(String dest) {
+		this.dest = dest;
 	}
 
 	/**
@@ -85,7 +102,7 @@ public class Post {
 		//SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
 		SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
 		String str = df.format(date); 
-		return type + "-" + poster + "-" + airport + "-" + str + "\n";
+		return type + "-" + poster + "-" + origin + "-" + dest + "-" + str + "\n";
 	}
 
 }

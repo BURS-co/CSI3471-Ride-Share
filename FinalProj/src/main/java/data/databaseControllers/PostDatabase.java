@@ -59,15 +59,17 @@ public class PostDatabase {
 					} else if (i == 1) {
 						p.setPoster(split[i]);
 					} else if(i == 2) {
-						p.setAirport(split[i]);
+						p.setOrigin(split[i]);
 					} else if(i == 3) {
+						p.setDest(split[i]);
+					} else if(i == 4) {
 						Date d = new SimpleDateFormat("E, MMM dd yy hh:mm").parse(split[i]);
 						p.setDate(d);
-					} else if (p.getType().equals("driver") && i == 4) {
-						((DriverPost) p).setDriver(split[i]);
 					} else if (p.getType().equals("driver") && i == 5) {
+						((DriverPost) p).setDriver(split[i]);
+					} else if (p.getType().equals("driver") && i == 6) {
 						((DriverPost) p).setRiderLimit(Integer.valueOf(split[i]));
-					} else if (p.getType().equals("driver") && i > 6){
+					} else if (p.getType().equals("driver") && i > 7){
 						if (list == null) {
 							list = new ArrayList<String>();
 						}

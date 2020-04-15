@@ -174,15 +174,17 @@ public class Application {
 		// TODO make table fit to screen
 
 		TableColumnModel columnModel = riderTable.getColumnModel();
-		columnModel.getColumn(0).setPreferredWidth(50);
-		columnModel.getColumn(1).setPreferredWidth(150);
-		columnModel.getColumn(2).setPreferredWidth(100);
+		columnModel.getColumn(0).setPreferredWidth(100);
+		columnModel.getColumn(1).setPreferredWidth(35);
+		columnModel.getColumn(2).setPreferredWidth(50);
+		columnModel.getColumn(3).setPreferredWidth(100);
 
 		TableColumnModel columnModel1 = driverTable.getColumnModel();
-		columnModel1.getColumn(0).setPreferredWidth(50);
+		columnModel1.getColumn(0).setPreferredWidth(30);
 		columnModel1.getColumn(1).setPreferredWidth(100);
-		columnModel1.getColumn(2).setPreferredWidth(100);
-		columnModel1.getColumn(3).setPreferredWidth(150);
+		columnModel1.getColumn(2).setPreferredWidth(35);
+		columnModel1.getColumn(3).setPreferredWidth(50);
+		columnModel1.getColumn(4).setPreferredWidth(100);
 
 		// somehow need to add a view profile at the bottom
 

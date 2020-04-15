@@ -9,7 +9,7 @@ import data.post.Post;
 
 public class createRiderTable {
 	public static JTable createTable(ArrayList<Post> rlist) {
-		String[] riderPostLabels = { "Poster", "Airport", "Date" };
+		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
 		Object[][] riderData = new Object[rlist.size()][riderPostLabels.length];
 
 		for (int r = 0; r < rlist.size(); r++) {
@@ -17,8 +17,10 @@ public class createRiderTable {
 				if (c == 0) {
 					riderData[r][c] = new String(rlist.get(r).getPoster());
 				} else if (c == 1) {
-					riderData[r][c] = new String(rlist.get(r).getAirport());
+					riderData[r][c] = new String(rlist.get(r).getOrigin());
 				} else if (c == 2) {
+					riderData[r][c] = new String(rlist.get(r).getDest());
+				} else if (c == 3) {
 					SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
 					String str = df.format(rlist.get(r).getDate());
 					riderData[r][c] = new String(str);

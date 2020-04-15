@@ -21,7 +21,6 @@ public class Login {
 		ArrayList<User> users = Application.userDatabase.getUserData();
 		//ArrayList<User> users = UserDatabase.getUserData();
 
-		
 		for(User u : users) {
 			if(u.getEmail().toLowerCase().equals(email.toLowerCase())) {
 				if(u.getPassword().equals(password)) {

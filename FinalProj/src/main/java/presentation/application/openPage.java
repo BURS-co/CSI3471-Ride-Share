@@ -62,13 +62,12 @@ public class openPage extends JDialog {
     btnLogin.setFont(customFont);
     
     //Loading the image
-    BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
+    BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat_copy-removebg-preview.png"));
     JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+    picLabel.setBackground(new Color(255, 184, 25));
     panel.add(picLabel);
     
- //   btnLogin.setFont(new Font("Gill Sans",Font.BOLD,12));
-   // btnLogin.setFont(new Font(font, Font.BOLD, 12));
-  //  btnLogin.setFont(font);
+
     btnLogin.addActionListener(new ActionListener() {
  
   	 /* (non-Javadoc)

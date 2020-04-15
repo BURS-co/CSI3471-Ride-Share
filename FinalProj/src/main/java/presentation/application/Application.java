@@ -6,7 +6,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -24,7 +23,6 @@ import javax.swing.table.TableColumnModel;
 
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
-import data.post.DriverPost;
 import data.post.Post;
 import data.user.User;
 
@@ -115,33 +113,33 @@ public class Application {
 		// Setting up GridBagLayout
 		mainFrame.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		
+
 		JPanel makePost = new JPanel();
 		Dimension d = makePost.getPreferredSize();
 		d.width = 100;
 		d.height = 100;
 		makePost.setPreferredSize(d);
-		Border innerB = BorderFactory.createTitledBorder("<html><font color='white' face='Comic Sans MS'>Create a Post</font></html>");
-		Border outerB = BorderFactory.createEmptyBorder(0,0,0,0);
+		Border innerB = BorderFactory
+				.createTitledBorder("<html><font color='white' face='Comic Sans MS'>Create a Post</font></html>");
+		Border outerB = BorderFactory.createEmptyBorder(0, 0, 0, 0);
 		makePost.setBorder(BorderFactory.createCompoundBorder(outerB, innerB));
-		
+
 		// weight
 		gc.weightx = 1;
 		gc.weighty = 1;
-		
-		
-		/*******First Row**********/ 
+
+		/******* First Row **********/
 		gc.gridx = 0;
 		gc.gridy = 0;
-		gc.insets = new Insets(0,5,0,0);
+		gc.insets = new Insets(0, 5, 0, 0);
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		gc.fill = GridBagConstraints.BOTH;
-		
+
 		// Adding Panel to frame
-		mainFrame.add(makePost,gc);
+		mainFrame.add(makePost, gc);
 
 		// query for rider posts
-		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");		
+		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");
 
 		// query for driver posts
 		ArrayList<Post> dlist = postDatabase.searchDatabase("driver");
@@ -149,7 +147,7 @@ public class Application {
 		// create table of posts
 		JTable riderTable = createRiderTable.createTable(rlist);
 		JTable driverTable = createDriverTable.createTable(dlist);
-		
+
 		// make it so columns may not be dragged around for
 		// driver or rider posts
 		riderTable.getTableHeader().setReorderingAllowed(false);
@@ -157,10 +155,10 @@ public class Application {
 
 		gc.gridx = 1;
 		gc.gridy = 0;
-		mainFrame.add(new JScrollPane(riderTable),gc);
+		mainFrame.add(new JScrollPane(riderTable), gc);
 		gc.gridx = 2;
 		gc.gridy = 0;
-		mainFrame.add(new JScrollPane(driverTable),gc);
+		mainFrame.add(new JScrollPane(driverTable), gc);
 
 		riderTable.setFillsViewportHeight(true);
 		driverTable.setFillsViewportHeight(true);
@@ -168,8 +166,8 @@ public class Application {
 		// mainFrame.setContentPane(table);
 		riderTable.setOpaque(true);
 		driverTable.setOpaque(true);
-		
-		//TODO sorting of rows
+
+		// TODO sorting of rows
 		DefaultTableModel m = new DefaultTableModel();
 		riderTable.setRowSorter(null);
 		driverTable.setRowSorter(null);

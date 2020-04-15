@@ -9,7 +9,7 @@ import data.post.DriverPost;
 import data.post.Post;
 
 public class createDriverTable {
-	public static JTable createTable(ArrayList<Post>dlist) {
+	public static JTable createTable(ArrayList<Post> dlist) {
 		String[] driverPostLabels = { "Seats", "Driver", "Airport", "Date" };
 		Object[][] driverData = new Object[dlist.size()][driverPostLabels.length];
 		for (int r = 0; r < dlist.size(); r++) {
@@ -26,8 +26,7 @@ public class createDriverTable {
 					driverData[r][c] = new String(str);
 				}
 			}
-		}		
-		
+		}
 
 		JTable driverTable = new JTable(driverData, driverPostLabels) {
 			@Override
@@ -35,7 +34,7 @@ public class createDriverTable {
 				return false;
 			}
 		};
-		
+
 		return driverTable;
 	}
 }

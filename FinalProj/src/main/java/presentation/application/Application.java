@@ -6,7 +6,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
-import java.awt.Panel;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import data.databaseControllers.PostDatabase;
@@ -77,8 +75,8 @@ public class Application {
 	 * @param args unused
 	 * @throws IOException
 	 * @throws ParseException
-	 * @throws FontFormatException 
-	 * @throws HeadlessException 
+	 * @throws FontFormatException
+	 * @throws HeadlessException
 	 */
 	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
 
@@ -139,22 +137,20 @@ public class Application {
 		gc.insets = new Insets(0, 5, 0, 0);
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		gc.fill = GridBagConstraints.BOTH;
-		
-		
-		/*****First Row of Panel ****/
+
+		/***** First Row of Panel ****/
 		JButton test = new JButton("Click Me!");
 		selection.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
 		pc.weightx = 1;
 		pc.weighty = 1;
-		
+
 		pc.gridx = 0;
 		pc.gridy = 0;
-		pc.anchor= GridBagConstraints.FIRST_LINE_START;
+		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.BOTH;
-		
+
 		selection.add(test);
-		
 
 		// Adding Panel to frame
 		mainFrame.add(selection, gc);
@@ -189,7 +185,7 @@ public class Application {
 		driverTable.setOpaque(true);
 
 		// TODO sorting of rows
-		
+
 		// TODO make table fit to screen
 
 		TableColumnModel columnModel = riderTable.getColumnModel();

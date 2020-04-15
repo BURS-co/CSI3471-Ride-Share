@@ -45,17 +45,18 @@ public class LoginDialog extends JDialog {
 		//
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
-		
+
 		try {
-	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
-	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        //register the font
-	        ge.registerFont(customFont);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch(FontFormatException e) {
-	        e.printStackTrace();
-	    }
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+					.deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(customFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
 		cs.fill = GridBagConstraints.HORIZONTAL;
 
@@ -86,7 +87,7 @@ public class LoginDialog extends JDialog {
 		panel.add(pfPassword, cs);
 		panel.setBorder(new LineBorder(Color.GRAY));
 
-		btnLogin = new JButton("Login");
+		btnLogin = new JButton("Login");// button
 
 		btnLogin.addActionListener(new ActionListener() {
 
@@ -98,8 +99,8 @@ public class LoginDialog extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				if (Login.authenticate(tfUsername.getText(), getPassword())) {
-					JOptionPane.showMessageDialog(LoginDialog.this, "Hi " + getUsername() + "! Welcome to Bearpool!", "Login",
-							JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(LoginDialog.this, "Hi " + getUsername() + "! Welcome to Bearpool!",
+							"Login", JOptionPane.INFORMATION_MESSAGE);
 					succeeded = true;
 					Application.log.log(Level.INFO, getUsername() + " Login successful!");
 					dispose();

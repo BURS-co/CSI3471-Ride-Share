@@ -139,7 +139,7 @@ public class Application {
 		gc.fill = GridBagConstraints.BOTH;
 
 		/***** First Row of Panel ****/
-		JButton test = new JButton("Click Me!");
+		JButton ridesBtn = new JButton("PlaceHolder Icon Rides");
 		selection.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
 		pc.weightx = 1;
@@ -150,8 +150,39 @@ public class Application {
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.BOTH;
 
-		selection.add(test);
+		// add button
+		selection.add(ridesBtn,pc);
 
+		/**** Second Row of Panel ****/
+		JButton drivesBtn = new JButton("PlaceHolder Icon Drives");
+		pc.gridx = 0;
+		pc.gridy = 1;
+		pc.anchor = GridBagConstraints.FIRST_LINE_START;
+		pc.fill = GridBagConstraints.BOTH;
+		
+		selection.add(drivesBtn,pc);
+		
+		
+		/**** Third Row of Panel ****/
+		JButton profileBtn = new JButton("PlaceHolder Icon Profile");
+		
+		pc.gridx = 0;
+		pc.gridy = 2;
+		pc.anchor = GridBagConstraints.FIRST_LINE_START;
+		pc.fill = GridBagConstraints.BOTH;
+		
+		selection.add(profileBtn,pc);
+		
+		/**** Fourht Row of Panel ****/
+		JButton createBtn = new JButton("PlaceHolder Icon Create Post");
+		pc.gridx = 0;
+		pc.gridy = 3;
+		pc.anchor = GridBagConstraints.FIRST_LINE_START;
+		pc.fill = GridBagConstraints.BOTH;
+		
+		selection.add(createBtn,pc);
+		
+		
 		// Adding Panel to frame
 		mainFrame.add(selection, gc);
 

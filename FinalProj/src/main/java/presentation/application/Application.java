@@ -5,7 +5,9 @@ import java.awt.FontFormatException;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.Insets;
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -14,7 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -149,7 +153,18 @@ public class Application {
 		pc.gridy = 0;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.CENTER;
-
+		
+		//rides button image label
+		//TODO
+		/*
+		try {
+			//TODO create file
+		    Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
+		    ridesBtn.setIcon(new ImageIcon(img));
+		  } catch (Exception ex) {
+		    System.out.println(ex.getStackTrace());
+		  }
+		  */
 		// add button
 		selection.add(ridesBtn,pc);
 
@@ -159,7 +174,16 @@ public class Application {
 		pc.gridy = 1;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.CENTER;
-		
+		//TODO
+		/*
+		try {
+			//TODO create file
+				  Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
+				  drivesBtn.setIcon(new ImageIcon(img));
+				} catch (Exception ex) {
+				  System.out.println(ex.getStackTrace());
+			}
+		*/
 		selection.add(drivesBtn,pc);
 		
 		
@@ -170,7 +194,16 @@ public class Application {
 		pc.gridy = 2;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.CENTER;
-		
+		//TODO
+				/*
+				try {
+					//TODO create file
+						  Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
+						  profileBtn.setIcon(new ImageIcon(img));
+						} catch (Exception ex) {
+						  System.out.println(ex.getStackTrace());
+					}
+				*/
 		selection.add(profileBtn,pc);
 		
 		/**** Fourht Row of Panel ****/
@@ -179,7 +212,16 @@ public class Application {
 		pc.gridy = 3;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.CENTER;
-		
+		//TODO
+				/*
+				try {
+					//TODO create file
+						  Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
+						  createBtn.setIcon(new ImageIcon(img));
+						} catch (Exception ex) {
+						  System.out.println(ex.getStackTrace());
+					}
+				*/
 		selection.add(createBtn,pc);
 		
 		

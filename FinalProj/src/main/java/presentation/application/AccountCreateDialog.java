@@ -96,14 +96,12 @@ public class AccountCreateDialog extends JDialog {
 		gradMonth.setSelectedIndex(0);
 		gradYear.setSelectedIndex(0);
 		gradMonth.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox) e.getSource();
 				month = (String) cb.getSelectedItem();
 			}
 		});
 		gradYear.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox) e.getSource();
 				year = (String) cb.getSelectedItem();
@@ -187,7 +185,15 @@ public class AccountCreateDialog extends JDialog {
 
 							// UserDatabase.getUserData().add(user);
 							Application.userDatabase.add(user);
-
+							
+							//Keep track of user logged in
+							Application.loggedIn.setEmail(user.getEmail());
+							Application.loggedIn.setGradMonth(user.getGradMonth());
+							Application.loggedIn.setGradYear(user.getGradYear());
+							Application.loggedIn.setPassword(user.getPassword());
+							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
+							Application.loggedIn.setUsername(user.getUsername());
+							
 							JOptionPane.showMessageDialog(AccountCreateDialog.this,
 									"Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login", JOptionPane.INFORMATION_MESSAGE);
 							succeeded = true;

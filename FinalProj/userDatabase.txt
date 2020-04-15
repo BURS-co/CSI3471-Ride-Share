@@ -3,3 +3,4 @@ Leighton Glim leighton_glim1@baylor.edu 6303351841 12 2050 glim1234 false
 Joseph Perez joseph_perez3@baylor.edu 4696647176 12 2050 raygun69! false
 Joshua Huertas joshua_huertas1@baylor.edu 2102625729 12 2050 college18* false
 test test test7@baylor.edu 1234567890 05 2022 Test1234 false
+Joseph Yu Joseph_Yu@baylor.edu 8329203102 06 2022 J5684129u~~ false

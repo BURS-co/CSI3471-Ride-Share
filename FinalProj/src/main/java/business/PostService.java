@@ -19,6 +19,8 @@ public class PostService {
 		//process date string?
 		//or process date object if its been made by presentation layer
 		
+		//Store post if validation is successful
+		StorePost(input);
 		return true;
 	}
 
@@ -28,5 +30,9 @@ public class PostService {
 		}
 		
 		return Validate(input);
+	}
+	
+	public void StorePost(String[] input) {
+		//should this create a post object to store in the database?
 	}
 }

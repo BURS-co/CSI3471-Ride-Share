@@ -15,6 +15,12 @@ public class SurveyService {
     		result = false;
     	}
     	
+    	//more validation tests...
+    	
+    	//store survey if it was successfully validated
+    	if(result) {
+    		storeSurvey(list);
+    	}
     	return result;
     }
     

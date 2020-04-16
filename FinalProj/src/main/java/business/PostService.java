@@ -16,6 +16,7 @@ public class PostService {
 			}
 		}
 
+		//assumes that 8 is the length of the rider post input
 		if (input.length > 8) {
 			driver = true;
 			

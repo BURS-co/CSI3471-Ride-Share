@@ -33,12 +33,14 @@ public class SurveyDatabase {
 		
 	}
 	
-	public static void add(Survey s) {
+	public static void addSurvey(Survey s) {
 		surveyData.add(s);
 	}
 	
 	public static ArrayList<Survey> getUserData(){
 		return surveyData;
 	}
+	
+	
 	
 }

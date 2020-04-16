@@ -1,6 +1,7 @@
 package presentation.application;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -175,6 +176,10 @@ public class AccountCreateDialog extends JDialog {
 
 		JButton createAccount = new JButton("Create account");
 		createAccount.setFont(customFont);
+		createAccount.setBackground(new Color(255,184,25));
+		createAccount.setFont(customFont);
+		createAccount.setBorderPainted(false);
+		createAccount.setOpaque(true);
 		createAccount.addActionListener(new ActionListener() {
 			@SuppressWarnings("static-access")
 			/*
@@ -230,6 +235,11 @@ public class AccountCreateDialog extends JDialog {
 		});
 		btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
+		btnCancel.setFont(customFont);
+		btnCancel.setBackground(new Color(255,184,25));
+		btnCancel.setFont(customFont);
+		btnCancel.setBorderPainted(false);
+		btnCancel.setOpaque(true);
 		btnCancel.addActionListener(new ActionListener() {
 
 			/*
@@ -247,8 +257,12 @@ public class AccountCreateDialog extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(createAccount);
 		bp.add(btnCancel);
+		bp.setBackground(new Color(28,60,52));
+
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(bp, BorderLayout.PAGE_END);
+
+		panel.setBackground(new Color(255,184,25));
 
 		pack();
 		setResizable(false);

@@ -145,7 +145,7 @@ public class Application {
 		gc.fill = GridBagConstraints.BOTH;
 
 		/***** First Row of Panel ****/
-		JButton ridesBtn = new JButton("PlaceHolder Icon Rides");
+		JButton ridesBtn = new JButton("Rider Posts");
 		selection.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
 		pc.weightx = 1;
@@ -171,7 +171,7 @@ public class Application {
 		selection.add(ridesBtn,pc);
 
 		/**** Second Row of Panel ****/
-		JButton drivesBtn = new JButton("PlaceHolder Icon Drives");
+		JButton drivesBtn = new JButton("Driver Posts");
 		pc.gridx = 0;
 		pc.gridy = 1;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -190,7 +190,7 @@ public class Application {
 		
 		
 		/**** Third Row of Panel ****/
-		JButton profileBtn = new JButton("PlaceHolder Icon Profile");
+		JButton profileBtn = new JButton("View Profile");
 		
 		pc.gridx = 0;
 		pc.gridy = 2;
@@ -226,7 +226,7 @@ public class Application {
 		selection.add(profileBtn,pc);
 		
 		/**** Fourht Row of Panel ****/
-		JButton createBtn = new JButton("PlaceHolder Icon Create Post");
+		JButton createBtn = new JButton("Create Post");
 		pc.gridx = 0;
 		pc.gridy = 3;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;

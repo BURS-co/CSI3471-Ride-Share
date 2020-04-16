@@ -59,6 +59,7 @@ public class openPage extends JDialog {
 		picLabel.setBackground(new Color(255, 184, 25));
 		picLabel.setOpaque(true);
 
+		
 		// First Row containing logo
 		lc.gridx = 0;
 		lc.gridy = 0;

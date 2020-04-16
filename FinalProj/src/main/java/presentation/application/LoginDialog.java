@@ -159,6 +159,11 @@ public class LoginDialog extends JDialog {
 			}
 
 		});
+		
+		btnLogin.setBackground(new Color(255,184,25));
+		btnLogin.setFont(customFont);
+	   	btnLogin.setBorderPainted(false);
+	   	btnLogin.setOpaque(true);
 
 		btnLogin.addActionListener(new ActionListener() {
 
@@ -190,6 +195,11 @@ public class LoginDialog extends JDialog {
 			}
 		});
 		btnCancel = new JButton("Cancel");
+		btnCancel.setBackground(new Color(255,184,25));
+		btnCancel.setFont(customFont);
+	   	btnCancel.setBorderPainted(false);
+	   	btnCancel.setOpaque(true);
+		
 		btnCancel.addActionListener(new ActionListener() {
 
 			/*
@@ -206,10 +216,12 @@ public class LoginDialog extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(btnLogin);
 		bp.add(btnCancel);
+		bp.setBackground(new Color(28,60,52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(bp, BorderLayout.PAGE_END);
 
+		panel.setBackground(new Color(255,184,25));
 		panel.setFocusable(true);
 		panel.requestFocusInWindow();
 		pack();

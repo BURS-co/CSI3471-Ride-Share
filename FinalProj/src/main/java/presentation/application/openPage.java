@@ -81,6 +81,9 @@ public class openPage extends JDialog {
 		btnPanel.setBackground(new Color(28, 60, 52));
 		btnPanel.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
+		
+		UIManager.put("ToolTip.background", Color.white);
+		UIManager.put("ToolTip.border", new LineBorder(Color.BLACK, 1));
 
 		btnLogin = new JButton("Log In");
 		btnLogin.setToolTipText("Sign in to your account and get started");
@@ -123,8 +126,6 @@ public class openPage extends JDialog {
 		});
 
 		btnCreateAccount = new JButton("Sign Up");
-		UIManager.put("ToolTip.background", Color.white);
-		UIManager.put("ToolTip.border", new LineBorder(Color.BLACK, 1));
 		btnCreateAccount.setToolTipText("Create Account and get Started");
 
 		btnCreateAccount.createToolTip();

@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class Driver extends AbstractPost{
-
 	private Integer riderLimit; // max riders if driver post
 	private ArrayList<String> riders = new ArrayList<String>();//if driver/rider post
 	

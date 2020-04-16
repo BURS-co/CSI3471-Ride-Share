@@ -12,7 +12,6 @@ public abstract class AbstractPost {
     	//TODO occupy the fields
     }
     
-    
     public String getPoster() {
 		return poster;
 	}

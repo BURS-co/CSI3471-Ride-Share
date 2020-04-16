@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Driver extends AbstractPost{
 	private Integer riderLimit; // max riders if driver post
-	private ArrayList<String> riders = new ArrayList<String>();//if driver/rider post
+	private ArrayList<Prospects> riders = new ArrayList<Prospects>();//if driver/rider post
 	
 	public Driver(String[] list) {
 		super(list);
@@ -28,11 +28,11 @@ public class Driver extends AbstractPost{
 		this.riderLimit = riderLimit;
 	}
 
-	public ArrayList<String> getRiders() {
+	public ArrayList<Prospects> getRiders() {
 		return riders;
 	}
 
-	public void setRiders(ArrayList<String> riders) {
+	public void setRiders(ArrayList<Prospects> riders) {
 		this.riders = riders;
 	}
 
@@ -43,8 +43,8 @@ public class Driver extends AbstractPost{
 		String s = "Driver" + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
 		s += "-" + getPoster() + "-" + riderLimit + "-" + riders;
 		if (riders != null) {
-		  for (String p : riders) {
-			  s = "-" + p;
+		  for (Prospects p : riders) {
+			  s = "-" + p.getName();
 		  }
 		}
 		s += "\n";

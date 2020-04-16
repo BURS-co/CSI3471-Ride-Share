@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -103,9 +104,10 @@ public class LoginDialog extends JDialog {
 				// TODO Auto-generated method stub
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					if (Login.authenticate(tfUsername.getText(), getPassword())) {
-						JOptionPane.showMessageDialog(LoginDialog.this,
+						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+						JOptionPane.showMessageDialog(null,
 								"Hi " + getUsername() + "! Welcome to Bearpool!", "Login",
-								JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.INFORMATION_MESSAGE, icon);
 						succeeded = true;
 						Application.log.log(Level.INFO, getUsername() + " Login successful!");
 						dispose();
@@ -137,9 +139,10 @@ public class LoginDialog extends JDialog {
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					if (Login.authenticate(tfUsername.getText(), getPassword())) {
-						JOptionPane.showMessageDialog(LoginDialog.this,
+						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+						JOptionPane.showMessageDialog(null,
 								"Hi " + getUsername() + "! Welcome to Bearpool!", "Login",
-								JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.INFORMATION_MESSAGE, icon);
 						succeeded = true;
 						Application.log.log(Level.INFO, getUsername() + " Login successful!");
 						dispose();
@@ -175,13 +178,14 @@ public class LoginDialog extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				if (Login.authenticate(tfUsername.getText(), getPassword())) {
-					JOptionPane.showMessageDialog(LoginDialog.this, "Hi " + getUsername() + "! Welcome to Bearpool!",
-							"Login", JOptionPane.INFORMATION_MESSAGE);
+					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					JOptionPane.showMessageDialog(null, "Hi " + getUsername() + "! Welcome to Bearpool!",
+							"Login", JOptionPane.INFORMATION_MESSAGE, icon);
 					succeeded = true;
 					Application.log.log(Level.INFO, getUsername() + " Login successful!");
 					dispose();
 				} else {
-					JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
+					JOptionPane.showMessageDialog(null, "Invalid username or password", "Login",
 							JOptionPane.ERROR_MESSAGE);
 
 					Application.log.log(Level.INFO, getUsername() + " Login failed!");

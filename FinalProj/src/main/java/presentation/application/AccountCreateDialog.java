@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -223,8 +224,9 @@ public class AccountCreateDialog extends JDialog {
 							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
 							Application.loggedIn.setUsername(user.getUsername());
 							
-							JOptionPane.showMessageDialog(AccountCreateDialog.this,
-									"Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login", JOptionPane.INFORMATION_MESSAGE);
+							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+							JOptionPane.showMessageDialog(null,
+									"Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login", JOptionPane.INFORMATION_MESSAGE, icon);
 							succeeded = true;
 							Application.log.log(Level.INFO, user.getUsername() + " Login successful!");
 							dispose();

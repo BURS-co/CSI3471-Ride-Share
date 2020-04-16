@@ -21,6 +21,8 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
 
 public class openPage extends JDialog {
 
@@ -43,45 +45,45 @@ public class openPage extends JDialog {
 		// For the Dialog constraints
 		setLayout(new GridBagLayout());
 		GridBagConstraints dc = new GridBagConstraints();
-		
+
 		// Will Contain Picture Logo
 		JPanel logoPanel = new JPanel(new GridBagLayout());
-		
+
 		// Logo constraints
 		GridBagConstraints lc = new GridBagConstraints();
 
 		lc.weightx = .25;
 		lc.weighty = .25;
-		
+
 		// Loading the image
 		BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat.png"));
 		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
 		picLabel.setBackground(new Color(255, 184, 25));
 		picLabel.setOpaque(true);
 
-		
 		// First Row containing logo
 		lc.gridx = 0;
 		lc.gridy = 0;
 		lc.anchor = GridBagConstraints.CENTER;
 		logoPanel.add(picLabel, lc);
-		
+
 		dc.weightx = .1;
 		dc.weightx = .1;
 		dc.gridx = 0;
 		dc.gridy = 0;
 		dc.anchor = GridBagConstraints.ABOVE_BASELINE;
-		
+
 		// add logo panel in dialog
 		getContentPane().add(logoPanel, dc);
-		
+
 		JPanel btnPanel = new JPanel();
 		btnPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		btnPanel.setBackground(new Color(28, 60, 52));
 		btnPanel.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
-		
+
 		btnLogin = new JButton("Log In");
+		btnLogin.setToolTipText("Sign in to your account and get started");
 		btnLogin.setBackground(new Color(255, 184, 25));
 		Font customFont = null;
 		try {
@@ -96,10 +98,10 @@ public class openPage extends JDialog {
 		} catch (FontFormatException e) {
 			e.printStackTrace();
 		}
-		
+
 		// use the font
 		btnLogin.setFont(customFont);
-		
+
 		btnLogin.setBorderPainted(false);
 		btnLogin.setOpaque(true);
 		btnLogin.addActionListener(new ActionListener() {
@@ -120,9 +122,12 @@ public class openPage extends JDialog {
 			}
 		});
 
-
-
 		btnCreateAccount = new JButton("Sign Up");
+		UIManager.put("ToolTip.background", Color.white);
+		UIManager.put("ToolTip.border", new LineBorder(Color.BLACK, 1));
+		btnCreateAccount.setToolTipText("Create Account and get Started");
+
+		btnCreateAccount.createToolTip();
 		btnCreateAccount.setBackground(new Color(255, 184, 25));
 		btnCreateAccount.setFont(customFont);
 		btnCreateAccount.setBorderPainted(false);
@@ -145,17 +150,16 @@ public class openPage extends JDialog {
 				}
 			}
 		});
-		
 
 		pc.weightx = 1;
 		pc.weighty = 1;
-		pc.insets = new Insets(5,5,5,5);
+		pc.insets = new Insets(5, 5, 5, 5);
 		pc.fill = GridBagConstraints.HORIZONTAL;
-		
+
 		pc.gridx = 0;
 		pc.gridy = 0;
-		pc.anchor = GridBagConstraints.CENTER;		
-	
+		pc.anchor = GridBagConstraints.CENTER;
+
 		// Add log in button to button panel
 		btnPanel.add(btnLogin, pc);
 
@@ -165,20 +169,19 @@ public class openPage extends JDialog {
 
 		// Add sign up button to button panel;
 		btnPanel.add(btnCreateAccount, pc);
-		
-		
+
 		// Bottom of Dialog
 		dc.weightx = 1;
 		dc.weighty = 1;
-		
+
 		// Should flow better
 		dc.gridx = 0;
 		dc.gridy = 1;
 		dc.anchor = GridBagConstraints.BASELINE;
 		dc.fill = GridBagConstraints.BOTH;
-		
+
 		// Add Button Panel to Dialog
-		getContentPane().add(btnPanel,dc);
+		getContentPane().add(btnPanel, dc);
 
 		pack();
 		setResizable(false);

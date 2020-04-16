@@ -16,7 +16,6 @@ import java.util.logging.Level;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,8 +26,7 @@ import javax.swing.JTextField;
 import business.validateAccountInfo;
 import data.user.User;
 
-public class AccountCreateDialog extends JDialog {
-
+public class ViewProfile extends JFrame {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
 	JTextField name;
@@ -42,17 +40,12 @@ public class AccountCreateDialog extends JDialog {
 	private boolean succeeded = false;
 	private JButton btnCancel;
 	Font customFont = null;
-	User u = new User();
 
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
-
-	/**
-	 * @param parent
-	 * @return
-	 */
-	public AccountCreateDialog(JFrame parent) {
-		super(parent, "Create Account", true);
+	
+	public ViewProfile(JFrame parent, User u) {
+		super("View Profile");
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
@@ -213,8 +206,6 @@ public class AccountCreateDialog extends JDialog {
 							user.setGradMonth(month);
 							user.setGradYear(year);
 							user.setPassword(new String(password.getPassword()));
-							
-							setUser(u);
 
 							// UserDatabase.getUserData().add(user);
 							Application.userDatabase.add(user);
@@ -273,21 +264,4 @@ public class AccountCreateDialog extends JDialog {
 		setResizable(false);
 		setLocationRelativeTo(parent);
 	}
-
-	/**
-	 * @param
-	 * @return succeeded
-	 */
-	public boolean isSucceeded() {
-		return succeeded;
-	}
-	
-	public void setUser(User user) {
-		this.u = user;
-	}
-	
-	public User getUser() {
-		return u;
-	}
-
 }

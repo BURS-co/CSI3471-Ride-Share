@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import business.Login;
+import data.user.User;
 
 public class LoginDialog extends JDialog {
 
@@ -39,6 +40,7 @@ public class LoginDialog extends JDialog {
 	private boolean succeeded;
 	private Font customFont;
 	// Sign up variables
+	private User u = new User();
 
 	/**
 	 * @param parent
@@ -105,8 +107,9 @@ public class LoginDialog extends JDialog {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					if (Login.authenticate(tfUsername.getText(), getPassword())) {
 						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+						u = Login.getUser();
 						JOptionPane.showMessageDialog(null,
-								"Hi " + getUsername() + "! Welcome to Bearpool!", "Login",
+								"Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
 								JOptionPane.INFORMATION_MESSAGE, icon);
 						succeeded = true;
 						Application.log.log(Level.INFO, getUsername() + " Login successful!");
@@ -140,8 +143,10 @@ public class LoginDialog extends JDialog {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					if (Login.authenticate(tfUsername.getText(), getPassword())) {
 						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+						u = Login.getUser();
+						
 						JOptionPane.showMessageDialog(null,
-								"Hi " + getUsername() + "! Welcome to Bearpool!", "Login",
+								"Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
 								JOptionPane.INFORMATION_MESSAGE, icon);
 						succeeded = true;
 						Application.log.log(Level.INFO, getUsername() + " Login successful!");
@@ -179,7 +184,8 @@ public class LoginDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if (Login.authenticate(tfUsername.getText(), getPassword())) {
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-					JOptionPane.showMessageDialog(null, "Hi " + getUsername() + "! Welcome to Bearpool!",
+					u = Login.getUser();
+					JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!",
 							"Login", JOptionPane.INFORMATION_MESSAGE, icon);
 					succeeded = true;
 					Application.log.log(Level.INFO, getUsername() + " Login successful!");
@@ -252,5 +258,13 @@ public class LoginDialog extends JDialog {
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
+	}
+	
+	public void setUser(User user) {
+		this.u = user;
+	}
+	
+	public User getUser() {
+		return u;
 	}
 }

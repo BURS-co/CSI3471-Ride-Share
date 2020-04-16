@@ -12,6 +12,8 @@ import data.user.User;
 import presentation.application.Application;
 
 public class Login {
+	private static User u = new User();
+	
 	/**
 	 * @param username
 	 * @param password
@@ -31,6 +33,9 @@ public class Login {
 					Application.loggedIn.setPassword(password);
 					Application.loggedIn.setPhoneNumber(u.getPhoneNumber());
 					Application.loggedIn.setUsername(u.getUsername());
+					
+					setUser(u);
+					
 					return true;
 				}
 				else {
@@ -43,5 +48,13 @@ public class Login {
 		return false;
 		
     }
+	
+	public static void setUser(User user) {
+		u = user;
+	}
+	
+	public static User getUser() {
+		return u;
+	}
 
 }

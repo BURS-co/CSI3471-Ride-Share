@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -194,6 +196,23 @@ public class Application {
 		pc.gridy = 2;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.CENTER;
+	//	profileBtn.addActionListener(new ActionListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+		/*	public void actionPerformed(ActionEvent e) {
+				ViewProfile vp = new ViewProfile(mainFrame);
+				vp.setVisible(true);
+				//if (acDialog.isSucceeded()) {
+				//	succeeded = true;
+				//	parent.dispose();
+				//}
+			}
+		});*/
 		//TODO
 				/*
 				try {

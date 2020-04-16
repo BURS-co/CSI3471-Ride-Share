@@ -50,10 +50,9 @@ public class openPage extends JDialog {
 		// Logo constraints
 		GridBagConstraints lc = new GridBagConstraints();
 
-		lc.fill = GridBagConstraints.HORIZONTAL;
-		lc.weightx = 1;
-		lc.weighty = 1;
-
+		lc.weightx = .25;
+		lc.weighty = .25;
+		
 		// Loading the image
 		BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat.png"));
 		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
@@ -66,8 +65,8 @@ public class openPage extends JDialog {
 		lc.anchor = GridBagConstraints.CENTER;
 		logoPanel.add(picLabel, lc);
 		
-		dc.weightx = 1;
-		dc.weightx = 1;
+		dc.weightx = .1;
+		dc.weightx = .1;
 		dc.gridx = 0;
 		dc.gridy = 0;
 		dc.anchor = GridBagConstraints.ABOVE_BASELINE;

@@ -66,7 +66,7 @@ public class openPage extends JDialog {
     btnLogin.setFont(customFont);
     
     //Loading the image
-    BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat_copy-removebg-preview.png"));
+    BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat.png"));
     JLabel picLabel = new JLabel(new ImageIcon(myPicture));
     picLabel.setBackground(new Color(255, 184, 25));
     picLabel.setOpaque(true);

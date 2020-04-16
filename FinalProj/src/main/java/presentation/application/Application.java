@@ -156,15 +156,15 @@ public class Application {
 		
 		//rides button image label
 		//TODO
-		/*
+		
 		try {
 			//TODO create file
-		    Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
+		    Image img = ImageIO.read(new File("src/main/resources/Rides-test.png"));
 		    ridesBtn.setIcon(new ImageIcon(img));
 		  } catch (Exception ex) {
 		    System.out.println(ex.getStackTrace());
 		  }
-		  */
+		  
 		// add button
 		selection.add(ridesBtn,pc);
 

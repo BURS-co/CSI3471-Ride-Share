@@ -8,7 +8,6 @@ public abstract class AbstractPost {
     protected String dest;
     protected Date date;
     
-    
     public AbstractPost(String [] list) {
     	//TODO occupy the fields
     }

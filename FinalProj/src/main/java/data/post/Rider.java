@@ -3,9 +3,6 @@ package data.post;
 import java.text.SimpleDateFormat;
 
 public class Rider extends AbstractPost{
-
-	
-	
 	
 	public Rider(String[] list) {
 		super(list);

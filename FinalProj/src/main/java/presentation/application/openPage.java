@@ -24,6 +24,8 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
+import data.user.User;
+
 public class openPage extends JDialog {
 
 	/**
@@ -33,6 +35,7 @@ public class openPage extends JDialog {
 	private JButton btnLogin;
 	private JButton btnCreateAccount;
 	private boolean succeeded;
+	private static User u = new User();
 
 	/**
 	 * @param parent
@@ -120,6 +123,7 @@ public class openPage extends JDialog {
 				loginDlg.setVisible(true);
 				if (loginDlg.isSucceeded()) {
 					succeeded = true;
+					setUser(loginDlg.getUser());
 					parent.dispose();
 				}
 			}
@@ -147,6 +151,7 @@ public class openPage extends JDialog {
 				acDialog.setVisible(true);
 				if (acDialog.isSucceeded()) {
 					succeeded = true;
+					setUser(acDialog.getUser());
 					parent.dispose();
 				}
 			}
@@ -192,6 +197,14 @@ public class openPage extends JDialog {
 
 	public boolean isSucceeded() {
 		return succeeded;
+	}
+	
+	public void setUser(User user) {
+		this.u = user;
+	}
+	
+	public User getUser() {
+		return u;
 	}
 
 }

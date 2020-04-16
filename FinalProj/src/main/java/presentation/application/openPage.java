@@ -168,6 +168,7 @@ public class openPage extends JDialog {
 		dc.weightx = 1;
 		dc.weighty = 1;
 		
+		// Should flow better
 		dc.gridx = 0;
 		dc.gridy = 1;
 		dc.anchor = GridBagConstraints.BASELINE;

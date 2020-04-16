@@ -185,6 +185,7 @@ public class openPage extends JDialog {
 		dc.gridy = 1;
 		dc.anchor = GridBagConstraints.BASELINE;
 		dc.fill = GridBagConstraints.BOTH;
+		
 
 		// Add Button Panel to Dialog
 		getContentPane().add(btnPanel, dc);

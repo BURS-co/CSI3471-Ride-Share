@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -75,6 +76,7 @@ public class openPage extends JDialog {
 		getContentPane().add(logoPanel, dc);
 		
 		JPanel btnPanel = new JPanel();
+		btnPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		btnPanel.setBackground(new Color(28, 60, 52));
 		btnPanel.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
@@ -148,6 +150,7 @@ public class openPage extends JDialog {
 		pc.weightx = 1;
 		pc.weighty = 1;
 		pc.insets = new Insets(5,5,5,5);
+		pc.fill = GridBagConstraints.HORIZONTAL;
 		
 		pc.gridx = 0;
 		pc.gridy = 0;

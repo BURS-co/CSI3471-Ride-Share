@@ -49,6 +49,7 @@ public class ViewProfile extends JFrame {
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
+		
 		JComboBox gradMonth = new JComboBox(months);
 		JComboBox gradYear = new JComboBox(years);
 		JLabel userLabel = new JLabel("Name: ");

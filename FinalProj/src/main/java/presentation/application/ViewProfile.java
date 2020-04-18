@@ -11,11 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,12 +28,12 @@ import javax.swing.JTextField;
 import business.validateAccountInfo;
 import data.user.User;
 
-public class ViewProfile extends JFrame {
+public class ViewProfile extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
-	JTextField name;
-	JTextField baylorEmail;
-	JTextField phoneNum;
+	JTextField nameEdit;
+	JTextField baylorEmailEdit;
+	JTextField phoneNumEdit;
 	String month = new String();
 	String year = new String();
 	JPasswordField password;
@@ -45,13 +47,13 @@ public class ViewProfile extends JFrame {
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
 	
 	public ViewProfile(JFrame parent, User u) {
-		super("View Profile");
+		super(parent, "View Profile", true);
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
 		
-		JComboBox gradMonth = new JComboBox(months);
-		JComboBox gradYear = new JComboBox(years);
+		JComboBox gradMonthBox = new JComboBox(months);
+		JComboBox gradYearBox = new JComboBox(years);
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
 		JLabel phoneLabel = new JLabel("Phone: ");
@@ -79,10 +81,11 @@ public class ViewProfile extends JFrame {
 		userLabel.setFont(customFont);
 		panel.add(userLabel, cs);
 
-		name = new JTextField(12);
 		cs.gridx = 1;
 		cs.gridy = 0;
 		cs.gridwidth = 2;
+		JLabel name = new JLabel(u.getUsername());
+		name.setFont(customFont);
 		panel.add(name, cs);
 
 		cs.gridx = 0;
@@ -91,10 +94,11 @@ public class ViewProfile extends JFrame {
 		emailLabel.setFont(customFont);
 		panel.add(emailLabel, cs);
 
-		baylorEmail = new JTextField(12);
 		cs.gridx = 1;
 		cs.gridy = 1;
 		cs.gridwidth = 2;
+		JLabel baylorEmail = new JLabel(u.getEmail());
+		baylorEmail.setFont(customFont);
 		panel.add(baylorEmail, cs);
 
 		cs.gridx = 0;
@@ -103,21 +107,23 @@ public class ViewProfile extends JFrame {
 		phoneLabel.setFont(customFont);
 		panel.add(phoneLabel, cs);
 
-		phoneNum = new JTextField(12);
+		phoneNumEdit = new JTextField(12);
 		cs.gridx = 1;
 		cs.gridy = 2;
 		cs.gridwidth = 2;
+		JLabel phoneNum = new JLabel(u.getPhoneNumber());
+		phoneNum.setFont(customFont);
 		panel.add(phoneNum, cs);
 
-		gradMonth.setSelectedIndex(0);
-		gradYear.setSelectedIndex(0);
-		gradMonth.addActionListener(new ActionListener() {
+		gradMonthBox.setSelectedIndex(0);
+		gradYearBox.setSelectedIndex(0);
+		gradMonthBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox) e.getSource();
 				month = (String) cb.getSelectedItem();
 			}
 		});
-		gradYear.addActionListener(new ActionListener() {
+		gradYearBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox) e.getSource();
 				year = (String) cb.getSelectedItem();
@@ -133,6 +139,8 @@ public class ViewProfile extends JFrame {
 		cs.gridx = 1;
 		cs.gridy = 3;
 		cs.gridwidth = 2;
+		JLabel gradMonth = new JLabel(u.getGradMonth());
+		gradMonth.setFont(customFont);
 		panel.add(gradMonth, cs);
 
 		cs.gridx = 0;
@@ -144,6 +152,8 @@ public class ViewProfile extends JFrame {
 		cs.gridx = 1;
 		cs.gridy = 4;
 		cs.gridwidth = 2;
+		JLabel gradYear = new JLabel(u.getGradYear());
+		gradYear.setFont(customFont);
 		panel.add(gradYear, cs);
 
 		cs.gridx = 0;
@@ -156,27 +166,18 @@ public class ViewProfile extends JFrame {
 		cs.gridx = 1;
 		cs.gridy = 5;
 		cs.gridwidth = 2;
+		String pass = String.join("", Collections.nCopies(u.getPassword().length(), "*"));
+		JLabel password = new JLabel(pass);
+		password.setFont(customFont);
 		panel.add(password, cs);
-
-		cs.gridx = 0;
-		cs.gridy = 6;
-		cs.gridwidth = 1;
-		confirmPasswordLabel.setFont(customFont);
-		panel.add(confirmPasswordLabel, cs);
-
-		confirmPassword = new JPasswordField(12);
-		cs.gridx = 1;
-		cs.gridy = 6;
-		cs.gridwidth = 3;
-		panel.add(confirmPassword, cs);
-
-		JButton createAccount = new JButton("Create account");
-		createAccount.setFont(customFont);
-		createAccount.setBackground(new Color(255,184,25));
-		createAccount.setFont(customFont);
-		createAccount.setBorderPainted(false);
-		createAccount.setOpaque(true);
-		createAccount.addActionListener(new ActionListener() {
+		
+		JButton editProfile = new JButton("Edit Profile");
+		editProfile.setFont(customFont);
+		editProfile.setBackground(new Color(255,184,25));
+		editProfile.setFont(customFont);
+		editProfile.setBorderPainted(false);
+		editProfile.setOpaque(true);
+		editProfile.addActionListener(new ActionListener() {
 			@SuppressWarnings("static-access")
 			/*
 			 * (non-Javadoc)
@@ -185,52 +186,22 @@ public class ViewProfile extends JFrame {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
-				if (name.getText().length() == 0 || baylorEmail.getText().length() == 0 || phoneNum.getText().length() == 0
-						|| password.getText().length() == 0 || confirmPassword.getText().length() == 0 || month.length() == 0
-						|| year.length() == 0) {
-					JOptionPane.showMessageDialog(AccountCreateDialog.this, "Please fill in all fields.", "Create Account",
-							JOptionPane.INFORMATION_MESSAGE);
-					succeeded = false;
-
-				} else {
-					// make sure text entered in all fields
-					if (name.getText().length() > 1 && baylorEmail.getText().length() > 1 && phoneNum.getText().length() > 1
-							&& password.getText().length() > 1 && confirmPassword.getText().length() > 1 && month.length() > 1
-							&& year.length() > 1)
-						if (vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
-								password.getText(), confirmPassword.getText(), month, year, AccountCreateDialog.this)) {
-
-							User user = new User();
-							user.setUsername(name.getText());
-							user.setEmail(baylorEmail.getText());
-							user.setPhoneNumber(phoneNum.getText());
-							user.setGradMonth(month);
-							user.setGradYear(year);
-							user.setPassword(new String(password.getPassword()));
-
-							// UserDatabase.getUserData().add(user);
-							Application.userDatabase.add(user);
-							
-							//Keep track of user logged in
-							Application.loggedIn.setEmail(user.getEmail());
-							Application.loggedIn.setGradMonth(user.getGradMonth());
-							Application.loggedIn.setGradYear(user.getGradYear());
-							Application.loggedIn.setPassword(user.getPassword());
-							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
-							Application.loggedIn.setUsername(user.getUsername());
-							
-							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-							JOptionPane.showMessageDialog(null,
-									"Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login", JOptionPane.INFORMATION_MESSAGE, icon);
-							succeeded = true;
-							Application.log.log(Level.INFO, user.getUsername() + " Login successful!");
-							dispose();
-
-						}
+				EditProfile ep = new EditProfile(parent, u);
+				ep.setVisible(true);
+				if (ep.isSucceeded()) {
+					succeeded = true;
+					name.setText(EditProfile.getUser().getUsername());
+					baylorEmail.setText(EditProfile.getUser().getEmail());
+					phoneNum.setText(EditProfile.getUser().getPhoneNumber());
+					gradMonth.setText(EditProfile.getUser().getGradMonth());
+					gradYear.setText(EditProfile.getUser().getGradYear());
+					String pass = String.join("", Collections.nCopies(EditProfile.getUser().getPassword().length(), "*"));
+					password.setText(pass);
+					
 				}
 			}
 		});
-		btnCancel = new JButton("Cancel");
+		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
 		btnCancel.setFont(customFont);
 		btnCancel.setBackground(new Color(255,184,25));
@@ -252,7 +223,7 @@ public class ViewProfile extends JFrame {
 		});
 
 		JPanel bp = new JPanel();
-		bp.add(createAccount);
+		bp.add(editProfile);
 		bp.add(btnCancel);
 		bp.setBackground(new Color(28,60,52));
 

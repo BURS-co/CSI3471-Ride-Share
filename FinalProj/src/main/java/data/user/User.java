@@ -11,12 +11,15 @@ public class User {
 	protected String phoneNumber;
 	protected String gradMonth;
 	protected String gradYear;
+	protected boolean isAdmin;
 	
 	public User() {
 		username = null;
 		password = null;
 		email = null;
 		phoneNumber = null;
+		gradMonth = null;
+		gradYear = null;
 	}
 	
 	@Override
@@ -98,5 +101,21 @@ public class User {
 	 */
 	public void setGradYear(String gradYear) {
 		this.gradYear = gradYear;
+	}
+	
+	/**
+	 * @return if admin
+	 */
+	public boolean getIsAdmin() {
+		return isAdmin;
+	}
+	/**
+	 * @param admin the isAdmin boolean to set
+	 */
+	public void setIsAdmin(String admin) {
+		if(admin.equals("true"))
+			this.isAdmin = true;
+		else
+			this.isAdmin = false;
 	}
 }

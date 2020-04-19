@@ -17,6 +17,7 @@ public class UserDatabase{
 	//singleton
 	private static UserDatabase userDatabase = null;// new UserDatabase();
 	private static ReentrantLock lock = new ReentrantLock();
+	public static User u = null;
 	
 	//prevents from making others
 	private UserDatabase() { }
@@ -54,9 +55,9 @@ public class UserDatabase{
 			while ((line = loader.readLine()) != null) {
 				
 				String[] split = line.split(" ");
-				User u = null;
 				
-				if(split[5].equals("true")) {
+				
+				if(split[7].equals("true")) {
 					u = new Admin();
 				} else {
 					u = new User();
@@ -80,6 +81,9 @@ public class UserDatabase{
 					}
 					else if(i == 6) {
 						u.setPassword(split[i]);
+					}
+					if(u instanceof Admin) {
+						u.setIsAdmin("true");
 					}
 				}
 				//Add data

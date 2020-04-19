@@ -28,6 +28,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.validateAccountInfo;
+import data.user.Admin;
 import data.user.User;
 
 public class EditProfile extends JDialog {
@@ -121,22 +122,8 @@ public class EditProfile extends JDialog {
 		cs.gridwidth = 2;
 		panel.add(phoneNum, cs);
 
-		String m = u.getGradMonth();
-		int index = -1;
-		for (int i=0;i<12;i++) {
-		    if (months[i].equals(m)) {
-		        index = i;
-		    }
-		}
-		gradMonth.setSelectedIndex(index);
-		String y = u.getGradYear();
-		index = -1;
-		for (int i=0;i<12;i++) {
-		    if (months[i].equals(y)) {
-		        index = i;
-		    }
-		}
-		gradYear.setSelectedIndex(index);
+		gradMonth.setSelectedIndex(-1);
+		gradYear.setSelectedIndex(-1);
 		gradMonth.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JComboBox cb = (JComboBox) e.getSource();
@@ -226,7 +213,11 @@ public class EditProfile extends JDialog {
 						if (vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
 								password.getText(), confirmPassword.getText(), month, year, EditProfile.this)) {
 
-							User user = new User();
+							User user = null;
+							if(Application.loggedIn instanceof Admin)
+								user = new Admin();
+							else
+								user = new User();
 							user.setUsername(name.getText());
 							user.setEmail(baylorEmail.getText());
 							user.setPhoneNumber(phoneNum.getText());

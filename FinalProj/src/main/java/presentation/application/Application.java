@@ -1,7 +1,10 @@
 package presentation.application;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
@@ -32,6 +35,7 @@ import javax.swing.table.TableColumnModel;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.Post;
+import data.user.Admin;
 import data.user.User;
 
 /**
@@ -73,7 +77,8 @@ public class Application {
 	public static PostDatabase postDatabase = null;
 	public static boolean accountCreated = false;
 	public static boolean postCreated = false;
-	public static User loggedIn = new User();
+	public static User loggedIn = null;;
+	public static Font customFont = null;
 
 	/**
 	 * main method for the application
@@ -123,6 +128,18 @@ public class Application {
 		// Setting up GridBagLayout
 		mainFrame.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
+		
+		try {
+	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
+	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	        //register the font
+	        ge.registerFont(customFont);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } catch(FontFormatException e) {
+	        e.printStackTrace();
+	    }
+
 
 		JPanel selection = new JPanel();
 		Dimension d = selection.getPreferredSize();
@@ -191,7 +208,7 @@ public class Application {
 		
 		/**** Third Row of Panel ****/
 		JButton profileBtn = new JButton("View Profile");
-		
+		profileBtn.setOpaque(true);
 		pc.gridx = 0;
 		pc.gridy = 2;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -207,10 +224,6 @@ public class Application {
 			public void actionPerformed(ActionEvent e) {
 				ViewProfile vp = new ViewProfile(mainFrame, loggedIn);
 				vp.setVisible(true);
-				//if (acDialog.isSucceeded()) {
-				//	succeeded = true;
-				//	parent.dispose();
-				//}
 			}
 		});
 		//TODO
@@ -225,7 +238,7 @@ public class Application {
 				*/
 		selection.add(profileBtn,pc);
 		
-		/**** Fourht Row of Panel ****/
+		/**** Fourth Row of Panel ****/
 		JButton createBtn = new JButton("Create Post");
 		pc.gridx = 0;
 		pc.gridy = 3;
@@ -242,6 +255,27 @@ public class Application {
 					}
 				*/
 		selection.add(createBtn,pc);
+		
+		/**** Fifth Row of Panel (ADMIN) ****/
+		if(loggedIn instanceof Admin) {
+			JButton reportsBtn = new JButton("Reports");
+			pc.gridx = 0;
+			pc.gridy = 4;
+			pc.anchor = GridBagConstraints.FIRST_LINE_START;
+			pc.fill = GridBagConstraints.CENTER;
+			//TODO
+			/*
+			try {
+				//TODO create file
+					  Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
+					  drivesBtn.setIcon(new ImageIcon(img));
+					} catch (Exception ex) {
+					  System.out.println(ex.getStackTrace());
+				}
+			*/
+			selection.add(reportsBtn,pc);
+		}
+
 		
 		
 		// Adding Panel to frame

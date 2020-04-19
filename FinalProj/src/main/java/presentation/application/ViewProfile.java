@@ -52,8 +52,6 @@ public class ViewProfile extends JDialog {
 		GridBagConstraints cs = new GridBagConstraints();
 
 		
-		JComboBox gradMonthBox = new JComboBox(months);
-		JComboBox gradYearBox = new JComboBox(years);
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
 		JLabel phoneLabel = new JLabel("Phone: ");
@@ -114,21 +112,6 @@ public class ViewProfile extends JDialog {
 		JLabel phoneNum = new JLabel(u.getPhoneNumber());
 		phoneNum.setFont(customFont);
 		panel.add(phoneNum, cs);
-
-		gradMonthBox.setSelectedIndex(0);
-		gradYearBox.setSelectedIndex(0);
-		gradMonthBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				month = (String) cb.getSelectedItem();
-			}
-		});
-		gradYearBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				year = (String) cb.getSelectedItem();
-			}
-		});
 
 		cs.gridx = 0;
 		cs.gridy = 3;
@@ -217,7 +200,7 @@ public class ViewProfile extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				Application.log.log(Level.INFO, "Sign up canceled");
+				Application.log.log(Level.INFO, "View Profile Closed");
 				dispose();
 			}
 		});

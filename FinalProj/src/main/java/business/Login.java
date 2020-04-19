@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 
+import data.user.Admin;
 import data.user.User;
 import presentation.application.Application;
 
@@ -27,6 +28,10 @@ public class Login {
 			if(u.getEmail().toLowerCase().equals(email.toLowerCase())) {
 				if(u.getPassword().equals(password)) {
 					//Set user data
+					if(u instanceof Admin)
+						Application.loggedIn = new Admin();
+					else
+						Application.loggedIn = new User();
 				    Application.loggedIn.setGradMonth(u.getGradMonth());
 				    Application.loggedIn.setGradYear(u.getGradYear());
 					Application.loggedIn.setEmail(email);

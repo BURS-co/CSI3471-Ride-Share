@@ -227,6 +227,7 @@ public class Application {
 
 		ImageIcon rIcn = new ImageIcon("src/main/resources/car.png");
 		Image rimage = rIcn.getImage(); // transform it
+		//60 makes it a tad wider
 		Image rnewimg = rimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		rIcn = new ImageIcon(rnewimg); // transform it back
 		JButton ridesBtn = new JButton(rIcn);

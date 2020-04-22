@@ -91,7 +91,7 @@ public class UserDatabase {
 		}
 	}
 
-	public void write() throws IOException {
+	public static void write() throws IOException {
 		// open file
 		BufferedWriter write = new BufferedWriter(new FileWriter("userDatabase.txt"));
 

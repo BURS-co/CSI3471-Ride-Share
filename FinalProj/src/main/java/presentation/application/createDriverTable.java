@@ -7,9 +7,14 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JTable;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import data.post.DriverPost;
 import data.post.Post;
@@ -42,7 +47,7 @@ public class createDriverTable {
 				} else if (c == 3) {
 					driverData[r][c] = new String(dlist.get(r).getDest());
 				} else if (c == 4) {
-					SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+					SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy hh:mm a");
 					String str = df.format(dlist.get(r).getDate());
 					driverData[r][c] = new String(str);
 				}
@@ -55,6 +60,17 @@ public class createDriverTable {
 				return false;
 			}
 		};
+		
+		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(driverTable.getModel());
+		driverTable.setRowSorter(sorter);
+
+		List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+		sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+		sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
+		sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
+		sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
+		sorter.setSortKeys(sortKeys);
+		
 		driverTable.setFont(customFont);
 
 		return driverTable;

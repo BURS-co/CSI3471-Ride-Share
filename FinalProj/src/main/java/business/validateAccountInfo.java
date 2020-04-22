@@ -153,14 +153,7 @@ public class validateAccountInfo extends AccountCreateDialog {
 			JOptionPane.showMessageDialog(e, "Invalid phone number. Must be 10 digits.", "Create Account",
 					JOptionPane.INFORMATION_MESSAGE);
 			succeeded = false;
-		} /*
-			 * else if (!(partOfEmail.toLowerCase().matches("@baylor.edu")) || emailSize <=
-			 * 1) { JOptionPane.showMessageDialog(e,
-			 * "Invalid email address. Must be a valid Baylor email.", "Create Account",
-			 * JOptionPane.INFORMATION_MESSAGE); succeeded = false; } else if(emailUsed) {
-			 * JOptionPane.showMessageDialog(e, "Email is already in use.",
-			 * "Create Account", JOptionPane.INFORMATION_MESSAGE); succeeded = false; }
-			 */ else if (gradMonthSelect < month && gradYearSelect == year) {
+		} else if (gradMonthSelect < month && gradYearSelect == year) {
 			JOptionPane.showMessageDialog(e, "Invalid graduation month/year.", "Create Account",
 					JOptionPane.INFORMATION_MESSAGE);
 			succeeded = false;

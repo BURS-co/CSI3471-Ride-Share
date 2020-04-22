@@ -26,6 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import business.CreatePostValidate;
 import data.databaseControllers.PostDatabase;
 import data.post.DriverPost;
 import data.post.Post;
@@ -44,6 +45,7 @@ public class CreatePost extends JDialog {
 	String tOd = new String();
 	Integer seatsAvail;
 	private static boolean succeeded = false;
+	CreatePostValidate vPI;
 	private JButton btnCancel;
 	Font customFont = null;
 	static User u = new User();
@@ -273,47 +275,62 @@ public class CreatePost extends JDialog {
 					// make sure text entered in all fields
 					if (o.length() > 0 && destination.length() > 0 && m.length() > 0 && d.length() > 0 && y.length() > 0
 							&& h.length() > 0 && min.length() > 0 && tOd.length() > 0) {
+						
 
 						if (SelectPostType.postTypeSelected == "Driver") {
-							p = new DriverPost();
-							p.setType("driver");
-							p.setPoster(Application.loggedIn.getUsername());
-							((DriverPost) p).setRiderLimit(seatsAvail);
-							((DriverPost) p).setDriver(Application.loggedIn.getUsername());
+							try {
+								if(vPI.validatePostInfo(o, destination, d, m, y, h, min, tOd,seatsAvail, CreatePost.this)) {
+									p = new DriverPost();
+									p.setType("driver");
+									p.setPoster(Application.loggedIn.getUsername());
+									((DriverPost) p).setRiderLimit(seatsAvail);
+									((DriverPost) p).setDriver(Application.loggedIn.getUsername());
+								}
+							} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						} else {
-							p = new Post();
-							p.setType("rider");
+							try {
+								if(vPI.validatePostInfo(o,destination, d, m, y, h, min, tOd, CreatePost.this))
+									p = new Post();
+							} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+								p.setType("rider");
 						}
-						p.setPoster(Application.loggedIn.getUsername());
-						p.setOrigin(o);
-						p.setDest(destination);
+						if(vPI.succeeded) {
+							p.setPoster(Application.loggedIn.getUsername());
+							p.setOrigin(o);
+							p.setDest(destination);
 
-						String dayTime = d + " " + m + " " + y + " " + h + ":" + min + " " + tOd;
-						Date d;
-						try {
-							d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(dayTime);
-							p.setDate(d);
-						} catch (ParseException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							String dayTime = d + " " + m + " " + y + " " + h + ":" + min + " " + tOd;
+							Date d;
+							try {
+								d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(dayTime);
+								p.setDate(d);
+							} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+	
+							ArrayList<Post> posts = PostDatabase.getPostData();
+							posts.add(p);
+							try {
+								PostDatabase.write();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+	
+							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+							JOptionPane.showMessageDialog(null, "Post Created Successfully. ", "Create Post",
+									JOptionPane.INFORMATION_MESSAGE, icon);
+							succeeded = true;
+							Application.log.log(Level.INFO, Application.loggedIn.getUsername() + " sucessfuly created a post");
+							dispose();
 						}
-
-						ArrayList<Post> posts = PostDatabase.getPostData();
-						posts.add(p);
-						try {
-							PostDatabase.write();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-
-						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-						JOptionPane.showMessageDialog(null, "Post Created Successfully. ", "Create Post",
-								JOptionPane.INFORMATION_MESSAGE, icon);
-						succeeded = true;
-						Application.log.log(Level.INFO, Application.loggedIn.getUsername() + "'s Profile Edited successfully");
-						dispose();
-
 					}
 				}
 			}

@@ -1,12 +1,12 @@
 package data.post;
 
 public class Prospects {
-    private String name;
-    private boolean status;
-    
-    public Prospects(String name) {
-    	this.name = name;
-    }
+	private String name;
+	private boolean status;
+
+	public Prospects(String name) {
+		this.name = name;
+	}
 
 	public boolean isStatus() {
 		return status;

@@ -17,66 +17,66 @@ import data.post.DriverPost;
 import data.post.Post;
 
 public class PostDatabase {
-	//singleton
+	// singleton
 	private static PostDatabase postDatabase = null;
-	
+
 	private static ReentrantLock lock = new ReentrantLock();
-	private PostDatabase() { }
-	
+
+	private PostDatabase() {
+	}
+
 	public static PostDatabase getInstance() {
-		if(postDatabase == null) {
+		if (postDatabase == null) {
 			lock.lock();
-			if(postDatabase == null)
+			if (postDatabase == null)
 				postDatabase = new PostDatabase();
 		}
-			
+
 		return postDatabase;
 	}
-	
+
 	private static ArrayList<Post> postData = new ArrayList<Post>();
-	
+
 	public void load() throws ParseException, IOException {
 		try {
-			BufferedReader loader = new BufferedReader(new FileReader (new File(
-			        "postDatabase.txt")));
-			
+			BufferedReader loader = new BufferedReader(new FileReader(new File("postDatabase.txt")));
+
 			String line = null;
 			ArrayList<String> list = null;
-			
+
 			while ((line = loader.readLine()) != null) {
-				
+
 				String[] split = line.split("-");
 				Post p = null;
-				for(int i = 0; i < split.length; i++) {
-					if(i == 0) {
-						if(split[i].equals("driver")) {
+				for (int i = 0; i < split.length; i++) {
+					if (i == 0) {
+						if (split[i].equals("driver")) {
 							p = new DriverPost();
-						}
-						else {
+						} else {
 							p = new Post();
 						}
 						p.setType(split[i]);
 					} else if (i == 1) {
 						p.setPoster(split[i]);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						p.setOrigin(split[i]);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						p.setDest(split[i]);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[i]);
 						p.setDate(d);
 					} else if (p.getType().equals("driver") && i == 5) {
 						((DriverPost) p).setDriver(split[i]);
 					} else if (p.getType().equals("driver") && i == 6) {
 						((DriverPost) p).setRiderLimit(Integer.valueOf(split[i]));
-					} else if (p.getType().equals("driver") && i > 7){
+					} else if (p.getType().equals("driver") && i > 7) {
 						if (list == null) {
 							list = new ArrayList<String>();
 						}
 						list.add(split[i]);
 					}
 				}
-				//Add data
+				// Add data
 				if (p instanceof DriverPost) {
 					((DriverPost) p).setRiders(list);
 				}
@@ -89,53 +89,50 @@ public class PostDatabase {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public static void write() throws IOException {
-		//Write to .txt file (postDatabase.txt)
-		BufferedWriter write = new BufferedWriter(new FileWriter(
-                "postDatabase.txt"));
-		
-		for(Post p : postData) {
+		// Write to .txt file (postDatabase.txt)
+		BufferedWriter write = new BufferedWriter(new FileWriter("postDatabase.txt"));
+
+		for (Post p : postData) {
 			write.write(p.toString());
 		}
-		
+
 		write.flush();
-		write.close(); 	
-		
+		write.close();
+
 	}
-	
+
 	public void add(Post p) {
 		postData.add(0, p);
 	}
 
-
 	public static ArrayList<Post> getPostData() {
 		return postData;
 	}
-	
-	final public ArrayList<Post> queryDatabase (){
-		//The queryDatabase could be instead searching for a specific post
-		
+
+	final public ArrayList<Post> queryDatabase() {
+		// The queryDatabase could be instead searching for a specific post
+
 		return null;
 	}
-	
+
 	/**
 	 * @param type
 	 * @return an array of post of said type
 	 */
-	final public ArrayList<Post> searchDatabase (String type) {
+	final public ArrayList<Post> searchDatabase(String type) {
 		ArrayList<Post> query = new ArrayList<Post>();
-		
-		if(type.equals("rider") || type.equals("driver")) {
-			for (Post p: postData) {
+
+		if (type.equals("rider") || type.equals("driver")) {
+			for (Post p : postData) {
 				if (p.getType().equals(type)) {
 					query.add(p);
 				}
 			}
 		}
-		
+
 		return query;
 	}
-	
+
 }

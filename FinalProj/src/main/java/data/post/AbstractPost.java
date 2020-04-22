@@ -3,16 +3,16 @@ package data.post;
 import java.util.Date;
 
 public abstract class AbstractPost {
-    protected String poster;
-    protected String origin;
-    protected String dest;
-    protected Date date;
-    
-    public AbstractPost(String [] list) {
-    	//TODO occupy the fields
-    }
-    
-    public String getPoster() {
+	protected String poster;
+	protected String origin;
+	protected String dest;
+	protected Date date;
+
+	public AbstractPost(String[] list) {
+		// TODO occupy the fields
+	}
+
+	public String getPoster() {
 		return poster;
 	}
 

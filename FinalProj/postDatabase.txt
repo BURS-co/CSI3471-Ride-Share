@@ -5,3 +5,4 @@ driver-Andrew Ammentorp-Baylor-Hobby-30 Mar 2020 11:00 AM-Mr.Baylor-1-null
 rider-Leighton Glim-Baylor-DAL-28 Apr 2020 06:15 PM
 driver-Leighton Glim-DAL-Baylor-29 Apr 2020 04:20 PM-null-3-null
 driver-Leighton Glim-Baylor-AUS-22 Apr 2020 04:20 PM-Leighton Glim-2-null
+rider-Joseph Perez-Baylor-DAL-22 Apr 2020 09:10 PM

@@ -145,12 +145,8 @@ public class Application {
 		}
 
 		JPanel selection = new JPanel();
-		Dimension d = selection.getPreferredSize();
-		d.width = 100;
-		d.height = 100;
-		selection.setPreferredSize(d);
 		Border innerB = BorderFactory.createEmptyBorder();
-		Border outerB = BorderFactory.createEmptyBorder(0, 0, 0, 0);
+		Border outerB = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		selection.setBorder(BorderFactory.createCompoundBorder(outerB, innerB));
 
 		// weight
@@ -233,8 +229,7 @@ public class Application {
 
 		pc.gridx = 0;
 		pc.gridy = 0;
-		pc.anchor = GridBagConstraints.FIRST_LINE_START;
-		pc.fill = GridBagConstraints.CENTER;
+		pc.anchor = GridBagConstraints.CENTER;
 
 		// rides button image label
 		// TODO
@@ -254,8 +249,7 @@ public class Application {
 		JButton drivesBtn = new JButton("Driver Posts");
 		pc.gridx = 0;
 		pc.gridy = 1;
-		pc.anchor = GridBagConstraints.FIRST_LINE_START;
-		pc.fill = GridBagConstraints.CENTER;
+
 		// TODO
 		/*
 		 * try { //TODO create file Image img = ImageIO.read(new
@@ -270,8 +264,7 @@ public class Application {
 		profileBtn.setOpaque(true);
 		pc.gridx = 0;
 		pc.gridy = 2;
-		pc.anchor = GridBagConstraints.FIRST_LINE_START;
-		pc.fill = GridBagConstraints.CENTER;
+
 		profileBtn.addActionListener(new ActionListener() {
 
 			/*
@@ -306,8 +299,7 @@ public class Application {
 		createBtn.setFocusPainted(false);
 		pc.gridx = 0;
 		pc.gridy = 3;
-		pc.anchor = GridBagConstraints.FIRST_LINE_START;
-		pc.fill = GridBagConstraints.CENTER;
+
 		createBtn.addActionListener(new ActionListener() {
 
 			/*
@@ -362,8 +354,7 @@ public class Application {
 			JButton reportsBtn = new JButton("Reports");
 			pc.gridx = 0;
 			pc.gridy = 4;
-			pc.anchor = GridBagConstraints.FIRST_LINE_START;
-			pc.fill = GridBagConstraints.CENTER;
+
 			// TODO
 			/*
 			 * try { //TODO create file Image img = ImageIO.read(new
@@ -374,7 +365,7 @@ public class Application {
 			selection.add(reportsBtn, pc);
 		}
 		
-		selection.setBackground(new Color(28, 60, 52));
+		selection.setBackground(new Color(255, 255, 255));
 
 		// Adding Panel to frame
 		mainFrame.add(selection, gc);

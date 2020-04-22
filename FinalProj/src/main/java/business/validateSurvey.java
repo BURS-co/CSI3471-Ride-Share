@@ -7,10 +7,9 @@ package business;
  *
  */
 public class validateSurvey {
-	
+
 	String n;
 
-	
 	/**
 	 * passes in input and determines if valid
 	 * 

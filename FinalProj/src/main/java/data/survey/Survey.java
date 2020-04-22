@@ -3,16 +3,14 @@ package data.survey;
 public class Survey {
 	private String name;
 	private String[] responses;
-	
-	
+
 	/**
 	 * Initialize the survey
 	 */
-	public Survey(String name, String[] responses){
+	public Survey(String name, String[] responses) {
 		this.name = name;
 		this.responses = responses;
 	}
-
 
 	/**
 	 * @return the name
@@ -21,7 +19,6 @@ public class Survey {
 		return name;
 	}
 
-
 	/**
 	 * @param name the name to set
 	 */
@@ -29,14 +26,12 @@ public class Survey {
 		this.name = name;
 	}
 
-
 	/**
 	 * @return the responses
 	 */
 	public String[] getResponses() {
 		return responses;
 	}
-
 
 	/**
 	 * @param responses the responses to set

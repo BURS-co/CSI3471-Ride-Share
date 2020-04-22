@@ -250,7 +250,7 @@ public class LoginDialog extends JDialog {
 					Application.log.log(Level.INFO, getUsername() + " Login failed!");
 
 					// reset username and password
-					tfUsername.setText("");
+					//tfUsername.setText("");
 					pfPassword.setText("");
 					succeeded = false;
 

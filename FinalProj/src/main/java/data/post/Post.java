@@ -4,13 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Post {
-	
-	private String type;	//either driver or rider
-	private String poster;	//username of user
+
+	private String type; // either driver or rider
+	private String poster; // username of user
 	private String origin;
 	private String dest;
 	private Date date;
-	
+
 	public Post() {
 		type = "rider";
 		poster = null;
@@ -18,7 +18,7 @@ public class Post {
 		dest = null;
 		date = null;
 	}
-	
+
 	public Post(String type) {
 		this.type = type;
 		poster = null;
@@ -68,7 +68,7 @@ public class Post {
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-	
+
 	/**
 	 * @return the dest
 	 */
@@ -100,7 +100,7 @@ public class Post {
 	@Override
 	public String toString() {
 		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
-		String str = df.format(date); 
+		String str = df.format(date);
 		return type + "-" + poster + "-" + origin + "-" + dest + "-" + str + "\n";
 	}
 

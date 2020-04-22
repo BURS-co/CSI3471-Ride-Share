@@ -65,17 +65,18 @@ public class AccountCreateDialog extends JDialog {
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
 		JLabel passwordLabel = new JLabel("Password: ");
 		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
-		
-	    try {
-	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
-	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        //register the font
-	        ge.registerFont(customFont);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch(FontFormatException e) {
-	        e.printStackTrace();
-	    }
+
+		try {
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+					.deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(customFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
 		cs.fill = GridBagConstraints.HORIZONTAL;
 
@@ -178,7 +179,7 @@ public class AccountCreateDialog extends JDialog {
 
 		JButton createAccount = new JButton("Create account");
 		createAccount.setFont(customFont);
-		createAccount.setBackground(new Color(255,184,25));
+		createAccount.setBackground(new Color(255, 184, 25));
 		createAccount.setFont(customFont);
 		createAccount.setBorderPainted(false);
 		createAccount.setOpaque(true);
@@ -213,23 +214,23 @@ public class AccountCreateDialog extends JDialog {
 							user.setGradMonth(month);
 							user.setGradYear(year);
 							user.setPassword(new String(password.getPassword()));
-							
+
 							setUser(u);
 
 							// UserDatabase.getUserData().add(user);
 							Application.userDatabase.add(user);
-							
-							//Keep track of user logged in
+
+							// Keep track of user logged in
 							Application.loggedIn.setEmail(user.getEmail());
 							Application.loggedIn.setGradMonth(user.getGradMonth());
 							Application.loggedIn.setGradYear(user.getGradYear());
 							Application.loggedIn.setPassword(user.getPassword());
 							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
 							Application.loggedIn.setUsername(user.getUsername());
-							
+
 							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-							JOptionPane.showMessageDialog(null,
-									"Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login", JOptionPane.INFORMATION_MESSAGE, icon);
+							JOptionPane.showMessageDialog(null, "Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login",
+									JOptionPane.INFORMATION_MESSAGE, icon);
 							succeeded = true;
 							Application.log.log(Level.INFO, user.getUsername() + " Login successful!");
 							dispose();
@@ -241,7 +242,7 @@ public class AccountCreateDialog extends JDialog {
 		btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
 		btnCancel.setFont(customFont);
-		btnCancel.setBackground(new Color(255,184,25));
+		btnCancel.setBackground(new Color(255, 184, 25));
 		btnCancel.setFont(customFont);
 		btnCancel.setBorderPainted(false);
 		btnCancel.setOpaque(true);
@@ -262,12 +263,12 @@ public class AccountCreateDialog extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(createAccount);
 		bp.add(btnCancel);
-		bp.setBackground(new Color(28,60,52));
+		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(bp, BorderLayout.PAGE_END);
 
-		panel.setBackground(new Color(255,184,25));
+		panel.setBackground(new Color(255, 184, 25));
 
 		pack();
 		setResizable(false);
@@ -281,11 +282,11 @@ public class AccountCreateDialog extends JDialog {
 	public boolean isSucceeded() {
 		return succeeded;
 	}
-	
+
 	public void setUser(User user) {
 		this.u = user;
 	}
-	
+
 	public User getUser() {
 		return u;
 	}

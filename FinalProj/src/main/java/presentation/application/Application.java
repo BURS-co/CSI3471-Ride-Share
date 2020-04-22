@@ -1,6 +1,5 @@
 package presentation.application;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -134,18 +133,18 @@ public class Application {
 		// Setting up GridBagLayout
 		mainFrame.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
-		
-		try {
-	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
-	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        //register the font
-	        ge.registerFont(customFont);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch(FontFormatException e) {
-	        e.printStackTrace();
-	    }
 
+		try {
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+					.deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(customFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
 		JPanel selection = new JPanel();
 		Dimension d = selection.getPreferredSize();
@@ -159,7 +158,7 @@ public class Application {
 		// weight
 		gc.weightx = 1;
 		gc.weighty = 1;
-		
+
 		// query for rider posts
 		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");
 
@@ -169,7 +168,7 @@ public class Application {
 		// create table of posts
 		JTable riderTable = createRiderTable.createTable(rlist);
 		JTable driverTable = createDriverTable.createTable(dlist);
-		
+
 		// make it so columns may not be dragged around for
 		// driver or rider posts
 		riderTable.getTableHeader().setReorderingAllowed(false);
@@ -211,6 +210,12 @@ public class Application {
 		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);
 		driverTable.getColumn(driverPostLabels[3]).setPreferredWidth(50);
 		driverTable.getColumn(driverPostLabels[4]).setPreferredWidth(100);
+		TableColumnModel columnModel1 = driverTable.getColumnModel();
+		columnModel1.getColumn(0).setPreferredWidth(30);
+		columnModel1.getColumn(1).setPreferredWidth(100);
+		columnModel1.getColumn(2).setPreferredWidth(35);
+		columnModel1.getColumn(3).setPreferredWidth(50);
+		columnModel1.getColumn(4).setPreferredWidth(100);
 
 		/******* First Row **********/
 		gc.gridx = 0;
@@ -220,7 +225,8 @@ public class Application {
 		gc.fill = GridBagConstraints.BOTH;
 
 		/***** First Row of Panel ****/
-		JButton ridesBtn = new JButton("Rider Posts");
+
+		JButton ridesBtn = new JButton();
 		selection.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
 		pc.weightx = 1;
@@ -230,21 +236,20 @@ public class Application {
 		pc.gridy = 0;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.CENTER;
-		
-		//rides button image label
-		//TODO
-		
-		try {
-			//TODO create file
-		    Image img = ImageIO.read(new File("src/main/resources/Rides-test.png"));
-		    ridesBtn.setIcon(new ImageIcon(img));
-		  } catch (Exception ex) {
-		    System.out.println(ex.getStackTrace());
-		  }
 
-		
+		// rides button image label
+		// TODO
+
+		try {
+			// TODO create file
+			Image img = ImageIO.read(new File("src/main/resources/Rides-test.png"));
+			ridesBtn.setIcon(new ImageIcon(img));
+		} catch (Exception ex) {
+			System.out.println(ex.getStackTrace());
+		}
+
 		// add button
-		selection.add(ridesBtn,pc);
+		selection.add(ridesBtn, pc);
 
 		/**** Second Row of Panel ****/
 		JButton drivesBtn = new JButton("Driver Posts");
@@ -252,19 +257,15 @@ public class Application {
 		pc.gridy = 1;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.CENTER;
-		//TODO
+		// TODO
 		/*
-		try {
-			//TODO create file
-				  Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
-				  drivesBtn.setIcon(new ImageIcon(img));
-				} catch (Exception ex) {
-				  System.out.println(ex.getStackTrace());
-			}
-		*/
-		selection.add(drivesBtn,pc);
-		
-		
+		 * try { //TODO create file Image img = ImageIO.read(new
+		 * File("src/main/resources/poolfloat copy.png")); drivesBtn.setIcon(new
+		 * ImageIcon(img)); } catch (Exception ex) {
+		 * System.out.println(ex.getStackTrace()); }
+		 */
+		selection.add(drivesBtn, pc);
+
 		/**** Third Row of Panel ****/
 		JButton profileBtn = new JButton("View Profile");
 		profileBtn.setOpaque(true);
@@ -285,20 +286,25 @@ public class Application {
 				vp.setVisible(true);
 			}
 		});
-		//TODO
-				/*
-				try {
-					//TODO create file
-						  Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
-						  profileBtn.setIcon(new ImageIcon(img));
-						} catch (Exception ex) {
-						  System.out.println(ex.getStackTrace());
-					}
-				*/
-		selection.add(profileBtn,pc);
-		
+		// TODO
+		/*
+		 * try { //TODO create file Image img = ImageIO.read(new
+		 * File("src/main/resources/poolfloat copy.png")); profileBtn.setIcon(new
+		 * ImageIcon(img)); } catch (Exception ex) {
+		 * System.out.println(ex.getStackTrace()); }
+		 */
+		selection.add(profileBtn, pc);
+
 		/**** Fourth Row of Panel ****/
-		JButton createBtn = new JButton("Create Post");
+		ImageIcon crtIcn = new ImageIcon("src/main/resources/pencil.png");
+		Image image = crtIcn.getImage(); // transform it
+		Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+		crtIcn = new ImageIcon(newimg); // transform it back
+		JButton createBtn = new JButton(crtIcn);
+		createBtn.setOpaque(false);
+		createBtn.setContentAreaFilled(false);
+		createBtn.setBorderPainted(false);
+		createBtn.setFocusPainted(false);
 		pc.gridx = 0;
 		pc.gridy = 3;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -340,48 +346,38 @@ public class Application {
 						rTable.fireTableDataChanged();
 					}
 				}
+
 			}
 		});
-		//TODO
-				/*
-				try {
-					//TODO create file
-						  Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
-						  createBtn.setIcon(new ImageIcon(img));
-						} catch (Exception ex) {
-						  System.out.println(ex.getStackTrace());
-					}
-				*/
-		selection.add(createBtn,pc);
-		
+		// TODO
+		/*
+		 * try { //TODO create file Image img = ImageIO.read(new
+		 * File("src/main/resources/poolfloat copy.png")); createBtn.setIcon(new
+		 * ImageIcon(img)); } catch (Exception ex) {
+		 * System.out.println(ex.getStackTrace()); }
+		 */
+		selection.add(createBtn, pc);
+
 		/**** Fifth Row of Panel (ADMIN) ****/
-		if(loggedIn instanceof Admin) {
+		if (loggedIn instanceof Admin) {
 			JButton reportsBtn = new JButton("Reports");
 			pc.gridx = 0;
 			pc.gridy = 4;
 			pc.anchor = GridBagConstraints.FIRST_LINE_START;
 			pc.fill = GridBagConstraints.CENTER;
-			//TODO
+			// TODO
 			/*
-			try {
-				//TODO create file
-					  Image img = ImageIO.read(new File("src/main/resources/poolfloat copy.png"));
-					  drivesBtn.setIcon(new ImageIcon(img));
-					} catch (Exception ex) {
-					  System.out.println(ex.getStackTrace());
-				}
-			*/
-			selection.add(reportsBtn,pc);
+			 * try { //TODO create file Image img = ImageIO.read(new
+			 * File("src/main/resources/poolfloat copy.png")); drivesBtn.setIcon(new
+			 * ImageIcon(img)); } catch (Exception ex) {
+			 * System.out.println(ex.getStackTrace()); }
+			 */
+			selection.add(reportsBtn, pc);
 		}
 
-		
-		
 		// Adding Panel to frame
 		mainFrame.add(selection, gc);
 
-		
-
-		
 		// somehow need to add a view profile at the bottom
 
 		mainFrame.pack();

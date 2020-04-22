@@ -4,18 +4,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class DriverPost extends Post {
-	
+
 	private Integer riderLimit; // max riders if driver post
-	private ArrayList<String> riders = new ArrayList<String>();//if driver/rider post
+	private ArrayList<String> riders = new ArrayList<String>();// if driver/rider post
 	private String driver;
-	
+
 	public DriverPost() {
 		super("driver");
 		riders = null;
 		riderLimit = 1;
 		driver = null;
 	}
-	
+
 	/**
 	 * @return the riders
 	 */
@@ -29,7 +29,6 @@ public class DriverPost extends Post {
 	public void setRiders(ArrayList<String> riders) {
 		this.riders = riders;
 	}
-	
 
 	/**
 	 * @param add user u to ride
@@ -41,7 +40,7 @@ public class DriverPost extends Post {
 		} else if (riders.size() < getRiderLimit()) {
 			riders.add(u);
 		}
-		
+
 	}
 
 	/**
@@ -61,13 +60,13 @@ public class DriverPost extends Post {
 	@Override
 	public String toString() {
 		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
-		String str = df.format(getDate()); 
+		String str = df.format(getDate());
 		String s = getType() + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
 		s += "-" + driver + "-" + riderLimit + "-" + riders;
 		if (riders != null) {
-		  for (String p : riders) {
-			  s = "-" + p;
-		  }
+			for (String p : riders) {
+				s = "-" + p;
+			}
 		}
 		s += "\n";
 		return s;
@@ -87,4 +86,3 @@ public class DriverPost extends Post {
 		this.driver = driver;
 	}
 }
-

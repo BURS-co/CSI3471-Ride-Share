@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import data.user.User;
 import presentation.application.Application;
 import presentation.application.CreatePost;
+import presentation.application.EditProfile;
 
 public class ValidatePostInfoEntered extends CreatePost {
 static boolean succeeded = false;

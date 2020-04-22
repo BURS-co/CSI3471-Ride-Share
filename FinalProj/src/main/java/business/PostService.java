@@ -5,7 +5,7 @@ public class PostService {
 	public boolean Validate(String[] input) {
 
 		boolean driver = false;
-		
+
 		if (input.length == 0) {
 			return false;
 		}
@@ -16,15 +16,14 @@ public class PostService {
 			}
 		}
 
-		//assumes that 8 is the length of the rider post input
+		// assumes that 8 is the length of the rider post input
 		if (input.length > 8) {
 			driver = true;
-			
+
 			if (Integer.valueOf(input[9]) < 1 || Integer.valueOf(input[9]) > 99) {
 				return false;
 			}
-			
-			
+
 		} else {
 
 		}

@@ -1,6 +1,3 @@
-/projectLog.txt
-/projectLog.lck
-
 # Eclipse Core      
 .project
 /target/
@@ -11,3 +8,6 @@
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
 /bin/
+
+/projectLog.*
+projectLog.*

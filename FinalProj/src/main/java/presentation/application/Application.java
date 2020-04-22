@@ -1,5 +1,6 @@
 package presentation.application;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -16,7 +17,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Vector;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,10 +31,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
 
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
@@ -176,6 +174,7 @@ public class Application {
 
 		gc.gridx = 1;
 		gc.gridy = 0;
+		gc.fill = GridBagConstraints.BOTH;
 		mainFrame.add(new JScrollPane(riderTable), gc);
 		gc.gridx = 2;
 		gc.gridy = 0;
@@ -191,13 +190,13 @@ public class Application {
 		// TODO sorting of rows
 
 		// TODO make table fit to screen
-	//	DefaultTableModel rTable = new DefaultTableModel();
-	//	riderTable.setModel(rTable);
+		// DefaultTableModel rTable = new DefaultTableModel();
+		// riderTable.setModel(rTable);
 
-	//	DefaultTableModel columnModel =  (DefaultTableModel) riderTable.getModel();
+		// DefaultTableModel columnModel = (DefaultTableModel) riderTable.getModel();
 		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
 		DefaultTableModel rTable = (DefaultTableModel) riderTable.getModel();
-		
+
 		riderTable.getColumn(riderPostLabels[0]).setPreferredWidth(100);
 		riderTable.getColumn(riderPostLabels[1]).setPreferredWidth(35);
 		riderTable.getColumn(riderPostLabels[2]).setPreferredWidth(50);
@@ -320,32 +319,32 @@ public class Application {
 			public void actionPerformed(ActionEvent e) {
 				SelectPostType cp = new SelectPostType(mainFrame, loggedIn);
 				cp.setVisible(true);
-				if(CreatePost.isSucceeded()) {
-					if(CreatePost.p.getType() == "driver") {
+				if (CreatePost.isSucceeded()) {
+					if (CreatePost.p.getType() == "driver") {
 						String driver = ((DriverPost) CreatePost.p).getDriver();
-					    Integer riderLimit = ((DriverPost) CreatePost.p).getRiderLimit();
-					    String origin = CreatePost.p.getOrigin();
-					    String dest = CreatePost.p.getDest();
-					    SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+						Integer riderLimit = ((DriverPost) CreatePost.p).getRiderLimit();
+						String origin = CreatePost.p.getOrigin();
+						String dest = CreatePost.p.getDest();
+						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
 						String date = df.format(CreatePost.p.getDate());
-	
-					    Object[] row = { riderLimit, driver, origin, dest, date };
-	
-					    dTable.addRow(row);
+
+						Object[] row = { riderLimit, driver, origin, dest, date };
+
+						dTable.addRow(row);
 						dTable.fireTableDataChanged();
 					} else {
 						String poster = CreatePost.p.getPoster();
-					    String origin = CreatePost.p.getOrigin();
-					    String dest = CreatePost.p.getDest();
-					    SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+						String origin = CreatePost.p.getOrigin();
+						String dest = CreatePost.p.getDest();
+						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
 						String date = df.format(CreatePost.p.getDate());
-	
-					    Object[] row = { poster, origin, dest, date };
-	
-					    rTable.addRow(row);
+
+						Object[] row = { poster, origin, dest, date };
+
+						rTable.addRow(row);
 						rTable.fireTableDataChanged();
 					}
-				} 
+				}
 
 			}
 		});
@@ -374,11 +373,11 @@ public class Application {
 			 */
 			selection.add(reportsBtn, pc);
 		}
+		
+		selection.setBackground(new Color(28, 60, 52));
 
 		// Adding Panel to frame
 		mainFrame.add(selection, gc);
-
-		// somehow need to add a view profile at the bottom
 
 		mainFrame.pack();
 		mainFrame.setVisible(true);

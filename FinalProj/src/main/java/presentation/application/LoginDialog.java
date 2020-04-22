@@ -94,6 +94,9 @@ public class LoginDialog extends JDialog {
 
 		btnLogin = new JButton("Login");// button
 
+		
+		Boolean window = false;
+
 		pfPassword.addKeyListener(new KeyListener() {
 
 			public void keyPressed(KeyEvent e) {
@@ -115,15 +118,40 @@ public class LoginDialog extends JDialog {
 						Application.log.log(Level.INFO, getUsername() + " Login successful!");
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
-								JOptionPane.ERROR_MESSAGE);
+						final JOptionPane window = new JOptionPane();
+						//window.showMessageDialog(parentComponent, message, title, messageType);
+						window.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login", JOptionPane.ERROR_MESSAGE);
+						//JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
+								//JOptionPane.ERROR_MESSAGE);
+						window.addKeyListener(new KeyListener() {
 
+							public void keyTyped(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							public void keyPressed(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							public void keyReleased(KeyEvent e) {
+								// TODO Auto-generated method stub
+								if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+									dispose();
+								}
+							}
+							
+						});
 						Application.log.log(Level.INFO, getUsername() + " Login failed!");
 
 						// reset username and password
-						tfUsername.setText("");
+						//tfUsername.setText("");
 						pfPassword.setText("");
 						succeeded = false;
+						
+						//window.pack();
+						window.setVisible(true);
 
 					}
 				}
@@ -152,15 +180,40 @@ public class LoginDialog extends JDialog {
 						Application.log.log(Level.INFO, getUsername() + " Login successful!");
 						dispose();
 					} else {
-						JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
-								JOptionPane.ERROR_MESSAGE);
+						final JOptionPane window = new JOptionPane();
+						//window.showMessageDialog(parentComponent, message, title, messageType);
+						window.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login", JOptionPane.ERROR_MESSAGE);
+						//JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
+								//JOptionPane.ERROR_MESSAGE);
+						window.addKeyListener(new KeyListener() {
 
+							public void keyTyped(KeyEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							public void keyPressed(KeyEvent e) {
+								// TODO Auto-generated method stub
+								// TODO Auto-generated method stub
+								if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+									dispose();
+								}
+							}
+
+							public void keyReleased(KeyEvent e) {
+								
+							}
+							
+						});
 						Application.log.log(Level.INFO, getUsername() + " Login failed!");
 
 						// reset username and password
-						tfUsername.setText("");
+						//tfUsername.setText("");
 						pfPassword.setText("");
 						succeeded = false;
+						
+						//window.pack();
+						window.setVisible(true);
 
 					}
 				}

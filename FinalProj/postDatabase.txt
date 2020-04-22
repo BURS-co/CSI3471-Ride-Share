@@ -20,3 +20,5 @@ driver-Leighton Glim-Baylor-AUS-06 May 2020 04:20 PM-Leighton Glim-3-null
 driver-Leighton Glim-AUS-Baylor-29 Apr 2020 05:15 PM-Leighton Glim-3-null
 driver-Leighton Glim-AUS-Baylor-27 Apr 2020 03:15 PM-Leighton Glim-5-null
 rider-Joseph Perez-Baylor-DAL-22 Apr 2020 09:10 PM
+rider-Joseph Perez-Baylor-Baylor-01 Jan 2020 01:00 AM
+driver-Joseph Perez-ACT-ACT-01 Mar 2020 01:00 PM-Joseph Perez-6-null

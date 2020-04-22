@@ -60,7 +60,7 @@ public class DriverPost extends Post {
 
 	@Override
 	public String toString() {
-		SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 		String str = df.format(getDate()); 
 		String s = getType() + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
 		s += "-" + driver + "-" + riderLimit + "-" + riders;

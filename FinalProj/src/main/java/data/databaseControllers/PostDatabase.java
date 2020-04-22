@@ -63,7 +63,7 @@ public class PostDatabase {
 					} else if(i == 3) {
 						p.setDest(split[i]);
 					} else if(i == 4) {
-						Date d = new SimpleDateFormat("E, MMM dd yy hh:mm").parse(split[i]);
+						Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[i]);
 						p.setDate(d);
 					} else if (p.getType().equals("driver") && i == 5) {
 						((DriverPost) p).setDriver(split[i]);
@@ -91,7 +91,7 @@ public class PostDatabase {
 	}
 	
 	
-	public void write() throws IOException {
+	public static void write() throws IOException {
 		//Write to .txt file (postDatabase.txt)
 		BufferedWriter write = new BufferedWriter(new FileWriter(
                 "postDatabase.txt"));

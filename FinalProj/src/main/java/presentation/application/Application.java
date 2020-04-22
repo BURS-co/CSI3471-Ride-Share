@@ -153,6 +153,53 @@ public class Application {
 		// weight
 		gc.weightx = 1;
 		gc.weighty = 1;
+		
+		// query for rider posts
+		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");
+
+		// query for driver posts
+		ArrayList<Post> dlist = postDatabase.searchDatabase("driver");
+
+		// create table of posts
+		JTable riderTable = createRiderTable.createTable(rlist);
+		JTable driverTable = createDriverTable.createTable(dlist);
+		
+		// make it so columns may not be dragged around for
+		// driver or rider posts
+		riderTable.getTableHeader().setReorderingAllowed(false);
+		driverTable.getTableHeader().setReorderingAllowed(false);
+
+		gc.gridx = 1;
+		gc.gridy = 0;
+		mainFrame.add(new JScrollPane(riderTable), gc);
+		gc.gridx = 2;
+		gc.gridy = 0;
+		mainFrame.add(new JScrollPane(driverTable), gc);
+
+		riderTable.setFillsViewportHeight(true);
+		driverTable.setFillsViewportHeight(true);
+
+		// mainFrame.setContentPane(table);
+		riderTable.setOpaque(true);
+		driverTable.setOpaque(true);
+
+		// TODO sorting of rows
+
+		// TODO make table fit to screen
+
+		TableColumnModel columnModel = riderTable.getColumnModel();
+		columnModel.getColumn(0).setPreferredWidth(100);
+		columnModel.getColumn(1).setPreferredWidth(35);
+		columnModel.getColumn(2).setPreferredWidth(50);
+		columnModel.getColumn(3).setPreferredWidth(100);
+
+		TableColumnModel columnModel1 = driverTable.getColumnModel();
+		columnModel1.getColumn(0).setPreferredWidth(30);
+		columnModel1.getColumn(1).setPreferredWidth(100);
+		columnModel1.getColumn(2).setPreferredWidth(35);
+		columnModel1.getColumn(3).setPreferredWidth(50);
+		columnModel1.getColumn(4).setPreferredWidth(100);
+
 
 		/******* First Row **********/
 		gc.gridx = 0;
@@ -183,7 +230,8 @@ public class Application {
 		  } catch (Exception ex) {
 		    System.out.println(ex.getStackTrace());
 		  }
-		  
+
+		
 		// add button
 		selection.add(ridesBtn,pc);
 
@@ -244,6 +292,28 @@ public class Application {
 		pc.gridy = 3;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
 		pc.fill = GridBagConstraints.CENTER;
+		createBtn.addActionListener(new ActionListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			public void actionPerformed(ActionEvent e) {
+				SelectPostType cp = new SelectPostType(mainFrame, loggedIn);
+				cp.setVisible(true);
+				columnModel.fireTableDataChanged();
+				columnModel1.fireTableDataChanged();
+			//	rlist = postDatabase.searchDatabase("rider");
+			//	dlist = postDatabase.searchDatabase("driver");
+				//if (acDialog.isSucceeded()) {
+				//	succeeded = true;
+				//	setUser(acDialog.getUser());
+				//	parent.dispose();
+			//	}
+			}
+		});
 		//TODO
 				/*
 				try {
@@ -281,52 +351,9 @@ public class Application {
 		// Adding Panel to frame
 		mainFrame.add(selection, gc);
 
-		// query for rider posts
-		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");
+		
 
-		// query for driver posts
-		ArrayList<Post> dlist = postDatabase.searchDatabase("driver");
-
-		// create table of posts
-		JTable riderTable = createRiderTable.createTable(rlist);
-		JTable driverTable = createDriverTable.createTable(dlist);
-
-		// make it so columns may not be dragged around for
-		// driver or rider posts
-		riderTable.getTableHeader().setReorderingAllowed(false);
-		driverTable.getTableHeader().setReorderingAllowed(false);
-
-		gc.gridx = 1;
-		gc.gridy = 0;
-		mainFrame.add(new JScrollPane(riderTable), gc);
-		gc.gridx = 2;
-		gc.gridy = 0;
-		mainFrame.add(new JScrollPane(driverTable), gc);
-
-		riderTable.setFillsViewportHeight(true);
-		driverTable.setFillsViewportHeight(true);
-
-		// mainFrame.setContentPane(table);
-		riderTable.setOpaque(true);
-		driverTable.setOpaque(true);
-
-		// TODO sorting of rows
-
-		// TODO make table fit to screen
-
-		TableColumnModel columnModel = riderTable.getColumnModel();
-		columnModel.getColumn(0).setPreferredWidth(100);
-		columnModel.getColumn(1).setPreferredWidth(35);
-		columnModel.getColumn(2).setPreferredWidth(50);
-		columnModel.getColumn(3).setPreferredWidth(100);
-
-		TableColumnModel columnModel1 = driverTable.getColumnModel();
-		columnModel1.getColumn(0).setPreferredWidth(30);
-		columnModel1.getColumn(1).setPreferredWidth(100);
-		columnModel1.getColumn(2).setPreferredWidth(35);
-		columnModel1.getColumn(3).setPreferredWidth(50);
-		columnModel1.getColumn(4).setPreferredWidth(100);
-
+		
 		// somehow need to add a view profile at the bottom
 
 		mainFrame.pack();

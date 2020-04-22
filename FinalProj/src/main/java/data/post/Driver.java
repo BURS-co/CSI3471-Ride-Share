@@ -38,7 +38,7 @@ public class Driver extends AbstractPost{
 
 	@Override
 	public String toString() {
-		SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 		String str = df.format(getDate()); 
 		String s = "Driver" + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
 		s += "-" + getPoster() + "-" + riderLimit + "-" + riders;

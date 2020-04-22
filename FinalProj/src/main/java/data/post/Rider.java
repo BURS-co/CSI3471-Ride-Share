@@ -9,7 +9,7 @@ public class Rider extends AbstractPost{
 
 	@Override
 	public String toString() {
-		SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 		String str = df.format(date); 
 		return "Rider" + "-" + poster + "-" + origin + "-" + dest + "-" + str + "\n";
 	}

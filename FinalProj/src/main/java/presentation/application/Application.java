@@ -345,7 +345,7 @@ public class Application {
 					    rTable.addRow(row);
 						rTable.fireTableDataChanged();
 					}
-				}
+				} 
 
 			}
 		});

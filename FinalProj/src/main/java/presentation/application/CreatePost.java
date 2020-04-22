@@ -31,7 +31,6 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import business.ValidatePostInfoEntered;
 import business.validateAccountInfo;
 import data.databaseControllers.PostDatabase;
 import data.post.DriverPost;
@@ -51,7 +50,6 @@ public class CreatePost extends JDialog {
 	String min = new String();
 	String tOd = new String();
 	Integer seatsAvail;
-	ValidatePostInfoEntered vPI;
 	private static boolean succeeded = false;
 	private JButton btnCancel;
 	Font customFont = null;

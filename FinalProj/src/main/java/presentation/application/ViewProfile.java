@@ -45,13 +45,12 @@ public class ViewProfile extends JDialog {
 
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
-	
+
 	public ViewProfile(JFrame parent, User u) {
 		super(parent, "View Profile", true);
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
-		
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
 		JLabel phoneLabel = new JLabel("Phone: ");
@@ -59,17 +58,18 @@ public class ViewProfile extends JDialog {
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
 		JLabel passwordLabel = new JLabel("Password: ");
 		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
-		
-	    try {
-	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
-	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        //register the font
-	        ge.registerFont(customFont);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch(FontFormatException e) {
-	        e.printStackTrace();
-	    }
+
+		try {
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+					.deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(customFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
 		cs.fill = GridBagConstraints.HORIZONTAL;
 
@@ -153,10 +153,10 @@ public class ViewProfile extends JDialog {
 		JLabel password = new JLabel(pass);
 		password.setFont(customFont);
 		panel.add(password, cs);
-		
+
 		JButton editProfile = new JButton("Edit Profile");
 		editProfile.setFont(customFont);
-		editProfile.setBackground(new Color(255,184,25));
+		editProfile.setBackground(new Color(255, 184, 25));
 		editProfile.setFont(customFont);
 		editProfile.setBorderPainted(false);
 		editProfile.setOpaque(true);
@@ -180,14 +180,14 @@ public class ViewProfile extends JDialog {
 					gradYear.setText(EditProfile.getUser().getGradYear());
 					String pass = String.join("", Collections.nCopies(EditProfile.getUser().getPassword().length(), "*"));
 					password.setText(pass);
-					
+
 				}
 			}
 		});
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
 		btnCancel.setFont(customFont);
-		btnCancel.setBackground(new Color(255,184,25));
+		btnCancel.setBackground(new Color(255, 184, 25));
 		btnCancel.setFont(customFont);
 		btnCancel.setBorderPainted(false);
 		btnCancel.setOpaque(true);
@@ -208,12 +208,12 @@ public class ViewProfile extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(editProfile);
 		bp.add(btnCancel);
-		bp.setBackground(new Color(28,60,52));
+		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(bp, BorderLayout.PAGE_END);
 
-		panel.setBackground(new Color(255,184,25));
+		panel.setBackground(new Color(255, 184, 25));
 
 		pack();
 		setResizable(false);

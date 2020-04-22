@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import data.post.Post;
 
@@ -46,7 +47,7 @@ public class createRiderTable {
 			}
 		}
 
-		JTable riderTable = new JTable(riderData, riderPostLabels) {
+		JTable riderTable = new JTable(new DefaultTableModel(riderData, riderPostLabels)) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;

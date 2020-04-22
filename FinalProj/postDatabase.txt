@@ -5,3 +5,17 @@ driver-Andrew Ammentorp-Baylor-Hobby-30 Mar 2020 11:00 AM-Mr.Baylor-1-null
 rider-Leighton Glim-Baylor-DAL-28 Apr 2020 06:15 PM
 driver-Leighton Glim-DAL-Baylor-29 Apr 2020 04:20 PM-null-3-null
 driver-Leighton Glim-Baylor-AUS-22 Apr 2020 04:20 PM-Leighton Glim-2-null
+rider-Leighton Glim-Baylor-DAL-03 Jun 2020 03:10 PM
+rider-Leighton Glim-Baylor-AUS-29 Apr 2020 05:10 PM
+rider-Leighton Glim-DAL-Baylor-05 May 2020 03:15 PM
+rider-Leighton Glim-Baylor-AUS-04 May 2020 06:15 PM
+rider-Leighton Glim-Baylor-DFW-06 May 2020 04:10 PM
+rider-Leighton Glim-AUS-Baylor-04 May 2020 07:10 PM
+rider-Leighton Glim-Baylor-ACT-03 Jul 2020 06:10 PM
+rider-Leighton Glim-Baylor-AUS-05 May 2020 04:25 PM
+rider-Leighton Glim-DAL-Baylor-05 May 2020 05:15 PM
+rider-Leighton Glim-Baylor-ACT-04 May 2020 04:15 PM
+driver-Leighton Glim-AUS-Baylor-05 May 2020 04:10 PM-Leighton Glim-4-null
+driver-Leighton Glim-Baylor-AUS-06 May 2020 04:20 PM-Leighton Glim-3-null
+driver-Leighton Glim-AUS-Baylor-29 Apr 2020 05:15 PM-Leighton Glim-3-null
+driver-Leighton Glim-AUS-Baylor-27 Apr 2020 03:15 PM-Leighton Glim-5-null

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import data.post.DriverPost;
 import data.post.Post;
@@ -48,7 +49,7 @@ public class createDriverTable {
 			}
 		}
 
-		JTable driverTable = new JTable(driverData, driverPostLabels) {
+		JTable driverTable = new JTable(new DefaultTableModel(driverData, driverPostLabels)) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;

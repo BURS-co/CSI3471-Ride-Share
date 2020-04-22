@@ -15,7 +15,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,10 +32,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
+import data.post.DriverPost;
 import data.post.Post;
 import data.user.Admin;
 import data.user.User;
@@ -186,20 +192,25 @@ public class Application {
 		// TODO sorting of rows
 
 		// TODO make table fit to screen
+	//	DefaultTableModel rTable = new DefaultTableModel();
+	//	riderTable.setModel(rTable);
 
-		TableColumnModel columnModel = riderTable.getColumnModel();
-		columnModel.getColumn(0).setPreferredWidth(100);
-		columnModel.getColumn(1).setPreferredWidth(35);
-		columnModel.getColumn(2).setPreferredWidth(50);
-		columnModel.getColumn(3).setPreferredWidth(100);
+	//	DefaultTableModel columnModel =  (DefaultTableModel) riderTable.getModel();
+		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
+		DefaultTableModel rTable = (DefaultTableModel) riderTable.getModel();
+		
+		riderTable.getColumn(riderPostLabels[0]).setPreferredWidth(100);
+		riderTable.getColumn(riderPostLabels[1]).setPreferredWidth(35);
+		riderTable.getColumn(riderPostLabels[2]).setPreferredWidth(50);
+		riderTable.getColumn(riderPostLabels[3]).setPreferredWidth(100);
 
-		TableColumnModel columnModel1 = driverTable.getColumnModel();
-		columnModel1.getColumn(0).setPreferredWidth(30);
-		columnModel1.getColumn(1).setPreferredWidth(100);
-		columnModel1.getColumn(2).setPreferredWidth(35);
-		columnModel1.getColumn(3).setPreferredWidth(50);
-		columnModel1.getColumn(4).setPreferredWidth(100);
-
+		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
+		DefaultTableModel dTable = (DefaultTableModel) driverTable.getModel();
+		driverTable.getColumn(driverPostLabels[0]).setPreferredWidth(30);
+		driverTable.getColumn(driverPostLabels[1]).setPreferredWidth(100);
+		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);
+		driverTable.getColumn(driverPostLabels[3]).setPreferredWidth(50);
+		driverTable.getColumn(driverPostLabels[4]).setPreferredWidth(100);
 
 		/******* First Row **********/
 		gc.gridx = 0;
@@ -303,15 +314,32 @@ public class Application {
 			public void actionPerformed(ActionEvent e) {
 				SelectPostType cp = new SelectPostType(mainFrame, loggedIn);
 				cp.setVisible(true);
-				columnModel.fireTableDataChanged();
-				columnModel1.fireTableDataChanged();
-			//	rlist = postDatabase.searchDatabase("rider");
-			//	dlist = postDatabase.searchDatabase("driver");
-				//if (acDialog.isSucceeded()) {
-				//	succeeded = true;
-				//	setUser(acDialog.getUser());
-				//	parent.dispose();
-			//	}
+				if(CreatePost.isSucceeded()) {
+					if(CreatePost.p.getType() == "driver") {
+						String driver = ((DriverPost) CreatePost.p).getDriver();
+					    Integer riderLimit = ((DriverPost) CreatePost.p).getRiderLimit();
+					    String origin = CreatePost.p.getOrigin();
+					    String dest = CreatePost.p.getDest();
+					    SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+						String date = df.format(CreatePost.p.getDate());
+	
+					    Object[] row = { riderLimit, driver, origin, dest, date };
+	
+					    dTable.addRow(row);
+						dTable.fireTableDataChanged();
+					} else {
+						String poster = CreatePost.p.getPoster();
+					    String origin = CreatePost.p.getOrigin();
+					    String dest = CreatePost.p.getDest();
+					    SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+						String date = df.format(CreatePost.p.getDate());
+	
+					    Object[] row = { poster, origin, dest, date };
+	
+					    rTable.addRow(row);
+						rTable.fireTableDataChanged();
+					}
+				}
 			}
 		});
 		//TODO

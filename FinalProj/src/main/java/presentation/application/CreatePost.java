@@ -52,10 +52,11 @@ public class CreatePost extends JDialog {
 	String tOd = new String();
 	Integer seatsAvail;
 	ValidatePostInfoEntered vPI;
-	private boolean succeeded = false;
+	private static boolean succeeded = false;
 	private JButton btnCancel;
 	Font customFont = null;
 	static User u = new User();
+	static Post p = null;
 
 	String[] origin = { "ACT","AUS", "Baylor" , "DAL", "DFW", "HOU", "IAH", "SAT", "ELP" };
 	String[] dest = { "ACT","AUS", "Baylor" , "DAL", "DFW", "HOU", "IAH", "SAT", "ELP" };
@@ -285,7 +286,6 @@ public class CreatePost extends JDialog {
 							&& d.length() > 0 && y.length() > 0 && h.length() > 0
 							&& min.length() > 0 && tOd.length() > 0) {
 	
-							Post p = null;
 							if(SelectPostType.postTypeSelected == "Driver") {
 								p = new DriverPost();
 								p.setType("driver");
@@ -370,7 +370,7 @@ public class CreatePost extends JDialog {
 	 * @param
 	 * @return succeeded
 	 */
-	public boolean isSucceeded() {
+	public static boolean isSucceeded() {
 		return succeeded;
 	}
 	

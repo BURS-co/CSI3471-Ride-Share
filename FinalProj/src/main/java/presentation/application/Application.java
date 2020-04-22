@@ -226,7 +226,16 @@ public class Application {
 
 		/***** First Row of Panel ****/
 
-		JButton ridesBtn = new JButton();
+		ImageIcon rIcn = new ImageIcon("src/main/resources/car.png");
+		Image rimage = rIcn.getImage(); // transform it
+		Image rnewimg = rimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+		rIcn = new ImageIcon(rnewimg); // transform it back
+		JButton ridesBtn = new JButton(rIcn);
+		ridesBtn.setOpaque(false);
+		ridesBtn.setContentAreaFilled(false);
+		ridesBtn.setBorderPainted(false);
+		ridesBtn.setFocusPainted(false);
+		//JButton ridesBtn = new JButton();
 		selection.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
 		pc.weightx = 1;
@@ -240,7 +249,7 @@ public class Application {
 		// rides button image label
 		// TODO
 
-		try {
+		/*try {
 			// TODO create file
 			Image img = ImageIO.read(new File("src/main/resources/Rides-test.png"));
 			ridesBtn.setIcon(new ImageIcon(img));
@@ -249,10 +258,20 @@ public class Application {
 		}
 
 		// add button
+		 * */
 		selection.add(ridesBtn, pc);
 
 		/**** Second Row of Panel ****/
-		JButton drivesBtn = new JButton("Driver Posts");
+		ImageIcon drIcn = new ImageIcon("src/main/resources/steering-wheel.png");
+		Image drimage = drIcn.getImage(); // transform it
+		Image drnewimg = drimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+		drIcn = new ImageIcon(drnewimg); // transform it back
+		JButton drivesBtn = new JButton(drIcn);
+		drivesBtn.setOpaque(false);
+		drivesBtn.setContentAreaFilled(false);
+		drivesBtn.setBorderPainted(false);
+		drivesBtn.setFocusPainted(false);
+		//JButton drivesBtn = new JButton("Driver Posts");
 		pc.gridx = 0;
 		pc.gridy = 1;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -267,8 +286,17 @@ public class Application {
 		selection.add(drivesBtn, pc);
 
 		/**** Third Row of Panel ****/
-		JButton profileBtn = new JButton("View Profile");
-		profileBtn.setOpaque(true);
+		ImageIcon pIcn = new ImageIcon("src/main/resources/profile.png");
+		Image pimage = pIcn.getImage(); // transform it
+		Image pnewimg = pimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+		pIcn = new ImageIcon(pnewimg); // transform it back
+		JButton profileBtn = new JButton(pIcn);
+		profileBtn.setOpaque(false);
+		profileBtn.setContentAreaFilled(false);
+		profileBtn.setBorderPainted(false);
+		profileBtn.setFocusPainted(false);
+		//JButton profileBtn = new JButton("View Profile");
+		//profileBtn.setOpaque(true);
 		pc.gridx = 0;
 		pc.gridy = 2;
 		pc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -360,7 +388,16 @@ public class Application {
 
 		/**** Fifth Row of Panel (ADMIN) ****/
 		if (loggedIn instanceof Admin) {
-			JButton reportsBtn = new JButton("Reports");
+			ImageIcon reportIcn = new ImageIcon("src/main/resources/report.png");
+			Image reportimage = reportIcn.getImage(); // transform it
+			Image reportnewimg = reportimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+			rIcn = new ImageIcon(reportnewimg); // transform it back
+			JButton reportBtn = new JButton(rIcn);
+			profileBtn.setOpaque(false);
+			profileBtn.setContentAreaFilled(false);
+			profileBtn.setBorderPainted(false);
+			profileBtn.setFocusPainted(false);
+			//JButton reportsBtn = new JButton("Reports");
 			pc.gridx = 0;
 			pc.gridy = 4;
 			pc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -372,7 +409,7 @@ public class Application {
 			 * ImageIcon(img)); } catch (Exception ex) {
 			 * System.out.println(ex.getStackTrace()); }
 			 */
-			selection.add(reportsBtn, pc);
+			selection.add(reportBtn, pc);
 		}
 
 		// Adding Panel to frame

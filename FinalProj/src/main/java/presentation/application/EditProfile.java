@@ -27,7 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import business.validateAccountInfo;
+import business.ValidateAccountInfo;
 import data.user.Admin;
 import data.user.User;
 
@@ -41,7 +41,7 @@ public class EditProfile extends JDialog {
 	String year = new String();
 	JPasswordField password;
 	JPasswordField confirmPassword;
-	validateAccountInfo vaI;
+	ValidateAccountInfo vaI;
 	private boolean succeeded = false;
 	private JButton btnCancel;
 	Font customFont = null;

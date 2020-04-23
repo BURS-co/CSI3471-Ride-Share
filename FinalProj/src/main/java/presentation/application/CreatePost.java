@@ -287,7 +287,6 @@ public class CreatePost extends JDialog {
 									((DriverPost) p).setDriver(Application.loggedIn.getUsername());
 								}
 							} catch (ParseException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						} else {
@@ -295,7 +294,6 @@ public class CreatePost extends JDialog {
 								if(vPI.validatePostInfo(o,destination, d, m, y, h, min, tOd, CreatePost.this))
 									p = new Post();
 							} catch (ParseException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 								p.setType("rider");
@@ -311,7 +309,6 @@ public class CreatePost extends JDialog {
 								d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(dayTime);
 								p.setDate(d);
 							} catch (ParseException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 	
@@ -320,7 +317,6 @@ public class CreatePost extends JDialog {
 							try {
 								PostDatabase.write();
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 	

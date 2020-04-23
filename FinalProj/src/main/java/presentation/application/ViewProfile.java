@@ -25,7 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import business.validateAccountInfo;
+import business.ValidateAccountInfo;
 import data.user.User;
 
 public class ViewProfile extends JDialog {
@@ -38,9 +38,8 @@ public class ViewProfile extends JDialog {
 	String year = new String();
 	JPasswordField password;
 	JPasswordField confirmPassword;
-	validateAccountInfo vaI;
+	ValidateAccountInfo vaI;
 	private boolean succeeded = false;
-	private JButton btnCancel;
 	Font customFont = null;
 
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
@@ -57,7 +56,6 @@ public class ViewProfile extends JDialog {
 		JLabel gradMonthLabel = new JLabel("Grad Month: ");
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
 		JLabel passwordLabel = new JLabel("Password: ");
-		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))

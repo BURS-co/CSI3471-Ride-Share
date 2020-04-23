@@ -11,14 +11,14 @@ import presentation.application.AccountCreateDialog;
 import presentation.application.Application;
 import presentation.application.EditProfile;
 
-public class validateAccountInfo extends AccountCreateDialog {
+public class ValidateAccountInfo extends AccountCreateDialog {
 	static boolean succeeded = false;
 
 	/**
 	 * @param parent
 	 * @return
 	 */
-	public validateAccountInfo(JFrame parent) {
+	public ValidateAccountInfo(JFrame parent) {
 		super(parent);
 		// TODO Auto-generated constructor stub
 	}

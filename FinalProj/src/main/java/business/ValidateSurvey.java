@@ -6,7 +6,7 @@ package business;
  * @author Joseph
  *
  */
-public class validateSurvey {
+public class ValidateSurvey {
 
 	String n;
 
@@ -15,7 +15,7 @@ public class validateSurvey {
 	 * 
 	 * @param n
 	 */
-	public validateSurvey(String n) {
+	public ValidateSurvey(String n) {
 		this.n = n;
 	}
 }

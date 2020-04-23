@@ -23,14 +23,14 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import business.validateAccountInfo;
+import business.ValidateAccountInfo;
 import data.databaseControllers.PostDatabase;
 import data.user.User;
 
 public class SelectPostType extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
-	validateAccountInfo vaI;
+	ValidateAccountInfo vaI;
 	private boolean succeeded = false;
 	private JButton btnCancel;
 	Font customFont = null;

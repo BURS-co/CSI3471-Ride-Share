@@ -26,7 +26,7 @@ import javax.swing.border.LineBorder;
 
 import data.user.User;
 
-public class openPage extends JDialog {
+public class OpenPage extends JDialog {
 
 	/**
 	* 
@@ -42,7 +42,7 @@ public class openPage extends JDialog {
 	 * @throws IOException
 	 * @throws FontFormatException
 	 */
-	public openPage(final JFrame parent) throws FontFormatException, IOException {
+	public OpenPage(final JFrame parent) throws FontFormatException, IOException {
 		super(parent, "Bear Pool", true);
 
 		// For the Dialog constraints

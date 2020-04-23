@@ -101,7 +101,7 @@ public class Application {
 		userDatabase.load();
 
 		// Display login/ signup window
-		openPage openDlg = new openPage(new JFrame());
+		OpenPage openDlg = new OpenPage(new JFrame());
 		openDlg.setVisible(true);
 
 		// if login is successful
@@ -162,8 +162,8 @@ public class Application {
 		ArrayList<Post> dlist = postDatabase.searchDatabase("driver");
 
 		// create table of posts
-		JTable riderTable = createRiderTable.createTable(rlist);
-		JTable driverTable = createDriverTable.createTable(dlist);
+		JTable riderTable = CreateRiderTable.createTable(rlist);
+		JTable driverTable = CreateDriverTable.createTable(dlist);
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts

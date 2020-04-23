@@ -19,7 +19,7 @@ import javax.swing.table.TableRowSorter;
 import data.post.DriverPost;
 import data.post.Post;
 
-public class createDriverTable {
+public class CreateDriverTable {
 	private static Font customFont = null;
 	
 	public static JTable createTable(ArrayList<Post> dlist) {

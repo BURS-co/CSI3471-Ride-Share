@@ -18,7 +18,7 @@ import javax.swing.table.TableRowSorter;
 
 import data.post.Post;
 
-public class createRiderTable {
+public class CreateRiderTable {
 	private static Font customFont = null;
 	
 	public static JTable createTable(ArrayList<Post> rlist) {

@@ -249,8 +249,12 @@ public class EditProfile extends JDialog {
 						      sc.close();
 						      String oldLine = u.toString();
 						      String newLine = user.toString();
+						    //  oldLine = oldLine.replaceAll("[^a-zA-Z0-9 ._@]", "");
+						      System.out.println(oldLine);
+						      System.out.println(newLine);
 						      //Replacing the old line with new line
-						      fileContents = fileContents.replaceAll(oldLine, newLine);
+						      fileContents = fileContents.replaceAll("[\\.[]{}()<>*+-=!?^$|]{" + oldLine + "/}", newLine);
+						      System.out.println(fileContents);
 						      FileWriter writer = null;
 							try {
 								writer = new FileWriter(filePath);

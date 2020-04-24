@@ -398,7 +398,7 @@ public class CreatePost extends JDialog {
 	 * @param succeeded
 	 * @return
 	 */
-	public static void setSucceeded(boolean succeeded) {
-		CreatePost.succeeded = succeeded;
+	public static void setSucceeded(boolean s) {
+		succeeded = s;
 	}
 }

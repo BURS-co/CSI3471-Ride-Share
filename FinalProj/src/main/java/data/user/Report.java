@@ -1,11 +1,17 @@
 package data.user;
 
+/**
+ * @author Andrew,
+ *	Class for a report
+ */
 public class Report {
 	private User reportee;
 	private User reporter;
 	private String reason;
 
 	/**
+	 * Gets the reportee
+	 * 
 	 * @return the reportee
 	 */
 	public User getReportee() {
@@ -13,6 +19,8 @@ public class Report {
 	}
 
 	/**
+	 * Sets the reportee
+	 * 
 	 * @param reportee the reportee to set
 	 */
 	public void setReportee(User reportee) {
@@ -20,6 +28,8 @@ public class Report {
 	}
 
 	/**
+	 * Gets the reporter
+	 * 
 	 * @return the reporter
 	 */
 	public User getReporter() {
@@ -27,6 +37,8 @@ public class Report {
 	}
 
 	/**
+	 * Sets the reporter
+	 * 
 	 * @param reporter the reporter to set
 	 */
 	public void setReporter(User reporter) {
@@ -34,6 +46,8 @@ public class Report {
 	}
 
 	/**
+	 * gets the reason of the report
+	 * 
 	 * @return the reason
 	 */
 	public String getReason() {
@@ -41,6 +55,8 @@ public class Report {
 	}
 
 	/**
+	 * Sets the reason of the report
+	 * 
 	 * @param reason the reason to set
 	 */
 	public void setReason(String reason) {

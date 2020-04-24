@@ -2,6 +2,10 @@ package data.user;
 
 /**
  * @author Andrew
+ *	Class responsible for the Users of the application
+ */
+/**
+ * @author Andrew
  *
  */
 public class User {
@@ -13,6 +17,9 @@ public class User {
 	protected String gradYear;
 	protected boolean isAdmin;
 
+	/**
+	 * Constructor for user
+	 */
 	public User() {
 		username = null;
 		password = null;
@@ -28,6 +35,8 @@ public class User {
 	}
 
 	/**
+	 * Gets the username 
+	 * 
 	 * @return the username
 	 */
 	public String getUsername() {
@@ -35,6 +44,8 @@ public class User {
 	}
 
 	/**
+	 * Sets the username
+	 * 
 	 * @param username the username to set
 	 */
 	public void setUsername(String username) {
@@ -42,6 +53,7 @@ public class User {
 	}
 
 	/**
+	 * Gets the password
 	 * @return the password
 	 */
 	public String getPassword() {
@@ -49,6 +61,7 @@ public class User {
 	}
 
 	/**
+	 * Sets the password
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
@@ -56,6 +69,7 @@ public class User {
 	}
 
 	/**
+	 * Gets the email
 	 * @return the email
 	 */
 	public String getEmail() {
@@ -63,6 +77,7 @@ public class User {
 	}
 
 	/**
+	 * Sets the email
 	 * @param email the email to set
 	 */
 	public void setEmail(String email) {
@@ -70,6 +85,7 @@ public class User {
 	}
 
 	/**
+	 * Gets the phone number
 	 * @return the phoneNumber
 	 */
 	public String getPhoneNumber() {
@@ -77,6 +93,8 @@ public class User {
 	}
 
 	/**
+	 * Sets the phone number
+	 * 
 	 * @param phoneNumber the phoneNumber to set
 	 */
 	public void setPhoneNumber(String phoneNumber) {
@@ -84,6 +102,8 @@ public class User {
 	}
 
 	/**
+	 * Gets user's graduation month
+	 * 
 	 * @return the gradMonth
 	 */
 	public String getGradMonth() {
@@ -91,6 +111,8 @@ public class User {
 	}
 
 	/**
+	 * Set user's graduation month
+	 * 
 	 * @param gradYear the gradYear to set
 	 */
 	public void setGradMonth(String gradMonth) {
@@ -98,13 +120,17 @@ public class User {
 	}
 
 	/**
-	 * @return the gradYear
+	 * Gets user's graduation year
+	 * 
+	 * @return gradYear the gradYear
 	 */
 	public String getGradYear() {
 		return gradYear;
 	}
 
 	/**
+	 * Sets user's graduation year
+	 * 
 	 * @param gradYear the gradYear to set
 	 */
 	public void setGradYear(String gradYear) {
@@ -112,6 +138,8 @@ public class User {
 	}
 
 	/**
+	 * If the user is an admin or not
+	 * 
 	 * @return if admin
 	 */
 	public boolean getIsAdmin() {
@@ -119,6 +147,8 @@ public class User {
 	}
 
 	/**
+	 * Sets if user is an admin
+	 * 
 	 * @param admin the isAdmin boolean to set
 	 */
 	public void setIsAdmin(String admin) {

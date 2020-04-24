@@ -109,6 +109,9 @@ public class Application {
 		UserDatabase uDat = UserDatabase.getInstance();
 		uDat.load();
 
+		// This should only be in experimental
+		
+		
 		// Display login/ signup window
 		OpenPage openDlg = new OpenPage(new JFrame());
 		openDlg.setVisible(true);

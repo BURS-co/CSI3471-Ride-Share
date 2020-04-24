@@ -29,6 +29,11 @@ import javax.swing.border.LineBorder;
 import business.Login;
 import data.user.User;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
+ *
+ *         Class responsible for creating a login dialog
+ */
 public class LoginDialog extends JDialog {
 
 	private JTextField tfUsername;
@@ -43,7 +48,9 @@ public class LoginDialog extends JDialog {
 	private User u = new User();
 
 	/**
-	 * @param parent
+	 * Creates the login dialog itself
+	 * 
+	 * @param parent the frame for the dialog to be put on
 	 */
 	public LoginDialog(JFrame parent) {
 		super(parent, "Login", true);
@@ -293,30 +300,46 @@ public class LoginDialog extends JDialog {
 	}
 
 	/**
-	 * @return
+	 * Gets the username entered
+	 * 
+	 * @return the entered username
 	 */
 	public String getUsername() {
 		return tfUsername.getText();
 	}
 
 	/**
-	 * @return
+	 * Gets the password entered
+	 * 
+	 * @return the entered password
 	 */
 	public String getPassword() {
 		return new String(pfPassword.getText());
 	}
 
 	/**
-	 * @return
+	 * Returns if the login was successful
+	 * 
+	 * @return the boolean status
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
 	}
 	
+	/**
+	 * Sets the user to the one logged in
+	 * 
+	 * @param user the user to be set
+	 */
 	public void setUser(User user) {
 		this.u = user;
 	}
 	
+	/**
+	 * Gets the user logged in
+	 * 
+	 * @return the user logged in
+	 */
 	public User getUser() {
 		return u;
 	}

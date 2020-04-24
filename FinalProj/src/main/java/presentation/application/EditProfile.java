@@ -31,6 +31,11 @@ import business.ValidateAccountInfo;
 import data.user.Admin;
 import data.user.User;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
+ *
+ *         Class responsible for editing your profile
+ */
 public class EditProfile extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
@@ -51,8 +56,10 @@ public class EditProfile extends JDialog {
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
 
 	/**
-	 * @param parent
-	 * @return
+	 * Creates the functionality to edit your profile
+	 * 
+	 * @param parent the frame for the prompts to be put on
+	 * @param u the user in question
 	 */
 	public EditProfile(JFrame parent, User u) {
 		super(parent, "Edit Profile", true);
@@ -316,15 +323,18 @@ public class EditProfile extends JDialog {
 		setLocationRelativeTo(parent);
 	}
 
+	
 	/**
-	 * @param
-	 * @return succeeded
+	 * Returns if editing your profile succeeded
+	 * @return the boolean value corresponding to a successful editing
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
 	}
 	
 	/**
+	 * Sets the user
+	 * @param user the user to be set
 	 * @param user
 	 * @return
 	 */
@@ -333,6 +343,9 @@ public class EditProfile extends JDialog {
 	}
 	
 	/**
+	 * Gets the user in question
+	 * 
+	 * @return u the user
 	 * @param
 	 * @return u
 	 */

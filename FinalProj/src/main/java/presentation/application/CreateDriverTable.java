@@ -20,10 +20,19 @@ import javax.swing.table.TableRowSorter;
 import data.post.DriverPost;
 import data.post.Post;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph
+ *         Yu
+ *
+ *         Class responsible for creating the driver table
+ */
 public class CreateDriverTable {
 	private static Font customFont = null;
 	
 	/**
+	 * Creates the table of driver posts
+	 * @param dlist the list of driver posts
+	 * @return JTable the table for displaying purposes
 	 * @param dList
 	 * @return
 	 */

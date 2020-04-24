@@ -32,6 +32,11 @@ import data.post.DriverPost;
 import data.post.Post;
 import data.user.User;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
+ *
+ *         Class responsible for creating a Post
+ */
 public class CreatePost extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
@@ -51,7 +56,13 @@ public class CreatePost extends JDialog {
 	static User u = new User();
 	static Post p = null;
 
+	/**
+	 * Airports to travel from, plus campus
+	 */
 	String[] origin = { "ACT", "AUS", "Baylor", "DAL", "DFW", "HOU", "IAH", "SAT", "ELP" };
+	/**
+	 * Airports to travel to, plus campus
+	 */
 	String[] dest = { "ACT", "AUS", "Baylor", "DAL", "DFW", "HOU", "IAH", "SAT", "ELP" };
 	String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 	String[] days = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16",
@@ -63,7 +74,13 @@ public class CreatePost extends JDialog {
 	Integer[] seats = { 1, 2, 3, 4, 5, 6 };
 
 	/**
+<<<<<<< HEAD
+	 * Creates the post
+	 * 
+	 * @param parent the frame for it to be added to
+=======
 	 * @param parent, u
+>>>>>>> branch 'master' of https://github.com/BURS-co/CSI3471-Ride-Share.git
 	 * @return
 	 */
 	public CreatePost(JFrame parent, User u) {
@@ -371,28 +388,23 @@ public class CreatePost extends JDialog {
 	}
 
 	/**
+	 * If the post creation was successful
+	 * 
 	 * @param
-	 * @return succeeded
+	 * @return succeeded if post creation was successful
 	 */
 	public static boolean isSucceeded() {
 		return succeeded;
 	}
 
-	/**
-	 * @param user
-	 * @return
-	 */
 	public void setUser(User user) {
 		this.u = user;
 	}
 
-	/**
-	 * @param
-	 * @return u
-	 */
 	public static User getUser() {
 		return u;
 	}
+
 
 	/**
 	 * @param succeeded

@@ -28,6 +28,11 @@ import javax.swing.JTextField;
 import business.ValidateAccountInfo;
 import data.user.User;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
+ *
+ *         Class responsible for a User viewing their profile
+ */
 public class ViewProfile extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
@@ -45,6 +50,12 @@ public class ViewProfile extends JDialog {
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
 
+	/**
+	 * Creates and displays the user's profile
+	 * 
+	 * @param parent the frame to be displayed on
+	 * @param u the user logged in
+	 */
 	public ViewProfile(JFrame parent, User u) {
 		super(parent, "View Profile", true);
 		JPanel panel = new JPanel(new GridBagLayout());

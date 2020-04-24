@@ -27,6 +27,12 @@ import javax.swing.JTextField;
 import business.ValidateAccountInfo;
 import data.user.User;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph
+ *         Yu
+ *
+ *         application class responsible creating an account
+ */
 public class AccountCreateDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -48,7 +54,9 @@ public class AccountCreateDialog extends JDialog {
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
 
 	/**
-	 * @param parent
+	 * Creates the account creation dialog
+	 * 
+	 * @param parent The frame responsible for encapsulating the data
 	 * @return
 	 */
 	public AccountCreateDialog(JFrame parent) {
@@ -276,17 +284,30 @@ public class AccountCreateDialog extends JDialog {
 	}
 
 	/**
+	 * Returns if the account creation was successful
+	 * 
 	 * @param
-	 * @return succeeded
+	 * @return succeeded if the login succeeded
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
 	}
 
+	
+	/**
+	 * Sets the user to the user who created an account
+	 * 
+	 * @param user the user who created their account
+	 */
 	public void setUser(User user) {
 		this.u = user;
 	}
 
+	/**
+	 * Gets the user whose account was created
+	 * 
+	 * @return User the user who created their account
+	 */
 	public User getUser() {
 		return u;
 	}

@@ -78,24 +78,43 @@ public class Application {
 		}
 	}
 
+	/**
+	 * Singleton of the user database
+	 */
 	public static UserDatabase userDatabase = null;
+	/**
+	 * Singleton of the post database
+	 */
 	public static PostDatabase postDatabase = null;
+	
 	public static boolean accountCreated = false;
 	public static boolean postCreated = false;
-	public static User loggedIn = null;;
-	public static Font customFont = null;
 	
+	/**
+	 * Singleton of the post database
+	 */
+	public static User loggedIn = null;
+	/**
+	 * For using fonts on the graphics
+	 */
+	public static Font customFont = null;
+	/**
+	 * Driver posts table model
+	 */
 	public static DefaultTableModel dTable;
+	/**
+	 * Rider posts table model
+	 */
 	public static DefaultTableModel rTable;
 
 	/**
 	 * main method for the application
 	 * 
-	 * @param args unused
-	 * @throws IOException
-	 * @throws ParseException
-	 * @throws FontFormatException
-	 * @throws HeadlessException
+	 * @param args (unused)
+	 * @throws IOException if user database has issue reading or writing
+	 * @throws ParseException if issue with parsing database
+	 * @throws FontFormatException if font not found
+	 * @throws HeadlessException if key/mouse function not available on machine
 	 */
 	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
 
@@ -123,8 +142,8 @@ public class Application {
 	 * method loads information for the application and creates the GUI and displays
 	 * it.
 	 * 
-	 * @throws IOException
-	 * @throws ParseException
+	 * @throws IOException if user database has issue reading or writing
+	 * @throws ParseException if issue with parsing database
 	 */
 	public static void createRunGUI() throws IOException, ParseException {
 		final JFrame mainFrame = new JFrame("Bearpool");

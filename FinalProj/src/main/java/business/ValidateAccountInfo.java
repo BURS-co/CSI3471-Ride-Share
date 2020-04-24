@@ -2,6 +2,8 @@ package business;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -134,6 +136,11 @@ public class ValidateAccountInfo extends AccountCreateDialog {
 				lowerCaseFlag = true;
 			}
 		}
+		
+		Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
+		
+	    Matcher matcher = pattern.matcher(password);
+	    boolean containsSpecialChars = matcher.matches();
 
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		int month = Calendar.getInstance().get(Calendar.MONTH);
@@ -148,6 +155,11 @@ public class ValidateAccountInfo extends AccountCreateDialog {
 		} else if (password.length() < 8 || !numberFlag || !lowerCaseFlag || !capitalFlag) {
 			JOptionPane.showMessageDialog(e,
 					"Password must contain >8 characters and at least 1 uppercase, 1 lowercase, and a number. Try again.",
+					"Create Account", JOptionPane.INFORMATION_MESSAGE);
+			succeeded = false;
+		} else if (!containsSpecialChars) { 
+			JOptionPane.showMessageDialog(e,
+					"Password must not contain a special character. Try again.",
 					"Create Account", JOptionPane.INFORMATION_MESSAGE);
 			succeeded = false;
 		} else if (phone.length() != 10) {

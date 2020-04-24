@@ -5,6 +5,7 @@ package business;
 
 import java.util.ArrayList;
 
+import data.databaseControllers.UserDatabase;
 import data.user.Admin;
 import data.user.User;
 import presentation.application.Application;
@@ -18,7 +19,7 @@ public class Login {
 	 * @return
 	 */
 	public static boolean authenticate(String email, String password) {
-		ArrayList<User> users = Application.userDatabase.getUserData();
+		ArrayList<User> users = UserDatabase.getInstance().getUserData();
 		// ArrayList<User> users = UserDatabase.getUserData();
 
 		for (User u : users) {

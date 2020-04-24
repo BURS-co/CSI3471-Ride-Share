@@ -74,15 +74,6 @@ public class Application {
 		}
 	}
 
-	/**
-	 * Singleton of the user database
-	 */
-	public static UserDatabase userDatabase = null;
-	/**
-	 * Singleton of the post database
-	 */
-	public static PostDatabase postDatabase = null;
-
 	public static boolean accountCreated = false;
 	public static boolean postCreated = false;
 
@@ -115,8 +106,8 @@ public class Application {
 	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
 
 		// Load all users from database
-		userDatabase = UserDatabase.getInstance();
-		userDatabase.load();
+		UserDatabase uDat = UserDatabase.getInstance();
+		uDat.load();
 
 		// Display login/ signup window
 		OpenPage openDlg = new OpenPage(new JFrame());
@@ -145,8 +136,8 @@ public class Application {
 		final JFrame mainFrame = new JFrame("Bearpool");
 
 		// Load posts
-		postDatabase = PostDatabase.getInstance();
-		postDatabase.load();
+		PostDatabase pDat = PostDatabase.getInstance();
+		pDat.load();
 
 		// Setting up GridBagLayout
 		mainFrame.setLayout(new GridBagLayout());
@@ -174,10 +165,10 @@ public class Application {
 		gc.weighty = 1;
 
 		// query for rider posts
-		ArrayList<Post> rlist = postDatabase.searchDatabase("rider");
+		ArrayList<Post> rlist = pDat.searchDatabase("rider");
 
 		// query for driver posts
-		ArrayList<Post> dlist = postDatabase.searchDatabase("driver");
+		ArrayList<Post> dlist = pDat.searchDatabase("driver");
 
 		// create table of posts
 		JTable riderTable = CreateRiderTable.createTable(rlist);
@@ -434,8 +425,8 @@ public class Application {
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		userDatabase.write();
-		postDatabase.write();
+		UserDatabase.getInstance().write();
+		PostDatabase.getInstance().write();;
 
 	}
 

@@ -25,6 +25,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.ValidateAccountInfo;
+import data.databaseControllers.UserDatabase;
 import data.user.User;
 
 /**
@@ -226,7 +227,7 @@ public class AccountCreateDialog extends JDialog {
 							setUser(u);
 
 							// UserDatabase.getUserData().add(user);
-							Application.userDatabase.add(user);
+							UserDatabase.getInstance().add(user);
 
 							// Keep track of user logged in
 							Application.loggedIn.setEmail(user.getEmail());

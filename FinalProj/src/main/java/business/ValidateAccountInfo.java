@@ -6,6 +6,7 @@ import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import data.databaseControllers.UserDatabase;
 import data.user.User;
 import presentation.application.AccountCreateDialog;
 import presentation.application.Application;
@@ -29,7 +30,7 @@ public class ValidateAccountInfo extends AccountCreateDialog {
 	 */
 	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password,
 			String reenterPass, String gradMonth, String gradYear, AccountCreateDialog a) {
-		ArrayList<User> users = Application.userDatabase.getUserData();
+		ArrayList<User> users = UserDatabase.getInstance().getUserData();
 		boolean emailUsed = false;
 		for (User u : users) {
 			if (u.getEmail().toLowerCase().equals(email.toLowerCase())) {
@@ -109,7 +110,7 @@ public class ValidateAccountInfo extends AccountCreateDialog {
 
 	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password,
 			String reenterPass, String gradMonth, String gradYear, EditProfile e) {
-		ArrayList<User> users = Application.userDatabase.getUserData();
+		ArrayList<User> users = UserDatabase.getInstance().getUserData();
 		boolean emailUsed = false;
 		for (User u : users) {
 			if (u.getEmail().toLowerCase().equals(email.toLowerCase())) {

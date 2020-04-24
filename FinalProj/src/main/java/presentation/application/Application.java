@@ -28,11 +28,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.RowFilter;
 import javax.swing.border.Border;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
@@ -86,10 +82,10 @@ public class Application {
 	 * Singleton of the post database
 	 */
 	public static PostDatabase postDatabase = null;
-	
+
 	public static boolean accountCreated = false;
 	public static boolean postCreated = false;
-	
+
 	/**
 	 * Singleton of the post database
 	 */
@@ -111,10 +107,10 @@ public class Application {
 	 * main method for the application
 	 * 
 	 * @param args (unused)
-	 * @throws IOException if user database has issue reading or writing
-	 * @throws ParseException if issue with parsing database
+	 * @throws IOException         if user database has issue reading or writing
+	 * @throws ParseException      if issue with parsing database
 	 * @throws FontFormatException if font not found
-	 * @throws HeadlessException if key/mouse function not available on machine
+	 * @throws HeadlessException   if key/mouse function not available on machine
 	 */
 	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
 
@@ -142,7 +138,7 @@ public class Application {
 	 * method loads information for the application and creates the GUI and displays
 	 * it.
 	 * 
-	 * @throws IOException if user database has issue reading or writing
+	 * @throws IOException    if user database has issue reading or writing
 	 * @throws ParseException if issue with parsing database
 	 */
 	public static void createRunGUI() throws IOException, ParseException {
@@ -215,7 +211,7 @@ public class Application {
 
 		// DefaultTableModel columnModel = (DefaultTableModel) riderTable.getModel();
 		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
-		rTable= (DefaultTableModel) riderTable.getModel();
+		rTable = (DefaultTableModel) riderTable.getModel();
 
 		riderTable.getColumn(riderPostLabels[0]).setPreferredWidth(100);
 		riderTable.getColumn(riderPostLabels[1]).setPreferredWidth(35);
@@ -223,7 +219,7 @@ public class Application {
 		riderTable.getColumn(riderPostLabels[3]).setPreferredWidth(100);
 
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
-		dTable= (DefaultTableModel) driverTable.getModel();
+		dTable = (DefaultTableModel) driverTable.getModel();
 		driverTable.getColumn(driverPostLabels[0]).setPreferredWidth(30);
 		driverTable.getColumn(driverPostLabels[1]).setPreferredWidth(100);
 		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);
@@ -393,7 +389,7 @@ public class Application {
 
 			}
 		});
-		
+
 		// TODO
 		/*
 		 * try { //TODO create file Image img = ImageIO.read(new

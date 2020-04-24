@@ -317,7 +317,7 @@ public class CreatePost extends JDialog {
 							ArrayList<Post> posts = PostDatabase.getPostData();
 							posts.add(p);
 							try {
-								PostDatabase.write();
+								PostDatabase.getInstance().write();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}

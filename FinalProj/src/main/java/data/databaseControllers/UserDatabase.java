@@ -14,15 +14,23 @@ import data.user.Admin;
 import data.user.User;
 
 public class UserDatabase {
-	// singleton
+	
+	// singleton instance
 	private static UserDatabase userDatabase = null;// new UserDatabase();
+	// multi-thread protection
 	private static ReentrantLock lock = new ReentrantLock();
-	public static User u = null;
+  // array to hold users	
+	private ArrayList<User> userData = new ArrayList<User>();
 
-	// prevents from making others
-	private UserDatabase() {
-	}
+	// private constructor
+	private UserDatabase() {}
 
+	/**
+	 * initialize an instance of the user database
+	 * if none exists
+	 * 
+	 * @return UserDatabase
+	 */
 	public static UserDatabase getInstance() {
 		if (userDatabase == null) {
 			lock.lock();
@@ -33,16 +41,29 @@ public class UserDatabase {
 		return userDatabase;
 	}
 
-	private static ArrayList<User> userData = new ArrayList<User>();
-
+	
+	/**
+	 * adds user to the database
+	 * 
+	 * @param User u
+	 */
 	public void addUser(User u) {
 		userData.add(u);
 	}
 
+	/**
+	 * removes user from the database
+	 * @param u
+	 */
 	public void removeUser(User u) {
 		userData.remove(u);
 	}
 
+	/**
+	 * loads all users from database
+	 * 
+	 * @throws IOException
+	 */
 	public void load() throws IOException {
 		// In order username email phone number password isAdmin
 		// open file
@@ -50,6 +71,7 @@ public class UserDatabase {
 			BufferedReader loader = new BufferedReader(new FileReader(new File("userDatabase.txt")));
 
 			String line = null;
+			User u = null;
 
 			while ((line = loader.readLine()) != null) {
 
@@ -91,7 +113,12 @@ public class UserDatabase {
 		}
 	}
 
-	public static void write() throws IOException {
+	/**
+	 * write to the database
+	 * 
+	 * @throws IOException
+	 */
+	public void write() throws IOException {
 		// open file
 		BufferedWriter write = new BufferedWriter(new FileWriter("userDatabase.txt"));
 

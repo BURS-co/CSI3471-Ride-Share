@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.RowSorter;
+import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -62,7 +63,7 @@ public class CreateRiderTable {
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(riderTable.getModel());
 		riderTable.setRowSorter(sorter);
 
-		List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+		List<RowSorter.SortKey> sortKeys = new ArrayList<SortKey>(25);
 		sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
 		sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
 		sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));

@@ -19,9 +19,18 @@ import javax.swing.table.TableRowSorter;
 
 import data.post.Post;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
+ *
+ *         Class responsible for creating the rider table
+ */
 public class CreateRiderTable {
 	private static Font customFont = null;
 	
+	/**
+	 * @param rlist the list of rider posts to be displayed
+	 * @return JTable the table encapsulating the formatted rider posts
+	 */
 	public static JTable createTable(ArrayList<Post> rlist) {
 		try {
 	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);

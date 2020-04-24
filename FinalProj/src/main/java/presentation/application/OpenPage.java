@@ -26,6 +26,11 @@ import javax.swing.border.LineBorder;
 
 import data.user.User;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
+ *
+ *         Class responsible for creating the opening page
+ */
 public class OpenPage extends JDialog {
 
 	/**
@@ -38,9 +43,11 @@ public class OpenPage extends JDialog {
 	private static User u = new User();
 
 	/**
-	 * @param parent
-	 * @throws IOException
-	 * @throws FontFormatException
+	 * Creates the open page
+	 * 
+	 * @param parent the frame for the open page to be put on
+	 * @throws IOException if issue with input of the images
+	 * @throws FontFormatException if issue with importing the fonts
 	 */
 	public OpenPage(final JFrame parent) throws FontFormatException, IOException {
 		super(parent, "Bear Pool", true);
@@ -196,14 +203,29 @@ public class OpenPage extends JDialog {
 
 	}
 
+	/**
+	 * Returns if the login was successful
+	 * 
+	 * @return the boolean status
+	 */
 	public boolean isSucceeded() {
 		return succeeded;
 	}
 	
+	/**
+	 * Sets the user to the one logged in
+	 * 
+	 * @param user the user to be set
+	 */
 	public void setUser(User user) {
 		this.u = user;
 	}
 	
+	/**
+	 * Gets the user logged in
+	 * 
+	 * @return the user logged in
+	 */
 	public User getUser() {
 		return u;
 	}

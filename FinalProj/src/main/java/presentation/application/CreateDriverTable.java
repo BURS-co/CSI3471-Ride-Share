@@ -20,9 +20,20 @@ import javax.swing.table.TableRowSorter;
 import data.post.DriverPost;
 import data.post.Post;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph
+ *         Yu
+ *
+ *         Class responsible for creating the driver table
+ */
 public class CreateDriverTable {
 	private static Font customFont = null;
 	
+	/**
+	 * Creates the table of driver posts
+	 * @param dlist the list of driver posts
+	 * @return JTable the table for displaying purposes
+	 */
 	public static JTable createTable(ArrayList<Post> dlist) {
 		try {
 	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);

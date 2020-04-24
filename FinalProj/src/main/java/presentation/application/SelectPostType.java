@@ -27,6 +27,11 @@ import business.ValidateAccountInfo;
 import data.databaseControllers.PostDatabase;
 import data.user.User;
 
+/**
+ * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
+ *
+ *         Class responsible for determining what kind of post the user specified
+ */
 public class SelectPostType extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
@@ -38,6 +43,11 @@ public class SelectPostType extends JDialog {
 
 	String[] postTypes = { "Rider", "Driver"};
 	
+	/**
+	 * gets user input on post type they slected
+	 * @param parent the frame for the data to be displayed on
+	 * @param u the user logged in
+	 */
 	public SelectPostType(JFrame parent, User u) {
 		super(parent, "Create Post", true);
 		JPanel panel = new JPanel(new GridBagLayout());
@@ -135,10 +145,19 @@ public class SelectPostType extends JDialog {
 		setLocationRelativeTo(parent);
 	}
 
+	/**
+	 * Gives the post type selected 
+	 * @return the post type selected
+	 */
 	public String getPostTypeSelected() {
 		return postTypeSelected;
 	}
 
+	/**
+	 * Sets the post type selected
+	 * 
+	 * @param postTypeSelected the string of the post type selected
+	 */
 	public void setPostTypeSelected(String postTypeSelected) {
 		this.postTypeSelected = postTypeSelected;
 	}

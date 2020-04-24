@@ -93,6 +93,14 @@ public class Application {
 	 * Rider posts table model
 	 */
 	public static DefaultTableModel rTable;
+	
+	public static JTable driverTable;
+	public static JTable riderTable;
+	
+	public static GridBagConstraints gc;
+	
+	public static boolean riderTableUp = true;
+	public static boolean driverTableUp = false;
 
 	/**
 	 * main method for the application
@@ -141,7 +149,7 @@ public class Application {
 
 		// Setting up GridBagLayout
 		mainFrame.setLayout(new GridBagLayout());
-		GridBagConstraints gc = new GridBagConstraints();
+		gc = new GridBagConstraints();
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -171,21 +179,23 @@ public class Application {
 		ArrayList<Post> dlist = pDat.searchDatabase("driver");
 
 		// create table of posts
-		JTable riderTable = CreateRiderTable.createTable(rlist);
-		JTable driverTable = CreateDriverTable.createTable(dlist);
+		riderTable = CreateRiderTable.createTable(rlist);
+		driverTable = CreateDriverTable.createTable(dlist);
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
 		riderTable.getTableHeader().setReorderingAllowed(false);
 		driverTable.getTableHeader().setReorderingAllowed(false);
 
+		//Actually displaying the table
 		gc.gridx = 1;
 		gc.gridy = 0;
 		gc.fill = GridBagConstraints.BOTH;
 		mainFrame.add(new JScrollPane(riderTable), gc);
-		gc.gridx = 2;
-		gc.gridy = 0;
-		mainFrame.add(new JScrollPane(driverTable), gc);
+		//gc.gridx = 2;
+		//gc.gridy = 0;
+		//mainFrame.add(new JScrollPane(driverTable), gc);
+		//mainFrame.remove(driverTable);
 
 		riderTable.setFillsViewportHeight(true);
 		driverTable.setFillsViewportHeight(true);
@@ -251,6 +261,25 @@ public class Application {
 		pc.gridx = 0;
 		pc.gridy = 0;
 		pc.anchor = GridBagConstraints.CENTER;
+		
+		ridesBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//System.out.println("You clicked on driver button");
+				if(driverTableUp)
+					mainFrame.remove(driverTable);
+				if(!riderTableUp) {
+					//mainFrame.remove(driverTable);
+					gc.gridx = 1;
+					gc.gridy = 0;
+					mainFrame.add(new JScrollPane(riderTable), gc);
+					mainFrame.pack();
+					riderTableUp = true;
+					driverTableUp = false;
+				}
+				
+				
+			}
+		});
 
 		// rides button image label
 		// TODO
@@ -278,6 +307,26 @@ public class Application {
 		// JButton drivesBtn = new JButton("Driver Posts");
 		pc.gridx = 0;
 		pc.gridy = 1;
+		
+		drivesBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//System.out.println("You clicked on driver button");
+				if(riderTableUp)
+					mainFrame.remove(riderTable);
+				if(!driverTableUp) {
+					//mainFrame.remove(riderTable);
+					gc.gridx = 1;
+					gc.gridy = 0;
+					mainFrame.add(new JScrollPane(driverTable), gc);
+					mainFrame.pack();
+					driverTableUp = true;
+					riderTableUp = false;
+				}
+				
+				
+			}
+		});
+		
 
 		// TODO
 		/*
@@ -429,5 +478,9 @@ public class Application {
 		PostDatabase.getInstance().write();;
 
 	}
-
+	
+	public JTable showRiderTable(ArrayList<Post> rlist) {
+		
+		return null;
+	}
 }

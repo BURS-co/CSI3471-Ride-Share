@@ -108,19 +108,16 @@ public class Application {
 		// Load all users from database
 		UserDatabase uDat = UserDatabase.getInstance();
 		uDat.load();
+		
+		JFrame mainFrame = new JFrame("BearPool");
 
-		// This should only be in experimental
-		
-		
-		// Display login/ signup window
-		OpenPage openDlg = new OpenPage(new JFrame());
+		OpenPage openDlg = new OpenPage(mainFrame);
 		openDlg.setVisible(true);
-
+		
 		// if login is successful
 		if (openDlg.isSucceeded()) {
 			log.log(Level.INFO, "User successfully logged in");
 			createRunGUI();
-
 		} else {
 			log.log(Level.INFO, "Application Closed");
 			System.exit(1);

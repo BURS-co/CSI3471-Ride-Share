@@ -24,10 +24,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 
 import business.Login;
-import data.user.User;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
@@ -36,16 +34,20 @@ import data.user.User;
  */
 public class LoginDialog extends JDialog {
 
-	private JTextField tfUsername;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTextField tfEmail;
 	private JPasswordField pfPassword;
-	private JLabel lbUsername;
+	private JLabel lbEmail;
 	private JLabel lbPassword;
 	private JButton btnLogin;
 	private JButton btnCancel;
 	private boolean succeeded;
 	private Font customFont;
 	// Sign up variables
-	private User u = new User();
+	// private User u = new User();
 
 	/**
 	 * Creates the login dialog itself
@@ -53,9 +55,11 @@ public class LoginDialog extends JDialog {
 	 * @param parent the frame for the dialog to be put on
 	 */
 	public LoginDialog(JFrame parent) {
-		super(parent, "Login", true);
-		//
-		JPanel panel = new JPanel(new GridBagLayout());
+		super(parent, "Bearpool Login", true);
+		succeeded = false;
+
+		// JPanel panel = new JPanel(new GridBagLayout());
+		setLayout(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
 		try {
@@ -72,37 +76,34 @@ public class LoginDialog extends JDialog {
 
 		cs.fill = GridBagConstraints.HORIZONTAL;
 
-		lbUsername = new JLabel("Baylor Email: ");
+		lbEmail = new JLabel("Baylor Email: ");
 		cs.gridx = 0;
 		cs.gridy = 0;
 		cs.gridwidth = 1;
-		lbUsername.setFont(customFont);
-		panel.add(lbUsername, cs);
+		lbEmail.setFont(customFont);
+		add(lbEmail, cs);
 
-		tfUsername = new JTextField(20);
+		tfEmail = new JTextField(20);
 		cs.gridx = 1;
 		cs.gridy = 0;
 		cs.gridwidth = 2;
-		panel.add(tfUsername, cs);
+		add(tfEmail, cs);
 
 		lbPassword = new JLabel("Password: ");
 		cs.gridx = 0;
 		cs.gridy = 1;
 		cs.gridwidth = 1;
 		lbPassword.setFont(customFont);
-		panel.add(lbPassword, cs);
+		add(lbPassword, cs);
 
 		pfPassword = new JPasswordField(20);
 		cs.gridx = 1;
 		cs.gridy = 1;
 		cs.gridwidth = 2;
-		panel.add(pfPassword, cs);
-		panel.setBorder(new LineBorder(Color.GRAY));
+		add(pfPassword, cs);
+		// setBorder(new LineBorder(Color.GRAY));
 
 		btnLogin = new JButton("Login");// button
-
-		
-		Boolean window = false;
 
 		pfPassword.addKeyListener(new KeyListener() {
 
@@ -115,49 +116,42 @@ public class LoginDialog extends JDialog {
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					if (Login.authenticate(tfUsername.getText(), getPassword())) {
-						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-						u = Login.getUser();
-						JOptionPane.showMessageDialog(null,
-								"Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
-								JOptionPane.INFORMATION_MESSAGE, icon);
+					if (Login.authenticate(tfEmail.getText(), getPassword())) {
 						succeeded = true;
+						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+						JOptionPane.showMessageDialog(null, "Hi " + Login.getUser().getUsername() + "! Welcome to Bearpool!",
+								"Login", JOptionPane.INFORMATION_MESSAGE, icon);
 						Application.log.log(Level.INFO, getUsername() + " Login successful!");
 						dispose();
 					} else {
 						final JOptionPane window = new JOptionPane();
-						//window.showMessageDialog(parentComponent, message, title, messageType);
-						window.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login", JOptionPane.ERROR_MESSAGE);
-						//JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
-								//JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
+								JOptionPane.ERROR_MESSAGE);
+						
 						window.addKeyListener(new KeyListener() {
 
 							public void keyTyped(KeyEvent e) {
 								// TODO Auto-generated method stub
-								
+
 							}
 
 							public void keyPressed(KeyEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
-
-							public void keyReleased(KeyEvent e) {
 								// TODO Auto-generated method stub
 								if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 									dispose();
 								}
 							}
-							
+
+							public void keyReleased(KeyEvent e) {
+
+							}
+
 						});
 						Application.log.log(Level.INFO, getUsername() + " Login failed!");
 
-						// reset username and password
-						//tfUsername.setText("");
-						pfPassword.setText("");
-						succeeded = false;
-						
-						//window.pack();
+						// restore entered fields
+						pfPassword.setText(getPassword());
+
 						window.setVisible(true);
 
 					}
@@ -166,7 +160,7 @@ public class LoginDialog extends JDialog {
 
 		});
 
-		tfUsername.addKeyListener(new KeyListener() {
+		tfEmail.addKeyListener(new KeyListener() {
 
 			public void keyTyped(KeyEvent e) {
 			}
@@ -176,50 +170,41 @@ public class LoginDialog extends JDialog {
 
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					if (Login.authenticate(tfUsername.getText(), getPassword())) {
-						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-						u = Login.getUser();
-						
-						JOptionPane.showMessageDialog(null,
-								"Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
-								JOptionPane.INFORMATION_MESSAGE, icon);
+					if (Login.authenticate(tfEmail.getText(), getPassword())) {
 						succeeded = true;
+						ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+
+						JOptionPane.showMessageDialog(null, "Hi " + Login.getUser().getEmail() + "! Welcome to Bearpool!", "Login",
+								JOptionPane.INFORMATION_MESSAGE, icon);
 						Application.log.log(Level.INFO, getUsername() + " Login successful!");
 						dispose();
 					} else {
 						final JOptionPane window = new JOptionPane();
-						//window.showMessageDialog(parentComponent, message, title, messageType);
-						window.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login", JOptionPane.ERROR_MESSAGE);
-						//JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
-								//JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(LoginDialog.this, "Invalid username or password", "Login",
+								JOptionPane.ERROR_MESSAGE);
+						
 						window.addKeyListener(new KeyListener() {
 
 							public void keyTyped(KeyEvent e) {
 								// TODO Auto-generated method stub
-								
+
 							}
 
 							public void keyPressed(KeyEvent e) {
-								// TODO Auto-generated method stub
-								// TODO Auto-generated method stub
 								if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 									dispose();
 								}
 							}
 
 							public void keyReleased(KeyEvent e) {
-								
+
 							}
-							
+
 						});
 						Application.log.log(Level.INFO, getUsername() + " Login failed!");
 
-						// reset username and password
-						//tfUsername.setText("");
-						pfPassword.setText("");
-						succeeded = false;
-						
-						//window.pack();
+						pfPassword.setText(getPassword());
+
 						window.setVisible(true);
 
 					}
@@ -227,11 +212,11 @@ public class LoginDialog extends JDialog {
 			}
 
 		});
-		
-		btnLogin.setBackground(new Color(255,184,25));
+
+		btnLogin.setBackground(new Color(255, 184, 25));
 		btnLogin.setFont(customFont);
-	   	btnLogin.setBorderPainted(false);
-	   	btnLogin.setOpaque(true);
+		btnLogin.setBorderPainted(false);
+		btnLogin.setOpaque(true);
 
 		btnLogin.addActionListener(new ActionListener() {
 
@@ -242,34 +227,33 @@ public class LoginDialog extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				if (Login.authenticate(tfUsername.getText(), getPassword())) {
+				if (Login.authenticate(tfEmail.getText(), getPassword())) {
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-					u = Login.getUser();
-					JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!",
-							"Login", JOptionPane.INFORMATION_MESSAGE, icon);
+					JOptionPane.showMessageDialog(null, "Hi " + Login.getUser().getUsername() + "! Welcome to Bearpool!", "Login",
+							JOptionPane.INFORMATION_MESSAGE, icon);
 					succeeded = true;
 					Application.log.log(Level.INFO, getUsername() + " Login successful!");
 					dispose();
 				} else {
-					JOptionPane.showMessageDialog(null, "Invalid username or password", "Login",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Invalid username or password", "Login", JOptionPane.ERROR_MESSAGE);
 
 					Application.log.log(Level.INFO, getUsername() + " Login failed!");
 
 					// reset username and password
-					//tfUsername.setText("");
+					// tfUsername.setText("");
 					pfPassword.setText("");
 					succeeded = false;
 
 				}
 			}
 		});
-		btnCancel = new JButton("Cancel");
-		btnCancel.setBackground(new Color(255,184,25));
-		btnCancel.setFont(customFont);
-	   	btnCancel.setBorderPainted(false);
-	   	btnCancel.setOpaque(true);
 		
+		btnCancel = new JButton("Cancel");
+		btnCancel.setBackground(new Color(255, 184, 25));
+		btnCancel.setFont(customFont);
+		btnCancel.setBorderPainted(false);
+		btnCancel.setOpaque(true);
+
 		btnCancel.addActionListener(new ActionListener() {
 
 			/*
@@ -286,14 +270,17 @@ public class LoginDialog extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(btnLogin);
 		bp.add(btnCancel);
-		bp.setBackground(new Color(28,60,52));
+		bp.setBackground(new Color(28, 60, 52));
 
-		getContentPane().add(panel, BorderLayout.CENTER);
+		//getContentPane().add(this, BorderLayout.CENTER);
 		getContentPane().add(bp, BorderLayout.PAGE_END);
 
-		panel.setBackground(new Color(255,184,25));
-		panel.setFocusable(true);
-		panel.requestFocusInWindow();
+		//panel.
+		setBackground(new Color(255, 184, 25));
+		//panel.
+		setFocusable(true);
+		//panel.
+		requestFocusInWindow();
 		pack();
 		setResizable(false);
 		setLocationRelativeTo(parent);
@@ -305,7 +292,7 @@ public class LoginDialog extends JDialog {
 	 * @return the entered username
 	 */
 	public String getUsername() {
-		return tfUsername.getText();
+		return tfEmail.getText();
 	}
 
 	/**
@@ -314,7 +301,7 @@ public class LoginDialog extends JDialog {
 	 * @return the entered password
 	 */
 	public String getPassword() {
-		return new String(pfPassword.getText());
+		return new String(pfPassword.getPassword());
 	}
 
 	/**
@@ -325,22 +312,22 @@ public class LoginDialog extends JDialog {
 	public boolean isSucceeded() {
 		return succeeded;
 	}
-	
+
 	/**
 	 * Sets the user to the one logged in
 	 * 
 	 * @param user the user to be set
 	 */
-	public void setUser(User user) {
-		this.u = user;
-	}
-	
-	/**
-	 * Gets the user logged in
-	 * 
-	 * @return the user logged in
-	 */
-	public User getUser() {
-		return u;
-	}
+//	public void setUser(User user) {
+//		this.u = user;
+//	}
+//	
+//	/**
+//	 * Gets the user logged in
+//	 * 
+//	 * @return the user logged in
+//	 */
+//	public User getUser() {
+//		return u;
+//	}
 }

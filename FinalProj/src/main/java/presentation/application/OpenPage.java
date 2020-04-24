@@ -40,30 +40,21 @@ public class OpenPage extends JDialog {
 	private JButton btnLogin;
 	private JButton btnCreateAccount;
 	private boolean succeeded;
-	private static User u = new User();
+	//private User u = new User();
 
 	/**
 	 * Creates the open page
 	 * 
 	 * @param parent the frame for the open page to be put on
-	 * @throws IOException if issue with input of the images
+	 * @throws IOException         if issue with input of the images
 	 * @throws FontFormatException if issue with importing the fonts
 	 */
 	public OpenPage(final JFrame parent) throws FontFormatException, IOException {
-		super(parent, "Bear Pool", true);
+		super(parent, "BearPool Login or Signup", true);
 
 		// For the Dialog constraints
 		setLayout(new GridBagLayout());
 		GridBagConstraints dc = new GridBagConstraints();
-
-		// Will Contain Picture Logo
-		JPanel logoPanel = new JPanel(new GridBagLayout());
-
-		// Logo constraints
-		GridBagConstraints lc = new GridBagConstraints();
-
-		lc.weightx = .25;
-		lc.weighty = .25;
 
 		// Loading the image
 		BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat.png"));
@@ -72,26 +63,19 @@ public class OpenPage extends JDialog {
 		picLabel.setOpaque(true);
 
 		// First Row containing logo
-		lc.gridx = 0;
-		lc.gridy = 0;
-		lc.anchor = GridBagConstraints.CENTER;
-		logoPanel.add(picLabel, lc);
-
-		dc.weightx = .1;
-		dc.weightx = .1;
+		dc.weightx = 1;
+		dc.weightx = 1;
 		dc.gridx = 0;
 		dc.gridy = 0;
-		dc.anchor = GridBagConstraints.ABOVE_BASELINE;
-
-		// add logo panel in dialog
-		getContentPane().add(logoPanel, dc);
+		dc.anchor = GridBagConstraints.CENTER;
+		add(picLabel, dc);
 
 		JPanel btnPanel = new JPanel();
 		btnPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		btnPanel.setBackground(new Color(28, 60, 52));
 		btnPanel.setLayout(new GridBagLayout());
 		GridBagConstraints pc = new GridBagConstraints();
-		
+
 		UIManager.put("ToolTip.background", Color.white);
 		UIManager.put("ToolTip.border", new LineBorder(Color.BLACK, 1));
 
@@ -114,9 +98,9 @@ public class OpenPage extends JDialog {
 
 		// use the font
 		btnLogin.setFont(customFont);
-
 		btnLogin.setBorderPainted(false);
 		btnLogin.setOpaque(true);
+
 		btnLogin.addActionListener(new ActionListener() {
 
 			/*
@@ -130,7 +114,6 @@ public class OpenPage extends JDialog {
 				loginDlg.setVisible(true);
 				if (loginDlg.isSucceeded()) {
 					succeeded = true;
-					setUser(loginDlg.getUser());
 					parent.dispose();
 				}
 			}
@@ -158,7 +141,6 @@ public class OpenPage extends JDialog {
 				acDialog.setVisible(true);
 				if (acDialog.isSucceeded()) {
 					succeeded = true;
-					setUser(acDialog.getUser());
 					parent.dispose();
 				}
 			}
@@ -192,7 +174,6 @@ public class OpenPage extends JDialog {
 		dc.gridy = 1;
 		dc.anchor = GridBagConstraints.BASELINE;
 		dc.fill = GridBagConstraints.BOTH;
-		
 
 		// Add Button Panel to Dialog
 		getContentPane().add(btnPanel, dc);
@@ -210,24 +191,6 @@ public class OpenPage extends JDialog {
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
-	}
-	
-	/**
-	 * Sets the user to the one logged in
-	 * 
-	 * @param user the user to be set
-	 */
-	public void setUser(User user) {
-		this.u = user;
-	}
-	
-	/**
-	 * Gets the user logged in
-	 * 
-	 * @return the user logged in
-	 */
-	public User getUser() {
-		return u;
 	}
 
 }

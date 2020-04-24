@@ -1,5 +1,5 @@
 /**
- * @author Andrew
+ * @author Andrew Ammentorp, Joseph Perez
  */
 package business;
 
@@ -11,7 +11,7 @@ import data.user.User;
 import presentation.application.Application;
 
 public class Login {
-	private static User u = new User();
+	private static User user;
 
 	/**
 	 * @param username
@@ -20,43 +20,42 @@ public class Login {
 	 */
 	public static boolean authenticate(String email, String password) {
 		ArrayList<User> users = UserDatabase.getInstance().getUserData();
-		// ArrayList<User> users = UserDatabase.getUserData();
+		boolean success = false;
 
-		for (User u : users) {
-			if (u.getEmail().toLowerCase().equals(email.toLowerCase())) {
-				if (u.getPassword().equals(password)) {
-					// Set user data
-					if (u instanceof Admin)
-						Application.loggedIn = new Admin();
-					else
-						Application.loggedIn = new User();
-					Application.loggedIn.setGradMonth(u.getGradMonth());
-					Application.loggedIn.setGradYear(u.getGradYear());
-					Application.loggedIn.setEmail(email.toLowerCase());
-					Application.loggedIn.setPassword(password);
-					Application.loggedIn.setPhoneNumber(u.getPhoneNumber());
-					Application.loggedIn.setUsername(u.getUsername());
-
-					setUser(u);
-
-					return true;
+		// search until found.
+		for (int i = 0; i < users.size() && !success; i++) {
+			if (users.get(i).getEmail().toLowerCase().equals(email.toLowerCase())
+					&& users.get(i).getPassword().equals(password)) {
+				// Set user data
+				if (users.get(i) instanceof Admin) {
+					Application.loggedIn = new Admin();
 				} else {
-					return false;
+					Application.loggedIn = new User();
 				}
+
+				Application.loggedIn.setGradMonth(users.get(i).getGradMonth());
+				Application.loggedIn.setGradYear(users.get(i).getGradYear());
+				Application.loggedIn.setEmail(email.toLowerCase());
+				Application.loggedIn.setPassword(password);
+				Application.loggedIn.setPhoneNumber(users.get(i).getPhoneNumber());
+				Application.loggedIn.setUsername(users.get(i).getUsername());
+
+				setUser(users.get(i));
+
+				success = true;
 			}
 		}
 
-		// Searched entire database, but no email match
-		return false;
+		return success;
 
 	}
 
-	public static void setUser(User user) {
-		u = user;
+	public static void setUser(User u) {
+		user = u;
 	}
 
 	public static User getUser() {
-		return u;
+		return user;
 	}
 
 }

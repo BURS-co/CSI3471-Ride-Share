@@ -1,7 +1,7 @@
 package data.user;
 
 /**
- * @author Andrew,
+ * @author Andrew Ammentorp,
  *	Class for a report
  */
 public class Report {

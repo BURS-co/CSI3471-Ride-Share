@@ -1,5 +1,9 @@
 package data.survey;
 
+/**
+ * @author Andrew Ammentorp, Joseph Perez
+ *	Class responsible for a user survey
+ */
 public class Survey {
 	private String name;
 	private String[] responses;
@@ -13,6 +17,7 @@ public class Survey {
 	}
 
 	/**
+	 * gets the name
 	 * @return the name
 	 */
 	public String getName() {
@@ -20,6 +25,7 @@ public class Survey {
 	}
 
 	/**
+	 * Sets the name to the name of user answering survey
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
@@ -27,6 +33,8 @@ public class Survey {
 	}
 
 	/**
+	 * Gets user's repsonses
+	 * 
 	 * @return the responses
 	 */
 	public String[] getResponses() {
@@ -34,6 +42,7 @@ public class Survey {
 	}
 
 	/**
+	 * Sets user's responses
 	 * @param responses the responses to set
 	 */
 	public void setResponses(String[] responses) {

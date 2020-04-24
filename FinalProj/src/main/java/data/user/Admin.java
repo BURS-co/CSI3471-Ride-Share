@@ -3,7 +3,7 @@ package data.user;
 import data.survey.Survey;
 
 /**
- * @author Andrew,
+ * @author Andrew Ammentorp,
  *	Class for an Admin, a subset of User 
  */
 public class Admin extends User {

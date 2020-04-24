@@ -1,12 +1,8 @@
 package data.user;
 
 /**
- * @author Andrew
+ * @author Andrew Ammentorp
  *	Class responsible for the Users of the application
- */
-/**
- * @author Andrew
- *
  */
 public class User {
 	protected String username;

@@ -84,6 +84,9 @@ public class Application {
 	public static boolean postCreated = false;
 	public static User loggedIn = null;;
 	public static Font customFont = null;
+	
+	public static DefaultTableModel dTable;
+	public static DefaultTableModel rTable;
 
 	/**
 	 * main method for the application
@@ -193,7 +196,7 @@ public class Application {
 
 		// DefaultTableModel columnModel = (DefaultTableModel) riderTable.getModel();
 		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
-		DefaultTableModel rTable = (DefaultTableModel) riderTable.getModel();
+		rTable= (DefaultTableModel) riderTable.getModel();
 
 		riderTable.getColumn(riderPostLabels[0]).setPreferredWidth(100);
 		riderTable.getColumn(riderPostLabels[1]).setPreferredWidth(35);
@@ -201,7 +204,7 @@ public class Application {
 		riderTable.getColumn(riderPostLabels[3]).setPreferredWidth(100);
 
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
-		DefaultTableModel dTable = (DefaultTableModel) driverTable.getModel();
+		dTable= (DefaultTableModel) driverTable.getModel();
 		driverTable.getColumn(driverPostLabels[0]).setPreferredWidth(30);
 		driverTable.getColumn(driverPostLabels[1]).setPreferredWidth(100);
 		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);

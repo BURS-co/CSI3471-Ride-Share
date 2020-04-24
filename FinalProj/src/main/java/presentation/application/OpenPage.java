@@ -66,7 +66,7 @@ public class OpenPage extends JDialog {
 		lc.weighty = .25;
 
 		// Loading the image
-		BufferedImage myPicture = ImageIO.read(new File("src/main/resources/poolfloat.png"));
+		BufferedImage myPicture = ImageIO.read(new File("src/main/resources/new open page logo.png"));
 		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
 		picLabel.setBackground(new Color(255, 184, 25));
 		picLabel.setOpaque(true);

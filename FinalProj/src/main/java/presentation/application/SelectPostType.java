@@ -32,12 +32,14 @@ public class SelectPostType extends JDialog {
 	JFrame frame;
 	ValidateAccountInfo vaI;
 	private boolean succeeded = false;
-	private JButton btnCancel;
 	Font customFont = null;
 	public static String postTypeSelected = new String();
-
 	String[] postTypes = { "Rider", "Driver"};
 	
+	/**
+	 * @param parent
+	 * @return
+	 */
 	public SelectPostType(JFrame parent, User u) {
 		super(parent, "Create Post", true);
 		JPanel panel = new JPanel(new GridBagLayout());

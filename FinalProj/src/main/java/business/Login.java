@@ -31,7 +31,7 @@ public class Login {
 						Application.loggedIn = new User();
 					Application.loggedIn.setGradMonth(u.getGradMonth());
 					Application.loggedIn.setGradYear(u.getGradYear());
-					Application.loggedIn.setEmail(email);
+					Application.loggedIn.setEmail(email.toLowerCase());
 					Application.loggedIn.setPassword(password);
 					Application.loggedIn.setPhoneNumber(u.getPhoneNumber());
 					Application.loggedIn.setUsername(u.getUsername());

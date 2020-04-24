@@ -22,6 +22,10 @@ import data.post.Post;
 public class CreateRiderTable {
 	private static Font customFont = null;
 	
+	/**
+	 * @param rlist
+	 * @return
+	 */
 	public static JTable createTable(ArrayList<Post> rlist) {
 		try {
 	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);

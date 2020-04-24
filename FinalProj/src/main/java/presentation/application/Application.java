@@ -353,6 +353,7 @@ public class Application {
 
 						dTable.addRow(row);
 						dTable.fireTableDataChanged();
+						CreatePost.setSucceeded(false);
 					} else {
 						String poster = CreatePost.p.getPoster();
 						String origin = CreatePost.p.getOrigin();
@@ -364,6 +365,7 @@ public class Application {
 
 						rTable.addRow(row);
 						rTable.fireTableDataChanged();
+						CreatePost.setSucceeded(false);
 					}
 				}
 

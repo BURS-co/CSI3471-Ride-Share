@@ -80,7 +80,7 @@ public class CreatePostValidate extends CreatePost {
 		comp = todaysDay.compareTo(inputDate);
 		
 		
-		if (o.equals(d)) {
+		if (o.equals(dest)) {
 			JOptionPane.showMessageDialog(c, "Origin and Destination must be different.", "Create Post",
 					JOptionPane.INFORMATION_MESSAGE);
 			succeeded = false;

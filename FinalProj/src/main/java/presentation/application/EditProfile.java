@@ -324,10 +324,18 @@ public class EditProfile extends JDialog {
 		return succeeded;
 	}
 	
+	/**
+	 * @param user
+	 * @return
+	 */
 	public void setUser(User user) {
 		this.u = user;
 	}
 	
+	/**
+	 * @param
+	 * @return u
+	 */
 	public static User getUser() {
 		return u;
 	}

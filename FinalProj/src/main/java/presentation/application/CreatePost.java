@@ -63,7 +63,7 @@ public class CreatePost extends JDialog {
 	Integer[] seats = { 1, 2, 3, 4, 5, 6 };
 
 	/**
-	 * @param parent
+	 * @param parent, u
 	 * @return
 	 */
 	public CreatePost(JFrame parent, User u) {
@@ -378,14 +378,26 @@ public class CreatePost extends JDialog {
 		return succeeded;
 	}
 
+	/**
+	 * @param user
+	 * @return
+	 */
 	public void setUser(User user) {
 		this.u = user;
 	}
 
+	/**
+	 * @param
+	 * @return u
+	 */
 	public static User getUser() {
 		return u;
 	}
 
+	/**
+	 * @param succeeded
+	 * @return
+	 */
 	public static void setSucceeded(boolean succeeded) {
 		CreatePost.succeeded = succeeded;
 	}

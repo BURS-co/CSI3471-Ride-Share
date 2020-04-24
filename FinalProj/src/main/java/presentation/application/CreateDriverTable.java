@@ -23,6 +23,10 @@ import data.post.Post;
 public class CreateDriverTable {
 	private static Font customFont = null;
 	
+	/**
+	 * @param dList
+	 * @return
+	 */
 	public static JTable createTable(ArrayList<Post> dlist) {
 		try {
 	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);

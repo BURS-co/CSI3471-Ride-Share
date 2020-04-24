@@ -334,8 +334,9 @@ public class EditProfile extends JDialog {
 	
 	/**
 	 * Sets the user
-	 * 
 	 * @param user the user to be set
+	 * @param user
+	 * @return
 	 */
 	public void setUser(User user) {
 		this.u = user;
@@ -345,6 +346,8 @@ public class EditProfile extends JDialog {
 	 * Gets the user in question
 	 * 
 	 * @return u the user
+	 * @param
+	 * @return u
 	 */
 	public static User getUser() {
 		return u;

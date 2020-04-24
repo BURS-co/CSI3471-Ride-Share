@@ -74,9 +74,13 @@ public class CreatePost extends JDialog {
 	Integer[] seats = { 1, 2, 3, 4, 5, 6 };
 
 	/**
+<<<<<<< HEAD
 	 * Creates the post
 	 * 
 	 * @param parent the frame for it to be added to
+=======
+	 * @param parent, u
+>>>>>>> branch 'master' of https://github.com/BURS-co/CSI3471-Ride-Share.git
 	 * @return
 	 */
 	public CreatePost(JFrame parent, User u) {
@@ -330,7 +334,7 @@ public class CreatePost extends JDialog {
 							ArrayList<Post> posts = PostDatabase.getPostData();
 							posts.add(p);
 							try {
-								PostDatabase.write();
+								PostDatabase.getInstance().write();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
@@ -393,32 +397,20 @@ public class CreatePost extends JDialog {
 		return succeeded;
 	}
 
-	/**
-	 * Sets the user to the user who made the post
-	 * 
-	 * @param user the user who made the post
-	 * @return succeeded if post creation was successful
-	 */
 	public void setUser(User user) {
 		this.u = user;
 	}
 
-	/**
-	 * Gets the user of who created the post
-	 * 
-	 * @param user the user who made the post
-	 * @return User if post creation was successful
-	 */
 	public static User getUser() {
 		return u;
 	}
 
+
 	/**
-	 * Sets the succeeded status of a post creation
-	 * 
-	 * @param succeeded status if the post creation succeeded
+	 * @param succeeded
+	 * @return
 	 */
-	public static void setSucceeded(boolean succeeded) {
-		CreatePost.succeeded = succeeded;
+	public static void setSucceeded(boolean s) {
+		succeeded = s;
 	}
 }

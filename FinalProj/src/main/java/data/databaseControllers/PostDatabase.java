@@ -90,7 +90,7 @@ public class PostDatabase {
 		}
 	}
 
-	public static void write() throws IOException {
+	public void write() throws IOException {
 		// Write to .txt file (postDatabase.txt)
 		BufferedWriter write = new BufferedWriter(new FileWriter("postDatabase.txt"));
 

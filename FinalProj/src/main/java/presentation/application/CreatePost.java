@@ -269,7 +269,7 @@ public class CreatePost extends JDialog {
 						|| h.length() == 0 || min.length() == 0 || tOd.length() == 0) {
 					JOptionPane.showMessageDialog(CreatePost.this, "Please fill in all fields.", "Create Post",
 							JOptionPane.INFORMATION_MESSAGE);
-					succeeded = false;
+					setSucceeded(false);
 
 				} else {
 					// make sure text entered in all fields
@@ -291,12 +291,14 @@ public class CreatePost extends JDialog {
 							}
 						} else {
 							try {
-								if(vPI.validatePostInfo(o,destination, d, m, y, h, min, tOd, CreatePost.this))
+								if(vPI.validatePostInfo(o,destination, d, m, y, h, min, tOd, CreatePost.this)) {
 									p = new Post();
+									p.setType("rider");
+								}
 							} catch (ParseException e) {
 								e.printStackTrace();
 							}
-								p.setType("rider");
+								
 						}
 						if(vPI.succeeded) {
 							p.setPoster(Application.loggedIn.getUsername());
@@ -323,7 +325,7 @@ public class CreatePost extends JDialog {
 							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 							JOptionPane.showMessageDialog(null, "Post Created Successfully. ", "Create Post",
 									JOptionPane.INFORMATION_MESSAGE, icon);
-							succeeded = true;
+							setSucceeded(true);
 							Application.log.log(Level.INFO, Application.loggedIn.getUsername() + " sucessfuly created a post");
 							dispose();
 						}
@@ -348,6 +350,7 @@ public class CreatePost extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				Application.log.log(Level.INFO, "Post Creation canceled");
+				setSucceeded(false);
 				dispose();
 			}
 		});
@@ -381,5 +384,9 @@ public class CreatePost extends JDialog {
 
 	public static User getUser() {
 		return u;
+	}
+
+	public static void setSucceeded(boolean succeeded) {
+		CreatePost.succeeded = succeeded;
 	}
 }

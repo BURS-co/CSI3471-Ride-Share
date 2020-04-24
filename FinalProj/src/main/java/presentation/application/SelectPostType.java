@@ -44,7 +44,7 @@ public class SelectPostType extends JDialog {
 	String[] postTypes = { "Rider", "Driver"};
 	
 	/**
-	 * gets user input on post type they slected
+	 * gets user input on post type they selected
 	 * @param parent the frame for the data to be displayed on
 	 * @param u the user logged in
 	 */

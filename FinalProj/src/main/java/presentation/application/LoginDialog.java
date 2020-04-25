@@ -54,11 +54,10 @@ public class LoginDialog extends JDialog {
 	 * 
 	 * @param parent the frame for the dialog to be put on
 	 */
-	public LoginDialog(JFrame parent) {
+	public LoginDialog(final JFrame parent) {
 		super(parent, "Bearpool Login", true);
 		succeeded = false;
 
-		// JPanel panel = new JPanel(new GridBagLayout());
 		setLayout(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
@@ -271,16 +270,20 @@ public class LoginDialog extends JDialog {
 		bp.add(btnLogin);
 		bp.add(btnCancel);
 		bp.setBackground(new Color(28, 60, 52));
+		
+		cs.gridx = 0;
+		cs.gridy = 3;
+		cs.fill = GridBagConstraints.BOTH;
 
 		//getContentPane().add(this, BorderLayout.CENTER);
-		getContentPane().add(bp, BorderLayout.PAGE_END);
+		getContentPane().add(bp,cs);
 
 		//panel.
-		setBackground(new Color(255, 184, 25));
-		//panel.
-		setFocusable(true);
-		//panel.
-		requestFocusInWindow();
+//		setBackground(new Color(255, 184, 25));
+//		//panel.
+//		setFocusable(true);
+//		//panel.
+//		requestFocusInWindow();
 		pack();
 		setResizable(false);
 		setLocationRelativeTo(parent);

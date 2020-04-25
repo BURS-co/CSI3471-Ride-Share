@@ -11,21 +11,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.logging.Level;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.ValidateAccountInfo;
-import data.databaseControllers.UserDatabase;
 import data.user.User;
 
 /**
@@ -41,18 +39,18 @@ public class AccountCreateDialog extends JDialog {
 	JTextField name;
 	JTextField baylorEmail;
 	JTextField phoneNum;
-	String month = new String();
-	String year = new String();
+	String month;
+	String year;
 	JPasswordField password;
 	JPasswordField confirmPassword;
 	ValidateAccountInfo vaI;
-	private boolean succeeded = false;
+	private boolean succeeded;
 	private JButton btnCancel;
 	Font customFont = null;
-	User u = new User();
+	User u;
 
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
-	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
+	String[] years = new String[8];
 
 	/**
 	 * Creates the account creation dialog
@@ -62,11 +60,20 @@ public class AccountCreateDialog extends JDialog {
 	 */
 	public AccountCreateDialog(JFrame parent) {
 		super(parent, "Create Account", true);
+
+		// Future proofed year selection
+		Integer cur = Calendar.getInstance().get(Calendar.YEAR);
+		for (Integer i = 0; i < years.length; i++) {
+			Integer yr = cur + i;
+			years[i] = yr.toString();
+		}
+
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
-		JComboBox gradMonth = new JComboBox(months);
-		JComboBox gradYear = new JComboBox(years);
+		// initialize labels
+		JComboBox<String> gradMonth = new JComboBox<String>(months);
+		JComboBox<String> gradYear = new JComboBox<String>(years);
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
 		JLabel phoneLabel = new JLabel("Phone: ");
@@ -74,6 +81,8 @@ public class AccountCreateDialog extends JDialog {
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
 		JLabel passwordLabel = new JLabel("Password: ");
 		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
+
+		// initialize fields
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -127,18 +136,19 @@ public class AccountCreateDialog extends JDialog {
 
 		gradMonth.setSelectedIndex(0);
 		gradYear.setSelectedIndex(0);
-		gradMonth.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				month = (String) cb.getSelectedItem();
-			}
-		});
-		gradYear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				year = (String) cb.getSelectedItem();
-			}
-		});
+
+//		gradMonth.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				JComboBox<String> cb = (JComboBox) e.getSource();
+//				month = cb.getSelectedItem().toString();
+//			}
+//		});
+//		gradYear.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				JComboBox cb = (JComboBox) e.getSource();
+//				year = cb.getSelectedItem().toString();
+//			}
+//		});
 
 		cs.gridx = 0;
 		cs.gridy = 3;
@@ -193,7 +203,7 @@ public class AccountCreateDialog extends JDialog {
 		createAccount.setBorderPainted(false);
 		createAccount.setOpaque(true);
 		createAccount.addActionListener(new ActionListener() {
-			@SuppressWarnings("static-access")
+
 			/*
 			 * (non-Javadoc)
 			 * 
@@ -201,51 +211,61 @@ public class AccountCreateDialog extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
-				if (name.getText().length() == 0 || baylorEmail.getText().length() == 0 || phoneNum.getText().length() == 0
-						|| password.getText().length() == 0 || confirmPassword.getText().length() == 0 || month.length() == 0
-						|| year.length() == 0) {
-					JOptionPane.showMessageDialog(AccountCreateDialog.this, "Please fill in all fields.", "Create Account",
-							JOptionPane.INFORMATION_MESSAGE);
-					succeeded = false;
+				month = String.valueOf(gradMonth.getSelectedItem());
+				year = String.valueOf(gradYear.getSelectedItem());
+				String pass = new String(password.getPassword());
+				String rePass = new String(confirmPassword.getPassword());
 
-				} else {
-					// make sure text entered in all fields
-					if (name.getText().length() > 1 && baylorEmail.getText().length() > 1 && phoneNum.getText().length() > 1
-							&& password.getText().length() > 1 && confirmPassword.getText().length() > 1 && month.length() > 1
-							&& year.length() > 1)
-						if (vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
-								password.getText(), confirmPassword.getText(), month, year, AccountCreateDialog.this)) {
-
-							User user = new User();
-							user.setUsername(name.getText());
-							user.setEmail(baylorEmail.getText());
-							user.setPhoneNumber(phoneNum.getText());
-							user.setGradMonth(month);
-							user.setGradYear(year);
-							user.setPassword(new String(password.getPassword()));
-
-							setUser(u);
-
-							// UserDatabase.getUserData().add(user);
-							UserDatabase.getInstance().add(user);
-
-							// Keep track of user logged in
-							Application.loggedIn.setEmail(user.getEmail());
-							Application.loggedIn.setGradMonth(user.getGradMonth());
-							Application.loggedIn.setGradYear(user.getGradYear());
-							Application.loggedIn.setPassword(user.getPassword());
-							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
-							Application.loggedIn.setUsername(user.getUsername());
-
-							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-							JOptionPane.showMessageDialog(null, "Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login",
-									JOptionPane.INFORMATION_MESSAGE, icon);
-							succeeded = true;
-							Application.log.log(Level.INFO, user.getUsername() + " Login successful!");
-							dispose();
-
-						}
+				if (ValidateAccountInfo.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
+						pass, rePass, month, year)) {
+					System.out.println("oh yeah");
 				}
+
+//				if (name.getText().length() == 0 || baylorEmail.getText().length() == 0 || phoneNum.getText().length() == 0
+//						|| password.getText().length() == 0 || confirmPassword.getText().length() == 0 || month.length() == 0
+//						|| year.length() == 0) {
+//					JOptionPane.showMessageDialog(AccountCreateDialog.this, "Please fill in all fields.", "Create Account",
+//							JOptionPane.INFORMATION_MESSAGE);
+//					succeeded = false;
+//
+//				} else {
+//					// make sure text entered in all fields
+//					if (name.getText().length() > 1 && baylorEmail.getText().length() > 1 && phoneNum.getText().length() > 1
+//							&& password.getText().length() > 1 && confirmPassword.getText().length() > 1 && month.length() > 1
+//							&& year.length() > 1)
+//						if (vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
+//								password.getText(), confirmPassword.getText(), month, year, AccountCreateDialog.this)) {
+//
+//							User user = new User();
+//							user.setUsername(name.getText());
+//							user.setEmail(baylorEmail.getText());
+//							user.setPhoneNumber(phoneNum.getText());
+//							user.setGradMonth(month);
+//							user.setGradYear(year);
+//							user.setPassword(new String(password.getPassword()));
+//
+//							setUser(u);
+//
+//							// UserDatabase.getUserData().add(user);
+//							UserDatabase.getInstance().add(user);
+//
+//							// Keep track of user logged in
+//							Application.loggedIn.setEmail(user.getEmail());
+//							Application.loggedIn.setGradMonth(user.getGradMonth());
+//							Application.loggedIn.setGradYear(user.getGradYear());
+//							Application.loggedIn.setPassword(user.getPassword());
+//							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
+//							Application.loggedIn.setUsername(user.getUsername());
+//
+//							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+//							JOptionPane.showMessageDialog(null, "Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login",
+//									JOptionPane.INFORMATION_MESSAGE, icon);
+//							succeeded = true;
+//							Application.log.log(Level.INFO, user.getUsername() + " Login successful!");
+//							dispose();
+//
+//						}
+//				}
 			}
 		});
 		btnCancel = new JButton("Cancel");
@@ -294,7 +314,6 @@ public class AccountCreateDialog extends JDialog {
 		return succeeded;
 	}
 
-	
 	/**
 	 * Sets the user to the user who created an account
 	 * 

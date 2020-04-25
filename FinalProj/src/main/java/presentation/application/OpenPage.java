@@ -24,8 +24,6 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
-import data.user.User;
-
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
  *

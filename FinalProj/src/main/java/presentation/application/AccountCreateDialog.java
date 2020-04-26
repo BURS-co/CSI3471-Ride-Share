@@ -14,15 +14,18 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.logging.Level;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import business.UserService;
 import business.ValidateAccountInfo;
 import data.user.User;
 
@@ -35,7 +38,6 @@ import data.user.User;
 public class AccountCreateDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	JFrame frame;
 	JTextField name;
 	JTextField baylorEmail;
 	JTextField phoneNum;
@@ -43,12 +45,9 @@ public class AccountCreateDialog extends JDialog {
 	String year;
 	JPasswordField password;
 	JPasswordField confirmPassword;
-	ValidateAccountInfo vaI;
 	private boolean succeeded;
-	private JButton btnCancel;
-	Font customFont = null;
+	Font customFont;
 	User u;
-
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = new String[8];
 
@@ -60,6 +59,9 @@ public class AccountCreateDialog extends JDialog {
 	 */
 	public AccountCreateDialog(JFrame parent) {
 		super(parent, "Create Account", true);
+		
+		succeeded = false;
+		u = null;
 
 		// Future proofed year selection
 		Integer cur = Calendar.getInstance().get(Calendar.YEAR);
@@ -81,8 +83,6 @@ public class AccountCreateDialog extends JDialog {
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
 		JLabel passwordLabel = new JLabel("Password: ");
 		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
-
-		// initialize fields
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -137,19 +137,6 @@ public class AccountCreateDialog extends JDialog {
 		gradMonth.setSelectedIndex(0);
 		gradYear.setSelectedIndex(0);
 
-//		gradMonth.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				JComboBox<String> cb = (JComboBox) e.getSource();
-//				month = cb.getSelectedItem().toString();
-//			}
-//		});
-//		gradYear.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				JComboBox cb = (JComboBox) e.getSource();
-//				year = cb.getSelectedItem().toString();
-//			}
-//		});
-
 		cs.gridx = 0;
 		cs.gridy = 3;
 		cs.gridwidth = 2;
@@ -202,6 +189,7 @@ public class AccountCreateDialog extends JDialog {
 		createAccount.setFont(customFont);
 		createAccount.setBorderPainted(false);
 		createAccount.setOpaque(true);
+
 		createAccount.addActionListener(new ActionListener() {
 
 			/*
@@ -216,38 +204,21 @@ public class AccountCreateDialog extends JDialog {
 				String pass = new String(password.getPassword());
 				String rePass = new String(confirmPassword.getPassword());
 
+				// ensure input is valid
 				if (ValidateAccountInfo.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
 						pass, rePass, month, year)) {
-					System.out.println("oh yeah");
+					succeeded = true;
+					// pass information to a user service
+					u = UserService.CreateUser(name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, month, year);
+					
+					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
+							JOptionPane.INFORMATION_MESSAGE, icon);
+					succeeded = true;
+					Application.log.log(Level.INFO, u.getUsername() + " Login successful!");
+					dispose();
 				}
-
-//				if (name.getText().length() == 0 || baylorEmail.getText().length() == 0 || phoneNum.getText().length() == 0
-//						|| password.getText().length() == 0 || confirmPassword.getText().length() == 0 || month.length() == 0
-//						|| year.length() == 0) {
-//					JOptionPane.showMessageDialog(AccountCreateDialog.this, "Please fill in all fields.", "Create Account",
-//							JOptionPane.INFORMATION_MESSAGE);
-//					succeeded = false;
-//
-//				} else {
-//					// make sure text entered in all fields
-//					if (name.getText().length() > 1 && baylorEmail.getText().length() > 1 && phoneNum.getText().length() > 1
-//							&& password.getText().length() > 1 && confirmPassword.getText().length() > 1 && month.length() > 1
-//							&& year.length() > 1)
-//						if (vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
-//								password.getText(), confirmPassword.getText(), month, year, AccountCreateDialog.this)) {
-//
-//							User user = new User();
-//							user.setUsername(name.getText());
-//							user.setEmail(baylorEmail.getText());
-//							user.setPhoneNumber(phoneNum.getText());
-//							user.setGradMonth(month);
-//							user.setGradYear(year);
-//							user.setPassword(new String(password.getPassword()));
-//
-//							setUser(u);
-//
-//							// UserDatabase.getUserData().add(user);
-//							UserDatabase.getInstance().add(user);
+							 
 //
 //							// Keep track of user logged in
 //							Application.loggedIn.setEmail(user.getEmail());
@@ -257,18 +228,10 @@ public class AccountCreateDialog extends JDialog {
 //							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
 //							Application.loggedIn.setUsername(user.getUsername());
 //
-//							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-//							JOptionPane.showMessageDialog(null, "Hi " + user.getUsername() + "! Welcome to Bearpool!", "Login",
-//									JOptionPane.INFORMATION_MESSAGE, icon);
-//							succeeded = true;
-//							Application.log.log(Level.INFO, user.getUsername() + " Login successful!");
-//							dispose();
-//
-//						}
-//				}
+
 			}
 		});
-		btnCancel = new JButton("Cancel");
+		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
 		btnCancel.setFont(customFont);
 		btnCancel.setBackground(new Color(255, 184, 25));
@@ -312,15 +275,6 @@ public class AccountCreateDialog extends JDialog {
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
-	}
-
-	/**
-	 * Sets the user to the user who created an account
-	 * 
-	 * @param user the user who created their account
-	 */
-	public void setUser(User user) {
-		this.u = user;
 	}
 
 	/**

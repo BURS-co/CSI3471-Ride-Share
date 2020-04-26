@@ -19,9 +19,10 @@ public class ValidateAccountInfo {
 	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password,
 			String reenterPass, String gradMonth, String gradYear) {
 
-		if (name == null || name.equals("") || email == null || email.equals("") || phone == null || phone.equals("")
-				|| password == null || password.equals("") || reenterPass == null || reenterPass.contentEquals("")) {
-			JOptionPane.showMessageDialog(null, "Fields must not be empty.", "Create Account",
+		if (name == null || name.length() == 0 || email == null || email.length() == 0 || phone == null
+				|| phone.length() == 0 || password == null || password.length() == 0 || reenterPass == null
+				|| reenterPass.length() == 0) {
+			JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.", "Create Account",
 					JOptionPane.INFORMATION_MESSAGE);
 			return false;
 		}

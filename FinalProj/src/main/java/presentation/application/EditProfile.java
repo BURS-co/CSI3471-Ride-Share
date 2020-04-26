@@ -59,7 +59,7 @@ public class EditProfile extends JDialog {
 	 * Creates the functionality to edit your profile
 	 * 
 	 * @param parent the frame for the prompts to be put on
-	 * @param u the user in question
+	 * @param u      the user in question
 	 */
 	public EditProfile(JFrame parent, User u) {
 		super(parent, "Edit Profile", true);
@@ -75,17 +75,18 @@ public class EditProfile extends JDialog {
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
 		JLabel passwordLabel = new JLabel("Password: ");
 		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
-		
-	    try {
-	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
-	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        //register the font
-	        ge.registerFont(customFont);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch(FontFormatException e) {
-	        e.printStackTrace();
-	    }
+
+		try {
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+					.deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(customFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
 		cs.fill = GridBagConstraints.HORIZONTAL;
 
@@ -192,7 +193,7 @@ public class EditProfile extends JDialog {
 
 		JButton createAccount = new JButton("Save Changes");
 		createAccount.setFont(customFont);
-		createAccount.setBackground(new Color(255,184,25));
+		createAccount.setBackground(new Color(255, 184, 25));
 		createAccount.setFont(customFont);
 		createAccount.setBorderPainted(false);
 		createAccount.setOpaque(true);
@@ -221,7 +222,7 @@ public class EditProfile extends JDialog {
 								password.getText(), confirmPassword.getText(), month, year, EditProfile.this)) {
 
 							User user = null;
-							if(Application.loggedIn instanceof Admin)
+							if (Application.loggedIn instanceof Admin)
 								user = new Admin();
 							else
 								user = new User();
@@ -231,27 +232,27 @@ public class EditProfile extends JDialog {
 							user.setGradMonth(month);
 							user.setGradYear(year);
 							user.setPassword(new String(password.getPassword()));
-							
+
 							setUser(u);
 
 							String filePath = "userDatabase.txt";
-						      Scanner sc = null;
+							Scanner sc = null;
 							try {
 								sc = new Scanner(new File(filePath));
 							} catch (FileNotFoundException e1) {
 								e1.printStackTrace();
 							}
-						      StringBuffer buffer = new StringBuffer();
-						      while (sc.hasNextLine()) {
-						         buffer.append(sc.nextLine()+System.lineSeparator());
-						      }
-						      String fileContents = buffer.toString();
-						      sc.close();
-						      String oldLine = u.toString();
-						      String newLine = user.toString();
-						      //Replacing the old line with new line
-						      fileContents = fileContents.replaceAll(oldLine, newLine);
-						      FileWriter writer = null;
+							StringBuffer buffer = new StringBuffer();
+							while (sc.hasNextLine()) {
+								buffer.append(sc.nextLine() + System.lineSeparator());
+							}
+							String fileContents = buffer.toString();
+							sc.close();
+							String oldLine = u.toString();
+							String newLine = user.toString();
+							// Replacing the old line with new line
+							fileContents = fileContents.replaceAll(oldLine, newLine);
+							FileWriter writer = null;
 							try {
 								writer = new FileWriter(filePath);
 							} catch (IOException e) {
@@ -262,23 +263,23 @@ public class EditProfile extends JDialog {
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
-						      try {
+							try {
 								writer.flush();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
-							
-							//Keep track of user logged in
+
+							// Keep track of user logged in
 							Application.loggedIn.setEmail(user.getEmail());
 							Application.loggedIn.setGradMonth(user.getGradMonth());
 							Application.loggedIn.setGradYear(user.getGradYear());
 							Application.loggedIn.setPassword(user.getPassword());
 							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
 							Application.loggedIn.setUsername(user.getUsername());
-							
+
 							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-							JOptionPane.showMessageDialog(null,
-									"Changes successfully made. ", "Edit Profile", JOptionPane.INFORMATION_MESSAGE, icon);
+							JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",
+									JOptionPane.INFORMATION_MESSAGE, icon);
 							succeeded = true;
 							Application.log.log(Level.INFO, user.getUsername() + "'s Profile Edited successfully");
 							dispose();
@@ -290,7 +291,7 @@ public class EditProfile extends JDialog {
 		btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
 		btnCancel.setFont(customFont);
-		btnCancel.setBackground(new Color(255,184,25));
+		btnCancel.setBackground(new Color(255, 184, 25));
 		btnCancel.setFont(customFont);
 		btnCancel.setBorderPainted(false);
 		btnCancel.setOpaque(true);
@@ -311,29 +312,30 @@ public class EditProfile extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(createAccount);
 		bp.add(btnCancel);
-		bp.setBackground(new Color(28,60,52));
+		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(bp, BorderLayout.PAGE_END);
 
-		panel.setBackground(new Color(255,184,25));
+		panel.setBackground(new Color(255, 184, 25));
 
 		pack();
 		setResizable(false);
 		setLocationRelativeTo(parent);
 	}
 
-	
 	/**
 	 * Returns if editing your profile succeeded
+	 * 
 	 * @return the boolean value corresponding to a successful editing
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
 	}
-	
+
 	/**
 	 * Sets the user
+	 * 
 	 * @param user the user to be set
 	 * @param user
 	 * @return
@@ -341,7 +343,7 @@ public class EditProfile extends JDialog {
 	public void setUser(User user) {
 		this.u = user;
 	}
-	
+
 	/**
 	 * Gets the user in question
 	 * 

@@ -84,7 +84,8 @@ public class PostDatabase {
 						list.add(temp);
 					}
 
-					PostService.getInstance().addProspects(UserService.getInstance().getCurrentUser(), p.getPoster());
+					((Driver) p).setRiders(list);
+					//PostService.getInstance().addProspects(UserService.getInstance().getCurrentUser(), p.getPoster());
 				}
 				postData.add(p);
 				if (list != null && list.size() > 0) {

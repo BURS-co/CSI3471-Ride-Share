@@ -5,6 +5,7 @@ package data.user;
  *	Class for a report
  */
 public class Report {
+	
 	private User reportee;
 	private User reporter;
 	private String reason;

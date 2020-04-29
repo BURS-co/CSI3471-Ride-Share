@@ -67,4 +67,9 @@ public abstract class AbstractPost {
 	}
 
 	public abstract String toString();
+
+	public boolean isExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

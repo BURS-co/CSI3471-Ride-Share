@@ -1,5 +1,9 @@
 package data.user;
 
+import java.util.List;
+
+import data.post.AbstractPost;
+
 /**
  * @author Andrew Ammentorp Class responsible for the Users of the application
  */
@@ -10,6 +14,9 @@ public class User {
 	protected String phoneNumber;
 	protected String gradMonth;
 	protected String gradYear;
+	protected List<AbstractPost> posts;
+	protected boolean joinNotif;
+	protected boolean postCanceledNotif;
 
 	/**
 	 * Constructor for user
@@ -201,5 +208,13 @@ public class User {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	public void setPosts(List<AbstractPost> l) {
+		this.posts = l;
+	}
+	
+	public Object getPosts() {
+		return this.posts;
 	}
 }

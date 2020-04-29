@@ -4,6 +4,7 @@
 package business;
 
 import data.databaseControllers.UserDatabase;
+import data.post.AbstractPost;
 
 public class Login {
 	// private static User user;
@@ -17,7 +18,21 @@ public class Login {
 
 		UserService.getInstance().setCurrentUser(UserDatabase.getInstance().queryDatabase(email, password));
 
-		return UserService.getInstance().getCurrentUser() != null;
+		boolean flag = false;
+		
+		if(UserService.getInstance().getCurrentUser() != null) {
+			flag = true;
+			
+			for(AbstractPost i : UserService.getInstance().getCurrentUser().getPosts()) {
+				if(i.isExpired()) {
+					//trigger pop up for survey and pass the results to survey service
+				}
+			}
+			
+		}
+		
+		
+		return flag;
 
 	}
 

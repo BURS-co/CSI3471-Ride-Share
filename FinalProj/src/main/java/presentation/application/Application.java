@@ -382,6 +382,7 @@ public class Application {
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
 
+					// place panel into frame
 					mainFrame.add(searchPnl, gc);
 
 					mainFrame.repaint();

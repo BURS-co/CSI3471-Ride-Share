@@ -211,9 +211,6 @@ public class Application {
 	    jp.add(filterField);
 	    mainFrame.add(jp,fc);
 
-		jp.add(filterField);
-		mainFrame.add(jp);
-
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -355,15 +352,11 @@ public class Application {
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(riderTable);
 					jp = new JPanel();
-<<<<<<< HEAD
 				    jp.add(filterField);
 				    fc.gridx=2;
 					fc.gridy=0;
 				    mainFrame.add(jp,fc);
-=======
-					jp.add(filterField);
-					mainFrame.add(jp);
->>>>>>> refs/remotes/origin/master
+
 
 					mainFrame.repaint();
 					// TODO fix
@@ -440,15 +433,11 @@ public class Application {
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(driverTable);
 					jp = new JPanel();
-<<<<<<< HEAD
+
 				    jp.add(filterField);
 				    fc.gridx=2;
 					fc.gridy=0;
 				    mainFrame.add(jp,fc);
-=======
-					jp.add(filterField);
-					mainFrame.add(jp);
->>>>>>> refs/remotes/origin/master
 					// TODO fix
 					// pc.weightx = 1;
 					// pc.weighty = 1;

@@ -2,13 +2,11 @@ package business;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-import data.databaseControllers.SurveyDatabase;
 import data.databaseControllers.UserDatabase;
-import data.survey.Survey;
 import data.user.User;
 import enums.Failures;
 
-public class UserService {
+public class UserService implements IService {
 	
 	private static UserService userService = null;
 	private static ReentrantLock lock = new ReentrantLock();
@@ -28,7 +26,7 @@ public class UserService {
 		return userService;
 	}
 
-	public Failures verifySurvey(String[] list) {
+	public Failures verify(String[] list) {
 		//boolean result = true;
 		Failures result = Failures.SUCCESS;
 		if (list.length != 0) {
@@ -52,12 +50,12 @@ public class UserService {
 		// store survey if it was successfully validated
 		if (result == Failures.SUCCESS) {
 			
-			storeUser(list);
+			store(list);
 		}
 		return result;
 	}
 
-	private User createUser(String[] list) {
+	public User create(String[] list) {
 		//create the user
 		User user = new User();
 		
@@ -71,8 +69,8 @@ public class UserService {
 		return user;
 	}
 
-	public void storeUser(String[] list) {
-		UserDatabase.addUser(createUser(list));
+	public void store(String[] list) {
+		UserDatabase.addUser(create(list));
 	}
 
 }

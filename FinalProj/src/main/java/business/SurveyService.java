@@ -27,7 +27,7 @@ public class SurveyService {
 		return surveyService;
 	}
 
-	public Failures verifySurvey(String[] list) {
+	public Failures verify(String[] list) {
 		//boolean result = true;
 		Failures result = Failures.SUCCESS;
 		if (list.length != 0) {
@@ -59,12 +59,12 @@ public class SurveyService {
 		// store survey if it was successfully validated
 		if (result == Failures.SUCCESS) {
 			
-			storeSurvey(list);
+			store(list);
 		}
 		return result;
 	}
 
-	private Survey createSurvey(String[] list) {
+	private Survey create(String[] list) {
 		//create the survey
 		Survey surv = new Survey();
 		
@@ -76,7 +76,7 @@ public class SurveyService {
 		return surv;
 	}
 
-	public void storeSurvey(String[] list) {
-		SurveyDatabase.addSurvey(createSurvey(list));
+	public void store(String[] list) {
+		SurveyDatabase.addSurvey(create(list));
 	}
 }

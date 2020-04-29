@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import enums.Failures;
 
-public class PostService {
+public class PostService implements IService{
 	// singleton
 	private static PostService postService = null;
 	private static ReentrantLock lock = new ReentrantLock();
@@ -24,10 +24,9 @@ public class PostService {
 		return postService;
 	}
 
-	public Failures Validate(String[] input) {
+	public Failures verify(String[] input) {
 
 		Failures result = Failures.SUCCESS;
-		boolean driver = false;
 
 		if (input.length == 0) {
 			result = Failures.emptyField;
@@ -58,7 +57,7 @@ public class PostService {
 		// or process date object if its been made by presentation layer
 
 		// Store post if validation is successful
-		StorePost(input, driver);
+		store(input);
 		return result;
 	}
 
@@ -70,14 +69,26 @@ public class PostService {
 //		return Validate(input);
 //	}
 
-	public void StorePost(String[] input, boolean driver) {
+//	public void Store(String[] input, boolean driver) {
+//
+//		if (driver) {
+//			// create driver post
+//		} else {
+//			// create rider post
+//		}
+//
+//		// should this create a post object to store in the database?
+//	}
 
-		if (driver) {
-			// create driver post
-		} else {
-			// create rider post
-		}
+	@Override
+	public void store(String[] list) {
+		// TODO Auto-generated method stub
+		
+	}
 
-		// should this create a post object to store in the database?
+	@Override
+	public Object create(String[] list) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

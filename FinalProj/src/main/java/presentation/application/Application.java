@@ -28,7 +28,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
@@ -228,6 +231,29 @@ public class Application {
 		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);
 		driverTable.getColumn(driverPostLabels[3]).setPreferredWidth(50);
 		driverTable.getColumn(driverPostLabels[4]).setPreferredWidth(100);
+		
+		driverTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		 //When selection changes, provide user with row numbers for both view & model.
+		 driverTable.getSelectionModel().addListSelectionListener(
+				 	new ListSelectionListener() {
+				 		public void valueChanged(ListSelectionEvent event) {
+		 int viewRow = driverTable.getSelectedRow();
+		 if (viewRow < 0) {
+		 //Selection got filtered away.
+			 //statusText.setText("");
+		 	} else {
+		 		String name = (String) driverTable.getValueAt(viewRow, 1);
+		 		System.out.println(name);
+			 		//int modelRow =
+				 	//table.convertRowIndexToModel(viewRow);
+		 			//statusText.setText(
+		 			//	String.format("Selected Row in view: %d. " +
+				 	//	"Selected Row in model: %d.",
+		 			//	viewRow, modelRow));
+		 			}
+		 		}
+		 	}
+		 );
 
 		/******* First Row **********/
 		gc.gridx = 0;

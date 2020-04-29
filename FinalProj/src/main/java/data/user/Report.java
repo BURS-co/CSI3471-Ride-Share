@@ -66,7 +66,7 @@ public class Report {
 
 	@Override
 	public String toString() {
-		return reportee + " " + reporter + " " + reason + "\n";
+		return reportee + ",,," + reporter + ",,," + reason + "\n";
 	}
 	
 	

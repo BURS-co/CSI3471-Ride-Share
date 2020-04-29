@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
-import data.survey.Survey;
 import data.user.Report;
 
 public class ReportDatabase {
@@ -46,7 +45,9 @@ public class ReportDatabase {
 					Report r = new Report();
 					
 					//supply s with info
-					
+					r.setReportee(split[0]);
+					r.setReporter(split[1]);
+					r.setReason(split[2]);
 					
 					// Add data
 					reportData.add(r);

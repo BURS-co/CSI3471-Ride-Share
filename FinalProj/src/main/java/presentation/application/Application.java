@@ -82,7 +82,7 @@ public class Application {
 	/**
 	 * Singleton of the post database
 	 */
-	public static User loggedIn;
+	//public static User loggedIn;
 	/**
 	 * For using fonts on the graphics
 	 */

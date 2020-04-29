@@ -1,9 +1,13 @@
 package data.databaseControllers;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import data.survey.Survey;
+import data.user.User;
 
 public class SurveyDatabase {
 	// singleton
@@ -29,8 +33,16 @@ public class SurveyDatabase {
 
 	}
 
-	public static void write() {
+	public static void write() throws IOException {
+		// open file
+		BufferedWriter write = new BufferedWriter(new FileWriter("surveyDatabase.txt"));
 
+		for (Survey s : surveyData) {
+			write.write(s.toString());
+		}
+
+		write.flush();
+		write.close();
 	}
 
 	public static void addSurvey(Survey s) {

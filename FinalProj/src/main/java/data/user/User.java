@@ -214,7 +214,7 @@ public class User {
 		this.posts = l;
 	}
 	
-	public Object getPosts() {
+	public List<AbstractPost> getPosts() {
 		return this.posts;
 	}
 }

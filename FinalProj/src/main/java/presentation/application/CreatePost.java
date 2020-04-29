@@ -217,6 +217,7 @@ public class CreatePost extends JDialog {
 				}
 
 				// pass to PostService for validation and creation
+				// TODO
 				Failures result = PostService.getInstance().verify(input);
 				if (result == Failures.SUCCESS) {
 					

@@ -255,7 +255,6 @@ public class EditProfile extends JDialog {
 						    String content = "";
 						    BufferedReader reader = null;
 						    FileWriter writer = null;
-							//Scanner sc = null;
 							
 							try {
 								reader = new BufferedReader(new FileReader(filePath));

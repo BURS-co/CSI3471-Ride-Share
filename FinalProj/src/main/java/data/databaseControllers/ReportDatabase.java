@@ -1,8 +1,17 @@
 package data.databaseControllers;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
+import data.survey.Survey;
 import data.user.Report;
 
 public class ReportDatabase {
@@ -25,16 +34,45 @@ public class ReportDatabase {
 
 		private static ArrayList<Report> reportData = new ArrayList<Report>();
 		
-		public void load() {
-			
+		public void load() throws ParseException, IOException{
+			try {
+				BufferedReader loader = new BufferedReader(new FileReader(new File("reportDatabase.txt")));
+
+				String line = null;
+
+				while ((line = loader.readLine()) != null) {
+
+					String[] split = line.split("|");
+					Report r = new Report();
+					
+					//supply s with info
+					
+					
+					// Add data
+					reportData.add(r);
+				}
+				loader.close();
+
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
-		public static void write() {
-			
+		public static void write() throws IOException {
+			// open file
+			BufferedWriter write = new BufferedWriter(new FileWriter("reportDatabase.txt"));
+
+			for (Report s : reportData) {
+				write.write(s.toString());
+			}
+
+			write.flush();
+			write.close();
 		}
 		
 		public static void addReport(Report s) {
-			
+			reportData.add(s);
 		}
 		
 		public static ArrayList<Report> getReportData(){

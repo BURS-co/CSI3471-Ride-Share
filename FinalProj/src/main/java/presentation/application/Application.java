@@ -111,6 +111,7 @@ public class Application {
 	
 	public static JTextField filterField;
 	public static JPanel jp;
+	public static GridBagConstraints fc;
 
 	/**
 	 * main method for the application
@@ -196,10 +197,15 @@ public class Application {
 		
 		
 		//Add filtering here
+		fc = new GridBagConstraints();
+		/*fc.weightx=1;
+		fc.weighty=1;*/
+		fc.gridx=2;
+		fc.gridy=0;
 		filterField = RowFilterUtil.createRowFilter(riderTable);
 		jp = new JPanel();
 	    jp.add(filterField);
-	    mainFrame.add(jp);
+	    mainFrame.add(jp,fc);
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -342,7 +348,9 @@ public class Application {
 					filterField = RowFilterUtil.createRowFilter(riderTable);
 					jp = new JPanel();
 				    jp.add(filterField);
-				    mainFrame.add(jp);
+				    fc.gridx=2;
+					fc.gridy=0;
+				    mainFrame.add(jp,fc);
 
 					mainFrame.repaint();
 					// TODO fix
@@ -420,7 +428,9 @@ public class Application {
 					filterField = RowFilterUtil.createRowFilter(driverTable);
 					jp = new JPanel();
 				    jp.add(filterField);
-				    mainFrame.add(jp);
+				    fc.gridx=2;
+					fc.gridy=0;
+				    mainFrame.add(jp,fc);
 					// TODO fix
 					// pc.weightx = 1;
 					// pc.weighty = 1;

@@ -72,6 +72,11 @@ public class CreateRiderTable {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
+			
+			@Override 
+			public Object getValueAt(int row, int col) {
+				return riderData[row][col];
+            }
 		};
 		
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(riderTable.getModel());

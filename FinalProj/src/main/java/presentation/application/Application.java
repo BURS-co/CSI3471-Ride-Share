@@ -371,6 +371,7 @@ public class Application {
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(riderTable);
 
+					// add filter to panel
 					fc.gridx = 1;
 					fc.gridy = 0;
 					fc.anchor = GridBagConstraints.RELATIVE;

@@ -14,6 +14,7 @@ public class User {
 	protected String phoneNumber;
 	protected String gradMonth;
 	protected String gradYear;
+	
 	protected List<AbstractPost> posts;
 	protected boolean joinNotif;
 	protected boolean postCanceledNotif;
@@ -217,4 +218,21 @@ public class User {
 	public List<AbstractPost> getPosts() {
 		return this.posts;
 	}
+	
+	public boolean getJoinNotif() {
+		return this.joinNotif;
+	}
+	
+	public void setJoinNotif(boolean t) {
+		this.joinNotif = t;
+	}
+	
+	public void setPostCanceledNotif(boolean t) {
+		this.postCanceledNotif = t;
+	}
+	
+	public boolean getPostCanceledNotif() {
+		return this.postCanceledNotif;
+	}
+	
 }

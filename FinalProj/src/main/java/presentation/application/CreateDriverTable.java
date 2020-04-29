@@ -54,7 +54,7 @@ public class CreateDriverTable {
 	    }
 		
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
-		Object[][] driverData = new Object[dlist.size()][driverPostLabels.length];
+		driverData = new Object[dlist.size()][driverPostLabels.length];
 		for (int r = 0; r < dlist.size(); r++) {
 			for (int c = 0; c < 5; c++) {
 				if (c == 0) {

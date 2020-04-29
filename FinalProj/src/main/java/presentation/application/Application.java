@@ -97,15 +97,21 @@ public class Application {
 	 * Rider posts table model
 	 */
 	public static DefaultTableModel rTable;
+	/**
+	 * User's rides table model
+	 */
+	public static DefaultTableModel myRidesModel;
 
 	public static JTable riderTable;
 	public static JTable driverTable;
+	public static JTable myRidesTable;
 	public static GridBagConstraints gc;
 	public static JPanel selection;
 	public static GridBagConstraints pc;
 
 	public static boolean riderTableUp;
 	public static boolean driverTableUp;
+	public static boolean myRidesTableUp;
 
 	public static JScrollPane pane;
 	
@@ -213,6 +219,7 @@ public class Application {
 		mainFrame.add(pane, gc);
 		riderTableUp = true;
 		driverTableUp = !riderTableUp;
+		myRidesTableUp = !riderTableUp;
 		// gc.gridx = 2;
 		// gc.gridy = 0;
 		// mainFrame.add(new JScrollPane(driverTable), gc);
@@ -290,7 +297,7 @@ public class Application {
 		/******* First Row **********/
 		gc.gridx = 0;
 		gc.gridy = 0;
-		gc.insets = new Insets(0, 5, 0, 0);
+		gc.insets = new Insets(0, 6, 0, 0);
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		gc.fill = GridBagConstraints.BOTH;
 
@@ -357,6 +364,7 @@ public class Application {
 
 					riderTableUp = true;
 					driverTableUp = false;
+					myRidesTableUp = false;
 				}
 			}
 		});
@@ -433,6 +441,7 @@ public class Application {
 
 					driverTableUp = true;
 					riderTableUp = false;
+					myRidesTableUp = false;
 				}
 			}
 		});
@@ -473,6 +482,106 @@ public class Application {
 		 * System.out.println(ex.getStackTrace()); }
 		 */
 		selection.add(profileBtn, pc);
+		
+		/**** Fourth Row of Panel ****/
+		ImageIcon rideIcn = new ImageIcon("src/main/resources/pencil.png");
+		Image img = rideIcn.getImage(); // transform it
+		Image newImage = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+		rideIcn = new ImageIcon(newImage); // transform it back
+		JButton myRidesBtn = new JButton(rideIcn);
+		myRidesBtn.setOpaque(false);
+		myRidesBtn.setContentAreaFilled(false);
+		myRidesBtn.setBorderPainted(false);
+		myRidesBtn.setFocusPainted(false);
+		pc.gridx = 0;
+		pc.gridy = 3;
+		
+		// query for rider posts
+		ArrayList<AbstractPost> myList = pDat.searchDatabase(Application.loggedIn.getUsername());
+		
+		myRidesTable = CreateMyRidesTable.createTable(myList);
+
+		// make it so columns may not be dragged around for
+		// driver or rider posts
+		myRidesTable.getTableHeader().setReorderingAllowed(false);
+
+	//	gc.gridx = 1;
+	//	gc.gridy = 0;
+	//	gc.fill = GridBagConstraints.BOTH;
+	//	pane = new JScrollPane(myRidesTable);
+	//	mainFrame.add(pane, gc);
+
+		myRidesTable.setFillsViewportHeight(true);
+
+		myRidesTable.setOpaque(true);
+
+		String[] myRidesLabels = { "Type", "Poster", "Origin", "Destination", "Date" };
+		myRidesModel = (DefaultTableModel) myRidesTable.getModel();
+
+		myRidesTable.getColumn(myRidesLabels[0]).setPreferredWidth(25);
+		myRidesTable.getColumn(myRidesLabels[1]).setPreferredWidth(100);
+		myRidesTable.getColumn(myRidesLabels[2]).setPreferredWidth(50);
+		myRidesTable.getColumn(myRidesLabels[3]).setPreferredWidth(50);
+		myRidesTable.getColumn(myRidesLabels[4]).setPreferredWidth(100);
+
+		if(myList.size() > 0) {
+			myRidesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			// When selection changes, provide user with row numbers for both view & model.
+			myRidesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent event) {
+					int viewRow = myRidesTable.getSelectedRow();
+					if (viewRow < 0) {
+						// Selection got filtered away.
+						// statusText.setText("");
+					} else {
+					//	String type = (String) myRidesTable.getValueAt(viewRow, 0);
+						String name = (String) myRidesTable.getValueAt(viewRow, 1);
+						String orig = (String) myRidesTable.getValueAt(viewRow, 2);
+						String dest = (String) myRidesTable.getValueAt(viewRow, 3);
+						String date = (String) myRidesTable.getValueAt(viewRow, 4);
+						ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date);
+						vpi.setVisible(true);
+	
+					}
+				}
+			});
+		}
+
+		myRidesBtn.addActionListener(new ActionListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			public void actionPerformed(ActionEvent e) {
+				if (!myRidesTableUp) {
+					// Set coordinates
+					gc.gridx = 1;
+					gc.gridy = 0;
+					gc.fill = GridBagConstraints.BOTH;
+
+					// remove pane
+					mainFrame.remove(pane);
+
+					pane = new JScrollPane(myRidesTable);
+					mainFrame.add(pane, gc);
+
+					mainFrame.repaint();
+					
+
+					mainFrame.pack();
+
+					myRidesTableUp = true;
+					riderTableUp = false;
+					driverTableUp = false;
+				}
+
+			}
+		});
+		selection.add(myRidesBtn, pc);
+
 
 		/**** Fourth Row of Panel ****/
 		ImageIcon crtIcn = new ImageIcon("src/main/resources/pencil.png");
@@ -485,7 +594,7 @@ public class Application {
 		createBtn.setBorderPainted(false);
 		createBtn.setFocusPainted(false);
 		pc.gridx = 0;
-		pc.gridy = 3;
+		pc.gridy = 4;
 
 		createBtn.addActionListener(new ActionListener() {
 
@@ -553,7 +662,7 @@ public class Application {
 			profileBtn.setBorderPainted(false);
 			profileBtn.setFocusPainted(false);
 			pc.gridx = 0;
-			pc.gridy = 4;
+			pc.gridy = 5;
 
 			// TODO
 			/*

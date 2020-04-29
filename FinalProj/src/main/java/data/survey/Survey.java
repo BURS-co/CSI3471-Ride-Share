@@ -1,5 +1,7 @@
 package data.survey;
 
+import java.util.Arrays;
+
 /**
  * @author Andrew Ammentorp, Joseph Perez
  *	Class responsible for a user survey
@@ -51,6 +53,11 @@ public class Survey {
 	 */
 	public void setResponses(String[] responses) {
 		this.responses = responses;
+	}
+
+	@Override
+	public String toString() {
+		return null;
 	}
 
 }

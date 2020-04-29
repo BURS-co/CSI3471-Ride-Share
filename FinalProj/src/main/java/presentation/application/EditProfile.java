@@ -10,10 +10,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
@@ -28,7 +25,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.ValidateAccountInfo;
-import data.user.Admin;
+import data.databaseControllers.UserDatabase;
 import data.user.User;
 
 /**
@@ -204,60 +201,65 @@ public class EditProfile extends JDialog {
 				if (ValidateAccountInfo.validateUpdateInfo(name.getText(), phoneNum.getText(),
 						pass, rePass, month, year)) {
 					succeeded = true;
-
-					User user = null;
-					if (Application.loggedIn instanceof Admin)
-						user = new Admin();
-					else
-						user = new User();
-					user.setUsername(name.getText());
-					user.setEmail(Application.loggedIn.getEmail());
-					user.setPhoneNumber(phoneNum.getText());
-					user.setGradMonth(month);
-					user.setGradYear(year);
-					user.setPassword(new String(password.getPassword()));
-
-					String filePath = "userDatabase.txt";
-					Scanner sc = null;
-					try {
-						sc = new Scanner(new File(filePath));
-					} catch (FileNotFoundException e1) {
-						e1.printStackTrace();
-					}
 					
-					StringBuffer buffer = new StringBuffer();
-					while (sc.hasNextLine()) {
-						buffer.append(sc.nextLine() + System.lineSeparator());
-					}
-					String fileContents = buffer.toString();
-					sc.close();
-					String oldLine = u.toString();
-					String newLine = user.toString();
-					// Replacing the old line with new line
-					fileContents = fileContents.replaceAll(oldLine, newLine);
-					FileWriter writer = null;
+					UserDatabase.getInstance().removeUser(Application.loggedIn);
+
+					Application.loggedIn.setUsername(name.getText());
+					Application.loggedIn.setPhoneNumber(phoneNum.getText());
+					Application.loggedIn.setGradMonth(month);
+					Application.loggedIn.setGradYear(year);
+					Application.loggedIn.setPassword(new String(password.getPassword()));
+					
+					UserDatabase.getInstance().add(Application.loggedIn);
+					
 					try {
-						writer = new FileWriter(filePath);
+						UserDatabase.getInstance().write();
 					} catch (IOException e) {
+						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
-					try {
-						writer.append(fileContents);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					try {
-						writer.flush();
-						writer.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					} 
+
+//					String filePath = "userDatabase.txt";
+//					Scanner sc = null;
+//					try {
+//						sc = new Scanner(new File(filePath));
+//					} catch (FileNotFoundException e1) {
+//						e1.printStackTrace();
+//					}
+//					
+//					StringBuffer buffer = new StringBuffer();
+//					while (sc.hasNextLine()) {
+//						buffer.append(sc.nextLine() + System.lineSeparator());
+//					}
+//					String fileContents = buffer.toString();
+//					sc.close();
+//					String oldLine = u.toString();
+//					String newLine = user.toString();
+//					// Replacing the old line with new line
+//					fileContents = fileContents.replaceAll(oldLine, newLine);
+//					FileWriter writer = null;
+//					try {
+//						writer = new FileWriter(filePath);
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
+//					try {
+//						writer.append(fileContents);
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
+//					try {
+//						writer.flush();
+//						writer.close();
+//					} catch (IOException e) {
+//						e.printStackTrace();
+//					}
 
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					succeeded = true;
-					Application.log.log(Level.INFO, user.getUsername() + "'s Profile Edited successfully");
+					Application.log.log(Level.INFO, Application.loggedIn.getUsername() + "'s Profile Edited successfully");
 					dispose();
 				}
 

@@ -50,44 +50,43 @@ public class PostDatabase {
 			while ((line = loader.readLine()) != null) {
 
 				String[] split = line.split("-");
-				Post p = null;
-				for (int i = 0; i < split.length; i++) {
-					if (i == 0) {
-						if (split[i].equals("driver")) {
-							p = new DriverPost();
-						} else {
-							p = new Post();
-						}
-						p.setType(split[i]);
-					} else if (i == 1) {
-						p.setPoster(split[i]);
-					} else if (i == 2) {
-						p.setOrigin(split[i]);
-					} else if (i == 3) {
-						p.setDest(split[i]);
-					} else if (i == 4) {
-						Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[i]);
-						p.setDate(d);
-					} else if (p.getType().equals("driver") && i == 5) {
-						((DriverPost) p).setDriver(split[i]);
-					} else if (p.getType().equals("driver") && i == 6) {
-						((DriverPost) p).setRiderLimit(Integer.valueOf(split[i]));
-					} else if (p.getType().equals("driver") && i > 7) {
-						if (list == null) {
-							list = new ArrayList<String>();
-						}
-						list.add(split[i]);
-					}
+				AbstractPost p = null;
+					
+				if (split[0].equals("driver")) {
+					p = new Driver(split);
+				} else {
+					p = new Rider(split);
 				}
-				// Add data
-				if (p instanceof DriverPost) {
-					((DriverPost) p).setRiders(list);
-				}
+//					} else if (i == 1) {
+//						p.setPoster(split[i]);
+//					} else if (i == 2) {
+//						p.setOrigin(split[i]);
+//					} else if (i == 3) {
+//						p.setDest(split[i]);
+//					} else if (i == 4) {
+//						Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[i]);
+//						p.setDate(d);
+//					} else if (p.getType().equals("driver") && i == 5) {
+//						((DriverPost) p).setDriver(split[i]);
+//					} else if (p.getType().equals("driver") && i == 6) {
+//						((DriverPost) p).setRiderLimit(Integer.valueOf(split[i]));
+//					} else if (p.getType().equals("driver") && i > 7) {
+//						if (list == null) {
+//							list = new ArrayList<String>();
+//						}
+//						list.add(split[i]);
+//					}
+//				}
+//				// Add data
+//				if (p instanceof DriverPost) {
+//					((DriverPost) p).setRiders(list);
+//				}
 				postData.add(p);
 			}
 			loader.close();
 
-		} catch (FileNotFoundException e) {
+	}catch(FileNotFoundException e)
+	{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -130,12 +129,11 @@ public class PostDatabase {
 		if (type.equals("rider") || type.equals("driver")) {
 			for (AbstractPost p : postData) {
 				if (type.equals("rider")) {
-					if(p instanceof Rider) {
+					if (p instanceof Rider) {
 						query.add(p);
 					}
-				}
-				else if(type.equals("driver")) {
-					if(p instanceof Driver) {
+				} else if (type.equals("driver")) {
+					if (p instanceof Driver) {
 						query.add(p);
 					}
 				}

@@ -27,20 +27,20 @@ public class Login {
 			if (users.get(i).getEmail().toLowerCase().equals(email.toLowerCase())
 					&& users.get(i).getPassword().equals(password)) {
 				// Set user data
-				if (users.get(i) instanceof Admin) {
-					Application.loggedIn = new Admin();
-				} else {
-					Application.loggedIn = new User();
-				}
+//				if (users.get(i) instanceof Admin) {
+//					Application.loggedIn = new Admin();
+//				} else {
+//					Application.loggedIn = new User();
+//				}
 
-				Application.loggedIn.setGradMonth(users.get(i).getGradMonth());
-				Application.loggedIn.setGradYear(users.get(i).getGradYear());
-				Application.loggedIn.setEmail(email.toLowerCase());
-				Application.loggedIn.setPassword(password);
-				Application.loggedIn.setPhoneNumber(users.get(i).getPhoneNumber());
-				Application.loggedIn.setUsername(users.get(i).getUsername());
+//				Application.loggedIn.setGradMonth(users.get(i).getGradMonth());
+//				Application.loggedIn.setGradYear(users.get(i).getGradYear());
+//				Application.loggedIn.setEmail(email.toLowerCase());
+//				Application.loggedIn.setPassword(password);
+//				Application.loggedIn.setPhoneNumber(users.get(i).getPhoneNumber());
+//				Application.loggedIn.setUsername(users.get(i).getUsername());
 
-				setUser(users.get(i));
+				UserService.getInstance().setCurrentUser(users.get(i));
 
 				success = true;
 			}

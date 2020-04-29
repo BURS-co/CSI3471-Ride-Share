@@ -202,6 +202,10 @@ public class UserService implements IService {
 			result = Failures.invalidGraduationDate;
 			return result;
 		}
+		
+//		for(String i : list) {
+//			System.out.println(i);
+//		}
 
 		// store survey if it was successfully validated
 		if (result == Failures.SUCCESS) {
@@ -212,6 +216,7 @@ public class UserService implements IService {
 	}
 
 	private void change(String[] list) {
+		
 		this.getCurrentUser().setUsername(list[0]);
 		this.getCurrentUser().setPhoneNumber(list[1]);
 		this.getCurrentUser().setPassword(list[2]);

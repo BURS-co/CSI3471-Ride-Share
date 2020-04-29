@@ -153,6 +153,11 @@ public class ValidateAccountInfo {
 			String gradMonth, String gradYear) {
 
 		String[] info = {name, phone, password, reenterPass, gradMonth, gradYear};
+		
+//		for(String i : info) {
+//			System.out.println(i);
+//		}
+		
 		Failures result = UserService.getInstance().update(info);
 		
 		switch(result) {

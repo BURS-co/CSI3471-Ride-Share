@@ -73,8 +73,9 @@ public class ValidateAccountInfo {
 		// validate password, must comply to regex
 		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(password);
+		boolean matches = m.matches();
 
-		if (!m.matches()) {
+		if (!matches) {
 			JOptionPane.showMessageDialog(null,
 					"Password must contain >8 characters, at least 1 uppercase, at least 1 lowercase,at least 1 number, "
 							+ "and 1 special symbol. Try again.",
@@ -102,14 +103,12 @@ public class ValidateAccountInfo {
 
 		return true;
 	}
-	
-	public static boolean validateUpdateInfo(String name, String phone, String password,
-			String reenterPass, String gradMonth, String gradYear) {
-		
 
-		if (name == null || name.length() == 0 || phone == null
-				|| phone.length() == 0 || password == null || password.length() == 0 || reenterPass == null
-				|| reenterPass.length() == 0) {
+	public static boolean validateUpdateInfo(String name, String phone, String password, String reenterPass,
+			String gradMonth, String gradYear) {
+
+		if (name == null || name.length() == 0 || phone == null || phone.length() == 0 || password == null
+				|| password.length() == 0 || reenterPass == null || reenterPass.length() == 0) {
 			JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.", "Create Account",
 					JOptionPane.INFORMATION_MESSAGE);
 			return false;
@@ -133,10 +132,9 @@ public class ValidateAccountInfo {
 		// validate password
 		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(password);
-		
-		boolean b = m.matches();
+		boolean matches = m.matches();
 
-		if (!m.matches()) {
+		if (!matches) {
 			JOptionPane.showMessageDialog(null,
 					"Password must contain >8 characters, at least 1 uppercase, at least 1 lowercase,at least 1 number, "
 							+ "and 1 special symbol. Try again.",

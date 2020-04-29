@@ -1,6 +1,10 @@
 package data.post;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import business.UserService;
 
 public abstract class AbstractPost {
 	protected String poster;
@@ -8,8 +12,20 @@ public abstract class AbstractPost {
 	protected String dest;
 	protected Date date;
 
-	public AbstractPost(String[] list) {
-		// TODO occupy the fields
+	public AbstractPost(String[] input) {
+		
+		SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+		
+		this.poster = UserService.getInstance().getCurrentUser().getUsername();
+		this.origin = input[0];
+		this.dest = input[1];
+		
+		try {
+			this.date = f.parse(input[2] + " " + input[3] + " " + input[4] + " " + input[5] + ":" + input[6] + " " + input[7]);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public String getPoster() {

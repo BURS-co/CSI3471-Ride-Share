@@ -71,7 +71,7 @@ public class ValidateAccountInfo {
 		}
 
 		// validate password
-		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,12})");
+		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(password);
 
 		if (!m.matches()) {
@@ -131,7 +131,7 @@ public class ValidateAccountInfo {
 		}
 
 		// validate password
-		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,12})");
+		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(password);
 
 		if (!m.matches()) {

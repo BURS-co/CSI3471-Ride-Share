@@ -97,9 +97,6 @@ public class UserDatabase {
 					} else if (i == 6) {
 						u.setPassword(split[i]);
 					}
-					if (u instanceof Admin) {
-						u.setIsAdmin("true");
-					}
 				}
 				// Add data
 				userData.add(u);

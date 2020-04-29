@@ -55,6 +55,8 @@ public class PostDatabase {
 					p = new Driver();
 				} else {
 					p = new Rider();
+					if(split.length > 5)
+						((Rider) p).setDriver(split[5]);
 				}
 
 				p.setPoster(split[1]);
@@ -127,21 +129,27 @@ public class PostDatabase {
 	final public ArrayList<AbstractPost> searchDatabase(String type) {
 		ArrayList<AbstractPost> query = new ArrayList<AbstractPost>();
 
-		if (type.equals("rider") || type.equals("driver")) {
-			for (AbstractPost p : postData) {
-				if (type.equals("rider")) {
-					if (p instanceof Rider) {
-						query.add(p);
-					}
-				} else if (type.equals("driver")) {
-					if (p instanceof Driver) {
-						query.add(p);
-					}
+		for (AbstractPost p : postData) {
+			if (type.equals("rider")) {
+				if (p instanceof Rider) {
+					query.add(p);
 				}
+			} else if (type.equals("driver")) {
+				if (p instanceof Driver) {
+					query.add(p);
+				}
+			} else {
+				if (p instanceof Rider) {
+					if (type.equalsIgnoreCase(((Rider) p).getDriver()))
+						query.add(p);
+				} else if (p instanceof Driver)
+					if (((Driver) p).getRiders()!= null)
+						if (((Driver) p).getRiders().contains(type))
+							query.add(p);
 			}
 		}
 
-		return query;
+	return query;
 	}
 
 	public static void addPost(AbstractPost p) {

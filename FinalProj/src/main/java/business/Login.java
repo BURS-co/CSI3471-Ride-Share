@@ -11,7 +11,7 @@ import data.user.User;
 import presentation.application.Application;
 
 public class Login {
-	private static User user;
+	//private static User user;
 
 	/**
 	 * @param username
@@ -52,14 +52,6 @@ public class Login {
 //
 //		return success;
 
-	}
-
-	public static void setUser(User u) {
-		user = u;
-	}
-
-	public static User getUser() {
-		return user;
 	}
 
 }

@@ -75,7 +75,7 @@ public class UserDatabase {
 
 			while ((line = loader.readLine()) != null) {
 
-				String[] split = line.split("|");
+				String[] split = line.split(" ");
 
 				if (split[7].equals("true")) {
 					u = new Admin();
@@ -85,16 +85,16 @@ public class UserDatabase {
 
 				for (int i = 0; i < split.length; i++) {
 					if (i == 0) {
-						u.setUsername(split[i]);
-					} else if (i == 1) {
-						u.setEmail(split[i]);
+						u.setUsername(split[i] + split[i+1]);
 					} else if (i == 2) {
-						u.setPhoneNumber(split[i]);
+						u.setEmail(split[i]);
 					} else if (i == 3) {
-						u.setGradMonth(split[i]);
+						u.setPhoneNumber(split[i]);
 					} else if (i == 4) {
-						u.setGradYear(split[i]);
+						u.setGradMonth(split[i]);
 					} else if (i == 5) {
+						u.setGradYear(split[i]);
+					} else if (i == 6) {
 						u.setPassword(split[i]);
 					}
 				}

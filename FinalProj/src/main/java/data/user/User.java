@@ -26,7 +26,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return username + "|" + email + "|" + phoneNumber + "|" + gradMonth + "|" + gradYear + "|" + password + "|false\n";
+		return username + " " + email + " " + phoneNumber + " " + gradMonth + " " + gradYear + " " + password + " false\n";
 	}
 
 	/**

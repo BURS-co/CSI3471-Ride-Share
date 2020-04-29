@@ -11,7 +11,6 @@ public class User {
 	protected String phoneNumber;
 	protected String gradMonth;
 	protected String gradYear;
-	protected boolean isAdmin;
 
 	/**
 	 * Constructor for user
@@ -133,27 +132,6 @@ public class User {
 		this.gradYear = gradYear;
 	}
 
-	/**
-	 * If the user is an admin or not
-	 * 
-	 * @return if admin
-	 */
-	public boolean getIsAdmin() {
-		return isAdmin;
-	}
-
-	/**
-	 * Sets if user is an admin
-	 * 
-	 * @param admin the isAdmin boolean to set
-	 */
-	public void setIsAdmin(String admin) {
-		if (admin.equals("true"))
-			this.isAdmin = true;
-		else
-			this.isAdmin = false;
-	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -164,7 +142,6 @@ public class User {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((gradMonth == null) ? 0 : gradMonth.hashCode());
 		result = prime * result + ((gradYear == null) ? 0 : gradYear.hashCode());
-		result = prime * result + (isAdmin ? 1231 : 1237);
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -197,8 +174,6 @@ public class User {
 			if (other.gradYear != null)
 				return false;
 		} else if (!gradYear.equals(other.gradYear))
-			return false;
-		if (isAdmin != other.isAdmin)
 			return false;
 		if (password == null) {
 			if (other.password != null)

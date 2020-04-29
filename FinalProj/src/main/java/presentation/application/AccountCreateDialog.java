@@ -49,6 +49,10 @@ public class AccountCreateDialog extends JDialog {
 	Font customFont;
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = new String[8];
+	
+	JComboBox<String> gradMonth;
+	JComboBox<String> gradYear;
+	
 
 	/**
 	 * Creates the account creation dialog
@@ -72,8 +76,8 @@ public class AccountCreateDialog extends JDialog {
 		GridBagConstraints cs = new GridBagConstraints();
 
 		// initialize labels
-		JComboBox<String> gradMonth = new JComboBox<String>(months);
-		JComboBox<String> gradYear = new JComboBox<String>(years);
+		gradMonth = new JComboBox<String>(months);
+		gradYear = new JComboBox<String>(years);
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
 		JLabel phoneLabel = new JLabel("Phone: ");

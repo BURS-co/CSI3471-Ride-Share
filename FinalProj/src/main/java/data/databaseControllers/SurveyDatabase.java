@@ -42,7 +42,7 @@ public class SurveyDatabase {
 			while ((line = loader.readLine()) != null) {
 
 				String[] split = line.split("|");
-				Survey s = null;
+				Survey s = new Survey();
 				
 				//supply s with info
 				s.setName(split[0]);

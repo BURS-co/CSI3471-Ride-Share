@@ -47,7 +47,6 @@ public class AccountCreateDialog extends JDialog {
 	JPasswordField confirmPassword;
 	private boolean succeeded;
 	Font customFont;
-	User u;
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = new String[8];
 
@@ -61,7 +60,6 @@ public class AccountCreateDialog extends JDialog {
 		super(parent, "Create Account", true);
 
 		succeeded = false;
-		u = null;
 
 		// Future proofed year selection
 		Integer cur = Calendar.getInstance().get(Calendar.YEAR);
@@ -134,8 +132,8 @@ public class AccountCreateDialog extends JDialog {
 		cs.gridwidth = 2;
 		panel.add(phoneNum, cs);
 
-		gradMonth.setSelectedIndex(0);
-		gradYear.setSelectedIndex(0);
+		gradMonth.setSelectedIndex(-1);
+		gradYear.setSelectedIndex(-1);
 
 		cs.gridx = 0;
 		cs.gridy = 3;
@@ -209,17 +207,19 @@ public class AccountCreateDialog extends JDialog {
 						pass, rePass, month, year)) {
 					succeeded = true;
 					// pass information to a user service
-					u = UserService.CreateUser(name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, month, year);
+					User u = UserService.CreateUser(name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, month, year);
 
+					
+					// Keep track of user logged in
+					Application.loggedIn = u;
+					
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					Application.log.log(Level.INFO, u.getUsername() + " Login successful!");
 					dispose();
-				}
 
-				// Keep track of user logged in
-				Application.loggedIn = u;
+				}
 
 			}
 		});
@@ -267,15 +267,6 @@ public class AccountCreateDialog extends JDialog {
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
-	}
-
-	/**
-	 * Gets the user whose account was created
-	 * 
-	 * @return User the user who created their account
-	 */
-	public User getUser() {
-		return u;
 	}
 
 }

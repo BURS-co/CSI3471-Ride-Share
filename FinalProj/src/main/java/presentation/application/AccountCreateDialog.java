@@ -210,6 +210,7 @@ public class AccountCreateDialog extends JDialog {
 						new String[] { name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, rePass, month, year });
 				
 				if (result == Failures.SUCCESS) {
+					succeeded = true;
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null, "Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
 							JOptionPane.INFORMATION_MESSAGE, icon);

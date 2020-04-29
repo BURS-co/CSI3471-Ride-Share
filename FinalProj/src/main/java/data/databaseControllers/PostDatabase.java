@@ -90,7 +90,6 @@ public class PostDatabase {
 				if(list != null && list.size() > 0) {
 					list.clear();
 				}
-				System.out.println(p.toString());
 			}
 			loader.close();
 

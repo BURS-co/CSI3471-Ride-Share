@@ -219,17 +219,17 @@ public class CreatePost extends JDialog {
 				Failures result = PostService.getInstance().verify(input);
 				if (result == Failures.SUCCESS) {
 					succeeded = true;
-					
+
 				} else if (result == Failures.SameOriginandDestination) {
-					
+
 				} else if (result == Failures.BadDate) {
-					
+
 				} else if (result == Failures.PostField8notANumber) {
-					
+
 				} else if (result == Failures.PostField8NotInRange) {
-					
+
 				}
-				
+
 			}
 		});
 

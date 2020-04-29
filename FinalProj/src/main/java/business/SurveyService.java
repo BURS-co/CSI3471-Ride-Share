@@ -57,7 +57,6 @@ public class SurveyService {
 	}
 
 	public void storeSurvey(String[] list) {
-		// should call the survay database storeSurvey()
 		SurveyDatabase.addSurvey(createSurvey(list));
 	}
 }

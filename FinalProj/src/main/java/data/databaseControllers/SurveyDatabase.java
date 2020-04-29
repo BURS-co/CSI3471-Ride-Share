@@ -1,17 +1,21 @@
 package data.databaseControllers;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 import data.survey.Survey;
-import data.user.User;
 
 public class SurveyDatabase {
 	// singleton
-	private static SurveyDatabase surveyDatabase = null;// new UserDatabase();
+	private static SurveyDatabase surveyDatabase = null;
 	private static ReentrantLock lock = new ReentrantLock();
 
 	private SurveyDatabase() {
@@ -29,8 +33,28 @@ public class SurveyDatabase {
 
 	private static ArrayList<Survey> surveyData = new ArrayList<Survey>();
 
-	public static void load() {
-        
+	public void load() throws ParseException, IOException{
+		try {
+			BufferedReader loader = new BufferedReader(new FileReader(new File("surveyDatabase.txt")));
+
+			String line = null;
+
+			while ((line = loader.readLine()) != null) {
+
+				String[] split = line.split("-");
+				Survey s = null;
+				for (int i = 0; i < split.length; i++) {
+					 //supply s with info
+				}
+				// Add data
+				surveyData.add(s);
+			}
+			loader.close();
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void write() throws IOException {

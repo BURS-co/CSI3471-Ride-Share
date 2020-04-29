@@ -152,6 +152,7 @@ public class User {
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
+	//For remove
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

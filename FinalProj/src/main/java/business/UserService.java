@@ -152,4 +152,9 @@ public class UserService implements IService {
 		return Failures.SUCCESS;
 	}
 
+	public static void ValidateAccInfo(String[] list) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

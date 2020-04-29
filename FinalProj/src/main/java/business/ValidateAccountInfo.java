@@ -18,7 +18,12 @@ public class ValidateAccountInfo {
 	 */
 	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password,
 			String reenterPass, String gradMonth, String gradYear) {
-
+		
+//		String[] info = {name, email, phone, password, reenterPass, gradMonth, gradYear};
+//		UserService.ValidateAccInfo(info);
+		
+		
+		
 		if (name == null || name.length() == 0 || email == null || email.length() == 0 || phone == null
 				|| phone.length() == 0 || password == null || password.length() == 0 || reenterPass == null
 				|| reenterPass.length() == 0) {
@@ -71,7 +76,7 @@ public class ValidateAccountInfo {
 		}
 
 		// validate password, must comply to regex
-		Pattern p = Pattern.compile("( (?=.*[a-z])(?=.*\\d)(?=.*[!@#$%])(?=.*[A-Z]).{8,20} )");
+		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(password);
 		boolean matches = m.matches();
 
@@ -109,8 +114,8 @@ public class ValidateAccountInfo {
 
 		if (name == null || name.length() == 0 || phone == null || phone.length() == 0 || password == null
 				|| password.length() == 0 || reenterPass == null || reenterPass.length() == 0) {
-			JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.", "Create Account",
-					JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.",
+					"Create Account", JOptionPane.INFORMATION_MESSAGE);
 			return false;
 		}
 
@@ -129,8 +134,8 @@ public class ValidateAccountInfo {
 			return false;
 		}
 
-		// validate password with regex
-		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*\\d)(?=.*[!@#$%])(?=.*[A-Z]).{8,20})");
+		// validate password
+		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(password);
 		boolean matches = m.matches();
 

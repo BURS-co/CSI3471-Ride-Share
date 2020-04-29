@@ -40,11 +40,11 @@ public class SurveyService {
 		}
 
 		// more validation tests...
-//		try {
-//			
-//		} catch {
-//			
-//		}
+		try {
+			Integer.valueOf(list[2]);
+		} catch (Exception e){
+			result = false;
+		}
 
 		// store survey if it was successfully validated
 		if (result) {

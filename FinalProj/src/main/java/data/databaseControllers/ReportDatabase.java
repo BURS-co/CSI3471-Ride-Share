@@ -42,7 +42,7 @@ public class ReportDatabase {
 
 				while ((line = loader.readLine()) != null) {
 
-					String[] split = line.split("|");
+					String[] split = line.split(",,,");
 					Report r = new Report();
 					
 					//supply s with info

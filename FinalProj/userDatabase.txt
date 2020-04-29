@@ -1,8 +1,8 @@
-Andrew Ammentorp andrew_ammentorp1@baylor.edu 7138284639 12 2022 Andrew8726! true
-Leighton Glim leighton_glim1@baylor.edu 6303351841 12 2050 glim1234 true
-Joshua Huertas joshua_huertas1@baylor.edu 2102625729 12 2050 college18 true
-test test test7@baylor.edu 1234567890 05 2022 Test1234 false
-Josh Test Test123@baylor.edu 1234567890 02 2022 123TestTest false
-Joseph Yu Joseph_Yu@baylor.edu 8329203102 12 2050 J5684129u true
-Test test test8@baylor.edu 1234567890 12 2024 Test12345 false
-Joseph Perez joseph_perez3@baylor.edu 4696647176 05 2022 Password123! true
+Andrew Ammentorp,,,andrew_ammentorp1@baylor.edu,,,7138284639,,,12,,,2022,,,Andrew8726!,,,true
+Leighton Glim,,,leighton_glim1@baylor.edu,,,6303351841,,,12,,,2050,,,glim1234,,,true
+Joshua Huertas,,,joshua_huertas1@baylor.edu,,,2102625729,,,12,,,2050,,,college18,,,true
+test test,,,test7@baylor.edu,,,1234567890,,,05,,,2022,,,Test1234,,,false
+Josh Test,,,Test123@baylor.edu,,,1234567890,,,02,,,2022,,,123TestTest,,,false
+Joseph Yu,,,Joseph_Yu@baylor.edu,,,8329203102,,,12,,,2050,,,J5684129u,,,true
+Test test,,,test8@baylor.edu,,,1234567890,,,12,,,2024,,,Test12345,,,false
+Joseph Perez,,,joseph_perez3@baylor.edu,,,4696647176,,,05,,,2022,,,Password123!,,,true

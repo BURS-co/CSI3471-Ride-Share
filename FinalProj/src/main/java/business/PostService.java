@@ -125,12 +125,12 @@ public class PostService implements IService {
 //		// should this create a post object to store in the database?
 //	}
 
-	@Override
+	//@Override
 	public void store(String[] list) {
 		PostDatabase.addPost(create(list));
 	}
 
-	@Override
+	//@Override
 	public AbstractPost create(String[] list) {
 		// create the report
 		AbstractPost p = null;

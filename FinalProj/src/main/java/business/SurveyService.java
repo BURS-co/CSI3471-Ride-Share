@@ -40,6 +40,11 @@ public class SurveyService {
 		}
 
 		// more validation tests...
+//		try {
+//			
+//		} catch {
+//			
+//		}
 
 		// store survey if it was successfully validated
 		if (result) {
@@ -52,6 +57,11 @@ public class SurveyService {
 	private Survey createSurvey(String[] list) {
 		//create the survey
 		Survey surv = new Survey();
+		
+		surv.setName(list[0]);
+		surv.setTarget(list[1]);
+		surv.setRating(Integer.valueOf(list[2]));
+		surv.setComments(list[3]);
 		
 		return surv;
 	}

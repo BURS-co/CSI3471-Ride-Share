@@ -209,6 +209,10 @@ public class AccountCreateDialog extends JDialog {
 				Failures result = UserService.getInstance().verify(
 						new String[] { name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, rePass, month, year });
 
+				if (result == Failures.BadDate) {
+					
+				}
+				
 				// SUCCESS route
 				if (result == Failures.SUCCESS) {
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");

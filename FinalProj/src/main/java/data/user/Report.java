@@ -6,8 +6,8 @@ package data.user;
  */
 public class Report {
 	
-	private User reportee;
-	private User reporter;
+	private String reportee;
+	private String reporter;
 	private String reason;
 
 	/**
@@ -15,7 +15,7 @@ public class Report {
 	 * 
 	 * @return the reportee
 	 */
-	public User getReportee() {
+	public String getReportee() {
 		return reportee;
 	}
 
@@ -24,7 +24,7 @@ public class Report {
 	 * 
 	 * @param reportee the reportee to set
 	 */
-	public void setReportee(User reportee) {
+	public void setReportee(String reportee) {
 		this.reportee = reportee;
 	}
 
@@ -33,7 +33,7 @@ public class Report {
 	 * 
 	 * @return the reporter
 	 */
-	public User getReporter() {
+	public String getReporter() {
 		return reporter;
 	}
 
@@ -42,7 +42,7 @@ public class Report {
 	 * 
 	 * @param reporter the reporter to set
 	 */
-	public void setReporter(User reporter) {
+	public void setReporter(String reporter) {
 		this.reporter = reporter;
 	}
 
@@ -63,4 +63,11 @@ public class Report {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
+
+	@Override
+	public String toString() {
+		return reportee + " " + reporter + " " + reason + "\n";
+	}
+	
+	
 }

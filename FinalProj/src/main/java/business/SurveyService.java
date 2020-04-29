@@ -4,6 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import data.databaseControllers.SurveyDatabase;
 import data.survey.Survey;
+import enums.Failures;
 
 public class SurveyService {
 
@@ -26,28 +27,37 @@ public class SurveyService {
 		return surveyService;
 	}
 
-	public boolean verifySurvey(String[] list) {
-		boolean result = true;
+	public Failures verifySurvey(String[] list) {
+		//boolean result = true;
+		Failures result = Failures.SUCCESS;
 		if (list.length != 0) {
 			for (String field : list) {
 				if (field.isEmpty()) {
-					result = false;
+					//result = false;
+					result = Failures.emptyField;
 					break;
 				}
 			}
 		} else {
-			result = false;
+			//result = false;
+			result = Failures.emptyField;
 		}
 
 		// more validation tests...
 		try {
 			Integer.valueOf(list[2]);
 		} catch (Exception e){
-			result = false;
+			//result = false;
+			result = Failures.SurveyField2notANumber;
+		}
+		
+		if(list[3].length() > 300) {
+			//result = false;
+			result = Failures.SurveyField3TooLong;
 		}
 
 		// store survey if it was successfully validated
-		if (result) {
+		if (result == Failures.SUCCESS) {
 			
 			storeSurvey(list);
 		}

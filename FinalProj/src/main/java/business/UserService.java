@@ -7,7 +7,7 @@ import data.user.User;
 import enums.Failures;
 
 public class UserService implements IService {
-
+    //this is the service class for user
 	private static User currentUser;
 	private static UserService userService = null;
 	private static ReentrantLock lock = new ReentrantLock();

@@ -71,6 +71,16 @@ public class CreatePost extends JDialog {
 	String[] minutes = { "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" };
 	String[] timeOfDay = { "AM", "PM" };
 	Integer[] seats = { 1, 2, 3, 4, 5, 6 };
+	
+	JComboBox<String> originLoc = new JComboBox<String>(locs);
+	JComboBox<String> destLoc = new JComboBox<String>(locs);
+	JComboBox<String> month = new JComboBox<String>(months);
+	JComboBox<String> day = new JComboBox<String>(days);
+	JComboBox<String> year = new JComboBox<String>(years);
+	JComboBox<String> hour = new JComboBox<String>(hours);
+	JComboBox<String> minute = new JComboBox<String>(minutes);
+	JComboBox<String> timeDay = new JComboBox<String>(timeOfDay);
+	JComboBox<Integer> numSeats = new JComboBox<Integer>(seats);
 
 	/**
 	 * Creates the post
@@ -83,15 +93,7 @@ public class CreatePost extends JDialog {
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
-		JComboBox<String> originLoc = new JComboBox<String>(locs);
-		JComboBox<String> destLoc = new JComboBox<String>(locs);
-		JComboBox<String> month = new JComboBox<String>(months);
-		JComboBox<String> day = new JComboBox<String>(days);
-		JComboBox<String> year = new JComboBox<String>(years);
-		JComboBox<String> hour = new JComboBox<String>(hours);
-		JComboBox<String> minute = new JComboBox<String>(minutes);
-		JComboBox<String> timeDay = new JComboBox<String>(timeOfDay);
-		JComboBox<Integer> numSeats = new JComboBox<Integer>(seats);
+		
 		JLabel originLabel = new JLabel("Origin: ");
 		JLabel destLabel = new JLabel("Destination: ");
 		JLabel dateLabel = new JLabel("Date: ");

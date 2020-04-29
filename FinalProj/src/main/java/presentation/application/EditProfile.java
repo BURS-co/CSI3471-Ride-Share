@@ -51,6 +51,11 @@ public class EditProfile extends JDialog {
 	public static User u = new User();
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
+	
+	//Global
+	JComboBox<String> gradMonth;
+	JComboBox<String> gradYear;
+	
 
 	/**
 	 * Creates the functionality to edit your profile
@@ -63,8 +68,8 @@ public class EditProfile extends JDialog {
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
-		JComboBox<String> gradMonth = new JComboBox<String>(months);
-		JComboBox<String> gradYear = new JComboBox<String>(years);
+		gradMonth = new JComboBox<String>(months);
+		gradYear = new JComboBox<String>(years);
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
 		JLabel phoneLabel = new JLabel("Phone: ");

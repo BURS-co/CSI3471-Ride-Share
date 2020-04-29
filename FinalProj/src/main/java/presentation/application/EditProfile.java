@@ -211,7 +211,7 @@ public class EditProfile extends JDialog {
 					else
 						user = new User();
 					user.setUsername(name.getText());
-					//user.setEmail(baylorEmail.getText());
+					user.setEmail(Application.loggedIn.getEmail());
 					user.setPhoneNumber(phoneNum.getText());
 					user.setGradMonth(month);
 					user.setGradYear(year);
@@ -224,6 +224,7 @@ public class EditProfile extends JDialog {
 					} catch (FileNotFoundException e1) {
 						e1.printStackTrace();
 					}
+					
 					StringBuffer buffer = new StringBuffer();
 					while (sc.hasNextLine()) {
 						buffer.append(sc.nextLine() + System.lineSeparator());
@@ -247,6 +248,7 @@ public class EditProfile extends JDialog {
 					}
 					try {
 						writer.flush();
+						writer.close();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

@@ -1,44 +1,44 @@
-rider-Bobby Baylor-Bush-Baylor-30 Mar 2020 11:09 AM
-driver-Andrew Ammentorp-Hobby-Baylor-30 Mar 2020 11:00 AM-1
-rider-Bobby Baylor-Baylor-Bush-30 Mar 2020 11:09 AM
-driver-Andrew Ammentorp-Baylor-Hobby-30 Mar 2020 11:00 AM-1
-rider-Leighton Glim-Baylor-DAL-28 Apr 2020 06:15 PM
-driver-Leighton Glim-DAL-Baylor-29 Apr 2020 04:20 PM-3
-driver-Leighton Glim-Baylor-AUS-22 Apr 2020 04:20 PM-2
-rider-Leighton Glim-Baylor-DAL-03 Jun 2020 03:10 PM
-rider-Leighton Glim-Baylor-AUS-29 Apr 2020 05:10 PM
-rider-Leighton Glim-DAL-Baylor-05 May 2020 03:15 PM
-rider-Leighton Glim-Baylor-AUS-04 May 2020 06:15 PM
-rider-Leighton Glim-Baylor-DFW-06 May 2020 04:10 PM
-rider-Leighton Glim-AUS-Baylor-04 May 2020 07:10 PM
-rider-Leighton Glim-Baylor-ACT-03 Jul 2020 06:10 PM
-rider-Leighton Glim-Baylor-AUS-05 May 2020 04:25 PM
-rider-Leighton Glim-DAL-Baylor-05 May 2020 05:15 PM
-rider-Leighton Glim-Baylor-ACT-04 May 2020 04:15 PM
-driver-Leighton Glim-AUS-Baylor-05 May 2020 04:10 PM-4
-driver-Leighton Glim-Baylor-AUS-06 May 2020 04:20 PM-3
-driver-Leighton Glim-AUS-Baylor-29 Apr 2020 05:15 PM-3
-driver-Leighton Glim-AUS-Baylor-27 Apr 2020 03:15 PM-5
-rider-Joseph Perez-Baylor-DAL-22 Apr 2020 09:10 PM
-rider-Joseph Perez-Baylor-Baylor-01 Jan 2020 01:00 AM
-driver-Joseph Perez-ACT-ACT-01 Mar 2020 01:00 PM-6
-rider-Leighton Glim-AUS-Baylor-04 May 2020 05:20 PM
-rider-Leighton Glim-Baylor-DAL-30 Apr 2020 03:15 PM
-rider-Leighton Glim-Baylor-AUS-30 May 2020 06:10 PM
-rider-Leighton Glim-AUS-Baylor-05 May 2020 03:05 PM
-rider-Leighton Glim-Baylor-Baylor-01 Jun 2020 03:05 PM
-rider-Leighton Glim-Baylor-Baylor-05 May 2020 06:05 PM
-driver-Leighton Glim-Baylor-ACT-04 May 2020 03:10 PM-1
-rider-Test test-Baylor-ACT-04 May 2020 05:05 PM
-driver-Test test-ACT-ACT-04 May 2020 05:10 PM-2
-rider-Test test-ACT-Baylor-04 Jul 2020 04:05 PM
-rider-Test test-DAL-Baylor-05 May 2020 05:15 PM
-rider-Test test-DAL-Baylor-02 Jun 2020 03:05 PM
-rider-Test test-AUS-Baylor-03 May 2020 03:05 PM
-driver-Test test-DAL-ACT-04 May 2020 04:15 PM-3
-rider-Leighton Glim-Baylor-AUS-30 Apr 2020 05:00 PM
-driver-Joseph Perez-ACT-AUS-01 Jun 2020 04:25 AM-4
-rider-Andrew Ammentorp-Baylor-HOU-01 Jul 2020 01:00 AM
-driver-Andrew Ammentorp-Baylor-IAH-05 Aug 2020 01:00 AM-3
-rider-Leighton Glim-Baylor-ACT-01 May 2020 03:15 PM
-driver-Leighton Glim-HOU-ACT-04 May 2020 05:10 PM-3
+Rider-Bobby Baylor-Bush-Baylor-30 Mar 2020 11:09 AM
+Driver-Andrew Ammentorp-Hobby-Baylor-30 Mar 2020 11:00 AM-Andrew Ammentorp-1-null
+Rider-Bobby Baylor-Baylor-Bush-30 Mar 2020 11:09 AM
+Driver-Andrew Ammentorp-Baylor-Hobby-30 Mar 2020 11:00 AM-Andrew Ammentorp-1-null
+Rider-Leighton Glim-Baylor-DAL-28 Apr 2020 06:15 PM
+Driver-Leighton Glim-DAL-Baylor-29 Apr 2020 04:20 PM-Leighton Glim-3-null
+Driver-Leighton Glim-Baylor-AUS-22 Apr 2020 04:20 PM-Leighton Glim-2-null
+Rider-Leighton Glim-Baylor-DAL-03 Jun 2020 03:10 PM
+Rider-Leighton Glim-Baylor-AUS-29 Apr 2020 05:10 PM
+Rider-Leighton Glim-DAL-Baylor-05 May 2020 03:15 PM
+Rider-Leighton Glim-Baylor-AUS-04 May 2020 06:15 PM
+Rider-Leighton Glim-Baylor-DFW-06 May 2020 04:10 PM
+Rider-Leighton Glim-AUS-Baylor-04 May 2020 07:10 PM
+Rider-Leighton Glim-Baylor-ACT-03 Jul 2020 06:10 PM
+Rider-Leighton Glim-Baylor-AUS-05 May 2020 04:25 PM
+Rider-Leighton Glim-DAL-Baylor-05 May 2020 05:15 PM
+Rider-Leighton Glim-Baylor-ACT-04 May 2020 04:15 PM
+Driver-Leighton Glim-AUS-Baylor-05 May 2020 04:10 PM-Leighton Glim-4-null
+Driver-Leighton Glim-Baylor-AUS-06 May 2020 04:20 PM-Leighton Glim-3-null
+Driver-Leighton Glim-AUS-Baylor-29 Apr 2020 05:15 PM-Leighton Glim-3-null
+Driver-Leighton Glim-AUS-Baylor-27 Apr 2020 03:15 PM-Leighton Glim-5-null
+Rider-Joseph Perez-Baylor-DAL-22 Apr 2020 09:10 PM
+Rider-Joseph Perez-Baylor-Baylor-01 Jan 2020 01:00 AM
+Driver-Joseph Perez-ACT-ACT-01 Mar 2020 01:00 PM-Joseph Perez-6-null
+Rider-Leighton Glim-AUS-Baylor-04 May 2020 05:20 PM
+Rider-Leighton Glim-Baylor-DAL-30 Apr 2020 03:15 PM
+Rider-Leighton Glim-Baylor-AUS-30 May 2020 06:10 PM
+Rider-Leighton Glim-AUS-Baylor-05 May 2020 03:05 PM
+Rider-Leighton Glim-Baylor-Baylor-01 Jun 2020 03:05 PM
+Rider-Leighton Glim-Baylor-Baylor-05 May 2020 06:05 PM
+Driver-Leighton Glim-Baylor-ACT-04 May 2020 03:10 PM-Leighton Glim-1-null
+Rider-Test test-Baylor-ACT-04 May 2020 05:05 PM
+Driver-Test test-ACT-ACT-04 May 2020 05:10 PM-Test test-2-null
+Rider-Test test-ACT-Baylor-04 Jul 2020 04:05 PM
+Rider-Test test-DAL-Baylor-05 May 2020 05:15 PM
+Rider-Test test-DAL-Baylor-02 Jun 2020 03:05 PM
+Rider-Test test-AUS-Baylor-03 May 2020 03:05 PM
+Driver-Test test-DAL-ACT-04 May 2020 04:15 PM-Test test-3-null
+Rider-Leighton Glim-Baylor-AUS-30 Apr 2020 05:00 PM
+Driver-Joseph Perez-ACT-AUS-01 Jun 2020 04:25 AM-Joseph Perez-4-null
+Rider-Andrew Ammentorp-Baylor-HOU-01 Jul 2020 01:00 AM
+Driver-Andrew Ammentorp-Baylor-IAH-05 Aug 2020 01:00 AM-Andrew Ammentorp-3-null
+Rider-Leighton Glim-Baylor-ACT-01 May 2020 03:15 PM
+Driver-Leighton Glim-HOU-ACT-04 May 2020 05:10 PM-Leighton Glim-3-null

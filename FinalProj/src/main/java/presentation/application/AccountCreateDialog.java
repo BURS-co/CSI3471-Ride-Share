@@ -26,8 +26,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.UserService;
-import business.ValidateAccountInfo;
-import data.user.User;
+import enums.Failures;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph
@@ -49,11 +48,10 @@ public class AccountCreateDialog extends JDialog {
 	Font customFont;
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = new String[8];
-	
-	//Global
+
+	// Global
 	JComboBox<String> gradMonth;
 	JComboBox<String> gradYear;
-	
 
 	/**
 	 * Creates the account creation dialog
@@ -208,22 +206,15 @@ public class AccountCreateDialog extends JDialog {
 				String rePass = new String(confirmPassword.getPassword());
 
 				// ensure input is valid
-				if (ValidateAccountInfo.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
-						pass, rePass, month, year)) {
-					succeeded = true;
-					// pass information to a user service
-					User u = UserService.CreateUser(name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, month, year);
+				Failures result = UserService.getInstance().verify(
+						new String[] { name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, rePass, month, year });
 
-					
-					// Keep track of user logged in
-					Application.loggedIn = u;
-					
+				if (result == Failures.SUCCESS) {
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-					JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
+					JOptionPane.showMessageDialog(null, "Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
 							JOptionPane.INFORMATION_MESSAGE, icon);
-					Application.log.log(Level.INFO, u.getUsername() + " Login successful!");
+					Application.log.log(Level.INFO, UserService.getInstance().getCurrentUser().getUsername() + " Login successful!");
 					dispose();
-
 				}
 
 			}

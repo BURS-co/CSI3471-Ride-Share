@@ -47,11 +47,10 @@ public class EditProfile extends JDialog {
 	public static User u = new User();
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
-	
-	//Global
+
+	// Global
 	JComboBox<String> gradMonth;
 	JComboBox<String> gradYear;
-	
 
 	/**
 	 * Creates the functionality to edit your profile
@@ -198,10 +197,9 @@ public class EditProfile extends JDialog {
 				String pass = new String(password.getPassword());
 				String rePass = new String(confirmPassword.getPassword());
 
-				if (ValidateAccountInfo.validateUpdateInfo(name.getText(), phoneNum.getText(),
-						pass, rePass, month, year)) {
+				if (ValidateAccountInfo.validateUpdateInfo(name.getText(), phoneNum.getText(), pass, rePass, month, year)) {
 					succeeded = true;
-					
+
 					UserDatabase.getInstance().removeUser(Application.loggedIn);
 
 					Application.loggedIn.setUsername(name.getText());
@@ -209,16 +207,16 @@ public class EditProfile extends JDialog {
 					Application.loggedIn.setGradMonth(month);
 					Application.loggedIn.setGradYear(year);
 					Application.loggedIn.setPassword(new String(password.getPassword()));
-					
+
 					UserDatabase.getInstance().add(Application.loggedIn);
-					
+
 					// write changes?
 					try {
 						UserDatabase.getInstance().write();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					} 
+					}
 
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",

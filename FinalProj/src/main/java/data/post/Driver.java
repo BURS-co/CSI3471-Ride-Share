@@ -18,13 +18,13 @@ public class Driver extends AbstractPost {
 		// TODO Auto-generated constructor stub
 	}
 
-	boolean addProspects() {
-		boolean result = true;
-
-		// TODO adding a prospect to the riders list
-
-		return result;
-	}
+//	boolean addProspects() {
+//		boolean result = true;
+//
+//		// TODO adding a prospect to the riders list
+//
+//		return result;
+//	}
 
 	public Integer getRiderLimit() {
 		return riderLimit;

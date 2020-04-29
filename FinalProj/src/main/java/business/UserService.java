@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import data.databaseControllers.UserDatabase;
+import data.post.Prospects;
 import data.user.User;
 import enums.Failures;
 
@@ -139,6 +140,16 @@ public class UserService implements IService {
 	
 	public void setCurrentUser(User c) {
 		UserService.currentUser = c;
+	}
+	
+	public Failures addProspect(User u) {
+		
+		Prospects p = new Prospects();
+		
+		p.setName(u.getUsername());
+		p.setStatus(false);
+		
+		return Failures.SUCCESS;
 	}
 
 }

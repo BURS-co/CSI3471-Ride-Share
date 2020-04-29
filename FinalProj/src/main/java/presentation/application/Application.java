@@ -374,7 +374,7 @@ public class Application {
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
 					mainFrame.remove(pane);
-					
+					//new pane
 					pane = new JScrollPane(driverTable);
 					mainFrame.add(pane, gc);
 					// TODO fix

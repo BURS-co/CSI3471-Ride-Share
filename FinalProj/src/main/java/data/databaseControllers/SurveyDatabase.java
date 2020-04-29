@@ -41,11 +41,15 @@ public class SurveyDatabase {
 
 			while ((line = loader.readLine()) != null) {
 
-				String[] split = line.split("-");
-				Survey s = null;
-				for (int i = 0; i < split.length; i++) {
-					 //supply s with info
-				}
+				String[] split = line.split("|");
+				Survey s = new Survey();
+				
+				//supply s with info
+				s.setName(split[0]);
+				s.setTarget(split[1]);
+				s.setRating(Integer.valueOf(split[2]));
+				s.setComments(split[3]);
+				
 				// Add data
 				surveyData.add(s);
 			}

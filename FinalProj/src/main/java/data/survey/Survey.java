@@ -12,11 +12,11 @@ public class Survey {
 	private String target;
 	private String comments;
 	private Ratings rating;
-    /*
-	enum ratings {
-		noStars, oneStar, twoStars, threeStars, fourStars, fiveStars
-	};
-    */
+
+	/*
+	 * enum ratings { noStars, oneStar, twoStars, threeStars, fourStars, fiveStars
+	 * };
+	 */
 	/**
 	 * Initialize the survey
 	 */
@@ -134,7 +134,27 @@ public class Survey {
 
 	@Override
 	public String toString() {
-		return null;
+
+		int rate;
+		
+		switch (rating) {
+		case noStars:
+			rate = 0;
+		case oneStar:
+			rate = 1;
+		case twoStars:
+			rate = 2;
+		case threeStars:
+			rate = 3;
+		case fourStars:
+			rate = 4;
+		case fiveStars:
+			rate = 5;
+		default:
+			rate = -1;
+		}
+
+		return this.name + "|" + this.target + "|" + rate + "|" + this.comments + "\n";
 	}
 
 }

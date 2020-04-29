@@ -11,6 +11,8 @@ import javax.swing.table.TableRowSorter;
 
 public class RowFilterUtil {
 	public static TableRowSorter<? extends TableModel> rowSorter;
+	
+	
 	public static JTextField createRowFilter(JTable table) {
 		RowSorter<? extends TableModel> rs = table.getRowSorter();
 		if (rs == null) {

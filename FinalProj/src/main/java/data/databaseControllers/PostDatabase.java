@@ -87,7 +87,6 @@ public class PostDatabase {
 			loader.close();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -104,10 +103,6 @@ public class PostDatabase {
 		write.close();
 
 	}
-
-//	public void add(Post p) {
-//		postData.add(0, p);
-//	}
 
 	public static ArrayList<AbstractPost> getPostData() {
 		return postData;

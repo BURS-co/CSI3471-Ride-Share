@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -39,7 +38,6 @@ import javax.swing.table.DefaultTableModel;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
-import data.post.Driver;
 import data.user.Admin;
 import data.user.User;
 
@@ -116,9 +114,7 @@ public class Application {
 	public static JScrollPane pane;
 
 	public static JTextField filterField;
-	public static JPanel jp;
-	public static GridBagConstraints fc;
-	public static JLabel filterLabel = new JLabel("Filter posts:");
+
 	/**
 	 * main method for the application
 	 * 
@@ -201,30 +197,33 @@ public class Application {
 		riderTable = CreateRiderTable.createTable(rlist);
 		driverTable = CreateDriverTable.createTable(dlist);
 		
+		/** First Row of Panel **/
+		JPanel searchPnl = new JPanel();
+		GridBagConstraints fc = new GridBagConstraints();
 		
-		//Add filtering here
-		fc = new GridBagConstraints();
-		/*fc.weightx=1;
-		fc.weighty=1;*/
-		fc.gridx=2;
-		fc.gridy=0;
+		/*** Search Panel Components ***/
+		fc.gridx = 0;
+		fc.gridy = 0;
+		fc.anchor = GridBagConstraints.FIRST_LINE_START;
+		JLabel filterLabel = new JLabel("Filter posts:");
+		filterLabel.setFont(customFont);
+		searchPnl.add(filterLabel,fc);
 
 		
+		fc.gridx = 1;
+		fc.gridy = 0;
+		fc.anchor = GridBagConstraints.RELATIVE;
 
 		// Add filtering here
-
 		filterField = RowFilterUtil.createRowFilter(riderTable);
-		jp = new JPanel();
 
-	    jp.add(filterField);
-	    
-	    mainFrame.add(filterLabel,fc);
-	    
-	    //fc.gridx++;
-	    fc.gridx+=1;
-	    
-	    mainFrame.add(jp,fc);
+		searchPnl.add(filterField, fc);
 
+		// place panel into frame
+		gc.gridx = 2;
+		gc.gridy = 0;
+		gc.fill = GridBagConstraints.BOTH;
+		mainFrame.add(searchPnl, gc);
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -363,31 +362,22 @@ public class Application {
 					pane = new JScrollPane(riderTable);
 					mainFrame.add(pane, gc);
 
-					mainFrame.remove(jp);
+					mainFrame.remove(searchPnl);
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(riderTable);
-					jp = new JPanel();
-					
-					fc.gridx=2;
-					fc.gridy=0;
-					jp.add(filterField);
-				    
-				    mainFrame.add(filterLabel,fc);
-				    
-				    //fc.gridx++;
-				    fc.gridx+=1;
-				    
-				    mainFrame.add(jp,fc);
 
+					fc.gridx = 0;
+					fc.gridy = 0;
+
+					searchPnl.add(filterField, fc);
+
+					gc.gridx = 2;
+					gc.gridy = 0;
+					gc.fill = GridBagConstraints.BOTH;
+
+					mainFrame.add(searchPnl, gc);
 
 					mainFrame.repaint();
-					// TODO fix
-					/*
-					 * pc.weightx = 1; pc.weighty = 1;
-					 * 
-					 * pc.gridx = 0; pc.gridy = 0;
-					 */
-					// mainFrame.add(selection, gc);
 
 					mainFrame.pack();
 
@@ -425,7 +415,6 @@ public class Application {
 		pc.gridx = 0;
 		pc.gridy = 1;
 
-		// TODO
 		/*
 		 * try { //TODO create file Image img = ImageIO.read(new
 		 * File("src/main/resources/poolfloat copy.png")); drivesBtn.setIcon(new
@@ -448,25 +437,24 @@ public class Application {
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
 					mainFrame.remove(pane);
+
 					// new pane
 					pane = new JScrollPane(driverTable);
 					mainFrame.add(pane, gc);
 
-					mainFrame.remove(jp);
+					mainFrame.remove(searchPnl);
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(driverTable);
-					jp = new JPanel();
 
-					fc.gridx=2;
-					fc.gridy=0;
-					jp.add(filterField);
-				    
-				    mainFrame.add(filterLabel,fc);
-				    
-				    //fc.gridx++;
-				    fc.gridx+=1;
-				    
-				    mainFrame.add(jp,fc);
+					fc.gridx = 0;
+					fc.gridy = 0;
+					fc.anchor = GridBagConstraints.FIRST_LINE_START;
+					searchPnl.add(filterField, fc);
+
+					gc.gridx = 2;
+					gc.gridy = 0;
+					gc.fill = GridBagConstraints.BOTH;
+					mainFrame.add(searchPnl, gc);
 
 					mainFrame.pack();
 
@@ -513,7 +501,7 @@ public class Application {
 		 * System.out.println(ex.getStackTrace()); }
 		 */
 		selection.add(profileBtn, pc);
-		
+
 		/**** Fourth Row of Panel ****/
 		ImageIcon rideIcn = new ImageIcon("src/main/resources/myRidesIcon.png");
 		Image img = rideIcn.getImage(); // transform it
@@ -526,10 +514,10 @@ public class Application {
 		myRidesBtn.setFocusPainted(false);
 		pc.gridx = 0;
 		pc.gridy = 3;
-		
+
 		// query for rider posts
 		ArrayList<AbstractPost> myList = pDat.searchDatabase(Application.loggedIn.getUsername());
-		
+
 		myRidesTable = CreateMyRidesTable.createTable(myList);
 
 		// make it so columns may not be dragged around for
@@ -549,7 +537,7 @@ public class Application {
 		myRidesTable.getColumn(myRidesLabels[3]).setPreferredWidth(50);
 		myRidesTable.getColumn(myRidesLabels[4]).setPreferredWidth(100);
 
-		if(myList.size() > 0) {
+		if (myList.size() > 0) {
 			myRidesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			// When selection changes, provide user with row numbers for both view & model.
 			myRidesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -559,14 +547,14 @@ public class Application {
 						// Selection got filtered away.
 						// statusText.setText("");
 					} else {
-					//	String type = (String) myRidesTable.getValueAt(viewRow, 0);
+						// String type = (String) myRidesTable.getValueAt(viewRow, 0);
 						String name = (String) myRidesTable.getValueAt(viewRow, 1);
 						String orig = (String) myRidesTable.getValueAt(viewRow, 2);
 						String dest = (String) myRidesTable.getValueAt(viewRow, 3);
 						String date = (String) myRidesTable.getValueAt(viewRow, 4);
 						ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date);
 						vpi.setVisible(true);
-	
+
 					}
 				}
 			});
@@ -594,7 +582,6 @@ public class Application {
 					mainFrame.add(pane, gc);
 
 					mainFrame.repaint();
-					
 
 					mainFrame.pack();
 
@@ -695,18 +682,18 @@ public class Application {
 			 * ImageIcon(img)); } catch (Exception ex) {
 			 * System.out.println(ex.getStackTrace()); }
 			 */
-			
+
 			reportBtn.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					//Make report
+					// Make report
 					AdminReport a = new AdminReport(mainFrame);
 					a.setVisible(true);
 				}
-				
+
 			});
-			
+
 			selection.add(reportBtn, pc);
 		}
 

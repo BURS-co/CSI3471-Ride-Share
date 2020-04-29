@@ -96,10 +96,10 @@ public class CreateRiderTable {
 		riderTable.setRowSorter(sorter);
 
 		List<RowSorter.SortKey> sortKeys = new ArrayList<SortKey>(25);
-		sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
-		sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
-		sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
-		sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
+		sortKeys.add(new RowSorter.SortKey(0, SortOrder.DESCENDING));
+		sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
+		sortKeys.add(new RowSorter.SortKey(2, SortOrder.DESCENDING));
+		sortKeys.add(new RowSorter.SortKey(3, SortOrder.DESCENDING));
 		sorter.setSortKeys(sortKeys);
 
 		riderTable.setFont(customFont);

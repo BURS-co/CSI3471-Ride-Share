@@ -105,16 +105,16 @@ public class CreateDriverTable {
 		JTable driverTable = new JTable(model);
 
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(driverTable.getModel());
-		driverTable.setRowSorter(sorter);
 
 		List<RowSorter.SortKey> sortKeys = new ArrayList<SortKey>(25);
-		sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
-		sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
-		sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
-		sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
-		sortKeys.add(new RowSorter.SortKey(4, SortOrder.ASCENDING));
+		sortKeys.add(new RowSorter.SortKey(0, SortOrder.DESCENDING));
+		sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
+		sortKeys.add(new RowSorter.SortKey(2, SortOrder.DESCENDING));
+		sortKeys.add(new RowSorter.SortKey(3, SortOrder.DESCENDING));
+		sortKeys.add(new RowSorter.SortKey(4, SortOrder.DESCENDING));
 		sorter.setSortKeys(sortKeys);
 
+		driverTable.setRowSorter(sorter);
 		driverTable.setFont(customFont);
 
 		return driverTable;

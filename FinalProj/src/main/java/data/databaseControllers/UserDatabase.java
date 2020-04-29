@@ -14,8 +14,8 @@ import data.user.Admin;
 import data.user.User;
 
 public class UserDatabase {
-
-	// singleton instance
+	
+	// singleton instance.
 	private static UserDatabase userDatabase = null;// new UserDatabase();
 	// multi-thread protection
 	private static ReentrantLock lock = new ReentrantLock();

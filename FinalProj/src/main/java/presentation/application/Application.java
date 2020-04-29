@@ -613,7 +613,6 @@ public class Application {
 		});
 		selection.add(myRidesBtn, pc);
 
-
 		/**** Fourth Row of Panel ****/
 		ImageIcon crtIcn = new ImageIcon("src/main/resources/pencil.png");
 		Image image = crtIcn.getImage(); // transform it

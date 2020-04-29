@@ -1,6 +1,5 @@
 package presentation.application;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -39,7 +38,7 @@ import javax.swing.table.DefaultTableModel;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
-import data.post.DriverPost;
+import data.post.Driver;
 import data.user.Admin;
 import data.user.User;
 
@@ -108,7 +107,7 @@ public class Application {
 	public static boolean driverTableUp;
 
 	public static JScrollPane pane;
-	
+
 	public static JTextField filterField;
 	public static JPanel jp;
 	public static GridBagConstraints fc;
@@ -202,10 +201,19 @@ public class Application {
 		fc.weighty=1;*/
 		fc.gridx=2;
 		fc.gridy=0;
+
+
+		// Add filtering here
+
 		filterField = RowFilterUtil.createRowFilter(riderTable);
 		jp = new JPanel();
+
 	    jp.add(filterField);
 	    mainFrame.add(jp,fc);
+
+		jp.add(filterField);
+		mainFrame.add(jp);
+
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -342,15 +350,20 @@ public class Application {
 
 					pane = new JScrollPane(riderTable);
 					mainFrame.add(pane, gc);
-					
+
 					mainFrame.remove(jp);
-					//Add filtering here
+					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(riderTable);
 					jp = new JPanel();
+<<<<<<< HEAD
 				    jp.add(filterField);
 				    fc.gridx=2;
 					fc.gridy=0;
 				    mainFrame.add(jp,fc);
+=======
+					jp.add(filterField);
+					mainFrame.add(jp);
+>>>>>>> refs/remotes/origin/master
 
 					mainFrame.repaint();
 					// TODO fix
@@ -422,15 +435,20 @@ public class Application {
 					// new pane
 					pane = new JScrollPane(driverTable);
 					mainFrame.add(pane, gc);
-					
+
 					mainFrame.remove(jp);
-					//Add filtering here
+					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(driverTable);
 					jp = new JPanel();
+<<<<<<< HEAD
 				    jp.add(filterField);
 				    fc.gridx=2;
 					fc.gridy=0;
 				    mainFrame.add(jp,fc);
+=======
+					jp.add(filterField);
+					mainFrame.add(jp);
+>>>>>>> refs/remotes/origin/master
 					// TODO fix
 					// pc.weightx = 1;
 					// pc.weighty = 1;
@@ -509,32 +527,32 @@ public class Application {
 				SelectPostType cp = new SelectPostType(mainFrame, loggedIn);
 				cp.setVisible(true);
 				if (CreatePost.isSucceeded()) {
-					if (CreatePost.p.getType() == "driver") {
-						String driver = ((DriverPost) CreatePost.p).getDriver();
-						Integer riderLimit = ((DriverPost) CreatePost.p).getRiderLimit();
-						String origin = CreatePost.p.getOrigin();
-						String dest = CreatePost.p.getDest();
-						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
-						String date = df.format(CreatePost.p.getDate());
-
-						Object[] row = { riderLimit, driver, origin, dest, date };
-
-						dTable.addRow(row);
-						dTable.fireTableDataChanged();
-						CreatePost.setSucceeded(false);
-					} else {
-						String poster = CreatePost.p.getPoster();
-						String origin = CreatePost.p.getOrigin();
-						String dest = CreatePost.p.getDest();
-						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
-						String date = df.format(CreatePost.p.getDate());
-
-						Object[] row = { poster, origin, dest, date };
-
-						rTable.addRow(row);
-						rTable.fireTableDataChanged();
-						CreatePost.setSucceeded(false);
-					}
+//					if (CreatePost.p.getType() == "driver") {
+//						String driver = ((Driver) CreatePost.p).getDriver();
+//						Integer riderLimit = ((Driver) CreatePost.p).getRiderLimit();
+//						String origin = CreatePost.p.getOrigin();
+//						String dest = CreatePost.p.getDest();
+//						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+//						String date = df.format(CreatePost.p.getDate());
+//
+//						Object[] row = { riderLimit, driver, origin, dest, date };
+//
+//						dTable.addRow(row);
+//						dTable.fireTableDataChanged();
+//						CreatePost.setSucceeded(false);
+//					} else {
+//						String poster = CreatePost.p.getPoster();
+//						String origin = CreatePost.p.getOrigin();
+//						String dest = CreatePost.p.getDest();
+//						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+//						String date = df.format(CreatePost.p.getDate());
+//
+//						Object[] row = { poster, origin, dest, date };
+//
+//						rTable.addRow(row);
+//						rTable.fireTableDataChanged();
+//						CreatePost.setSucceeded(false);
+//					}
 				}
 
 			}

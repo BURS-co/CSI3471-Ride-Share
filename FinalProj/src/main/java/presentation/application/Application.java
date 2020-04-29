@@ -449,7 +449,7 @@ public class Application {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		UserDatabase.getInstance().write();
-		PostDatabase.getInstance().write();;
+		PostDatabase.getInstance().write();
 
 	}
 	

@@ -9,8 +9,10 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -28,6 +30,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.ValidateAccountInfo;
+import data.databaseControllers.UserDatabase;
 import data.user.Admin;
 import data.user.User;
 
@@ -225,6 +228,11 @@ public class EditProfile extends JDialog {
 								user = new Admin();
 							else
 								user = new User();
+							
+							//System.out.println("The old:\n" + Application.loggedIn.toString());
+							
+							//UserDatabase.getInstance().removeUser(Application.loggedIn);
+							
 							user.setUsername(name.getText());
 							user.setEmail(baylorEmail.getText());
 							user.setPhoneNumber(phoneNum.getText());
@@ -232,41 +240,58 @@ public class EditProfile extends JDialog {
 							user.setGradYear(year);
 							user.setPassword(new String(password.getPassword()));
 							
+							System.out.println("The edited user:\n"+user.toString());
+							
 							setUser(u);
-
+							
+							System.out.println("The chap whomstve logged in:\n"+Application.loggedIn.toString());
+							
+							//UserDatabase.getInstance().addUser(user);
+							
 							String filePath = "userDatabase.txt";
-						      Scanner sc = null;
+						    Scanner sc = null;
+						    String content = "";
+						    BufferedReader reader = null;
+						    FileWriter writer = null;
 							try {
-								sc = new Scanner(new File(filePath));
+								reader = new BufferedReader(new FileReader(filePath));
+								
+								String line = reader.readLine();
+								
+								while(line != null) {
+									if(line.contains(Application.loggedIn.getEmail())) {
+										//System.out.println("Collision!");
+										line = user.toString();
+										content = content + line;
+									}
+									else
+										content = content + line + System.lineSeparator();
+									line = reader.readLine();
+								}
+								
+								//System.out.println("Content: \n" + content);
+								
+								
+
+					             
+						            //Rewriting the input text file with newContent
+						             
+						        writer = new FileWriter(filePath);
+						        
+						        writer.write(content);
+						             
+						        //writer.write(newContent);
+						        reader.close();
+								writer.flush();
+								writer.close();
+								
 							} catch (FileNotFoundException e1) {
 								e1.printStackTrace();
-							}
-						      StringBuffer buffer = new StringBuffer();
-						      while (sc.hasNextLine()) {
-						         buffer.append(sc.nextLine()+System.lineSeparator());
-						      }
-						      String fileContents = buffer.toString();
-						      sc.close();
-						      String oldLine = u.toString();
-						      String newLine = user.toString();
-						      //Replacing the old line with new line
-						      fileContents = fileContents.replaceAll(oldLine, newLine);
-						      FileWriter writer = null;
-							try {
-								writer = new FileWriter(filePath);
 							} catch (IOException e) {
+								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							try {
-								writer.append(fileContents);
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						      try {
-								writer.flush();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
+						   
 							
 							//Keep track of user logged in
 							Application.loggedIn.setEmail(user.getEmail());

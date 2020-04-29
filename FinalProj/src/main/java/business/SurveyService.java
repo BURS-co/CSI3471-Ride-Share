@@ -6,7 +6,7 @@ import data.databaseControllers.SurveyDatabase;
 import data.survey.Survey;
 import enums.Failures;
 
-public class SurveyService {
+public class SurveyService implements IService{
 
 	// singleton
 	private static SurveyService surveyService = null;
@@ -64,7 +64,7 @@ public class SurveyService {
 		return result;
 	}
 
-	private Survey create(String[] list) {
+	public Survey create(String[] list) {
 		//create the survey
 		Survey surv = new Survey();
 		

@@ -2,6 +2,8 @@ package business;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+import data.databaseControllers.ReportDatabase;
+import data.databaseControllers.SurveyDatabase;
 import data.survey.Survey;
 import data.user.Report;
 import enums.Failures;
@@ -25,34 +27,48 @@ public class ReportService implements IService{
 
 			return reportService;
 		}
-		
-		public Failures verifyReport(String[] list) {
-			return null;
-		}
-		
-		private Report createReport(String[] list) {
-			return null;
-		}
-		
-		public void storeReport(String[] list) {
-			
-		}
 
 		@Override
 		public Failures verify(String[] list) {
-			// TODO Auto-generated method stub
-			return null;
+			//boolean result = true;
+			Failures result = Failures.SUCCESS;
+			if (list.length != 0) {
+				for (String field : list) {
+					if (field.isEmpty()) {
+						//result = false;
+						result = Failures.emptyField;
+						break;
+					}
+				}
+			} else {
+				//result = false;
+				result = Failures.emptyField;
+			}
+
+			// more validation tests...
+			
+
+			// store survey if it was successfully validated
+			if (result == Failures.SUCCESS) {
+				
+				store(list);
+			}
+			return result;
 		}
 
 		@Override
 		public void store(String[] list) {
-			// TODO Auto-generated method stub
+			ReportDatabase.addReport(create(list));
 			
 		}
 
 		@Override
-		public Object create(String[] list) {
-			// TODO Auto-generated method stub
-			return null;
+		public Report create(String[] list) {
+			//create the report
+			Report rep = new Report();
+			
+			
+			
+			return rep;
 		}
 }

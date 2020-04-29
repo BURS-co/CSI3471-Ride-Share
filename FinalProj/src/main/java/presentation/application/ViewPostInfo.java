@@ -228,49 +228,41 @@ public class ViewPostInfo extends JDialog {
 
 		cs.gridx = 0;
 		cs.gridy = 0;
-		cs.gridwidth = 1;
 		nameLabel.setFont(customFont);
 		panel.add(nameLabel, cs);
 		
 		cs.gridx = 1;
 		cs.gridy = 0;
-		cs.gridwidth = 1;
 		n.setFont(customFont);
 		panel.add(n, cs);
 
 		cs.gridx = 0;
 		cs.gridy = 1;
-		cs.gridwidth = 1;
 		origLabel.setFont(customFont);
 		panel.add(origLabel, cs);
 		
 		cs.gridx = 1;
 		cs.gridy = 1;
-		cs.gridwidth = 1;
 		o.setFont(customFont);
 		panel.add(o, cs);
 
 		cs.gridx = 0;
 		cs.gridy = 2;
-		cs.gridwidth = 2;
 		destLabel.setFont(customFont);
 		panel.add(destLabel, cs);
 		
 		cs.gridx = 1;
 		cs.gridy = 2;
-		cs.gridwidth = 2;
 		d.setFont(customFont);
 		panel.add(d, cs);
 		
 		cs.gridx = 0;
 		cs.gridy = 3;
-		cs.gridwidth = 2;
 		dateLabel.setFont(customFont);
 		panel.add(dateLabel, cs);
 		
 		cs.gridx = 1;
 		cs.gridy = 3;
-		cs.gridwidth = 2;
 		dt.setFont(customFont);
 		panel.add(dt, cs);
 

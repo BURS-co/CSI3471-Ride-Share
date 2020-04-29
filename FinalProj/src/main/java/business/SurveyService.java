@@ -10,10 +10,10 @@ public class SurveyService {
 	// singleton
 	private static SurveyService surveyService = null;
 	private static ReentrantLock lock = new ReentrantLock();
-	private SurveyDatabase database;
+	//private SurveyDatabase database;
 
 	private SurveyService() {
-		database = SurveyDatabase.getInstance();
+		//database = SurveyDatabase.getInstance();
 	}
 
 	public static SurveyService getInstance() {
@@ -44,20 +44,20 @@ public class SurveyService {
 		// store survey if it was successfully validated
 		if (result) {
 			
-			storeSurvey(createSurvey(list));
+			storeSurvey(list);
 		}
 		return result;
 	}
 
 	private Survey createSurvey(String[] list) {
-		// TODO Auto-generated method stub
-		return null;
+		//create the survey
+		Survey surv = new Survey();
+		
+		return surv;
 	}
 
-	public void storeSurvey(Survey s) {
+	public void storeSurvey(String[] list) {
 		// should call the survay database storeSurvey()
-		//SurveyDatabase database = SurveyDatabase.getInstance();
-		
-		
+		SurveyDatabase.addSurvey(createSurvey(list));
 	}
 }

@@ -16,6 +16,10 @@ public class Survey {
 		this.responses = responses;
 	}
 
+	public Survey() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * gets the name
 	 * @return the name

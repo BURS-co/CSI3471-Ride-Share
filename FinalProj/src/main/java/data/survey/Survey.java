@@ -154,7 +154,7 @@ public class Survey {
 			rate = -1;
 		}
 
-		return this.name + "|" + this.target + "|" + rate + "|" + this.comments + "\n";
+		return this.name + ",,," + this.target + ",,," + rate + ",,," + this.comments + "\n";
 	}
 
 }

@@ -85,7 +85,7 @@ public class UserDatabase {
 
 				for (int i = 0; i < split.length; i++) {
 					if (i == 0) {
-						u.setUsername(split[i] + split[i+1]);
+						u.setUsername(split[i] + " " + split[i+1]);
 					} else if (i == 2) {
 						u.setEmail(split[i]);
 					} else if (i == 3) {

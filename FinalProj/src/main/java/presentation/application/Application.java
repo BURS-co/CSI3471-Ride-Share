@@ -324,6 +324,7 @@ public class Application {
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
 					
+					//remove pane
 					mainFrame.remove(pane);
 					
 					pane = new JScrollPane(riderTable);

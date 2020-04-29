@@ -19,6 +19,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import business.UserService;
+
 public class ViewPostInfo extends JDialog {
 	private static final long serialVersionUID = 1L;
 	Font customFont;
@@ -199,7 +201,7 @@ public class ViewPostInfo extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(acceptRide);
 		bp.add(btnCancel);
-		if (Application.loggedIn.getUsername().equals(name))
+		if (UserService.getInstance().getCurrentUser().getUsername().equals(name))
 			bp.add(removePost);
 
 		bp.setBackground(new Color(28, 60, 52));
@@ -362,7 +364,7 @@ public class ViewPostInfo extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(offerRide);
 		bp.add(btnCancel);
-		if (Application.loggedIn.getUsername().equals(name))
+		if (UserService.getInstance().getCurrentUser().getUsername().equals(name))
 			bp.add(removePost);
 
 		bp.setBackground(new Color(28, 60, 52));

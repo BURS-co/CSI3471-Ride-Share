@@ -11,8 +11,8 @@ import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.RowSorter;
-import javax.swing.SortOrder;
 import javax.swing.RowSorter.SortKey;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -46,14 +46,14 @@ public class CreateMyRidesTable {
 
 		String[] myRidesLabels = { "Type", "Poster", "Origin", "Destination", "Date" };
 		DefaultTableModel model;
-		if(myRides.size() > 0) {
+		if (myRides.size() > 0) {
 			myRidesData = new Object[myRides.size()][myRidesLabels.length];
-	
+
 			for (int r = 0; r < myRides.size(); r++) {
-				if(myRides.get(r).getPoster() != UserService.getInstance().getCurrentUser().getUsername()) {
+				if (myRides.get(r).getPoster() != UserService.getInstance().getCurrentUser().getUsername()) {
 					for (int c = 0; c < 5; c++) {
 						if (c == 0) {
-							if(myRides.get(r) instanceof Driver)
+							if (myRides.get(r) instanceof Driver)
 								myRidesData[r][c] = new String("Driver");
 							else
 								myRidesData[r][c] = new String("Rider");
@@ -71,23 +71,23 @@ public class CreateMyRidesTable {
 					}
 				}
 			}
-	
+
 			model = new DefaultTableModel(myRidesData, myRidesLabels) {
 				/**
 				 * 
 				 */
 				private static final long serialVersionUID = 1L;
-	
+
 				@Override
 				public boolean isCellEditable(int row, int column) {
 					return false;
 				}
-	
+
 				@Override
 				public Object getValueAt(int row, int col) {
 					return myRidesData[row][col];
 				}
-	
+
 				@Override
 				public Class<?> getColumnClass(int column) {
 					Class<?> returnValue;
@@ -96,9 +96,9 @@ public class CreateMyRidesTable {
 					} else {
 						returnValue = Object.class;
 					}
-	
+
 					return returnValue;
-	
+
 				};
 			};
 		} else {

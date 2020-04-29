@@ -1,13 +1,13 @@
 package data.databaseControllers;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -33,7 +33,7 @@ public class SurveyDatabase {
 
 	private static ArrayList<Survey> surveyData = new ArrayList<Survey>();
 
-	public void load() throws ParseException, IOException{
+	public void load() throws ParseException, IOException {
 		try {
 			BufferedReader loader = new BufferedReader(new FileReader(new File("surveyDatabase.txt")));
 
@@ -43,13 +43,13 @@ public class SurveyDatabase {
 
 				String[] split = line.split(",,,");
 				Survey s = new Survey();
-				
-				//supply s with info
+
+				// supply s with info
 				s.setName(split[0]);
 				s.setTarget(split[1]);
 				s.setRating(Integer.valueOf(split[2]));
 				s.setComments(split[3]);
-				
+
 				// Add data
 				surveyData.add(s);
 			}

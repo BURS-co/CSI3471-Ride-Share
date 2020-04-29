@@ -219,7 +219,8 @@ public class LoginDialog extends JDialog {
 		if (Login.authenticate(tfEmail.getText(), getPassword())) {
 			succeeded = true;
 			ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-			JOptionPane.showMessageDialog(null, "Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
+			JOptionPane.showMessageDialog(null,
+					"Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
 					JOptionPane.INFORMATION_MESSAGE, icon);
 			Application.log.log(Level.INFO, getUsername() + " Login successful!");
 			dispose();

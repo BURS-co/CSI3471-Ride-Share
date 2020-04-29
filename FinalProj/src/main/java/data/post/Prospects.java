@@ -30,6 +30,6 @@ public class Prospects {
 
 	public void setStatus(String string) {
 		this.status = string.equalsIgnoreCase("true");
-		
+
 	}
 }

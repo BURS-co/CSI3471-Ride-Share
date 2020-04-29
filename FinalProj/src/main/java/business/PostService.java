@@ -124,27 +124,25 @@ public class PostService implements IService {
 //
 //		// should this create a post object to store in the database?
 //	}
-	
-	
+
 	public Failures addProspects(User u, String Post) {
 		Failures result = Failures.SUCCESS;
-		Driver p = (Driver)PostDatabase.queryDatabase(Post);
-		if(p == null) {
+		Driver p = (Driver) PostDatabase.queryDatabase(Post);
+		if (p == null) {
 			result = Failures.noMatchingQuery;
 			return result;
 		}
-		
+
 		Integer limit = p.getRiderLimit();
 		int current_passengers = p.getRiders().size();
-		
-		if(current_passengers < limit) {
+
+		if (current_passengers < limit) {
 			Prospects passenger = new Prospects(u.getUsername());
 			passenger.setStatus(false);
 			p.addRiders(passenger);
-		}
-		else {
+		} else {
 			result = Failures.reachMaxCapacity;
-		}		
+		}
 		return result;
 	}
 

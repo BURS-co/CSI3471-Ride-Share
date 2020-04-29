@@ -11,8 +11,7 @@ import javax.swing.table.TableRowSorter;
 
 public class RowFilterUtil {
 	public static TableRowSorter<? extends TableModel> rowSorter;
-	
-	
+
 	public static JTextField createRowFilter(JTable table) {
 		RowSorter<? extends TableModel> rs = table.getRowSorter();
 		if (rs == null) {
@@ -20,9 +19,7 @@ public class RowFilterUtil {
 			rs = table.getRowSorter();
 		}
 
-		 rowSorter = (rs instanceof TableRowSorter)
-				? (TableRowSorter<? extends TableModel>) rs
-				: null;
+		rowSorter = (rs instanceof TableRowSorter) ? (TableRowSorter<? extends TableModel>) rs : null;
 
 		if (rowSorter == null) {
 			throw new RuntimeException("Cannot find appropriate rowSorter: " + rs);

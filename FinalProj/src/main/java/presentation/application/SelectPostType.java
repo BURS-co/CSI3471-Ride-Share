@@ -33,7 +33,6 @@ public class SelectPostType extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
 	ValidateAccountInfo vaI;
-	private boolean succeeded = false;
 	Font customFont = null;
 	public static String postTypeSelected = new String();
 	String[] postTypes = { "Rider", "Driver" };

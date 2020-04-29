@@ -191,7 +191,8 @@ public class ViewProfile extends JDialog {
 					phoneNum.setText(UserService.getInstance().getCurrentUser().getPhoneNumber());
 					gradMonth.setText(UserService.getInstance().getCurrentUser().getGradMonth());
 					gradYear.setText(UserService.getInstance().getCurrentUser().getGradYear());
-					String pass = String.join("", Collections.nCopies(UserService.getInstance().getCurrentUser().getPassword().length(), "*"));
+					String pass = String.join("",
+							Collections.nCopies(UserService.getInstance().getCurrentUser().getPassword().length(), "*"));
 					newPassword.setText(pass);
 
 				}

@@ -10,8 +10,10 @@ public class SurveyService {
 	// singleton
 	private static SurveyService surveyService = null;
 	private static ReentrantLock lock = new ReentrantLock();
+	private SurveyDatabase database;
 
 	private SurveyService() {
+		database = SurveyDatabase.getInstance();
 	}
 
 	public static SurveyService getInstance() {
@@ -52,10 +54,9 @@ public class SurveyService {
 		return null;
 	}
 
-
 	public void storeSurvey(Survey s) {
 		// should call the survay database storeSurvey()
-		SurveyDatabase database = SurveyDatabase.getInstance();
+		//SurveyDatabase database = SurveyDatabase.getInstance();
 		
 		
 	}

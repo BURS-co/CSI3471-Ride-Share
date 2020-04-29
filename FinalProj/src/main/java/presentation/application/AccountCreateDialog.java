@@ -50,6 +50,7 @@ public class AccountCreateDialog extends JDialog {
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = new String[8];
 	
+	//Global
 	JComboBox<String> gradMonth;
 	JComboBox<String> gradYear;
 	

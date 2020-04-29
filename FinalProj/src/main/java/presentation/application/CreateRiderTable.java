@@ -27,6 +27,7 @@ import data.post.Post;
 public class CreateRiderTable {
 	private static Font customFont = null;
 	
+	//@D array
 	static Object[][] riderData;
 	
 	

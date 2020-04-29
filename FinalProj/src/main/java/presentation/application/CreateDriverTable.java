@@ -31,6 +31,7 @@ import data.post.Post;
 public class CreateDriverTable {
 	private static Font customFont = null;
 	
+	//2D array
 	static Object[][] driverData;
 	
 	/**

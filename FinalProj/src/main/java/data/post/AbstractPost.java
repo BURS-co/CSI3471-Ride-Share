@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import business.UserService;
 import presentation.application.Application;
 
 public abstract class AbstractPost {
@@ -16,7 +17,8 @@ public abstract class AbstractPost {
 		
 		SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 		
-		this.poster = Application.loggedIn.getUsername();
+		this.poster = UserService.getInstance().getCurrentUser().getUsername();
+		//this.poster = Application.loggedIn.getUsername();
 		this.origin = input[0];
 		this.dest = input[1];
 		

@@ -28,12 +28,13 @@ import data.post.Driver;
  */
 public class CreateDriverTable {
 	private static Font customFont = null;
-	
-	//2D array
+
+	// 2D array
 	static Object[][] driverData;
-	
+
 	/**
 	 * Creates the table of driver posts
+	 * 
 	 * @param dlist the list of driver posts
 	 * @return JTable the table for displaying purposes
 	 * @param dList
@@ -41,16 +42,17 @@ public class CreateDriverTable {
 	 */
 	public static JTable createTable(ArrayList<AbstractPost> dlist) {
 		try {
-	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
-	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        //register the font
-	        ge.registerFont(customFont);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch(FontFormatException e) {
-	        e.printStackTrace();
-	    }
-		
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+					.deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(customFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
+
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
 		driverData = new Object[dlist.size()][driverPostLabels.length];
 		for (int r = 0; r < dlist.size(); r++) {
@@ -72,33 +74,36 @@ public class CreateDriverTable {
 		}
 
 		DefaultTableModel model = new DefaultTableModel(driverData, driverPostLabels) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-			@Override 
+
+			@Override
 			public Object getValueAt(int row, int col) {
 				return driverData[row][col];
-            }
+			}
+
 			@Override
-	        public Class<?> getColumnClass(int column) 
-	        {
-	              Class<?> returnValue;
-	              if ((column >= 0) && (column < getColumnCount())) 
-	              {
-	                  returnValue = getValueAt(0, column).getClass();
-	              } 
-	              else 
-	              {
-	                 returnValue = Object.class;
-	              }
+			public Class<?> getColumnClass(int column) {
+				Class<?> returnValue;
+				if ((column >= 0) && (column < getColumnCount())) {
+					returnValue = getValueAt(0, column).getClass();
+				} else {
+					returnValue = Object.class;
+				}
 
-	              return returnValue;
+				return returnValue;
 
-	       };
+			};
 		};
 		JTable driverTable = new JTable(model);
-		
+
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(driverTable.getModel());
 		driverTable.setRowSorter(sorter);
 
@@ -109,7 +114,7 @@ public class CreateDriverTable {
 		sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
 		sortKeys.add(new RowSorter.SortKey(4, SortOrder.ASCENDING));
 		sorter.setSortKeys(sortKeys);
-		
+
 		driverTable.setFont(customFont);
 
 		return driverTable;

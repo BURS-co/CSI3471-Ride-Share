@@ -12,11 +12,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.Arrays;
 
 import data.post.AbstractPost;
 import data.post.Driver;
-import data.post.DriverPost;
 import data.post.Post;
 import data.post.Prospects;
 import data.post.Rider;
@@ -53,8 +51,6 @@ public class PostDatabase {
 
 				String[] split = line.split("-");
 				AbstractPost p = null;
-					
-				//String[] subarray = Arrays.copyOfRange(split, 1, split.length);
 				
 				if (split[0].equals("driver")) {
 					p = new Driver();
@@ -87,30 +83,6 @@ public class PostDatabase {
 					
 					((Driver) p).setRiders(list);
 				}
-//					} else if (i == 1) {
-//						p.setPoster(split[i]);
-//					} else if (i == 2) {
-//						p.setOrigin(split[i]);
-//					} else if (i == 3) {
-//						p.setDest(split[i]);
-//					} else if (i == 4) {
-//						Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[i]);
-//						p.setDate(d);
-//					} else if (p.getType().equals("driver") && i == 5) {
-//						((DriverPost) p).setDriver(split[i]);
-//					} else if (p.getType().equals("driver") && i == 6) {
-//						((DriverPost) p).setRiderLimit(Integer.valueOf(split[i]));
-//					} else if (p.getType().equals("driver") && i > 7) {
-//						if (list == null) {
-//							list = new ArrayList<String>();
-//						}
-//						list.add(split[i]);
-//					}
-//				}
-//				// Add data
-//				if (p instanceof DriverPost) {
-//					((DriverPost) p).setRiders(list);
-//				}
 				postData.add(p);
 			}
 			loader.close();

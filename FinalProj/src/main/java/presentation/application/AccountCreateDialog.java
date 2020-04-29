@@ -208,21 +208,19 @@ public class AccountCreateDialog extends JDialog {
 				// ensure input is valid
 				Failures result = UserService.getInstance().verify(
 						new String[] { name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, rePass, month, year });
-
-				if (result == Failures.BadDate) {
-					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-					JOptionPane.showMessageDialog(null,"Date is Invalid.", "Login",
-							JOptionPane.INFORMATION_MESSAGE, icon);
-					dispose();
-				}
 				
-				// SUCCESS route
 				if (result == Failures.SUCCESS) {
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null, "Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					Application.log.log(Level.INFO, UserService.getInstance().getCurrentUser().getUsername() + " Login successful!");
 					dispose();
+				} else if (result == Failures.emptyField) {
+					JOptionPane.showMessageDialog(null,"Fields must not be empty.", "Login",
+							JOptionPane.INFORMATION_MESSAGE);
+				}  else if (result == Failures.BadDate) {
+					JOptionPane.showMessageDialog(null,"Date is Invalid.", "Login",
+							JOptionPane.INFORMATION_MESSAGE);
 				}
 
 			}

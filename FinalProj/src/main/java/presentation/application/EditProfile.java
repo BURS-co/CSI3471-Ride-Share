@@ -212,6 +212,7 @@ public class EditProfile extends JDialog {
 					
 					UserDatabase.getInstance().add(Application.loggedIn);
 					
+					// write changes?
 					try {
 						UserDatabase.getInstance().write();
 					} catch (IOException e) {

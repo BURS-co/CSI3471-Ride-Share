@@ -13,8 +13,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
+import data.post.AbstractPost;
+import data.post.Driver;
 import data.post.DriverPost;
 import data.post.Post;
+import data.post.Rider;
 
 public class PostDatabase {
 	// singleton
@@ -35,7 +38,7 @@ public class PostDatabase {
 		return postDatabase;
 	}
 
-	private static ArrayList<Post> postData = new ArrayList<Post>();
+	private static ArrayList<AbstractPost> postData = new ArrayList<AbstractPost>();
 
 	public void load() throws ParseException, IOException {
 		try {
@@ -94,7 +97,7 @@ public class PostDatabase {
 		// Write to .txt file (postDatabase.txt)
 		BufferedWriter write = new BufferedWriter(new FileWriter("postDatabase.txt"));
 
-		for (Post p : postData) {
+		for (AbstractPost p : postData) {
 			write.write(p.toString());
 		}
 
@@ -107,7 +110,7 @@ public class PostDatabase {
 //		postData.add(0, p);
 //	}
 
-	public static ArrayList<Post> getPostData() {
+	public static ArrayList<AbstractPost> getPostData() {
 		return postData;
 	}
 
@@ -121,13 +124,20 @@ public class PostDatabase {
 	 * @param type
 	 * @return an array of post of said type
 	 */
-	final public ArrayList<Post> searchDatabase(String type) {
-		ArrayList<Post> query = new ArrayList<Post>();
+	final public ArrayList<AbstractPost> searchDatabase(String type) {
+		ArrayList<AbstractPost> query = new ArrayList<AbstractPost>();
 
 		if (type.equals("rider") || type.equals("driver")) {
-			for (Post p : postData) {
-				if (p.getType().equals(type)) {
-					query.add(p);
+			for (AbstractPost p : postData) {
+				if (type.equals("rider")) {
+					if(p instanceof Rider) {
+						query.add(p);
+					}
+				}
+				else if(type.equals("driver")) {
+					if(p instanceof Driver) {
+						query.add(p);
+					}
 				}
 			}
 		}
@@ -135,7 +145,7 @@ public class PostDatabase {
 		return query;
 	}
 
-	public static void addPost(Post p) {
+	public static void addPost(AbstractPost p) {
 		postData.add(p);
 	}
 

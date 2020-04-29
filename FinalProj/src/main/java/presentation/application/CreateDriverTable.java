@@ -92,6 +92,7 @@ public class CreateDriverTable {
 		sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
 		sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
 		sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
+		sortKeys.add(new RowSorter.SortKey(4, SortOrder.ASCENDING));
 		sorter.setSortKeys(sortKeys);
 		
 		driverTable.setFont(customFont);

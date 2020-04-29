@@ -150,7 +150,7 @@ public class ViewPostInfo extends JDialog {
 			//		ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 			//		JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
 			//				JOptionPane.INFORMATION_MESSAGE, icon);
-			//		Application.log.log(Level.INFO, u.getUsername() + " Login successful!");
+			//		Application.log.log(Level.INFO, Application.loggedIn + " accepted a ride from " + name);
 					dispose();
 			
 
@@ -289,7 +289,7 @@ public class ViewPostInfo extends JDialog {
 			//		ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 			//		JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
 			//				JOptionPane.INFORMATION_MESSAGE, icon);
-			//		Application.log.log(Level.INFO, u.getUsername() + " Login successful!");
+			//		Application.log.log(Level.INFO, "You have offered " + name + " a ride!");
 					dispose();
 			
 

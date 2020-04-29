@@ -114,6 +114,10 @@ public class Application {
 	public static JScrollPane pane;
 
 	public static JTextField filterField;
+	
+	public static JPanel searchPnl;
+	public static GridBagConstraints fc;
+	
 
 	/**
 	 * main method for the application
@@ -198,8 +202,8 @@ public class Application {
 		driverTable = CreateDriverTable.createTable(dlist);
 		
 		/** First Row of Panel **/
-		JPanel searchPnl = new JPanel();
-		GridBagConstraints fc = new GridBagConstraints();
+		searchPnl = new JPanel();
+		fc = new GridBagConstraints();
 		
 		/*** Search Panel Components ***/
 		fc.gridx = 0;

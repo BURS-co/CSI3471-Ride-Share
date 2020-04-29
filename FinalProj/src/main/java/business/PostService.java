@@ -6,7 +6,10 @@ import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
 import data.databaseControllers.PostDatabase;
+import data.post.AbstractPost;
+import data.post.Driver;
 import data.post.Post;
+import data.post.Rider;
 import enums.Failures;
 
 public class PostService implements IService {
@@ -112,18 +115,18 @@ public class PostService implements IService {
 	@Override
 	public void store(String[] list) {
 		PostDatabase.addPost(create(list));
-
 	}
 
 	@Override
-	public Post create(String[] list) {
+	public AbstractPost create(String[] list) {
 		// create the report
-		
-		
-		Post p = new Post();
-
-		
-		
+		AbstractPost p = null;
+		if(list.length == 8) {
+			p = new Rider(list);
+		}
+		else {
+			p = new Driver(list);
+		}
 		return p;
 	}
 }

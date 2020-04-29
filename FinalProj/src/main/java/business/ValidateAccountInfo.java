@@ -70,7 +70,7 @@ public class ValidateAccountInfo {
 			return false;
 		}
 
-		// validate password
+		// validate password, must comply to regex
 		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(password);
 

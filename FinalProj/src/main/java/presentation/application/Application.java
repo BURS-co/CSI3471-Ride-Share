@@ -80,7 +80,7 @@ public class Application {
 	/**
 	 * Singleton of the post database
 	 */
-	public static User loggedIn = null;
+	public static User loggedIn;
 	/**
 	 * For using fonts on the graphics
 	 */
@@ -93,14 +93,7 @@ public class Application {
 	 * Rider posts table model
 	 */
 	public static DefaultTableModel rTable;
-	
-	public static JTable driverTable;
-	public static JTable riderTable;
-	
-	public static GridBagConstraints gc;
-	
-	public static boolean riderTableUp = true;
-	public static boolean driverTableUp = false;
+
 
 	/**
 	 * main method for the application
@@ -112,20 +105,22 @@ public class Application {
 	 * @throws HeadlessException   if key/mouse function not available on machine
 	 */
 	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
+		
+		loggedIn = null;
 
 		// Load all users from database
 		UserDatabase uDat = UserDatabase.getInstance();
 		uDat.load();
 
-		// Display login/ signup window
-		OpenPage openDlg = new OpenPage(new JFrame());
+		JFrame mainFrame = new JFrame("BearPool");
+
+		OpenPage openDlg = new OpenPage(mainFrame);
 		openDlg.setVisible(true);
 
 		// if login is successful
 		if (openDlg.isSucceeded()) {
 			log.log(Level.INFO, "User successfully logged in");
 			createRunGUI();
-
 		} else {
 			log.log(Level.INFO, "Application Closed");
 			System.exit(1);
@@ -149,7 +144,7 @@ public class Application {
 
 		// Setting up GridBagLayout
 		mainFrame.setLayout(new GridBagLayout());
-		gc = new GridBagConstraints();
+		GridBagConstraints gc = new GridBagConstraints();
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -179,15 +174,14 @@ public class Application {
 		ArrayList<Post> dlist = pDat.searchDatabase("driver");
 
 		// create table of posts
-		riderTable = CreateRiderTable.createTable(rlist);
-		driverTable = CreateDriverTable.createTable(dlist);
+		JTable riderTable = CreateRiderTable.createTable(rlist);
+		JTable driverTable = CreateDriverTable.createTable(dlist);
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
 		riderTable.getTableHeader().setReorderingAllowed(false);
 		driverTable.getTableHeader().setReorderingAllowed(false);
 
-		//Actually displaying the table
 		gc.gridx = 1;
 		gc.gridy = 0;
 		gc.fill = GridBagConstraints.BOTH;
@@ -195,7 +189,6 @@ public class Application {
 		gc.gridx = 2;
 		gc.gridy = 0;
 		mainFrame.add(new JScrollPane(driverTable), gc);
-		mainFrame.remove(driverTable);
 
 		riderTable.setFillsViewportHeight(true);
 		driverTable.setFillsViewportHeight(true);
@@ -261,12 +254,6 @@ public class Application {
 		pc.gridx = 0;
 		pc.gridy = 0;
 		pc.anchor = GridBagConstraints.CENTER;
-		
-		ridesBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("You clicked on rides button");
-			}
-		});
 
 		// rides button image label
 		// TODO
@@ -294,13 +281,6 @@ public class Application {
 		// JButton drivesBtn = new JButton("Driver Posts");
 		pc.gridx = 0;
 		pc.gridy = 1;
-		
-		drivesBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("You clicked on driver button");
-			}
-		});
-		
 
 		// TODO
 		/*
@@ -452,9 +432,5 @@ public class Application {
 		PostDatabase.getInstance().write();
 
 	}
-	
-	public JTable showRiderTable(ArrayList<Post> rlist) {
-		
-		return null;
-	}
+
 }

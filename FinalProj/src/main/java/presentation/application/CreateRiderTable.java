@@ -63,6 +63,11 @@ public class CreateRiderTable {
 		}
 
 		JTable riderTable = new JTable(new DefaultTableModel(riderData, riderPostLabels)) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;

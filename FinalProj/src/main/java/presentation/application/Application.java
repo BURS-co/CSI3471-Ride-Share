@@ -114,7 +114,6 @@ public class Application {
 	public static JScrollPane pane;
 
 	public static JTextField filterField;
-	public static JLabel filterLabel = new JLabel("Filter posts:");
 
 	/**
 	 * main method for the application
@@ -197,17 +196,26 @@ public class Application {
 		// create table of posts
 		riderTable = CreateRiderTable.createTable(rlist);
 		driverTable = CreateDriverTable.createTable(dlist);
-
-		/*** Search Panel Constraints ***/
+		
+		/** First Row of Panel **/
+		JPanel searchPnl = new JPanel();
 		GridBagConstraints fc = new GridBagConstraints();
+		
+		/*** Search Panel Components ***/
 		fc.gridx = 0;
 		fc.gridy = 0;
 		fc.anchor = GridBagConstraints.FIRST_LINE_START;
+		JLabel filterLabel = new JLabel("Filter posts:");
+		filterLabel.setFont(customFont);
+		searchPnl.add(filterLabel,fc);
+
+		
+		fc.gridx = 1;
+		fc.gridy = 0;
+		fc.anchor = GridBagConstraints.RELATIVE;
 
 		// Add filtering here
-
 		filterField = RowFilterUtil.createRowFilter(riderTable);
-		JPanel searchPnl = new JPanel();
 
 		searchPnl.add(filterField, fc);
 
@@ -215,7 +223,7 @@ public class Application {
 		gc.gridx = 2;
 		gc.gridy = 0;
 		gc.fill = GridBagConstraints.BOTH;
-		mainFrame.add(filterLabel, gc);
+		mainFrame.add(searchPnl, gc);
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -360,7 +368,7 @@ public class Application {
 
 					fc.gridx = 0;
 					fc.gridy = 0;
-					
+
 					searchPnl.add(filterField, fc);
 
 					gc.gridx = 2;
@@ -429,7 +437,7 @@ public class Application {
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
 					mainFrame.remove(pane);
-					
+
 					// new pane
 					pane = new JScrollPane(driverTable);
 					mainFrame.add(pane, gc);
@@ -437,11 +445,11 @@ public class Application {
 					mainFrame.remove(searchPnl);
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(driverTable);
-					
+
 					fc.gridx = 0;
 					fc.gridy = 0;
 					fc.anchor = GridBagConstraints.FIRST_LINE_START;
-					searchPnl.add(filterField,fc);
+					searchPnl.add(filterField, fc);
 
 					gc.gridx = 2;
 					gc.gridy = 0;
@@ -674,18 +682,18 @@ public class Application {
 			 * ImageIcon(img)); } catch (Exception ex) {
 			 * System.out.println(ex.getStackTrace()); }
 			 */
-			
+
 			reportBtn.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					//Make report
+					// Make report
 					AdminReport a = new AdminReport(mainFrame);
 					a.setVisible(true);
 				}
-				
+
 			});
-			
+
 			selection.add(reportBtn, pc);
 		}
 

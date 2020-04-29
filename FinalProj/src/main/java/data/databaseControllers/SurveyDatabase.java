@@ -30,7 +30,7 @@ public class SurveyDatabase {
 	private static ArrayList<Survey> surveyData = new ArrayList<Survey>();
 
 	public static void load() {
-
+        
 	}
 
 	public static void write() throws IOException {

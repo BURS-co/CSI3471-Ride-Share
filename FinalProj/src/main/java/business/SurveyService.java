@@ -1,6 +1,29 @@
 package business;
 
+import java.util.concurrent.locks.ReentrantLock;
+
+import data.databaseControllers.SurveyDatabase;
+import data.survey.Survey;
+
 public class SurveyService {
+
+	// singleton
+	private static SurveyService surveyService = null;
+	private static ReentrantLock lock = new ReentrantLock();
+
+	private SurveyService() {
+	}
+
+	public static SurveyService getInstance() {
+		if (surveyService == null) {
+			lock.lock();
+			if (surveyService == null)
+				surveyService = new SurveyService();
+		}
+
+		return surveyService;
+	}
+
 	public boolean verifySurvey(String[] list) {
 		boolean result = true;
 		if (list.length != 0) {
@@ -18,12 +41,21 @@ public class SurveyService {
 
 		// store survey if it was successfully validated
 		if (result) {
-			storeSurvey(list);
+			
+			storeSurvey(createSurvey(list));
 		}
 		return result;
 	}
 
-	public void storeSurvey(String[] list) {
+	private Survey createSurvey(String[] list) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void storeSurvey(Survey s) {
 		// should call the survay database storeSurvey()
+		SurveyDatabase database = SurveyDatabase.getInstance();
+		
+		
 	}
 }

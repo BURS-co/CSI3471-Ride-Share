@@ -220,42 +220,6 @@ public class EditProfile extends JDialog {
 						e.printStackTrace();
 					} 
 
-//					String filePath = "userDatabase.txt";
-//					Scanner sc = null;
-//					try {
-//						sc = new Scanner(new File(filePath));
-//					} catch (FileNotFoundException e1) {
-//						e1.printStackTrace();
-//					}
-//					
-//					StringBuffer buffer = new StringBuffer();
-//					while (sc.hasNextLine()) {
-//						buffer.append(sc.nextLine() + System.lineSeparator());
-//					}
-//					String fileContents = buffer.toString();
-//					sc.close();
-//					String oldLine = u.toString();
-//					String newLine = user.toString();
-//					// Replacing the old line with new line
-//					fileContents = fileContents.replaceAll(oldLine, newLine);
-//					FileWriter writer = null;
-//					try {
-//						writer = new FileWriter(filePath);
-//					} catch (IOException e) {
-//						e.printStackTrace();
-//					}
-//					try {
-//						writer.append(fileContents);
-//					} catch (IOException e) {
-//						e.printStackTrace();
-//					}
-//					try {
-//						writer.flush();
-//						writer.close();
-//					} catch (IOException e) {
-//						e.printStackTrace();
-//					}
-
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",
 							JOptionPane.INFORMATION_MESSAGE, icon);

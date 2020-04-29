@@ -23,6 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.ValidateAccountInfo;
+import data.databaseControllers.UserDatabase;
 import data.user.User;
 
 /**
@@ -215,10 +216,33 @@ public class ViewProfile extends JDialog {
 				dispose();
 			}
 		});
+		
+		JButton deleteBtn = new JButton("Delete Account");
+		deleteBtn.setFont(customFont);
+		deleteBtn.setFont(customFont);
+		deleteBtn.setBackground(new Color(255, 184, 25));
+		deleteBtn.setFont(customFont);
+		deleteBtn.setBorderPainted(false);
+		deleteBtn.setOpaque(true);
+		
+		deleteBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserDatabase.getInstance().removeUser(Application.loggedIn);
+				try {
+					UserDatabase.getInstance().write();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				dispose();
+				System.exit(0);
+			}
+		});
 
 		JPanel bp = new JPanel();
 		bp.add(editProfile);
 		bp.add(btnCancel);
+		bp.add(deleteBtn);
 		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);

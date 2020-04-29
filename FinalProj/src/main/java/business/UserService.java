@@ -7,13 +7,13 @@ import data.user.User;
 import enums.Failures;
 
 public class UserService implements IService {
-	
+
 	private static UserService userService = null;
 	private static ReentrantLock lock = new ReentrantLock();
-	//private SurveyDatabase database;
+	// private SurveyDatabase database;
 
 	private UserService() {
-		//database = SurveyDatabase.getInstance();
+		// database = SurveyDatabase.getInstance();
 	}
 
 	public static UserService getInstance() {
@@ -27,45 +27,42 @@ public class UserService implements IService {
 	}
 
 	public Failures verify(String[] list) {
-		//boolean result = true;
+		// boolean result = true;
 		Failures result = Failures.SUCCESS;
 		if (list.length != 0) {
 			for (String field : list) {
 				if (field.isEmpty()) {
-					//result = false;
+					// result = false;
 					result = Failures.emptyField;
 					break;
 				}
 			}
 		} else {
-			//result = false;
+			// result = false;
 			result = Failures.emptyField;
 		}
 
 		// more validation tests...
-		
-		
-		
 
 		// store survey if it was successfully validated
 		if (result == Failures.SUCCESS) {
-			
+
 			store(list);
 		}
 		return result;
 	}
 
 	public User create(String[] list) {
-		//create the user
+		// create the user
 		User user = new User();
-		
+
 		user.setUsername(list[0]);
 		user.setEmail(list[1]);
 		user.setPhoneNumber(list[2]);
 		user.setPassword(list[3]);
 		user.setGradMonth(list[4]);
 		user.setGradYear(list[5]);
-		
+
 		return user;
 	}
 

@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import business.CreatePostValidate;
+import business.PostService;
 import data.databaseControllers.PostDatabase;
 import data.post.DriverPost;
 import data.post.Post;
@@ -51,9 +52,7 @@ public class CreatePost extends JDialog {
 	Integer seatsAvail;
 	private static boolean succeeded = false;
 	CreatePostValidate vPI;
-	private JButton btnCancel;
 	Font customFont = null;
-	static User u = new User();
 	static Post p = null;
 
 	/**
@@ -68,10 +67,10 @@ public class CreatePost extends JDialog {
 			"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
 	String[] years = { "2020", "2021", "2022", "2023" };
 	String[] hours = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
-	String[] minutes = { "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" };
+	String[] minutes = { "00", "15", "30", "45" };
 	String[] timeOfDay = { "AM", "PM" };
 	Integer[] seats = { 1, 2, 3, 4, 5, 6 };
-	
+
 	JComboBox<String> originLoc = new JComboBox<String>(locs);
 	JComboBox<String> destLoc = new JComboBox<String>(locs);
 	JComboBox<String> month = new JComboBox<String>(months);
@@ -89,11 +88,11 @@ public class CreatePost extends JDialog {
 	 * @return
 	 */
 	public CreatePost(JFrame parent, User u) {
+
 		super(parent, "Create Post", true);
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
-		
 		JLabel originLabel = new JLabel("Origin: ");
 		JLabel destLabel = new JLabel("Destination: ");
 		JLabel dateLabel = new JLabel("Date: ");
@@ -206,6 +205,8 @@ public class CreatePost extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
+				
+				// gather selected fields
 				o = String.valueOf(originLoc.getSelectedItem());
 				destination = String.valueOf(destLoc.getSelectedItem());
 				m = String.valueOf(month.getSelectedItem());
@@ -214,78 +215,21 @@ public class CreatePost extends JDialog {
 				h = String.valueOf(hour.getSelectedItem());
 				min = String.valueOf(minute.getSelectedItem());
 				tOd = String.valueOf(timeDay.getSelectedItem());
-				if (SelectPostType.postTypeSelected == "Driver") 
-					seatsAvail = (Integer)numSeats.getSelectedItem();
-					
-				if (o.length() == 0 || destination.length() == 0 || m.length() == 0 || d.length() == 0 || y.length() == 0
-						|| h.length() == 0 || min.length() == 0 || tOd.length() == 0) {
-					JOptionPane.showMessageDialog(CreatePost.this, "Please fill in all fields.", "Create Post",
-							JOptionPane.INFORMATION_MESSAGE);
-					setSucceeded(false);
-
+				
+				String[] input = null;
+				if (SelectPostType.postTypeSelected == "Driver") {
+					seatsAvail = (Integer) numSeats.getSelectedItem();
+					input = new String[]{o, destination, m, d, y, h, min, tOd, seatsAvail.toString()};
 				} else {
-					// make sure text entered in all fields
-					if (o.length() > 0 && destination.length() > 0 && m.length() > 0 && d.length() > 0 && y.length() > 0
-							&& h.length() > 0 && min.length() > 0 && tOd.length() > 0) {
-						
-
-						if (SelectPostType.postTypeSelected == "Driver") {
-							try {
-								if(vPI.validatePostInfo(o, destination, d, m, y, h, min, tOd,seatsAvail, CreatePost.this)) {
-									p = new DriverPost();
-									p.setType("driver");
-									p.setPoster(Application.loggedIn.getUsername());
-									((DriverPost) p).setRiderLimit(seatsAvail);
-									((DriverPost) p).setDriver(Application.loggedIn.getUsername());
-								}
-							} catch (ParseException e) {
-								e.printStackTrace();
-							}
-						} else {
-							try {
-								if(vPI.validatePostInfo(o,destination, d, m, y, h, min, tOd, CreatePost.this)) {
-									p = new Post();
-									p.setType("rider");
-								}
-							} catch (ParseException e) {
-								e.printStackTrace();
-							}
-								
-						}
-						if(vPI.succeeded) {
-							p.setPoster(Application.loggedIn.getUsername());
-							p.setOrigin(o);
-							p.setDest(destination);
-
-							String dayTime = d + " " + m + " " + y + " " + h + ":" + min + " " + tOd;
-							Date d;
-							try {
-								d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(dayTime);
-								p.setDate(d);
-							} catch (ParseException e) {
-								e.printStackTrace();
-							}
-	
-							ArrayList<Post> posts = PostDatabase.getPostData();
-							posts.add(p);
-							try {
-								PostDatabase.getInstance().write();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-	
-							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-							JOptionPane.showMessageDialog(null, "Post Created Successfully. ", "Create Post",
-									JOptionPane.INFORMATION_MESSAGE, icon);
-							setSucceeded(true);
-							Application.log.log(Level.INFO, Application.loggedIn.getUsername() + " sucessfuly created a post");
-							dispose();
-						}
-					}
+				  input = new String[]{o, destination, m, d, y, h, min, tOd};
 				}
+
+				// pass to PostService for validation and creation
+				PostService.getInstance().verify(input);
 			}
 		});
-		btnCancel = new JButton("Cancel");
+
+		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
 		btnCancel.setFont(customFont);
 		btnCancel.setBackground(new Color(255, 184, 25));
@@ -331,15 +275,6 @@ public class CreatePost extends JDialog {
 	public static boolean isSucceeded() {
 		return succeeded;
 	}
-
-	public void setUser(User user) {
-		this.u = user;
-	}
-
-	public static User getUser() {
-		return u;
-	}
-
 
 	/**
 	 * @param succeeded

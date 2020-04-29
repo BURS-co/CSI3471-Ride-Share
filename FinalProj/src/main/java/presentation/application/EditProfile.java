@@ -98,7 +98,7 @@ public class EditProfile extends JDialog {
 		userLabel.setFont(customFont);
 		panel.add(userLabel, cs);
 
-		name = new JTextField(12);
+		name = new JTextField(20);
 		name.setText(u.getUsername());
 		cs.gridx = 1;
 		cs.gridy = 0;
@@ -123,7 +123,7 @@ public class EditProfile extends JDialog {
 		phoneLabel.setFont(customFont);
 		panel.add(phoneLabel, cs);
 
-		phoneNum = new JTextField(12);
+		phoneNum = new JTextField(20);
 		phoneNum.setText(u.getPhoneNumber());
 		cs.gridx = 1;
 		cs.gridy = 2;
@@ -161,7 +161,7 @@ public class EditProfile extends JDialog {
 		passwordLabel.setFont(customFont);
 		panel.add(passwordLabel, cs);
 
-		password = new JPasswordField(12);
+		password = new JPasswordField(20);
 		cs.gridx = 1;
 		cs.gridy = 5;
 		cs.gridwidth = 2;
@@ -173,7 +173,7 @@ public class EditProfile extends JDialog {
 		confirmPasswordLabel.setFont(customFont);
 		panel.add(confirmPasswordLabel, cs);
 
-		confirmPassword = new JPasswordField(12);
+		confirmPassword = new JPasswordField(20);
 		cs.gridx = 1;
 		cs.gridy = 6;
 		cs.gridwidth = 3;

@@ -118,8 +118,12 @@ public class PostService implements IService {
 	@Override
 	public Post create(String[] list) {
 		// create the report
+		
+		
 		Post p = new Post();
 
+		
+		
 		return p;
 	}
 }

@@ -35,11 +35,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
+import business.UserService;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
 import data.user.Admin;
-import data.user.User;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph
@@ -82,7 +82,7 @@ public class Application {
 	/**
 	 * Singleton of the post database
 	 */
-	//public static User loggedIn;
+	// public static User loggedIn;
 	/**
 	 * For using fonts on the graphics
 	 */
@@ -114,10 +114,9 @@ public class Application {
 	public static JScrollPane pane;
 
 	public static JTextField filterField;
-	
+
 	public static JPanel searchPnl;
 	public static GridBagConstraints fc;
-	
 
 	/**
 	 * main method for the application
@@ -129,8 +128,6 @@ public class Application {
 	 * @throws HeadlessException   if key/mouse function not available on machine
 	 */
 	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
-
-		loggedIn = null;
 
 		// Load all users from database
 		UserDatabase uDat = UserDatabase.getInstance();
@@ -200,20 +197,19 @@ public class Application {
 		// create table of posts
 		riderTable = CreateRiderTable.createTable(rlist);
 		driverTable = CreateDriverTable.createTable(dlist);
-		
+
 		/** First Row of Panel **/
 		searchPnl = new JPanel();
 		fc = new GridBagConstraints();
-		
+
 		/*** Search Panel Components ***/
 		fc.gridx = 0;
 		fc.gridy = 0;
 		fc.anchor = GridBagConstraints.FIRST_LINE_START;
 		JLabel filterLabel = new JLabel("Filter posts:");
 		filterLabel.setFont(customFont);
-		searchPnl.add(filterLabel,fc);
+		searchPnl.add(filterLabel, fc);
 
-		
 		fc.gridx = 1;
 		fc.gridy = 0;
 		fc.anchor = GridBagConstraints.RELATIVE;
@@ -498,7 +494,7 @@ public class Application {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				ViewProfile vp = new ViewProfile(mainFrame, loggedIn);
+				ViewProfile vp = new ViewProfile(mainFrame, UserService.getInstance().getCurrentUser());
 				vp.setVisible(true);
 			}
 		});
@@ -525,7 +521,7 @@ public class Application {
 		pc.gridy = 3;
 
 		// query for rider posts
-		ArrayList<AbstractPost> myList = pDat.searchDatabase(Application.loggedIn.getUsername());
+		ArrayList<AbstractPost> myList = pDat.searchDatabase(UserService.getInstance().getCurrentUser().getUsername());
 
 		myRidesTable = CreateMyRidesTable.createTable(myList);
 
@@ -625,7 +621,7 @@ public class Application {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				SelectPostType cp = new SelectPostType(mainFrame, loggedIn);
+				SelectPostType cp = new SelectPostType(mainFrame, UserService.getInstance().getCurrentUser());
 				cp.setVisible(true);
 				if (CreatePost.isSucceeded()) {
 //					if (CreatePost.p.getType() == "driver") {
@@ -669,7 +665,7 @@ public class Application {
 		selection.add(createBtn, pc);
 
 		/**** Fifth Row of Panel (ADMIN) ****/
-		if (loggedIn instanceof Admin) {
+		if (UserService.getInstance().getCurrentUser() instanceof Admin) {
 			ImageIcon reportIcn = new ImageIcon("src/main/resources/reportsIcon.png");
 			Image reportimage = reportIcn.getImage(); // transform it
 			Image reportnewimg = reportimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the

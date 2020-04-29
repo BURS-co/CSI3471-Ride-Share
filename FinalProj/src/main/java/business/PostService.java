@@ -2,6 +2,7 @@ package business;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+import data.post.Post;
 import enums.Failures;
 
 public class PostService implements IService{
@@ -42,7 +43,6 @@ public class PostService implements IService{
 
 		// assumes that 8 is the length of the rider post input
 		if (input.length > 8) {
-			driver = true;
 
 			if (Integer.valueOf(input[9]) < 1 || Integer.valueOf(input[9]) > 99) {
 				result = Failures.invalidPassengerNumber;
@@ -87,7 +87,7 @@ public class PostService implements IService{
 	}
 
 	@Override
-	public Object create(String[] list) {
+	public Post create(String[] list) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import business.UserService;
 import business.ValidateAccountInfo;
 import data.databaseControllers.UserDatabase;
 import data.user.User;
@@ -67,7 +68,7 @@ public class EditProfile extends JDialog {
 		gradYear = new JComboBox<String>(years);
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
-		JLabel userEmail = new JLabel(Application.loggedIn.getEmail());
+		JLabel userEmail = new JLabel(UserService.getInstance().getCurrentUser().getEmail());
 		JLabel phoneLabel = new JLabel("Phone: ");
 		JLabel gradMonthLabel = new JLabel("Grad Month: ");
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
@@ -200,15 +201,15 @@ public class EditProfile extends JDialog {
 				if (ValidateAccountInfo.validateUpdateInfo(name.getText(), phoneNum.getText(), pass, rePass, month, year)) {
 					succeeded = true;
 
-					UserDatabase.getInstance().removeUser(Application.loggedIn);
+					UserDatabase.getInstance().removeUser(UserService.getInstance().getCurrentUser());
 
-					Application.loggedIn.setUsername(name.getText());
-					Application.loggedIn.setPhoneNumber(phoneNum.getText());
-					Application.loggedIn.setGradMonth(month);
-					Application.loggedIn.setGradYear(year);
-					Application.loggedIn.setPassword(new String(password.getPassword()));
+					UserService.getInstance().getCurrentUser().setUsername(name.getText());
+					UserService.getInstance().getCurrentUser().setPhoneNumber(phoneNum.getText());
+					UserService.getInstance().getCurrentUser().setGradMonth(month);
+					UserService.getInstance().getCurrentUser().setGradYear(year);
+					UserService.getInstance().getCurrentUser().setPassword(new String(password.getPassword()));
 
-					UserDatabase.getInstance().add(Application.loggedIn);
+					UserDatabase.getInstance().add(UserService.getInstance().getCurrentUser());
 
 					// write changes?
 					try {
@@ -222,7 +223,7 @@ public class EditProfile extends JDialog {
 					JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					succeeded = true;
-					Application.log.log(Level.INFO, Application.loggedIn.getUsername() + "'s Profile Edited successfully");
+					Application.log.log(Level.INFO, UserService.getInstance().getCurrentUser().getUsername() + "'s Profile Edited successfully");
 					dispose();
 				}
 

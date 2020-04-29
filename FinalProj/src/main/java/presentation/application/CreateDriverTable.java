@@ -73,7 +73,7 @@ public class CreateDriverTable {
 			}
 		}
 
-		JTable driverTable = new JTable(new DefaultTableModel(driverData, driverPostLabels)) {
+		DefaultTableModel model = new DefaultTableModel(driverData, driverPostLabels) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -82,7 +82,24 @@ public class CreateDriverTable {
 			public Object getValueAt(int row, int col) {
 				return driverData[row][col];
             }
+			@Override
+	        public Class<?> getColumnClass(int column) 
+	        {
+	              Class<?> returnValue;
+	              if ((column >= 0) && (column < getColumnCount())) 
+	              {
+	                  returnValue = getValueAt(0, column).getClass();
+	              } 
+	              else 
+	              {
+	                 returnValue = Object.class;
+	              }
+
+	              return returnValue;
+
+	       };
 		};
+		JTable driverTable = new JTable(model);
 		
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(driverTable.getModel());
 		driverTable.setRowSorter(sorter);

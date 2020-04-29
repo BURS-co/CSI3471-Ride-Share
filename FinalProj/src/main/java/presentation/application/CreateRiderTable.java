@@ -66,12 +66,7 @@ public class CreateRiderTable {
 			}
 		}
 
-		JTable riderTable = new JTable(new DefaultTableModel(riderData, riderPostLabels)) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
+		DefaultTableModel model = new DefaultTableModel(riderData, riderPostLabels) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -80,7 +75,24 @@ public class CreateRiderTable {
 			public Object getValueAt(int row, int col) {
 				return riderData[row][col];
             }
+			@Override
+	        public Class<?> getColumnClass(int column) 
+	        {
+	              Class<?> returnValue;
+	              if ((column >= 0) && (column < getColumnCount())) 
+	              {
+	                  returnValue = getValueAt(0, column).getClass();
+	              } 
+	              else 
+	              {
+	                 returnValue = Object.class;
+	              }
+
+	              return returnValue;
+
+	       };
 		};
+		JTable riderTable = new JTable(model);
 		
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(riderTable.getModel());
 		riderTable.setRowSorter(sorter);

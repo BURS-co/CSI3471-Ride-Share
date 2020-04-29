@@ -192,10 +192,10 @@ public class Application {
 		gc.gridy = 0;
 		gc.fill = GridBagConstraints.BOTH;
 		mainFrame.add(new JScrollPane(riderTable), gc);
-		//gc.gridx = 2;
-		//gc.gridy = 0;
-		//mainFrame.add(new JScrollPane(driverTable), gc);
-		//mainFrame.remove(driverTable);
+		gc.gridx = 2;
+		gc.gridy = 0;
+		mainFrame.add(new JScrollPane(driverTable), gc);
+		mainFrame.remove(driverTable);
 
 		riderTable.setFillsViewportHeight(true);
 		driverTable.setFillsViewportHeight(true);
@@ -264,20 +264,7 @@ public class Application {
 		
 		ridesBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("You clicked on driver button");
-				if(driverTableUp)
-					mainFrame.remove(driverTable);
-				if(!riderTableUp) {
-					//mainFrame.remove(driverTable);
-					gc.gridx = 1;
-					gc.gridy = 0;
-					mainFrame.add(new JScrollPane(riderTable), gc);
-					mainFrame.pack();
-					riderTableUp = true;
-					driverTableUp = false;
-				}
-				
-				
+				System.out.println("You clicked on rides button");
 			}
 		});
 
@@ -310,20 +297,7 @@ public class Application {
 		
 		drivesBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("You clicked on driver button");
-				if(riderTableUp)
-					mainFrame.remove(riderTable);
-				if(!driverTableUp) {
-					//mainFrame.remove(riderTable);
-					gc.gridx = 1;
-					gc.gridy = 0;
-					mainFrame.add(new JScrollPane(driverTable), gc);
-					mainFrame.pack();
-					driverTableUp = true;
-					riderTableUp = false;
-				}
-				
-				
+				System.out.println("You clicked on driver button");
 			}
 		});
 		

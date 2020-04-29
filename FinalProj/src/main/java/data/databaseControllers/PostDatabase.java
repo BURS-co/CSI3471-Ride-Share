@@ -113,10 +113,17 @@ public class PostDatabase {
 		return postData;
 	}
 
-	final public ArrayList<AbstractPost> queryDatabase() {
+	final public static AbstractPost queryDatabase(String post) {
 		// The queryDatabase could be instead searching for a specific post
-
-		return null;
+        AbstractPost result = null;
+        
+        for(AbstractPost p : postData) {
+        	if(false/*deterministic character of post like id*/) {
+        		result = p;
+        	}
+        }
+        
+		return result;
 	}
 
 	/**

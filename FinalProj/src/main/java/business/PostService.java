@@ -8,7 +8,9 @@ import java.util.concurrent.locks.ReentrantLock;
 import data.databaseControllers.PostDatabase;
 import data.post.AbstractPost;
 import data.post.Driver;
+import data.post.Prospects;
 import data.post.Rider;
+import data.user.User;
 import enums.Failures;
 
 public class PostService implements IService {
@@ -122,6 +124,21 @@ public class PostService implements IService {
 //
 //		// should this create a post object to store in the database?
 //	}
+	
+	public Failures addProspects(User u, String Post) {
+		Failures result = Failures.SUCCESS;
+		Driver p = (Driver)PostDatabase.queryDatabase(Post);
+		if(p == null) {
+			result = Failures.noMatchingQuery;
+			return result;
+		}
+		
+		Prospects passenger = new Prospects(u.getUsername());
+		passenger.setStatus(false);
+		
+		p.addRiders(passenger);
+		return result;
+	}
 
 	// @Override
 	public void store(String[] list) {

@@ -5,5 +5,5 @@ public enum Failures {
 	         invalidPassengerNumber, SameOriginandDestination, BadDate, PostField8notANumber, 
 	         PostField8NotInRange, invalidName, invalidEmail, emailInUse, invalidPhoneNumber, 
 	         invalidPasswordStandard, passwordMismatch, invalidGraduationDate, invalidPhoneNum, 
-	         passwordsDontMatch, badPassword, invalidGradDate
+	         passwordsDontMatch, badPassword, invalidGradDate, noMatchingQuery
 }

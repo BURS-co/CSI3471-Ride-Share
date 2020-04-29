@@ -142,7 +142,7 @@ public class UserService implements IService {
 		UserService.currentUser = c;
 	}
 	
-	public Failures addProspect(User u) {
+	/*public Failures addProspect(User u) {
 		
 		Prospects p = new Prospects();
 		
@@ -150,7 +150,7 @@ public class UserService implements IService {
 		p.setStatus(false);
 		
 		return Failures.SUCCESS;
-	}
+	}*/
 
 	public Failures update(String[] list) {
 		Failures result = Failures.SUCCESS;

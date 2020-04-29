@@ -37,6 +37,7 @@ import javax.swing.table.TableColumnModel;
 
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
+import data.post.AbstractPost;
 import data.post.DriverPost;
 import data.post.Post;
 import data.user.Admin;
@@ -181,10 +182,10 @@ public class Application {
 		gc.weighty = 1;
 
 		// query for rider posts
-		ArrayList<Post> rlist = pDat.searchDatabase("rider");
+		ArrayList<AbstractPost> rlist = pDat.searchDatabase("rider");
 
 		// query for driver posts
-		ArrayList<Post> dlist = pDat.searchDatabase("driver");
+		ArrayList<AbstractPost> dlist = pDat.searchDatabase("driver");
 
 		// create table of posts
 		riderTable = CreateRiderTable.createTable(rlist);

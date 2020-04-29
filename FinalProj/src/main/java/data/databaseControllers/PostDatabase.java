@@ -52,7 +52,7 @@ public class PostDatabase {
 				String[] split = line.split("-");
 				AbstractPost p = null;
 				
-				if (split[0].equals("driver")) {
+				if (split[0].equals("Driver")) {
 					p = new Driver();
 				} else {
 					p = new Rider();
@@ -68,7 +68,7 @@ public class PostDatabase {
 				if(p instanceof Driver) {
 					((Driver) p).setRiderLimit(Integer.valueOf(split[5]));
 					
-					for(int i = 6; i < split.length; i++) {
+					for(int i = 6; i < split.length-1; i++) {
 						if (list == null) {
 							list = new ArrayList<Prospects>();
 						}

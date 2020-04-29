@@ -14,20 +14,20 @@ import data.user.Admin;
 import data.user.User;
 
 public class UserDatabase {
-	
+
 	// singleton instance
 	private static UserDatabase userDatabase = null;// new UserDatabase();
 	// multi-thread protection
 	private static ReentrantLock lock = new ReentrantLock();
-  // array to hold users	
+	// array to hold users
 	private ArrayList<User> userData = new ArrayList<User>();
 
 	// private constructor
-	private UserDatabase() {}
+	private UserDatabase() {
+	}
 
 	/**
-	 * initialize an instance of the user database
-	 * if none exists
+	 * initialize an instance of the user database if none exists
 	 * 
 	 * @return UserDatabase
 	 */
@@ -41,7 +41,6 @@ public class UserDatabase {
 		return userDatabase;
 	}
 
-	
 	/**
 	 * adds user to the database
 	 * 
@@ -53,6 +52,7 @@ public class UserDatabase {
 
 	/**
 	 * removes user from the database
+	 * 
 	 * @param u
 	 */
 	public void removeUser(User u) {
@@ -97,9 +97,6 @@ public class UserDatabase {
 					} else if (i == 6) {
 						u.setPassword(split[i]);
 					}
-					if (u instanceof Admin) {
-						u.setIsAdmin("true");
-					}
 				}
 				// Add data
 				userData.add(u);
@@ -137,6 +134,5 @@ public class UserDatabase {
 	public ArrayList<User> getUserData() {
 		return userData;
 	}
-	
 
 }

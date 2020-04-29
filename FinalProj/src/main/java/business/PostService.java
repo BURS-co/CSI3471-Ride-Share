@@ -36,14 +36,21 @@ public class PostService implements IService {
 
 		Failures result = Failures.SUCCESS;
 
-		if (input.length == 0) {
+		if (input.length != 0) {
+			for (String field : input) {
+				if (field.isEmpty()) {
+					//result = false;
+					result = Failures.emptyField;
+					break;
+				}
+			}
+		} else {
+			//result = false;
 			result = Failures.emptyField;
 		}
-
-		for (String i : input) {
-			if (i.length() == 0) {
-				result = Failures.emptyField;
-			}
+		
+		if(result == Failures.emptyField) {
+			return result;
 		}
 
 		// process date string?

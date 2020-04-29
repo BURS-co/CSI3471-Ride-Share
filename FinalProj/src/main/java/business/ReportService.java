@@ -45,6 +45,10 @@ public class ReportService implements IService{
 				result = Failures.emptyField;
 			}
 
+			
+			if(result == Failures.emptyField) {
+				return result;
+			}
 			// more validation tests...
 			
 

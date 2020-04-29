@@ -88,6 +88,7 @@ public class AdminReport extends JDialog {
 			}
 		});
 		
+		//make buttons show up
 		JPanel bp = new JPanel();
 		bp.add(requestReport);
 		bp.add(btnCancel);

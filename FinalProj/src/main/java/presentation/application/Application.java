@@ -700,6 +700,7 @@ public class Application {
 
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
+					//Make report
 					AdminReport a = new AdminReport(mainFrame);
 					a.setVisible(true);
 				}

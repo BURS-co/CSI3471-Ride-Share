@@ -11,7 +11,7 @@ import data.user.User;
 import enums.Failures;
 
 public class UserService implements IService {
-    //this is the service class for user
+	// this is the service class for user
 	private static User currentUser;
 	private static UserService userService = null;
 	private static ReentrantLock lock = new ReentrantLock();
@@ -47,17 +47,17 @@ public class UserService implements IService {
 			result = Failures.emptyField;
 		}
 
-		if(result == Failures.emptyField) {
+		if (result == Failures.emptyField) {
 			return result;
 		}
-		
+
 		// more validation tests...
 		String[] username = list[0].split(" ");
 		if (username.length != 2 || username[0].equals(username[1])) {
 			result = Failures.invalidName;
 			return result;
 		}
-		
+
 		int emailSize = list[1].length() - 11;
 		if (emailSize > 1) {
 			String partOfEmail = list[1].substring(emailSize, list[1].length());
@@ -65,13 +65,12 @@ public class UserService implements IService {
 				result = Failures.invalidEmail;
 				return result;
 			}
-			
-		}
-		else {
+
+		} else {
 			result = Failures.invalidEmail;
 			return result;
 		}
-		
+
 		ArrayList<User> users = UserDatabase.getInstance().getUserData();
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getEmail().toLowerCase().equals(list[1].toLowerCase())) {
@@ -79,24 +78,24 @@ public class UserService implements IService {
 				return result;
 			}
 		}
-		
+
 		if (list[2].length() != 10) {
 			result = Failures.invalidPhoneNumber;
 			return result;
 		}
-		
+
 		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*\\d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(list[3]);
 		if (!m.matches()) {
 			result = Failures.invalidPasswordStandard;
 			return result;
 		}
-		
+
 		if (!(list[3].equals(list[4]))) {
 			result = Failures.passwordMismatch;
 			return result;
 		}
-		
+
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		Integer month = Calendar.getInstance().get(Calendar.MONTH);
 		Integer gradMonthSelect = Integer.parseInt(list[5]);
@@ -125,31 +124,31 @@ public class UserService implements IService {
 		user.setGradYear(list[5]);
 
 		UserService.currentUser = user;
-		
+
 		return user;
 	}
 
 	public void store(String[] list) {
 		UserDatabase.getInstance().add(create(list));
 	}
-	
+
 	public User getCurrentUser() {
 		return UserService.currentUser;
 	}
-	
+
 	public void setCurrentUser(User c) {
 		UserService.currentUser = c;
 	}
-	
-	/*public Failures addProspect(User u) { 
-		
-		Prospects p = new Prospects();
-		
-		p.setName(u.getUsername());
-		p.setStatus(false);
-		
-		return Failures.SUCCESS;
-	}*/
+
+	/*
+	 * public Failures addProspect(User u) {
+	 * 
+	 * Prospects p = new Prospects();
+	 * 
+	 * p.setName(u.getUsername()); p.setStatus(false);
+	 * 
+	 * return Failures.SUCCESS; }
+	 */
 
 	public Failures update(String[] list) {
 		Failures result = Failures.SUCCESS;
@@ -166,34 +165,34 @@ public class UserService implements IService {
 			result = Failures.emptyField;
 		}
 
-		if(result == Failures.emptyField) {
+		if (result == Failures.emptyField) {
 			return result;
 		}
-		
+
 		// more validation tests...
 		String[] username = list[0].split(" ");
 		if (username.length != 2 || username[0].equals(username[1])) {
 			result = Failures.invalidName;
 			return result;
 		}
-		
+
 		if (list[1].length() != 10) {
 			result = Failures.invalidPhoneNumber;
 			return result;
 		}
-		
+
 		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*\\d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
 		Matcher m = p.matcher(list[2]);
 		if (!m.matches()) {
 			result = Failures.invalidPasswordStandard;
 			return result;
 		}
-		
+
 		if (!(list[2].equals(list[3]))) {
 			result = Failures.passwordMismatch;
 			return result;
 		}
-		
+
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		Integer month = Calendar.getInstance().get(Calendar.MONTH);
 		Integer gradMonthSelect = Integer.parseInt(list[4]);
@@ -202,7 +201,7 @@ public class UserService implements IService {
 			result = Failures.invalidGraduationDate;
 			return result;
 		}
-		
+
 //		for(String i : list) {
 //			System.out.println(i);
 //		}
@@ -212,17 +211,17 @@ public class UserService implements IService {
 			change(list);
 		}
 		return result;
-		
+
 	}
 
 	private void change(String[] list) {
-		
+
 		this.getCurrentUser().setUsername(list[0]);
 		this.getCurrentUser().setPhoneNumber(list[1]);
 		this.getCurrentUser().setPassword(list[2]);
 		this.getCurrentUser().setGradMonth(list[4]);
 		this.getCurrentUser().setGradYear(list[5]);
-		
+
 	}
 
 }

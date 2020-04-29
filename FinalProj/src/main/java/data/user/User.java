@@ -1,8 +1,7 @@
 package data.user;
 
 /**
- * @author Andrew Ammentorp
- *	Class responsible for the Users of the application
+ * @author Andrew Ammentorp Class responsible for the Users of the application
  */
 public class User {
 	protected String username;
@@ -26,11 +25,12 @@ public class User {
 
 	@Override
 	public String toString() {
-		return username + ",,," + email + ",,," + phoneNumber + ",,," + gradMonth + ",,," + gradYear + ",,," + password + ",,,false\n";
+		return username + ",,," + email + ",,," + phoneNumber + ",,," + gradMonth + ",,," + gradYear + ",,," + password
+				+ ",,,false\n";
 	}
 
 	/**
-	 * Gets the username 
+	 * Gets the username
 	 * 
 	 * @return the username
 	 */
@@ -49,6 +49,7 @@ public class User {
 
 	/**
 	 * Gets the password
+	 * 
 	 * @return the password
 	 */
 	public String getPassword() {
@@ -57,6 +58,7 @@ public class User {
 
 	/**
 	 * Sets the password
+	 * 
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
@@ -65,6 +67,7 @@ public class User {
 
 	/**
 	 * Gets the email
+	 * 
 	 * @return the email
 	 */
 	public String getEmail() {
@@ -73,6 +76,7 @@ public class User {
 
 	/**
 	 * Sets the email
+	 * 
 	 * @param email the email to set
 	 */
 	public void setEmail(String email) {
@@ -81,6 +85,7 @@ public class User {
 
 	/**
 	 * Gets the phone number
+	 * 
 	 * @return the phoneNumber
 	 */
 	public String getPhoneNumber() {
@@ -132,7 +137,9 @@ public class User {
 		this.gradYear = gradYear;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -148,11 +155,13 @@ public class User {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	//For remove
+	// For remove
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

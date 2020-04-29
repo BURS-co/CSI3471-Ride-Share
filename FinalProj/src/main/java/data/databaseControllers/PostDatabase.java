@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
+import business.PostService;
+import business.UserService;
 import data.post.AbstractPost;
 import data.post.Driver;
 import data.post.Prospects;
@@ -55,7 +57,7 @@ public class PostDatabase {
 					p = new Driver();
 				} else {
 					p = new Rider();
-					if(split.length > 5)
+					if (split.length > 5)
 						((Rider) p).setDriver(split[5]);
 				}
 
@@ -82,9 +84,12 @@ public class PostDatabase {
 						list.add(temp);
 					}
 
-					((Driver) p).setRiders(list);
+					PostService.getInstance().addProspects(UserService.getInstance().getCurrentUser(), p.getPoster());
 				}
 				postData.add(p);
+				if (list != null && list.size() > 0) {
+					list.clear();
+				}
 			}
 			loader.close();
 
@@ -112,13 +117,13 @@ public class PostDatabase {
 
 	final public static AbstractPost queryDatabase(String post) {
 		// The queryDatabase could be instead searching for a specific post
-        AbstractPost result = null;
-        
-        for(AbstractPost p : postData) {
-        	if(false/*deterministic character of post like id*/) {
-        		result = p;
-        	}
-        }
+		AbstractPost result = null;
+
+		for (AbstractPost p : postData) {
+			if (false/* deterministic character of post like id */) {
+				result = p;
+			}
+		}
 		return result;
 	}
 
@@ -143,13 +148,13 @@ public class PostDatabase {
 					if (type.equalsIgnoreCase(((Rider) p).getDriver()))
 						query.add(p);
 				} else if (p instanceof Driver)
-					if (((Driver) p).getRiders()!= null)
+					if (((Driver) p).getRiders() != null)
 						if (((Driver) p).getRiders().contains(type))
 							query.add(p);
 			}
 		}
 
-	return query;
+		return query;
 	}
 
 	public static void addPost(AbstractPost p) {

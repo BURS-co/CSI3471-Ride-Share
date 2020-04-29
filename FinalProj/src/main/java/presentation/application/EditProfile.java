@@ -223,7 +223,8 @@ public class EditProfile extends JDialog {
 					JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					succeeded = true;
-					Application.log.log(Level.INFO, UserService.getInstance().getCurrentUser().getUsername() + "'s Profile Edited successfully");
+					Application.log.log(Level.INFO,
+							UserService.getInstance().getCurrentUser().getUsername() + "'s Profile Edited successfully");
 					dispose();
 				}
 

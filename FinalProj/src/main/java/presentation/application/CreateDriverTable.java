@@ -31,6 +31,8 @@ import data.post.Post;
 public class CreateDriverTable {
 	private static Font customFont = null;
 	
+	static Object[][] driverData;
+	
 	/**
 	 * Creates the table of driver posts
 	 * @param dlist the list of driver posts
@@ -51,7 +53,7 @@ public class CreateDriverTable {
 	    }
 		
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date", "Status" };
-		Object[][] driverData = new Object[dlist.size()][driverPostLabels.length];
+		 = new Object[dlist.size()][driverPostLabels.length];
 		for (int r = 0; r < dlist.size(); r++) {
 			for (int c = 0; c < 6; c++) {
 				if (c == 0) {

@@ -363,11 +363,13 @@ public class Application {
 					mainFrame.add(pane, gc);
 
 					mainFrame.remove(searchPnl);
+					searchPnl.remove(filterField);
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(riderTable);
 
-					fc.gridx = 0;
+					fc.gridx = 1;
 					fc.gridy = 0;
+					fc.anchor = GridBagConstraints.RELATIVE;
 
 					searchPnl.add(filterField, fc);
 
@@ -443,12 +445,13 @@ public class Application {
 					mainFrame.add(pane, gc);
 
 					mainFrame.remove(searchPnl);
+					searchPnl.remove(filterField);
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(driverTable);
 
-					fc.gridx = 0;
+					fc.gridx = 1;
 					fc.gridy = 0;
-					fc.anchor = GridBagConstraints.FIRST_LINE_START;
+					fc.anchor = GridBagConstraints.RELATIVE;
 					searchPnl.add(filterField, fc);
 
 					gc.gridx = 2;

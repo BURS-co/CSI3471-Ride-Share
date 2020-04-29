@@ -2,6 +2,8 @@ package data.survey;
 
 import java.util.Arrays;
 
+import enums.Ratings;
+
 /**
  * @author Andrew Ammentorp, Joseph Perez Class responsible for a user survey
  */
@@ -9,12 +11,12 @@ public class Survey {
 	private String name;
 	private String target;
 	private String comments;
-	private ratings rating;
-
+	private Ratings rating;
+    /*
 	enum ratings {
 		noStars, oneStar, twoStars, threeStars, fourStars, fiveStars
 	};
-
+    */
 	/**
 	 * Initialize the survey
 	 */
@@ -25,22 +27,22 @@ public class Survey {
 
 		switch (rating) {
 		case (0):
-			this.rating = ratings.noStars;
+			this.rating = Ratings.noStars;
 			break;
 		case (1):
-			this.rating = ratings.oneStar;
+			this.rating = Ratings.oneStar;
 			break;
 		case (2):
-			this.rating = ratings.twoStars;
+			this.rating = Ratings.twoStars;
 			break;
 		case (3):
-			this.rating = ratings.threeStars;
+			this.rating = Ratings.threeStars;
 			break;
 		case (4):
-			this.rating = ratings.fourStars;
+			this.rating = Ratings.fourStars;
 			break;
 		case (5):
-			this.rating = ratings.fiveStars;
+			this.rating = Ratings.fiveStars;
 			break;
 		default:
 			this.rating = null;
@@ -108,22 +110,22 @@ public class Survey {
 	public void setRating(int r) {
 		switch (r) {
 		case (0):
-			this.rating = ratings.noStars;
+			this.rating = Ratings.noStars;
 			break;
 		case (1):
-			this.rating = ratings.oneStar;
+			this.rating = Ratings.oneStar;
 			break;
 		case (2):
-			this.rating = ratings.twoStars;
+			this.rating = Ratings.twoStars;
 			break;
 		case (3):
-			this.rating = ratings.threeStars;
+			this.rating = Ratings.threeStars;
 			break;
 		case (4):
-			this.rating = ratings.fourStars;
+			this.rating = Ratings.fourStars;
 			break;
 		case (5):
-			this.rating = ratings.fiveStars;
+			this.rating = Ratings.fiveStars;
 			break;
 		default:
 			this.rating = null;

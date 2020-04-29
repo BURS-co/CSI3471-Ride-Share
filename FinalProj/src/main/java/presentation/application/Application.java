@@ -322,7 +322,7 @@ public class Application {
 
 		/***** First Row of Panel ****/
 
-		ImageIcon rIcn = new ImageIcon("src/main/resources/car.png");
+		ImageIcon rIcn = new ImageIcon("src/main/resources/ridesIcon.png");
 		Image rimage = rIcn.getImage(); // transform it
 		// 60 makes it a tad wider
 		Image rnewimg = rimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -412,7 +412,7 @@ public class Application {
 		selection.add(ridesBtn, pc);
 
 		/**** Second Row of Panel ****/
-		ImageIcon drIcn = new ImageIcon("src/main/resources/steering-wheel.png");
+		ImageIcon drIcn = new ImageIcon("src/main/resources/drivesIcon.png");
 		Image drimage = drIcn.getImage(); // transform it
 		Image drnewimg = drimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		drIcn = new ImageIcon(drnewimg); // transform it back
@@ -478,7 +478,7 @@ public class Application {
 		});
 
 		/**** Third Row of Panel ****/
-		ImageIcon pIcn = new ImageIcon("src/main/resources/profile.png");
+		ImageIcon pIcn = new ImageIcon("src/main/resources/profileIcon.png");
 		Image pimage = pIcn.getImage(); // transform it
 		Image pnewimg = pimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		pIcn = new ImageIcon(pnewimg); // transform it back
@@ -515,7 +515,7 @@ public class Application {
 		selection.add(profileBtn, pc);
 		
 		/**** Fourth Row of Panel ****/
-		ImageIcon rideIcn = new ImageIcon("src/main/resources/pencil.png");
+		ImageIcon rideIcn = new ImageIcon("src/main/resources/myRidesIcon.png");
 		Image img = rideIcn.getImage(); // transform it
 		Image newImage = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		rideIcn = new ImageIcon(newImage); // transform it back
@@ -535,12 +535,6 @@ public class Application {
 		// make it so columns may not be dragged around for
 		// driver or rider posts
 		myRidesTable.getTableHeader().setReorderingAllowed(false);
-
-	//	gc.gridx = 1;
-	//	gc.gridy = 0;
-	//	gc.fill = GridBagConstraints.BOTH;
-	//	pane = new JScrollPane(myRidesTable);
-	//	mainFrame.add(pane, gc);
 
 		myRidesTable.setFillsViewportHeight(true);
 
@@ -614,7 +608,7 @@ public class Application {
 		selection.add(myRidesBtn, pc);
 
 		/**** Fourth Row of Panel ****/
-		ImageIcon crtIcn = new ImageIcon("src/main/resources/pencil.png");
+		ImageIcon crtIcn = new ImageIcon("src/main/resources/creatPostIcon.png");
 		Image image = crtIcn.getImage(); // transform it
 		Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		crtIcn = new ImageIcon(newimg); // transform it back
@@ -680,7 +674,7 @@ public class Application {
 
 		/**** Fifth Row of Panel (ADMIN) ****/
 		if (loggedIn instanceof Admin) {
-			ImageIcon reportIcn = new ImageIcon("src/main/resources/report.png");
+			ImageIcon reportIcn = new ImageIcon("src/main/resources/reportsIcon.png");
 			Image reportimage = reportIcn.getImage(); // transform it
 			Image reportnewimg = reportimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the
 			// smooth

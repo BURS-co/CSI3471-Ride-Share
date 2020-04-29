@@ -2,7 +2,9 @@ package business;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+import data.databaseControllers.ReportDatabase;
 import data.post.Post;
+import data.user.Report;
 import enums.Failures;
 
 public class PostService implements IService{
@@ -82,13 +84,17 @@ public class PostService implements IService{
 
 	@Override
 	public void store(String[] list) {
-		// TODO Auto-generated method stub
+		PostDatabase.addPost(create(list));
 		
 	}
 
 	@Override
 	public Post create(String[] list) {
-		// TODO Auto-generated method stub
-		return null;
+		//create the report
+		Post p = new Post();
+		
+		
+		
+		return p;
 	}
 }

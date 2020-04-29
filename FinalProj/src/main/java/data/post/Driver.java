@@ -47,10 +47,10 @@ public class Driver extends AbstractPost {
 		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 		String str = df.format(getDate());
 		String s = "Driver" + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
-		s += "-" + getPoster() + "-" + riderLimit + "-" + riders;
+		s += "-" + getPoster() + "-" + riderLimit;
 		if (riders != null) {
 			for (Prospects p : riders) {
-				s = "-" + p.getName() + "-" + p.isStatus();
+				s += "-" + p.getName() + "-" + p.isStatus();
 			}
 		}
 		s += "\n";

@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 
 import business.CreatePostValidate;
 import business.PostService;
-import data.post.Post;
 import data.user.User;
 import enums.Failures;
 
@@ -46,7 +45,6 @@ public class CreatePost extends JDialog {
 	private static boolean succeeded = false;
 	CreatePostValidate vPI;
 	Font customFont = null;
-	static Post p = null;
 
 	/**
 	 * Airports to travel from, plus campus
@@ -220,6 +218,7 @@ public class CreatePost extends JDialog {
 				// TODO
 				Failures result = PostService.getInstance().verify(input);
 				if (result == Failures.SUCCESS) {
+					succeeded = true;
 					
 				} else if (result == Failures.SameOriginandDestination) {
 					

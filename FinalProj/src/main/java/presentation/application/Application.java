@@ -94,7 +94,6 @@ public class Application {
 	 */
 	public static DefaultTableModel rTable;
 
-
 	/**
 	 * main method for the application
 	 * 
@@ -105,7 +104,7 @@ public class Application {
 	 * @throws HeadlessException   if key/mouse function not available on machine
 	 */
 	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
-		
+
 		loggedIn = null;
 
 		// Load all users from database
@@ -203,7 +202,6 @@ public class Application {
 		// DefaultTableModel rTable = new DefaultTableModel();
 		// riderTable.setModel(rTable);
 
-		// DefaultTableModel columnModel = (DefaultTableModel) riderTable.getModel();
 		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
 		rTable = (DefaultTableModel) riderTable.getModel();
 
@@ -405,7 +403,6 @@ public class Application {
 			profileBtn.setContentAreaFilled(false);
 			profileBtn.setBorderPainted(false);
 			profileBtn.setFocusPainted(false);
-			// JButton reportsBtn = new JButton("Reports");
 			pc.gridx = 0;
 			pc.gridy = 4;
 

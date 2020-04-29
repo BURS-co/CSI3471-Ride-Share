@@ -42,16 +42,13 @@ public class EditProfile extends JDialog {
 	JTextField name;
 	JTextField baylorEmail;
 	JTextField phoneNum;
-	String month = new String();
-	String year = new String();
+	String month;
+	String year;
 	JPasswordField password;
 	JPasswordField confirmPassword;
-	ValidateAccountInfo vaI;
-	private boolean succeeded = false;
-	private JButton btnCancel;
+	private boolean succeeded;
 	Font customFont = null;
 	public static User u = new User();
-
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
 
@@ -66,8 +63,8 @@ public class EditProfile extends JDialog {
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
-		JComboBox gradMonth = new JComboBox(months);
-		JComboBox gradYear = new JComboBox(years);
+		JComboBox<String> gradMonth = new JComboBox<String>(months);
+		JComboBox<String> gradYear = new JComboBox<String>(years);
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
 		JLabel phoneLabel = new JLabel("Phone: ");
@@ -132,18 +129,6 @@ public class EditProfile extends JDialog {
 
 		gradMonth.setSelectedIndex(-1);
 		gradYear.setSelectedIndex(-1);
-		gradMonth.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				month = (String) cb.getSelectedItem();
-			}
-		});
-		gradYear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				year = (String) cb.getSelectedItem();
-			}
-		});
 
 		cs.gridx = 0;
 		cs.gridy = 3;
@@ -198,7 +183,7 @@ public class EditProfile extends JDialog {
 		createAccount.setBorderPainted(false);
 		createAccount.setOpaque(true);
 		createAccount.addActionListener(new ActionListener() {
-			@SuppressWarnings("static-access")
+
 			/*
 			 * (non-Javadoc)
 			 * 
@@ -206,89 +191,75 @@ public class EditProfile extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
-				if (name.getText().length() == 0 || baylorEmail.getText().length() == 0 || phoneNum.getText().length() == 0
-						|| password.getText().length() == 0 || confirmPassword.getText().length() == 0 || month.length() == 0
-						|| year.length() == 0) {
-					JOptionPane.showMessageDialog(EditProfile.this, "Please fill in all fields.", "Create Account",
-							JOptionPane.INFORMATION_MESSAGE);
-					succeeded = false;
 
-				} else {
-					// make sure text entered in all fields
-					if (name.getText().length() > 1 && baylorEmail.getText().length() > 1 && phoneNum.getText().length() > 1
-							&& password.getText().length() > 1 && confirmPassword.getText().length() > 1 && month.length() > 1
-							&& year.length() > 1)
-						if (vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
-								password.getText(), confirmPassword.getText(), month, year)) {
+				month = String.valueOf(gradMonth.getSelectedItem());
+				year = String.valueOf(gradYear.getSelectedItem());
 
-							User user = null;
-							if (Application.loggedIn instanceof Admin)
-								user = new Admin();
-							else
-								user = new User();
-							user.setUsername(name.getText());
-							user.setEmail(baylorEmail.getText());
-							user.setPhoneNumber(phoneNum.getText());
-							user.setGradMonth(month);
-							user.setGradYear(year);
-							user.setPassword(new String(password.getPassword()));
+				String pass = new String(password.getPassword());
+				String rePass = new String(confirmPassword.getPassword());
 
-							setUser(u);
+				if (ValidateAccountInfo.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
+						pass, rePass, month, year)) {
+					succeeded = true;
 
-							String filePath = "userDatabase.txt";
-							Scanner sc = null;
-							try {
-								sc = new Scanner(new File(filePath));
-							} catch (FileNotFoundException e1) {
-								e1.printStackTrace();
-							}
-							StringBuffer buffer = new StringBuffer();
-							while (sc.hasNextLine()) {
-								buffer.append(sc.nextLine() + System.lineSeparator());
-							}
-							String fileContents = buffer.toString();
-							sc.close();
-							String oldLine = u.toString();
-							String newLine = user.toString();
-							// Replacing the old line with new line
-							fileContents = fileContents.replaceAll(oldLine, newLine);
-							FileWriter writer = null;
-							try {
-								writer = new FileWriter(filePath);
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-							try {
-								writer.append(fileContents);
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-							try {
-								writer.flush();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
+					User user = null;
+					if (Application.loggedIn instanceof Admin)
+						user = new Admin();
+					else
+						user = new User();
+					user.setUsername(name.getText());
+					user.setEmail(baylorEmail.getText());
+					user.setPhoneNumber(phoneNum.getText());
+					user.setGradMonth(month);
+					user.setGradYear(year);
+					user.setPassword(new String(password.getPassword()));
 
-							// Keep track of user logged in
-							Application.loggedIn.setEmail(user.getEmail());
-							Application.loggedIn.setGradMonth(user.getGradMonth());
-							Application.loggedIn.setGradYear(user.getGradYear());
-							Application.loggedIn.setPassword(user.getPassword());
-							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
-							Application.loggedIn.setUsername(user.getUsername());
+					String filePath = "userDatabase.txt";
+					Scanner sc = null;
+					try {
+						sc = new Scanner(new File(filePath));
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					}
+					StringBuffer buffer = new StringBuffer();
+					while (sc.hasNextLine()) {
+						buffer.append(sc.nextLine() + System.lineSeparator());
+					}
+					String fileContents = buffer.toString();
+					sc.close();
+					String oldLine = u.toString();
+					String newLine = user.toString();
+					// Replacing the old line with new line
+					fileContents = fileContents.replaceAll(oldLine, newLine);
+					FileWriter writer = null;
+					try {
+						writer = new FileWriter(filePath);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					try {
+						writer.append(fileContents);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					try {
+						writer.flush();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 
-							ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-							JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",
-									JOptionPane.INFORMATION_MESSAGE, icon);
-							succeeded = true;
-							Application.log.log(Level.INFO, user.getUsername() + "'s Profile Edited successfully");
-							dispose();
-
-						}
+					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",
+							JOptionPane.INFORMATION_MESSAGE, icon);
+					succeeded = true;
+					Application.log.log(Level.INFO, user.getUsername() + "'s Profile Edited successfully");
+					dispose();
 				}
+
 			}
 		});
-		btnCancel = new JButton("Cancel");
+
+		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
 		btnCancel.setFont(customFont);
 		btnCancel.setBackground(new Color(255, 184, 25));
@@ -331,27 +302,5 @@ public class EditProfile extends JDialog {
 	 */
 	public boolean isSucceeded() {
 		return succeeded;
-	}
-
-	/**
-	 * Sets the user
-	 * 
-	 * @param user the user to be set
-	 * @param user
-	 * @return
-	 */
-	public void setUser(User user) {
-		this.u = user;
-	}
-
-	/**
-	 * Gets the user in question
-	 * 
-	 * @return u the user
-	 * @param
-	 * @return u
-	 */
-	public static User getUser() {
-		return u;
 	}
 }

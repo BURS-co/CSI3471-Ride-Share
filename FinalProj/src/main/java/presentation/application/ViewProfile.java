@@ -14,13 +14,10 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.logging.Level;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -44,9 +41,8 @@ public class ViewProfile extends JDialog {
 	JPasswordField password;
 	JPasswordField confirmPassword;
 	ValidateAccountInfo vaI;
-	private boolean succeeded = false;
 	Font customFont = null;
-	
+
 	public JLabel name;
 	public JLabel baylorEmail;
 	public JLabel phoneNum;
@@ -61,7 +57,7 @@ public class ViewProfile extends JDialog {
 	 * Creates and displays the user's profile
 	 * 
 	 * @param parent the frame to be displayed on
-	 * @param u the user logged in
+	 * @param u      the user logged in
 	 */
 	public ViewProfile(final JFrame parent, final User u) {
 		super(parent, "View Profile", true);
@@ -151,7 +147,7 @@ public class ViewProfile extends JDialog {
 		cs.gridx = 1;
 		cs.gridy = 4;
 		cs.gridwidth = 2;
-		gradYear= new JLabel(u.getGradYear());
+		gradYear = new JLabel(u.getGradYear());
 		gradYear.setFont(customFont);
 		panel.add(gradYear, cs);
 
@@ -177,7 +173,7 @@ public class ViewProfile extends JDialog {
 		editProfile.setBorderPainted(false);
 		editProfile.setOpaque(true);
 		editProfile.addActionListener(new ActionListener() {
-			@SuppressWarnings("static-access")
+
 			/*
 			 * (non-Javadoc)
 			 * 
@@ -188,13 +184,12 @@ public class ViewProfile extends JDialog {
 				EditProfile ep = new EditProfile(parent, u);
 				ep.setVisible(true);
 				if (ep.isSucceeded()) {
-					succeeded = true;
-					name.setText(EditProfile.getUser().getUsername());
-					baylorEmail.setText(EditProfile.getUser().getEmail());
-					phoneNum.setText(EditProfile.getUser().getPhoneNumber());
-					gradMonth.setText(EditProfile.getUser().getGradMonth());
-					gradYear.setText(EditProfile.getUser().getGradYear());
-					String pass = String.join("", Collections.nCopies(EditProfile.getUser().getPassword().length(), "*"));
+					name.setText(Application.loggedIn.getUsername());
+					baylorEmail.setText(Application.loggedIn.getEmail());
+					phoneNum.setText(Application.loggedIn.getPhoneNumber());
+					gradMonth.setText(Application.loggedIn.getGradMonth());
+					gradYear.setText(Application.loggedIn.getGradYear());
+					String pass = String.join("", Collections.nCopies(Application.loggedIn.getPassword().length(), "*"));
 					newPassword.setText(pass);
 
 				}

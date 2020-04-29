@@ -40,7 +40,6 @@ public class EditProfile extends JDialog {
 	private static final long serialVersionUID = 1L;
 	JFrame frame;
 	JTextField name;
-	JTextField baylorEmail;
 	JTextField phoneNum;
 	String month;
 	String year;
@@ -72,6 +71,7 @@ public class EditProfile extends JDialog {
 		gradYear = new JComboBox<String>(years);
 		JLabel userLabel = new JLabel("Name: ");
 		JLabel emailLabel = new JLabel("Baylor Email: ");
+		JLabel userEmail = new JLabel(Application.loggedIn.getEmail());
 		JLabel phoneLabel = new JLabel("Phone: ");
 		JLabel gradMonthLabel = new JLabel("Grad Month: ");
 		JLabel gradYearLabel = new JLabel("Grad Year: ");
@@ -111,13 +111,11 @@ public class EditProfile extends JDialog {
 		emailLabel.setFont(customFont);
 		panel.add(emailLabel, cs);
 
-		baylorEmail = new JTextField(12);
-		baylorEmail.setText(u.getEmail());
-		baylorEmail.setEditable(false);
 		cs.gridx = 1;
 		cs.gridy = 1;
 		cs.gridwidth = 2;
-		panel.add(baylorEmail, cs);
+		userEmail.setFont(customFont);
+		panel.add(userEmail, cs);
 
 		cs.gridx = 0;
 		cs.gridy = 2;
@@ -203,7 +201,7 @@ public class EditProfile extends JDialog {
 				String pass = new String(password.getPassword());
 				String rePass = new String(confirmPassword.getPassword());
 
-				if (ValidateAccountInfo.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
+				if (ValidateAccountInfo.validateUpdateInfo(name.getText(), phoneNum.getText(),
 						pass, rePass, month, year)) {
 					succeeded = true;
 
@@ -213,7 +211,7 @@ public class EditProfile extends JDialog {
 					else
 						user = new User();
 					user.setUsername(name.getText());
-					user.setEmail(baylorEmail.getText());
+					//user.setEmail(baylorEmail.getText());
 					user.setPhoneNumber(phoneNum.getText());
 					user.setGradMonth(month);
 					user.setGradYear(year);

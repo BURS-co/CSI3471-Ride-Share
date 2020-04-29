@@ -134,7 +134,7 @@ public class Survey {
 
 	@Override
 	public String toString() {
-		return null;
+		return this.name + "|" + this.target + "|" + String.valueOf(this.rating) + "|" + this.comments + "\n";
 	}
 
 }

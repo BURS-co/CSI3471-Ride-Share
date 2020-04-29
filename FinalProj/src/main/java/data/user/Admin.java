@@ -3,8 +3,7 @@ package data.user;
 import data.survey.Survey;
 
 /**
- * @author Andrew Ammentorp,
- *	Class for an Admin, a subset of User 
+ * @author Andrew Ammentorp, Class for an Admin, a subset of User
  */
 public class Admin extends User {
 
@@ -42,12 +41,15 @@ public class Admin extends User {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see data.user.User#toString()
 	 */
 	@Override
 	public String toString() {
-		return username + ",,," + email + ",,," + phoneNumber + ",,," + gradMonth + ",,," + gradYear + ",,," + password + ",,,true\n";
+		return username + ",,," + email + ",,," + phoneNumber + ",,," + gradMonth + ",,," + gradYear + ",,," + password
+				+ ",,,true\n";
 	}
 
 }

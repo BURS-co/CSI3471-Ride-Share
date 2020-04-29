@@ -6,7 +6,7 @@ package business;
 import data.databaseControllers.UserDatabase;
 
 public class Login {
-	//private static User user;
+	// private static User user;
 
 	/**
 	 * @param username
@@ -14,9 +14,9 @@ public class Login {
 	 * @return
 	 */
 	public static boolean authenticate(String email, String password) {
-		
+
 		UserService.getInstance().setCurrentUser(UserDatabase.getInstance().queryDatabase(email, password));
-		
+
 		return UserService.getInstance().getCurrentUser() != null;
 
 	}

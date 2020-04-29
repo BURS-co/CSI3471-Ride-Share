@@ -14,7 +14,7 @@ import data.user.Admin;
 import data.user.User;
 
 public class UserDatabase {
-	
+
 	// singleton instance.
 	private static UserDatabase userDatabase = null;// new UserDatabase();
 	// multi-thread protection
@@ -137,9 +137,8 @@ public class UserDatabase {
 
 	public User queryDatabase(String email, String password) {
 		User result = null;
-		for(User u : userData) {
-			if (u.getEmail().toLowerCase().equals(email.toLowerCase())
-					&& u.getPassword().equals(password)) {
+		for (User u : userData) {
+			if (u.getEmail().toLowerCase().equals(email.toLowerCase()) && u.getPassword().equals(password)) {
 				result = u;
 			}
 		}

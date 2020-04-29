@@ -1,7 +1,5 @@
 package data.survey;
 
-import java.util.Arrays;
-
 import enums.Ratings;
 
 /**
@@ -136,7 +134,7 @@ public class Survey {
 	public String toString() {
 
 		int rate;
-		
+
 		switch (rating) {
 		case noStars:
 			rate = 0;

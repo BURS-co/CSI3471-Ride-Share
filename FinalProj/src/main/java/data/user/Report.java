@@ -1,11 +1,10 @@
 package data.user;
 
 /**
- * @author Andrew Ammentorp, Joseph Yu, Joshua Huertas
- *	Class for a report
+ * @author Andrew Ammentorp, Joseph Yu, Joshua Huertas Class for a report
  */
 public class Report {
-	
+
 	private String reportee;
 	private String reporter;
 	private String reason;
@@ -68,6 +67,5 @@ public class Report {
 	public String toString() {
 		return reportee + ",,," + reporter + ",,," + reason + "\n";
 	}
-	
-	
+
 }

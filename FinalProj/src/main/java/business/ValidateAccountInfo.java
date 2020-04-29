@@ -1,14 +1,7 @@
 package business;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javax.swing.JOptionPane;
 
-import data.databaseControllers.UserDatabase;
-import data.user.User;
 import enums.Failures;
 
 public class ValidateAccountInfo {
@@ -19,50 +12,52 @@ public class ValidateAccountInfo {
 	 */
 	public static boolean validateAccountInfoEntered(String name, String email, String phone, String password,
 			String reenterPass, String gradMonth, String gradYear) {
-		
-		String[] info = {name, email, phone, password, reenterPass, gradMonth, gradYear};
+
+		String[] info = { name, email, phone, password, reenterPass, gradMonth, gradYear };
 		Failures result = UserService.getInstance().verify(info);
-		
-		switch(result) {
-			case emptyField:
-				JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidName:
-				JOptionPane.showMessageDialog(null, "Invalid name. Enter first and last name.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidEmail:
-				JOptionPane.showMessageDialog(null, "Invalid email address. Must be a valid Baylor email.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case emailInUse:
-				JOptionPane.showMessageDialog(null, "Email is already in use.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidPhoneNumber:
-				JOptionPane.showMessageDialog(null, "Invalid phone number. Must be 10 digits.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidPasswordStandard:
-				JOptionPane.showMessageDialog(null,
-						"Password must contain >8 characters, at least 1 uppercase, at least 1 lowercase,at least 1 number, "
-								+ "and 1 special symbol. Try again.",
-						"Create Account", JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case passwordMismatch:
-				JOptionPane.showMessageDialog(null, "Your passwords do not match! Try again.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidGraduationDate:
-				JOptionPane.showMessageDialog(null, "Invalid graduation month/year.", "Create Account",
+
+		switch (result) {
+		case emptyField:
+			JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.", "Create Account",
 					JOptionPane.INFORMATION_MESSAGE);
 			break;
-				
+		case invalidName:
+			JOptionPane.showMessageDialog(null, "Invalid name. Enter first and last name.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case invalidEmail:
+			JOptionPane.showMessageDialog(null, "Invalid email address. Must be a valid Baylor email.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case emailInUse:
+			JOptionPane.showMessageDialog(null, "Email is already in use.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case invalidPhoneNumber:
+			JOptionPane.showMessageDialog(null, "Invalid phone number. Must be 10 digits.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case invalidPasswordStandard:
+			JOptionPane.showMessageDialog(null,
+					"Password must contain >8 characters, at least 1 uppercase, at least 1 lowercase,at least 1 number, "
+							+ "and 1 special symbol. Try again.",
+					"Create Account", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case passwordMismatch:
+			JOptionPane.showMessageDialog(null, "Your passwords do not match! Try again.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case invalidGraduationDate:
+			JOptionPane.showMessageDialog(null, "Invalid graduation month/year.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		default:
+			break;
+
 		}
-		
+
 		return result == Failures.SUCCESS;
-		
+
 //		if (name == null || name.length() == 0 || email == null || email.length() == 0 || phone == null
 //				|| phone.length() == 0 || password == null || password.length() == 0 || reenterPass == null
 //				|| reenterPass.length() == 0) {
@@ -152,51 +147,52 @@ public class ValidateAccountInfo {
 	public static boolean validateUpdateInfo(String name, String phone, String password, String reenterPass,
 			String gradMonth, String gradYear) {
 
-		String[] info = {name, phone, password, reenterPass, gradMonth, gradYear};
-		
+		String[] info = { name, phone, password, reenterPass, gradMonth, gradYear };
+
 //		for(String i : info) {
 //			System.out.println(i);
 //		}
-		
+
 		Failures result = UserService.getInstance().update(info);
-		
-		switch(result) {
-			case emptyField:
-				JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidName:
-				JOptionPane.showMessageDialog(null, "Invalid name. Enter first and last name.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case emailInUse:
-				JOptionPane.showMessageDialog(null, "Email is already in use.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidPhoneNumber:
-				JOptionPane.showMessageDialog(null, "Invalid phone number. Must be 10 digits.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidPasswordStandard:
-				JOptionPane.showMessageDialog(null,
-						"Password must contain >8 characters, at least 1 uppercase, at least 1 lowercase,at least 1 number, "
-								+ "and 1 special symbol. Try again.",
-						"Create Account", JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case passwordMismatch:
-				JOptionPane.showMessageDialog(null, "Your passwords do not match! Try again.", "Create Account",
-						JOptionPane.INFORMATION_MESSAGE);
-			break;
-			case invalidGraduationDate:
-				JOptionPane.showMessageDialog(null, "Invalid graduation month/year.", "Create Account",
+
+		switch (result) {
+		case emptyField:
+			JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.", "Create Account",
 					JOptionPane.INFORMATION_MESSAGE);
 			break;
-				
+		case invalidName:
+			JOptionPane.showMessageDialog(null, "Invalid name. Enter first and last name.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case emailInUse:
+			JOptionPane.showMessageDialog(null, "Email is already in use.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case invalidPhoneNumber:
+			JOptionPane.showMessageDialog(null, "Invalid phone number. Must be 10 digits.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case invalidPasswordStandard:
+			JOptionPane.showMessageDialog(null,
+					"Password must contain >8 characters, at least 1 uppercase, at least 1 lowercase,at least 1 number, "
+							+ "and 1 special symbol. Try again.",
+					"Create Account", JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case passwordMismatch:
+			JOptionPane.showMessageDialog(null, "Your passwords do not match! Try again.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		case invalidGraduationDate:
+			JOptionPane.showMessageDialog(null, "Invalid graduation month/year.", "Create Account",
+					JOptionPane.INFORMATION_MESSAGE);
+			break;
+		default:
+			break;
+
 		}
-		
+
 		return result == Failures.SUCCESS;
-		
-		
+
 //		if (name == null || name.length() == 0 || phone == null || phone.length() == 0 || password == null
 //				|| password.length() == 0 || reenterPass == null || reenterPass.length() == 0) {
 //			JOptionPane.showMessageDialog(null, "Fields must not be empty, please fill in all fields.",

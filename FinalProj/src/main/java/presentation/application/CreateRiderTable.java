@@ -67,6 +67,11 @@ public class CreateRiderTable {
 		}
 
 		DefaultTableModel model = new DefaultTableModel(riderData, riderPostLabels) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;

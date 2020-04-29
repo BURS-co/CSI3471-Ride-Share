@@ -10,7 +10,7 @@ public class Driver extends AbstractPost {
 	public Driver(String[] list) {
 		super(list);
 		this.riderLimit = Integer.valueOf(list[8]);
-		
+
 	}
 
 	public Driver() {
@@ -25,9 +25,9 @@ public class Driver extends AbstractPost {
 //
 //		return result;
 //	}
-	
+
 	public void addRiders(Prospects rider) {
-		this.riders.add(rider); 
+		this.riders.add(rider);
 	}
 
 	public Integer getRiderLimit() {

@@ -12,11 +12,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.Arrays;
 
 import data.post.AbstractPost;
 import data.post.Driver;
 import data.post.DriverPost;
 import data.post.Post;
+import data.post.Prospects;
 import data.post.Rider;
 
 public class PostDatabase {
@@ -45,17 +47,45 @@ public class PostDatabase {
 			BufferedReader loader = new BufferedReader(new FileReader(new File("postDatabase.txt")));
 
 			String line = null;
-			ArrayList<String> list = null;
+			ArrayList<Prospects> list = null;
 
 			while ((line = loader.readLine()) != null) {
 
 				String[] split = line.split("-");
 				AbstractPost p = null;
 					
+				//String[] subarray = Arrays.copyOfRange(split, 1, split.length);
+				
 				if (split[0].equals("driver")) {
-					p = new Driver(split);
+					p = new Driver();
 				} else {
-					p = new Rider(split);
+					p = new Rider();
+				}
+				
+				p.setPoster(split[1]);
+				p.setOrigin(split[2]);
+				p.setDest(split[3]);
+				
+				Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[4]);
+				p.setDate(d);
+				
+				if(p instanceof Driver) {
+					((Driver) p).setRiderLimit(Integer.valueOf(split[5]));
+					
+					for(int i = 6; i < split.length; i++) {
+						if (list == null) {
+							list = new ArrayList<Prospects>();
+						}
+						
+						Prospects temp = new Prospects();
+						
+						temp.setName(split[i++]);
+						temp.setStatus(split[i]);
+						
+						list.add(temp);
+					}
+					
+					((Driver) p).setRiders(list);
 				}
 //					} else if (i == 1) {
 //						p.setPoster(split[i]);

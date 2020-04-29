@@ -8,6 +8,10 @@ public class Prospects {
 		this.name = name;
 	}
 
+	public Prospects() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean isStatus() {
 		return status;
 	}
@@ -22,5 +26,10 @@ public class Prospects {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setStatus(String string) {
+		this.status = string.equalsIgnoreCase("true");
+		
 	}
 }

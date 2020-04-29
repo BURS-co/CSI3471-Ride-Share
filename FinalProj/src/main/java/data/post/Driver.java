@@ -9,7 +9,13 @@ public class Driver extends AbstractPost {
 
 	public Driver(String[] list) {
 		super(list);
-		this.riderLimit = Integer.valueOf(list[list.length - 1]);
+		this.riderLimit = Integer.valueOf(list[8]);
+		
+	}
+
+	public Driver() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	boolean addProspects() {

@@ -7,6 +7,10 @@ public class Rider extends AbstractPost {
 		super(list);
 	}
 
+	public Rider() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");

@@ -28,6 +28,10 @@ public abstract class AbstractPost {
 		}
 	}
 
+	public AbstractPost() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getPoster() {
 		return poster;
 	}

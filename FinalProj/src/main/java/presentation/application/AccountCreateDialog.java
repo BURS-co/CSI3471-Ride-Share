@@ -59,7 +59,7 @@ public class AccountCreateDialog extends JDialog {
 	 */
 	public AccountCreateDialog(JFrame parent) {
 		super(parent, "Create Account", true);
-		
+
 		succeeded = false;
 		u = null;
 
@@ -210,23 +210,16 @@ public class AccountCreateDialog extends JDialog {
 					succeeded = true;
 					// pass information to a user service
 					u = UserService.CreateUser(name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, month, year);
-					
+
 					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
 							JOptionPane.INFORMATION_MESSAGE, icon);
-					succeeded = true;
 					Application.log.log(Level.INFO, u.getUsername() + " Login successful!");
 					dispose();
 				}
-							 
-//							// Keep track of user logged in
-//							Application.loggedIn.setEmail(user.getEmail());
-//							Application.loggedIn.setGradMonth(user.getGradMonth());
-//							Application.loggedIn.setGradYear(user.getGradYear());
-//							Application.loggedIn.setPassword(user.getPassword());
-//							Application.loggedIn.setPhoneNumber(user.getPhoneNumber());
-//							Application.loggedIn.setUsername(user.getUsername());
-//
+
+				// Keep track of user logged in
+				Application.loggedIn = u;
 
 			}
 		});

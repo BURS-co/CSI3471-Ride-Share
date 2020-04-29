@@ -219,7 +219,7 @@ public class EditProfile extends JDialog {
 							&& password.getText().length() > 1 && confirmPassword.getText().length() > 1 && month.length() > 1
 							&& year.length() > 1)
 						if (vaI.validateAccountInfoEntered(name.getText(), baylorEmail.getText(), phoneNum.getText(),
-								password.getText(), confirmPassword.getText(), month, year, EditProfile.this)) {
+								password.getText(), confirmPassword.getText(), month, year)) {
 
 							User user = null;
 							if (Application.loggedIn instanceof Admin)

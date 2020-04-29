@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import business.UserService;
 import presentation.application.Application;
 
 public abstract class AbstractPost {

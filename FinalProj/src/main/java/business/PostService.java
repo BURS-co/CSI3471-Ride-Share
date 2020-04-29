@@ -81,10 +81,10 @@ public class PostService implements IService {
 		String dayTime;
 		Date inputDate;
 		int comp = 0;
-
+		
 		try {
 			todaysDay = f.parse(todayDay);
-			dayTime = input[2] + " " + input[3] + " " + input[4] + " " + input[5] + ":" + input[6] + " " + input[7];
+			dayTime = input[3] + " " + input[2] + " " + input[4] + " " + input[5] + ":" + input[6] + " " + input[7];
 			inputDate = f.parse(dayTime);
 			comp = todaysDay.compareTo(inputDate);
 

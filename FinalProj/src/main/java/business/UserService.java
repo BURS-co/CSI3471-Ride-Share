@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import data.databaseControllers.UserDatabase;
-import data.post.Prospects;
 import data.user.User;
 import enums.Failures;
 
@@ -178,49 +177,27 @@ public class UserService implements IService {
 			return result;
 		}
 		
-		int emailSize = list[1].length() - 11;
-		if (emailSize > 1) {
-			String partOfEmail = list[1].substring(emailSize, list[1].length());
-			if (!(partOfEmail.toLowerCase().matches("@baylor.edu"))) {
-				result = Failures.invalidEmail;
-				return result;
-			}
-			
-		}
-		else {
-			result = Failures.invalidEmail;
-			return result;
-		}
-		
-		ArrayList<User> users = UserDatabase.getInstance().getUserData();
-		for (int i = 0; i < users.size(); i++) {
-			if (users.get(i).getEmail().toLowerCase().equals(list[1].toLowerCase())) {
-				result = Failures.emailInUse;
-				return result;
-			}
-		}
-		
-		if (list[2].length() != 10) {
+		if (list[1].length() != 10) {
 			result = Failures.invalidPhoneNumber;
 			return result;
 		}
 		
 		Pattern p = Pattern.compile("((?=.*[a-z])(?=.*\\d)(?=.*[!@#$%])(?=.*[A-Z]).{8,})");
-		Matcher m = p.matcher(list[3]);
+		Matcher m = p.matcher(list[2]);
 		if (!m.matches()) {
 			result = Failures.invalidPasswordStandard;
 			return result;
 		}
 		
-		if (!(list[3].equals(list[4]))) {
+		if (!(list[2].equals(list[3]))) {
 			result = Failures.passwordMismatch;
 			return result;
 		}
 		
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		Integer month = Calendar.getInstance().get(Calendar.MONTH);
-		Integer gradMonthSelect = Integer.parseInt(list[5]);
-		Integer gradYearSelect = Integer.parseInt(list[6]);
+		Integer gradMonthSelect = Integer.parseInt(list[4]);
+		Integer gradYearSelect = Integer.parseInt(list[5]);
 		if (gradMonthSelect < month && gradYearSelect == year) {
 			result = Failures.invalidGraduationDate;
 			return result;
@@ -228,9 +205,18 @@ public class UserService implements IService {
 
 		// store survey if it was successfully validated
 		if (result == Failures.SUCCESS) {
-			store(list);
+			change(list);
 		}
 		return result;
+		
+	}
+
+	private void change(String[] list) {
+		this.getCurrentUser().setUsername(list[0]);
+		this.getCurrentUser().setPhoneNumber(list[1]);
+		this.getCurrentUser().setPassword(list[2]);
+		this.getCurrentUser().setGradMonth(list[4]);
+		this.getCurrentUser().setGradYear(list[5]);
 		
 	}
 

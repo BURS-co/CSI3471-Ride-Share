@@ -25,6 +25,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -111,7 +112,7 @@ public class Application {
 	public static JTextField filterField;
 	public static JPanel jp;
 	public static GridBagConstraints fc;
-
+	public static JLabel filterLabel = new JLabel("Filter posts:");
 	/**
 	 * main method for the application
 	 * 
@@ -202,6 +203,7 @@ public class Application {
 		fc.gridx=2;
 		fc.gridy=0;
 
+		
 
 		// Add filtering here
 
@@ -209,6 +211,12 @@ public class Application {
 		jp = new JPanel();
 
 	    jp.add(filterField);
+	    
+	    mainFrame.add(filterLabel,fc);
+	    
+	    //fc.gridx++;
+	    fc.gridx+=1;
+	    
 	    mainFrame.add(jp,fc);
 
 
@@ -352,9 +360,16 @@ public class Application {
 					// Add filtering here
 					filterField = RowFilterUtil.createRowFilter(riderTable);
 					jp = new JPanel();
-				    jp.add(filterField);
-				    fc.gridx=2;
+					
+					fc.gridx=2;
 					fc.gridy=0;
+					jp.add(filterField);
+				    
+				    mainFrame.add(filterLabel,fc);
+				    
+				    //fc.gridx++;
+				    fc.gridx+=1;
+				    
 				    mainFrame.add(jp,fc);
 
 
@@ -434,17 +449,16 @@ public class Application {
 					filterField = RowFilterUtil.createRowFilter(driverTable);
 					jp = new JPanel();
 
-				    jp.add(filterField);
-				    fc.gridx=2;
+					fc.gridx=2;
 					fc.gridy=0;
+					jp.add(filterField);
+				    
+				    mainFrame.add(filterLabel,fc);
+				    
+				    //fc.gridx++;
+				    fc.gridx+=1;
+				    
 				    mainFrame.add(jp,fc);
-					// TODO fix
-					// pc.weightx = 1;
-					// pc.weighty = 1;
-
-					// pc.gridx = 0;
-					// pc.gridy = 0;
-					// mainFrame.add(selection, pc);
 
 					mainFrame.pack();
 

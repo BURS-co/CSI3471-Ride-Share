@@ -26,7 +26,7 @@ public class CreatePostValidate extends CreatePost {
 	 * @return
 	 */
 	public CreatePostValidate(JFrame parent) {
-		super(parent, Application.loggedIn);
+		super(parent, UserService.getInstance().getCurrentUser());
 		// TODO Auto-generated constructor stub
 	}
 

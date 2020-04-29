@@ -210,7 +210,10 @@ public class AccountCreateDialog extends JDialog {
 						new String[] { name.getText(), baylorEmail.getText(), phoneNum.getText(), pass, rePass, month, year });
 
 				if (result == Failures.BadDate) {
-					
+					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					JOptionPane.showMessageDialog(null,"Date is Invalid.", "Login",
+							JOptionPane.INFORMATION_MESSAGE, icon);
+					dispose();
 				}
 				
 				// SUCCESS route

@@ -1,15 +1,12 @@
 package business;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
-import javax.swing.JOptionPane;
-
 import data.databaseControllers.PostDatabase;
-import data.databaseControllers.ReportDatabase;
 import data.post.Post;
-import data.user.Report;
 import enums.Failures;
 
 public class PostService implements IService {
@@ -39,17 +36,17 @@ public class PostService implements IService {
 		if (input.length != 0) {
 			for (String field : input) {
 				if (field.isEmpty()) {
-					//result = false;
+					// result = false;
 					result = Failures.emptyField;
 					break;
 				}
 			}
 		} else {
-			//result = false;
+			// result = false;
 			result = Failures.emptyField;
 		}
-		
-		if(result == Failures.emptyField) {
+
+		if (result == Failures.emptyField) {
 			return result;
 		}
 
@@ -58,23 +55,32 @@ public class PostService implements IService {
 
 		Date today = new Date();
 		SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy hh:mm a");
-		
-		String todayDay = f.format(today);
-		Date todaysDay = f.parse(todayDay);
-		
-		String dayTime = d + " " + m + " " + y + " " + h + ":" + min + " " + tOd;
-		Date inputDate = f.parse(dayTime);
-		int comp = 0;
-		comp = todaysDay.compareTo(inputDate);
-		
 
-		if (o.equals(dest)) {
+		String todayDay = f.format(today);
+		Date todaysDay;
+		String dayTime;
+		Date inputDate;
+		int comp = 0;
+		
+		try {
+			todaysDay = f.parse(todayDay);
+			dayTime = input[2] + " " + input[3] + " " + input[4] + " " + input[5] + ":" + input[6] + " "
+					+ input[7];
+			inputDate = f.parse(dayTime);
+			comp = todaysDay.compareTo(inputDate);
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (input[0].equals(input[1])) {
 			result = Failures.SameOriginandDestination;
 		}
 		if (comp > 0) {
 			result = Failures.BadDate;
 		}
-		
+
 		// Store post if validation is successful
 		if (result == Failures.SUCCESS) {
 

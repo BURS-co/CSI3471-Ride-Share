@@ -27,7 +27,7 @@ public class Driver extends AbstractPost {
 //	}
 	
 	public void addRiders(Prospects rider) {
-		this.riders.add(rider);
+		this.riders.add(rider); 
 	}
 
 	public Integer getRiderLimit() {

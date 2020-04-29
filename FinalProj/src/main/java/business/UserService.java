@@ -142,7 +142,7 @@ public class UserService implements IService {
 		UserService.currentUser = c;
 	}
 	
-	/*public Failures addProspect(User u) {
+	/*public Failures addProspect(User u) { 
 		
 		Prospects p = new Prospects();
 		

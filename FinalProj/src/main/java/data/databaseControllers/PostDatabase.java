@@ -117,7 +117,6 @@ public class PostDatabase {
         		result = p;
         	}
         }
-        
 		return result;
 	}
 

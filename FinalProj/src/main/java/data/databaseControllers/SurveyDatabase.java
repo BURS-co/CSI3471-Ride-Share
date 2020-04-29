@@ -40,5 +40,9 @@ public class SurveyDatabase {
 	public static ArrayList<Survey> getUserData() {
 		return surveyData;
 	}
-
+    
+	public void storeSurvey(String[] list) {
+		Survey survey = new Survey(list[0], list);
+		addSurvey(survey);
+	}
 }

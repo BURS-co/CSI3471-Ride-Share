@@ -135,4 +135,14 @@ public class UserDatabase {
 		return userData;
 	}
 
+	public User queryDatabase(String email, String password) {
+		User result = null;
+		for(User u : userData) {
+			if (u.getEmail().toLowerCase().equals(email.toLowerCase())
+					&& u.getPassword().equals(password)) {
+				result = u;
+			}
+		}
+		return result;
+	}
 }

@@ -105,6 +105,8 @@ public class Application {
 
 	public static boolean riderTableUp;
 	public static boolean driverTableUp;
+	
+	public static JScrollPane pane;
 
 	/**
 	 * main method for the application
@@ -196,7 +198,8 @@ public class Application {
 		gc.gridx = 1;
 		gc.gridy = 0;
 		gc.fill = GridBagConstraints.BOTH;
-		mainFrame.add(new JScrollPane(riderTable), gc);
+		pane = new JScrollPane(riderTable);
+		mainFrame.add(pane, gc);
 		riderTableUp = true;
 		driverTableUp = !riderTableUp;
 		// gc.gridx = 2;
@@ -298,8 +301,13 @@ public class Application {
 					gc.gridx = 1;
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
-
-					mainFrame.add(new JScrollPane(riderTable), gc);
+					
+					mainFrame.remove(pane);
+					
+					pane = new JScrollPane(riderTable);
+					mainFrame.add(pane, gc);
+					
+					mainFrame.repaint();
 					// TODO fix
 					pc.weightx = 1;
 					pc.weighty = 1;
@@ -365,8 +373,10 @@ public class Application {
 					gc.gridx = 1;
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
-
-					mainFrame.add(new JScrollPane(driverTable), gc);
+					mainFrame.remove(pane);
+					
+					pane = new JScrollPane(driverTable);
+					mainFrame.add(pane, gc);
 					// TODO fix
 					pc.weightx = 1;
 					pc.weighty = 1;

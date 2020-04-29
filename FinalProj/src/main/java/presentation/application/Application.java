@@ -294,6 +294,7 @@ public class Application {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				if (!riderTableUp) {
+					//Set coordinates
 					gc.gridx = 1;
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;

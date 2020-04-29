@@ -134,10 +134,17 @@ public class PostService implements IService {
 			return result;
 		}
 		
-		Prospects passenger = new Prospects(u.getUsername());
-		passenger.setStatus(false);
+		Integer limit = p.getRiderLimit();
+		int current_passengers = p.getRiders().size();
 		
-		p.addRiders(passenger);
+		if(current_passengers < limit) {
+			Prospects passenger = new Prospects(u.getUsername());
+			passenger.setStatus(false);
+			p.addRiders(passenger);
+		}
+		else {
+			result = Failures.reachMaxCapacity;
+		}		
 		return result;
 	}
 

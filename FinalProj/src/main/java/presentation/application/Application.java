@@ -332,12 +332,14 @@ public class Application {
 					
 					mainFrame.repaint();
 					// TODO fix
+					/*
 					pc.weightx = 1;
 					pc.weighty = 1;
 
 					pc.gridx = 0;
 					pc.gridy = 0;
-					mainFrame.add(selection, pc);
+					*/
+					//mainFrame.add(selection, gc);
 
 					mainFrame.pack();
 
@@ -401,12 +403,12 @@ public class Application {
 					pane = new JScrollPane(driverTable);
 					mainFrame.add(pane, gc);
 					// TODO fix
-					pc.weightx = 1;
-					pc.weighty = 1;
+					//pc.weightx = 1;
+					//pc.weighty = 1;
 
-					pc.gridx = 0;
-					pc.gridy = 0;
-					mainFrame.add(selection, pc);
+					//pc.gridx = 0;
+					//pc.gridy = 0;
+					//mainFrame.add(selection, pc);
 
 					mainFrame.pack();
 					

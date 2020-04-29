@@ -226,6 +226,28 @@ public class Application {
 		riderTable.getColumn(riderPostLabels[1]).setPreferredWidth(35);
 		riderTable.getColumn(riderPostLabels[2]).setPreferredWidth(50);
 		riderTable.getColumn(riderPostLabels[3]).setPreferredWidth(100);
+		
+		riderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		 //When selection changes, provide user with row numbers for both view & model.
+		riderTable.getSelectionModel().addListSelectionListener(
+				 		new ListSelectionListener() {
+				 		public void valueChanged(ListSelectionEvent event) {
+		int viewRow = riderTable.getSelectedRow();
+			if (viewRow < 0) {
+		 //Selection got filtered away.
+			 //statusText.setText("");
+			} else {
+		 			String name = (String) riderTable.getValueAt(viewRow, 0);
+		 			String orig = (String) riderTable.getValueAt(viewRow, 1);
+		 			String dest = (String) riderTable.getValueAt(viewRow, 2);
+		 			String date = (String) riderTable.getValueAt(viewRow, 3);
+		 			ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date);
+		 			vpi.setVisible(true);
+
+		 			}
+				}
+		 	}
+		 );
 
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
 		dTable = (DefaultTableModel) driverTable.getModel();
@@ -237,24 +259,24 @@ public class Application {
 		
 		driverTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		 //When selection changes, provide user with row numbers for both view & model.
-		 driverTable.getSelectionModel().addListSelectionListener(
-				 	new ListSelectionListener() {
+		driverTable.getSelectionModel().addListSelectionListener(
+				 		new ListSelectionListener() {
 				 		public void valueChanged(ListSelectionEvent event) {
-		 int viewRow = driverTable.getSelectedRow();
-		 if (viewRow < 0) {
+		int viewRow = driverTable.getSelectedRow();
+			if (viewRow < 0) {
 		 //Selection got filtered away.
 			 //statusText.setText("");
-		 	} else {
-		 		String name = (String) driverTable.getValueAt(viewRow, 1);
-		 		System.out.println(name);
-			 		//int modelRow =
-				 	//table.convertRowIndexToModel(viewRow);
-		 			//statusText.setText(
-		 			//	String.format("Selected Row in view: %d. " +
-				 	//	"Selected Row in model: %d.",
-		 			//	viewRow, modelRow));
+			} else {
+		 			String seats = (String) driverTable.getValueAt(viewRow, 0);
+		 			String name = (String) driverTable.getValueAt(viewRow, 1);
+		 			String orig = (String) driverTable.getValueAt(viewRow, 2);
+		 			String dest = (String) driverTable.getValueAt(viewRow, 3);
+		 			String date = (String) driverTable.getValueAt(viewRow, 4);
+		 			ViewPostInfo vpi = new ViewPostInfo(mainFrame, seats, name, orig, dest, date);
+		 			vpi.setVisible(true);
+
 		 			}
-		 		}
+				}
 		 	}
 		 );
 

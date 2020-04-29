@@ -43,6 +43,10 @@ public class UserService implements IService {
 			result = Failures.emptyField;
 		}
 
+		if(result == Failures.emptyField) {
+			return result;
+		}
+		
 		// more validation tests...
 
 		// store survey if it was successfully validated

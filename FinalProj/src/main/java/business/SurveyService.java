@@ -42,6 +42,10 @@ public class SurveyService implements IService{
 			//result = false;
 			result = Failures.emptyField;
 		}
+		
+		if(result == Failures.emptyField) {
+			return result;
+		}
 
 		// more validation tests...
 		try {

@@ -38,3 +38,5 @@ rider-Test test-AUS-Baylor-03 May 2020 03:05 PM
 driver-Test test-DAL-ACT-04 May 2020 04:15 PM-Test test-3-null
 rider-Leighton Glim-Baylor-AUS-30 Apr 2020 05:00 PM
 driver-Joseph Perez-ACT-AUS-01 Jun 2020 04:25 AM-Joseph Perez-4-null
+rider-Andrew Ammentorp-Baylor-HOU-01 Jul 2020 01:00 AM
+driver-Andrew Ammentorp-Baylor-IAH-05 Aug 2020 01:00 AM-Andrew Ammentorp-3-null

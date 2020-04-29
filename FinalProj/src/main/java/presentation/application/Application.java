@@ -1,5 +1,6 @@
 package presentation.application;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -28,6 +29,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
@@ -106,6 +108,9 @@ public class Application {
 	public static boolean driverTableUp;
 
 	public static JScrollPane pane;
+	
+	public static JTextField filterField;
+	public static JPanel jp;
 
 	/**
 	 * main method for the application
@@ -188,6 +193,13 @@ public class Application {
 		// create table of posts
 		riderTable = CreateRiderTable.createTable(rlist);
 		driverTable = CreateDriverTable.createTable(dlist);
+		
+		
+		//Add filtering here
+		filterField = RowFilterUtil.createRowFilter(riderTable);
+		jp = new JPanel();
+	    jp.add(filterField);
+	    mainFrame.add(jp);
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -324,6 +336,13 @@ public class Application {
 
 					pane = new JScrollPane(riderTable);
 					mainFrame.add(pane, gc);
+					
+					mainFrame.remove(jp);
+					//Add filtering here
+					filterField = RowFilterUtil.createRowFilter(riderTable);
+					jp = new JPanel();
+				    jp.add(filterField);
+				    mainFrame.add(jp);
 
 					mainFrame.repaint();
 					// TODO fix
@@ -395,6 +414,13 @@ public class Application {
 					// new pane
 					pane = new JScrollPane(driverTable);
 					mainFrame.add(pane, gc);
+					
+					mainFrame.remove(jp);
+					//Add filtering here
+					filterField = RowFilterUtil.createRowFilter(driverTable);
+					jp = new JPanel();
+				    jp.add(filterField);
+				    mainFrame.add(jp);
 					// TODO fix
 					// pc.weightx = 1;
 					// pc.weighty = 1;

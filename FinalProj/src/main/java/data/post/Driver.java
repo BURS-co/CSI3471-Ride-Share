@@ -50,7 +50,7 @@ public class Driver extends AbstractPost {
 		s += "-" + getPoster() + "-" + riderLimit + "-" + riders;
 		if (riders != null) {
 			for (Prospects p : riders) {
-				s = "-" + p.getName();
+				s = "-" + p.getName() + "-" + p.isStatus();
 			}
 		}
 		s += "\n";

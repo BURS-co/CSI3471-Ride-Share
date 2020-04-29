@@ -78,7 +78,6 @@ public class CreateDriverTable {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-		
 			@Override 
 			public Object getValueAt(int row, int col) {
 				return driverData[row][col];

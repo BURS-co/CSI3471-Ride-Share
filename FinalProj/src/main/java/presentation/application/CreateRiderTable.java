@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import data.post.AbstractPost;
 import data.post.Post;
 
 /**
@@ -35,7 +36,7 @@ public class CreateRiderTable {
 	 * @param rlist the list of rider posts to be displayed
 	 * @return JTable the table encapsulating the formatted rider posts
 	 */
-	public static JTable createTable(ArrayList<Post> rlist) {
+	public static JTable createTable(ArrayList<AbstractPost> rlist) {
 		try {
 	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
 	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

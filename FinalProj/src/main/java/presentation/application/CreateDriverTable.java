@@ -19,6 +19,8 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import data.databaseControllers.PostDatabase;
+import data.post.AbstractPost;
+import data.post.Driver;
 import data.post.DriverPost;
 import data.post.Post;
 
@@ -41,7 +43,7 @@ public class CreateDriverTable {
 	 * @param dList
 	 * @return
 	 */
-	public static JTable createTable(ArrayList<Post> dlist) {
+	public static JTable createTable(ArrayList<AbstractPost> dlist) {
 		try {
 	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
 	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -58,9 +60,9 @@ public class CreateDriverTable {
 		for (int r = 0; r < dlist.size(); r++) {
 			for (int c = 0; c < 5; c++) {
 				if (c == 0) {
-					driverData[r][c] = new String(((DriverPost) dlist.get(r)).getRiderLimit().toString());
+					driverData[r][c] = new String(((Driver) dlist.get(r)).getRiderLimit().toString());
 				} else if (c == 1) {
-					driverData[r][c] = new String(((DriverPost) dlist.get(r)).getDriver());
+					driverData[r][c] = new String(((Driver) dlist.get(r)).getPoster());
 				} else if (c == 2) {
 					driverData[r][c] = new String(dlist.get(r).getOrigin());
 				} else if (c == 3) {

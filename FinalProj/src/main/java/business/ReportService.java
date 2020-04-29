@@ -71,7 +71,9 @@ public class ReportService implements IService{
 			//create the report
 			Report rep = new Report();
 			
-			
+			rep.setReporter(list[0]);
+			rep.setReportee(list[1]);
+			rep.setReason(list[2]);
 			
 			return rep;
 		}

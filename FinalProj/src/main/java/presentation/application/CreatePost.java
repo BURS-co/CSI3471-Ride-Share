@@ -59,11 +59,10 @@ public class CreatePost extends JDialog {
 	/**
 	 * Airports to travel from, plus campus
 	 */
-	String[] origin = { "ACT", "AUS", "Baylor", "DAL", "DFW", "HOU", "IAH", "SAT", "ELP" };
+	String[] locs = { "ACT", "AUS", "Baylor", "DAL", "DFW", "HOU", "IAH", "SAT", "ELP" };
 	/**
 	 * Airports to travel to, plus campus
 	 */
-	String[] dest = { "ACT", "AUS", "Baylor", "DAL", "DFW", "HOU", "IAH", "SAT", "ELP" };
 	String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 	String[] days = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16",
 			"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
@@ -72,15 +71,21 @@ public class CreatePost extends JDialog {
 	String[] minutes = { "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" };
 	String[] timeOfDay = { "AM", "PM" };
 	Integer[] seats = { 1, 2, 3, 4, 5, 6 };
+	
+	JComboBox<String> originLoc = new JComboBox<String>(locs);
+	JComboBox<String> destLoc = new JComboBox<String>(locs);
+	JComboBox<String> month = new JComboBox<String>(months);
+	JComboBox<String> day = new JComboBox<String>(days);
+	JComboBox<String> year = new JComboBox<String>(years);
+	JComboBox<String> hour = new JComboBox<String>(hours);
+	JComboBox<String> minute = new JComboBox<String>(minutes);
+	JComboBox<String> timeDay = new JComboBox<String>(timeOfDay);
+	JComboBox<Integer> numSeats = new JComboBox<Integer>(seats);
 
 	/**
-<<<<<<< HEAD
 	 * Creates the post
 	 * 
 	 * @param parent the frame for it to be added to
-=======
-	 * @param parent, u
->>>>>>> branch 'master' of https://github.com/BURS-co/CSI3471-Ride-Share.git
 	 * @return
 	 */
 	public CreatePost(JFrame parent, User u) {
@@ -88,15 +93,7 @@ public class CreatePost extends JDialog {
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
-		JComboBox originLoc = new JComboBox(origin);
-		JComboBox destLoc = new JComboBox(dest);
-		JComboBox month = new JComboBox(months);
-		JComboBox day = new JComboBox(days);
-		JComboBox year = new JComboBox(years);
-		JComboBox hour = new JComboBox(hours);
-		JComboBox minute = new JComboBox(minutes);
-		JComboBox timeDay = new JComboBox(timeOfDay);
-		JComboBox numSeats = new JComboBox(seats);
+		
 		JLabel originLabel = new JLabel("Origin: ");
 		JLabel destLabel = new JLabel("Destination: ");
 		JLabel dateLabel = new JLabel("Date: ");
@@ -123,14 +120,6 @@ public class CreatePost extends JDialog {
 		originLabel.setFont(customFont);
 		panel.add(originLabel, cs);
 
-		originLoc.setSelectedIndex(-1);
-		originLoc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				o = (String) cb.getSelectedItem();
-			}
-		});
-
 		cs.gridx = 1;
 		cs.gridy = 0;
 		cs.gridwidth = 2;
@@ -141,14 +130,6 @@ public class CreatePost extends JDialog {
 		cs.gridwidth = 1;
 		destLabel.setFont(customFont);
 		panel.add(destLabel, cs);
-
-		destLoc.setSelectedIndex(-1);
-		destLoc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				destination = (String) cb.getSelectedItem();
-			}
-		});
 
 		cs.gridx = 1;
 		cs.gridy = 1;
@@ -161,39 +142,15 @@ public class CreatePost extends JDialog {
 		dateLabel.setFont(customFont);
 		panel.add(dateLabel, cs);
 
-		month.setSelectedIndex(-1);
-		month.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				m = (String) cb.getSelectedItem();
-			}
-		});
-
 		cs.gridx = 1;
 		cs.gridy = 2;
 		cs.gridwidth = 1;
 		panel.add(month, cs);
 
-		day.setSelectedIndex(-1);
-		day.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				d = (String) cb.getSelectedItem();
-			}
-		});
-
 		cs.gridx = 2;
 		cs.gridy = 2;
 		cs.gridwidth = 1;
 		panel.add(day, cs);
-
-		year.setSelectedIndex(-1);
-		year.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				y = (String) cb.getSelectedItem();
-			}
-		});
 
 		cs.gridx = 3;
 		cs.gridy = 2;
@@ -206,39 +163,15 @@ public class CreatePost extends JDialog {
 		timeLabel.setFont(customFont);
 		panel.add(timeLabel, cs);
 
-		hour.setSelectedIndex(-1);
-		hour.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				h = (String) cb.getSelectedItem();
-			}
-		});
-
 		cs.gridx = 1;
 		cs.gridy = 3;
 		cs.gridwidth = 1;
 		panel.add(hour, cs);
 
-		minute.setSelectedIndex(-1);
-		minute.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				min = (String) cb.getSelectedItem();
-			}
-		});
-
 		cs.gridx = 2;
 		cs.gridy = 3;
 		cs.gridwidth = 1;
 		panel.add(minute, cs);
-
-		timeDay.setSelectedIndex(-1);
-		timeDay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JComboBox cb = (JComboBox) e.getSource();
-				tOd = (String) cb.getSelectedItem();
-			}
-		});
 
 		cs.gridx = 3;
 		cs.gridy = 3;
@@ -251,17 +184,6 @@ public class CreatePost extends JDialog {
 			cs.gridwidth = 1;
 			seatsLabel.setFont(customFont);
 			panel.add(seatsLabel, cs);
-
-			numSeats.setSelectedIndex(-1);
-			numSeats.addActionListener(new ActionListener() {
-				@SuppressWarnings("deprecation")
-				public void actionPerformed(ActionEvent e) {
-					JComboBox cb = (JComboBox) e.getSource();
-					//seatsAvail = Integer.valueOf((String) cb.getSelectedItem());
-					seatsAvail = (Integer) cb.getSelectedItem();
-					//seatsAvail = new Integer((int) cb.getSelectedItem());
-				}
-			});
 
 			cs.gridx = 1;
 			cs.gridy = 4;
@@ -284,6 +206,17 @@ public class CreatePost extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
+				o = String.valueOf(originLoc.getSelectedItem());
+				destination = String.valueOf(destLoc.getSelectedItem());
+				m = String.valueOf(month.getSelectedItem());
+				d = String.valueOf(day.getSelectedItem());
+				y = String.valueOf(year.getSelectedItem());
+				h = String.valueOf(hour.getSelectedItem());
+				min = String.valueOf(minute.getSelectedItem());
+				tOd = String.valueOf(timeDay.getSelectedItem());
+				if (SelectPostType.postTypeSelected == "Driver") 
+					seatsAvail = (Integer)numSeats.getSelectedItem();
+					
 				if (o.length() == 0 || destination.length() == 0 || m.length() == 0 || d.length() == 0 || y.length() == 0
 						|| h.length() == 0 || min.length() == 0 || tOd.length() == 0) {
 					JOptionPane.showMessageDialog(CreatePost.this, "Please fill in all fields.", "Create Post",

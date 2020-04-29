@@ -260,7 +260,7 @@ public class EditProfile extends JDialog {
 								reader = new BufferedReader(new FileReader(filePath));
 								
 								String line = reader.readLine();
-								
+								//Add to line
 								while(line != null) {
 									if(line.contains(Application.loggedIn.getEmail())) {
 										//System.out.println("Collision!");

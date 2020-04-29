@@ -1,6 +1,10 @@
 package business;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
+
+import javax.swing.JOptionPane;
 
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.ReportDatabase;
@@ -8,7 +12,7 @@ import data.post.Post;
 import data.user.Report;
 import enums.Failures;
 
-public class PostService implements IService{
+public class PostService implements IService {
 	// singleton
 	private static PostService postService = null;
 	private static ReentrantLock lock = new ReentrantLock();
@@ -42,22 +46,34 @@ public class PostService implements IService{
 			}
 		}
 
-		// assumes that 8 is the length of the rider post input
-		if (input.length > 8) {
-
-			if (Integer.valueOf(input[9]) < 1 || Integer.valueOf(input[9]) > 99) {
-				result = Failures.invalidPassengerNumber;
-			}
-
-		} else {
-
-		}
-
 		// process date string?
 		// or process date object if its been made by presentation layer
 
+		Date today = new Date();
+		SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+		
+		String todayDay = f.format(today);
+		Date todaysDay = f.parse(todayDay);
+		
+		String dayTime = d + " " + m + " " + y + " " + h + ":" + min + " " + tOd;
+		Date inputDate = f.parse(dayTime);
+		int comp = 0;
+		comp = todaysDay.compareTo(inputDate);
+		
+
+		if (o.equals(dest)) {
+			result = Failures.SameOriginandDestination;
+		}
+		if (comp > 0) {
+			result = Failures.BadDate;
+		}
+		
 		// Store post if validation is successful
-		store(input);
+		if (result == Failures.SUCCESS) {
+
+			store(input);
+		}
+
 		return result;
 	}
 
@@ -83,16 +99,14 @@ public class PostService implements IService{
 	@Override
 	public void store(String[] list) {
 		PostDatabase.addPost(create(list));
-		
+
 	}
 
 	@Override
 	public Post create(String[] list) {
-		//create the report
+		// create the report
 		Post p = new Post();
-		
-		
-		
+
 		return p;
 	}
 }

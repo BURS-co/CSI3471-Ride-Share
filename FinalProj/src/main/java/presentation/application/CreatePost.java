@@ -257,7 +257,9 @@ public class CreatePost extends JDialog {
 				@SuppressWarnings("deprecation")
 				public void actionPerformed(ActionEvent e) {
 					JComboBox cb = (JComboBox) e.getSource();
-					seatsAvail = new Integer((int) cb.getSelectedItem());
+					//seatsAvail = Integer.valueOf((String) cb.getSelectedItem());
+					seatsAvail = (Integer) cb.getSelectedItem();
+					//seatsAvail = new Integer((int) cb.getSelectedItem());
 				}
 			});
 

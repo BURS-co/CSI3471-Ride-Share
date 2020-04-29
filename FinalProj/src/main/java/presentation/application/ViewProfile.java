@@ -46,6 +46,13 @@ public class ViewProfile extends JDialog {
 	ValidateAccountInfo vaI;
 	private boolean succeeded = false;
 	Font customFont = null;
+	
+	public JLabel name;
+	public JLabel baylorEmail;
+	public JLabel phoneNum;
+	public JLabel gradMonth;
+	public JLabel gradYear;
+	public JLabel newPassword;
 
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
@@ -56,7 +63,7 @@ public class ViewProfile extends JDialog {
 	 * @param parent the frame to be displayed on
 	 * @param u the user logged in
 	 */
-	public ViewProfile(JFrame parent, User u) {
+	public ViewProfile(final JFrame parent, final User u) {
 		super(parent, "View Profile", true);
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
@@ -91,7 +98,7 @@ public class ViewProfile extends JDialog {
 		cs.gridx = 1;
 		cs.gridy = 0;
 		cs.gridwidth = 2;
-		JLabel name = new JLabel(u.getUsername());
+		name = new JLabel(u.getUsername());
 		name.setFont(customFont);
 		panel.add(name, cs);
 
@@ -104,7 +111,7 @@ public class ViewProfile extends JDialog {
 		cs.gridx = 1;
 		cs.gridy = 1;
 		cs.gridwidth = 2;
-		JLabel baylorEmail = new JLabel(u.getEmail());
+		baylorEmail = new JLabel(u.getEmail());
 		baylorEmail.setFont(customFont);
 		panel.add(baylorEmail, cs);
 
@@ -118,7 +125,7 @@ public class ViewProfile extends JDialog {
 		cs.gridx = 1;
 		cs.gridy = 2;
 		cs.gridwidth = 2;
-		JLabel phoneNum = new JLabel(u.getPhoneNumber());
+		phoneNum = new JLabel(u.getPhoneNumber());
 		phoneNum.setFont(customFont);
 		panel.add(phoneNum, cs);
 
@@ -131,7 +138,7 @@ public class ViewProfile extends JDialog {
 		cs.gridx = 1;
 		cs.gridy = 3;
 		cs.gridwidth = 2;
-		JLabel gradMonth = new JLabel(u.getGradMonth());
+		gradMonth = new JLabel(u.getGradMonth());
 		gradMonth.setFont(customFont);
 		panel.add(gradMonth, cs);
 
@@ -144,7 +151,7 @@ public class ViewProfile extends JDialog {
 		cs.gridx = 1;
 		cs.gridy = 4;
 		cs.gridwidth = 2;
-		JLabel gradYear = new JLabel(u.getGradYear());
+		gradYear= new JLabel(u.getGradYear());
 		gradYear.setFont(customFont);
 		panel.add(gradYear, cs);
 
@@ -159,9 +166,9 @@ public class ViewProfile extends JDialog {
 		cs.gridy = 5;
 		cs.gridwidth = 2;
 		String pass = String.join("", Collections.nCopies(u.getPassword().length(), "*"));
-		JLabel password = new JLabel(pass);
-		password.setFont(customFont);
-		panel.add(password, cs);
+		newPassword = new JLabel(pass);
+		newPassword.setFont(customFont);
+		panel.add(newPassword, cs);
 
 		JButton editProfile = new JButton("Edit Profile");
 		editProfile.setFont(customFont);
@@ -188,7 +195,7 @@ public class ViewProfile extends JDialog {
 					gradMonth.setText(EditProfile.getUser().getGradMonth());
 					gradYear.setText(EditProfile.getUser().getGradYear());
 					String pass = String.join("", Collections.nCopies(EditProfile.getUser().getPassword().length(), "*"));
-					password.setText(pass);
+					newPassword.setText(pass);
 
 				}
 			}

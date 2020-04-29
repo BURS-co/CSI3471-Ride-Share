@@ -46,7 +46,7 @@ public class SelectPostType extends JDialog {
 	 * @param parent the frame for the data to be displayed on
 	 * @param u the user logged in
 	 */
-	public SelectPostType(JFrame parent, User u) {
+	public SelectPostType(final JFrame parent, final User u) {
 		super(parent, "Create Post", true);
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();

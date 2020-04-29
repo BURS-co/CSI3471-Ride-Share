@@ -50,7 +50,7 @@ public class EditProfile extends JDialog {
 	private boolean succeeded = false;
 	private JButton btnCancel;
 	Font customFont = null;
-	static User u = new User();
+	public static User u = new User();
 
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
@@ -61,7 +61,7 @@ public class EditProfile extends JDialog {
 	 * @param parent the frame for the prompts to be put on
 	 * @param u the user in question
 	 */
-	public EditProfile(JFrame parent, User u) {
+	public EditProfile(JFrame parent, final User u) {
 		super(parent, "Edit Profile", true);
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();

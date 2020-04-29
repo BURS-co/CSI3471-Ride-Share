@@ -1,18 +1,43 @@
 package business;
 
+import java.util.concurrent.locks.ReentrantLock;
+
+import enums.Failures;
+
 public class PostService {
+	// singleton
+	private static PostService postService = null;
+	private static ReentrantLock lock = new ReentrantLock();
+	// private SurveyDatabase database;
 
-	public boolean Validate(String[] input) {
+	private PostService() {
+		// database = SurveyDatabase.getInstance();
+	}
 
+	public static PostService getInstance() {
+		if (postService == null) {
+			lock.lock();
+			if (postService == null)
+				postService = new PostService();
+		}
+
+		return postService;
+	}
+
+	public Failures Validate(String[] input) {
+
+		Failures result = Failures.SUCCESS;
 		boolean driver = false;
 
 		if (input.length == 0) {
-			return false;
+			result = Failures.emptyField;
+			return result;
 		}
 
 		for (String i : input) {
 			if (i.length() == 0) {
-				return false;
+				result = Failures.emptyField;
+				return result;
 			}
 		}
 
@@ -21,7 +46,8 @@ public class PostService {
 			driver = true;
 
 			if (Integer.valueOf(input[9]) < 1 || Integer.valueOf(input[9]) > 99) {
-				return false;
+				result = Failures.invalidPassengerNumber;
+				return result;
 			}
 
 		} else {
@@ -33,7 +59,7 @@ public class PostService {
 
 		// Store post if validation is successful
 		StorePost(input, driver);
-		return true;
+		return result;
 	}
 
 //	public boolean Validate(String[] input, int capacity) {

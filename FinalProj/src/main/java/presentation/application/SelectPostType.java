@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -20,17 +19,15 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 import business.ValidateAccountInfo;
-import data.databaseControllers.PostDatabase;
 import data.user.User;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
  *
- *         Class responsible for determining what kind of post the user specified
+ *         Class responsible for determining what kind of post the user
+ *         specified
  */
 public class SelectPostType extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -39,31 +36,31 @@ public class SelectPostType extends JDialog {
 	private boolean succeeded = false;
 	Font customFont = null;
 	public static String postTypeSelected = new String();
-	String[] postTypes = { "Rider", "Driver"};
-	
+	String[] postTypes = { "Rider", "Driver" };
+
 	/**
 	 * gets user input on post type they selected
+	 * 
 	 * @param parent the frame for the data to be displayed on
-	 * @param u the user logged in
+	 * @param u      the user logged in
 	 */
 	public SelectPostType(final JFrame parent, final User u) {
 		super(parent, "Create Post", true);
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
-		
 
-	    try {
-	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
-	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        //register the font
-	        ge.registerFont(customFont);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch(FontFormatException e) {
-	        e.printStackTrace();
-	    }
+		try {
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+					.deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(customFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
-		
 		JLabel type = new JLabel("Post Type: ");
 		JComboBox postType = new JComboBox(postTypes);
 		postType.addActionListener(new ActionListener() {
@@ -78,15 +75,15 @@ public class SelectPostType extends JDialog {
 		cs.gridwidth = 1;
 		type.setFont(customFont);
 		panel.add(type, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 0;
 		cs.gridwidth = 2;
 		panel.add(postType, cs);
-		
+
 		JButton select = new JButton("Select");
 		select.setFont(customFont);
-		select.setBackground(new Color(255,184,25));
+		select.setBackground(new Color(255, 184, 25));
 		select.setFont(customFont);
 		select.setBorderPainted(false);
 		select.setOpaque(true);
@@ -101,14 +98,14 @@ public class SelectPostType extends JDialog {
 			public void actionPerformed(ActionEvent event) {
 				CreatePost cp = new CreatePost(parent, u);
 				cp.setVisible(true);
-				if(cp.isSucceeded())
+				if (cp.isSucceeded())
 					dispose();
 			}
 		});
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
 		btnCancel.setFont(customFont);
-		btnCancel.setBackground(new Color(255,184,25));
+		btnCancel.setBackground(new Color(255, 184, 25));
 		btnCancel.setFont(customFont);
 		btnCancel.setBorderPainted(false);
 		btnCancel.setOpaque(true);
@@ -125,18 +122,16 @@ public class SelectPostType extends JDialog {
 				dispose();
 			}
 		});
-		
-		
 
 		JPanel bp = new JPanel();
 		bp.add(select);
 		bp.add(btnCancel);
-		bp.setBackground(new Color(28,60,52));
+		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);
 		getContentPane().add(bp, BorderLayout.PAGE_END);
 
-		panel.setBackground(new Color(255,184,25));
+		panel.setBackground(new Color(255, 184, 25));
 
 		pack();
 		setResizable(false);
@@ -144,7 +139,8 @@ public class SelectPostType extends JDialog {
 	}
 
 	/**
-	 * Gives the post type selected 
+	 * Gives the post type selected
+	 * 
 	 * @return the post type selected
 	 */
 	public String getPostTypeSelected() {

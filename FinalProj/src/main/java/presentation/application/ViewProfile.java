@@ -216,7 +216,7 @@ public class ViewProfile extends JDialog {
 				dispose();
 			}
 		});
-		
+
 		JButton deleteBtn = new JButton("Delete Account");
 		deleteBtn.setFont(customFont);
 		deleteBtn.setFont(customFont);
@@ -224,7 +224,7 @@ public class ViewProfile extends JDialog {
 		deleteBtn.setFont(customFont);
 		deleteBtn.setBorderPainted(false);
 		deleteBtn.setOpaque(true);
-		
+
 		deleteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserDatabase.getInstance().removeUser(Application.loggedIn);

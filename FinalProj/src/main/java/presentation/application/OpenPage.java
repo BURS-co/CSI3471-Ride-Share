@@ -38,7 +38,7 @@ public class OpenPage extends JDialog {
 	private JButton btnLogin;
 	private JButton btnCreateAccount;
 	private boolean succeeded;
-	//private User u = new User();
+	// private User u = new User();
 
 	/**
 	 * Creates the open page

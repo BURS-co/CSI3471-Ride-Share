@@ -57,7 +57,7 @@ public class LoginDialog extends JDialog {
 	public LoginDialog(final JFrame parent) {
 		super(parent, "Bearpool Login", true);
 		succeeded = false;
-    JPanel information = new JPanel(new GridBagLayout()); 
+		JPanel information = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
 
 		try {
@@ -103,7 +103,8 @@ public class LoginDialog extends JDialog {
 
 		pfPassword.addKeyListener(new KeyListener() {
 
-			public void keyTyped(KeyEvent e) {}
+			public void keyTyped(KeyEvent e) {
+			}
 
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -111,7 +112,8 @@ public class LoginDialog extends JDialog {
 				}
 			}
 
-			public void keyReleased(KeyEvent e) {}
+			public void keyReleased(KeyEvent e) {
+			}
 
 		});
 
@@ -125,12 +127,11 @@ public class LoginDialog extends JDialog {
 					authenticate();
 				}
 			}
-			
-			public void keyReleased(KeyEvent e) {}
 
+			public void keyReleased(KeyEvent e) {
+			}
 
 		});
- 
 
 		btnLogin = new JButton("Login");// button
 		btnLogin.setBackground(new Color(255, 184, 25));
@@ -150,7 +151,7 @@ public class LoginDialog extends JDialog {
 				authenticate();
 			}
 		});
-		
+
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBackground(new Color(255, 184, 25));
 		btnCancel.setFont(customFont);
@@ -179,8 +180,8 @@ public class LoginDialog extends JDialog {
 		getContentPane().add(bp, BorderLayout.AFTER_LAST_LINE);
 
 		information.setBackground(new Color(255, 184, 25));
-    information.setFocusable(true);
-    information.requestFocusInWindow();
+		information.setFocusable(true);
+		information.requestFocusInWindow();
 		pack();
 		setResizable(false);
 		setLocationRelativeTo(parent);
@@ -212,7 +213,7 @@ public class LoginDialog extends JDialog {
 	public boolean isSucceeded() {
 		return succeeded;
 	}
-	
+
 	public void authenticate() {
 		if (Login.authenticate(tfEmail.getText(), getPassword())) {
 			succeeded = true;

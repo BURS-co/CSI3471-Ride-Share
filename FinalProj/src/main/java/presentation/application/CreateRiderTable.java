@@ -18,7 +18,6 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import data.post.AbstractPost;
-import data.post.Post;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
@@ -27,27 +26,27 @@ import data.post.Post;
  */
 public class CreateRiderTable {
 	private static Font customFont = null;
-	
-	//@D array
+
+	// @D array
 	static Object[][] riderData;
-	
-	
+
 	/**
 	 * @param rlist the list of rider posts to be displayed
 	 * @return JTable the table encapsulating the formatted rider posts
 	 */
 	public static JTable createTable(ArrayList<AbstractPost> rlist) {
 		try {
-	        customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf")).deriveFont(12f);
-	        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-	        //register the font
-	        ge.registerFont(customFont);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch(FontFormatException e) {
-	        e.printStackTrace();
-	    }
-		
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+					.deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(customFont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
+
 		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
 		riderData = new Object[rlist.size()][riderPostLabels.length];
 
@@ -72,29 +71,27 @@ public class CreateRiderTable {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-			@Override 
+
+			@Override
 			public Object getValueAt(int row, int col) {
 				return riderData[row][col];
-            }
+			}
+
 			@Override
-	        public Class<?> getColumnClass(int column) 
-	        {
-	              Class<?> returnValue;
-	              if ((column >= 0) && (column < getColumnCount())) 
-	              {
-	                  returnValue = getValueAt(0, column).getClass();
-	              } 
-	              else 
-	              {
-	                 returnValue = Object.class;
-	              }
+			public Class<?> getColumnClass(int column) {
+				Class<?> returnValue;
+				if ((column >= 0) && (column < getColumnCount())) {
+					returnValue = getValueAt(0, column).getClass();
+				} else {
+					returnValue = Object.class;
+				}
 
-	              return returnValue;
+				return returnValue;
 
-	       };
+			};
 		};
 		JTable riderTable = new JTable(model);
-		
+
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(riderTable.getModel());
 		riderTable.setRowSorter(sorter);
 
@@ -104,7 +101,7 @@ public class CreateRiderTable {
 		sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
 		sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
 		sorter.setSortKeys(sortKeys);
-		
+
 		riderTable.setFont(customFont);
 
 		return riderTable;

@@ -11,25 +11,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import business.CreatePostValidate;
 import business.PostService;
-import data.databaseControllers.PostDatabase;
-import data.post.DriverPost;
 import data.post.Post;
 import data.user.User;
 
@@ -205,7 +197,7 @@ public class CreatePost extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
-				
+
 				// gather selected fields
 				o = String.valueOf(originLoc.getSelectedItem());
 				destination = String.valueOf(destLoc.getSelectedItem());
@@ -215,13 +207,13 @@ public class CreatePost extends JDialog {
 				h = String.valueOf(hour.getSelectedItem());
 				min = String.valueOf(minute.getSelectedItem());
 				tOd = String.valueOf(timeDay.getSelectedItem());
-				
+
 				String[] input = null;
 				if (SelectPostType.postTypeSelected == "Driver") {
 					seatsAvail = (Integer) numSeats.getSelectedItem();
-					input = new String[]{o, destination, m, d, y, h, min, tOd, seatsAvail.toString()};
+					input = new String[] { o, destination, m, d, y, h, min, tOd, seatsAvail.toString() };
 				} else {
-				  input = new String[]{o, destination, m, d, y, h, min, tOd};
+					input = new String[] { o, destination, m, d, y, h, min, tOd };
 				}
 
 				// pass to PostService for validation and creation

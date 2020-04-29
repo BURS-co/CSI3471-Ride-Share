@@ -33,13 +33,11 @@ import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
 import data.post.DriverPost;
-import data.post.Post;
 import data.user.Admin;
 import data.user.User;
 
@@ -106,7 +104,7 @@ public class Application {
 
 	public static boolean riderTableUp;
 	public static boolean driverTableUp;
-	
+
 	public static JScrollPane pane;
 
 	/**
@@ -227,28 +225,26 @@ public class Application {
 		riderTable.getColumn(riderPostLabels[1]).setPreferredWidth(35);
 		riderTable.getColumn(riderPostLabels[2]).setPreferredWidth(50);
 		riderTable.getColumn(riderPostLabels[3]).setPreferredWidth(100);
-		
-		riderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		 //When selection changes, provide user with row numbers for both view & model.
-		riderTable.getSelectionModel().addListSelectionListener(
-				 		new ListSelectionListener() {
-				 		public void valueChanged(ListSelectionEvent event) {
-		int viewRow = riderTable.getSelectedRow();
-			if (viewRow < 0) {
-		 //Selection got filtered away.
-			 //statusText.setText("");
-			} else {
-		 			String name = (String) riderTable.getValueAt(viewRow, 0);
-		 			String orig = (String) riderTable.getValueAt(viewRow, 1);
-		 			String dest = (String) riderTable.getValueAt(viewRow, 2);
-		 			String date = (String) riderTable.getValueAt(viewRow, 3);
-		 			ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date);
-		 			vpi.setVisible(true);
 
-		 			}
+		riderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		// When selection changes, provide user with row numbers for both view & model.
+		riderTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent event) {
+				int viewRow = riderTable.getSelectedRow();
+				if (viewRow < 0) {
+					// Selection got filtered away.
+					// statusText.setText("");
+				} else {
+					String name = (String) riderTable.getValueAt(viewRow, 0);
+					String orig = (String) riderTable.getValueAt(viewRow, 1);
+					String dest = (String) riderTable.getValueAt(viewRow, 2);
+					String date = (String) riderTable.getValueAt(viewRow, 3);
+					ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date);
+					vpi.setVisible(true);
+
 				}
-		 	}
-		 );
+			}
+		});
 
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
 		dTable = (DefaultTableModel) driverTable.getModel();
@@ -257,29 +253,27 @@ public class Application {
 		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);
 		driverTable.getColumn(driverPostLabels[3]).setPreferredWidth(50);
 		driverTable.getColumn(driverPostLabels[4]).setPreferredWidth(100);
-		
-		driverTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		 //When selection changes, provide user with row numbers for both view & model.
-		driverTable.getSelectionModel().addListSelectionListener(
-				 		new ListSelectionListener() {
-				 		public void valueChanged(ListSelectionEvent event) {
-		int viewRow = driverTable.getSelectedRow();
-			if (viewRow < 0) {
-		 //Selection got filtered away.
-			 //statusText.setText("");
-			} else {
-		 			String seats = (String) driverTable.getValueAt(viewRow, 0);
-		 			String name = (String) driverTable.getValueAt(viewRow, 1);
-		 			String orig = (String) driverTable.getValueAt(viewRow, 2);
-		 			String dest = (String) driverTable.getValueAt(viewRow, 3);
-		 			String date = (String) driverTable.getValueAt(viewRow, 4);
-		 			ViewPostInfo vpi = new ViewPostInfo(mainFrame, seats, name, orig, dest, date);
-		 			vpi.setVisible(true);
 
-		 			}
+		driverTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		// When selection changes, provide user with row numbers for both view & model.
+		driverTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent event) {
+				int viewRow = driverTable.getSelectedRow();
+				if (viewRow < 0) {
+					// Selection got filtered away.
+					// statusText.setText("");
+				} else {
+					String seats = (String) driverTable.getValueAt(viewRow, 0);
+					String name = (String) driverTable.getValueAt(viewRow, 1);
+					String orig = (String) driverTable.getValueAt(viewRow, 2);
+					String dest = (String) driverTable.getValueAt(viewRow, 3);
+					String date = (String) driverTable.getValueAt(viewRow, 4);
+					ViewPostInfo vpi = new ViewPostInfo(mainFrame, seats, name, orig, dest, date);
+					vpi.setVisible(true);
+
 				}
-		 	}
-		 );
+			}
+		});
 
 		/******* First Row **********/
 		gc.gridx = 0;
@@ -320,27 +314,25 @@ public class Application {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				if (!riderTableUp) {
-					//Set coordinates
+					// Set coordinates
 					gc.gridx = 1;
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
-					
-					//remove pane
+
+					// remove pane
 					mainFrame.remove(pane);
-					
+
 					pane = new JScrollPane(riderTable);
 					mainFrame.add(pane, gc);
-					
+
 					mainFrame.repaint();
 					// TODO fix
 					/*
-					pc.weightx = 1;
-					pc.weighty = 1;
-
-					pc.gridx = 0;
-					pc.gridy = 0;
-					*/
-					//mainFrame.add(selection, gc);
+					 * pc.weightx = 1; pc.weighty = 1;
+					 * 
+					 * pc.gridx = 0; pc.gridy = 0;
+					 */
+					// mainFrame.add(selection, gc);
 
 					mainFrame.pack();
 
@@ -400,19 +392,19 @@ public class Application {
 					gc.gridy = 0;
 					gc.fill = GridBagConstraints.BOTH;
 					mainFrame.remove(pane);
-					//new pane
+					// new pane
 					pane = new JScrollPane(driverTable);
 					mainFrame.add(pane, gc);
 					// TODO fix
-					//pc.weightx = 1;
-					//pc.weighty = 1;
+					// pc.weightx = 1;
+					// pc.weighty = 1;
 
-					//pc.gridx = 0;
-					//pc.gridy = 0;
-					//mainFrame.add(selection, pc);
+					// pc.gridx = 0;
+					// pc.gridy = 0;
+					// mainFrame.add(selection, pc);
 
 					mainFrame.pack();
-					
+
 					driverTableUp = true;
 					riderTableUp = false;
 				}
@@ -526,8 +518,8 @@ public class Application {
 			ImageIcon reportIcn = new ImageIcon("src/main/resources/report.png");
 			Image reportimage = reportIcn.getImage(); // transform it
 			Image reportnewimg = reportimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the
-																										// smooth
-																										// way
+			// smooth
+			// way
 			rIcn = new ImageIcon(reportnewimg); // transform it back
 			JButton reportBtn = new JButton(rIcn);
 			profileBtn.setOpaque(false);

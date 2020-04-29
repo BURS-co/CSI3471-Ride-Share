@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -22,25 +21,23 @@ import javax.swing.JPanel;
 
 public class ViewPostInfo extends JDialog {
 	private static final long serialVersionUID = 1L;
-	private boolean succeeded;
 	Font customFont;
-	
+
 	JLabel nameLabel = new JLabel("Name: ");
 	JLabel seatLabel = new JLabel("Seats Available: ");
 	JLabel origLabel = new JLabel("Origin: ");
 	JLabel destLabel = new JLabel("Destination: ");
 	JLabel dateLabel = new JLabel("Date: ");
-	
 
 	/**
 	 * Shows info of selected driver post
 	 * 
-	 * @param parent frame for encapsulating data, name, origin, destination, date of ride
+	 * @param parent frame for encapsulating data, name, origin, destination, date
+	 *               of ride
 	 * @return
 	 */
 	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date) {
 		super(parent, "Post Info", true);
-
 
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
@@ -51,7 +48,6 @@ public class ViewPostInfo extends JDialog {
 		JLabel o = new JLabel(orig);
 		JLabel d = new JLabel(dest);
 		JLabel dt = new JLabel(date);
-		
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -72,19 +68,19 @@ public class ViewPostInfo extends JDialog {
 		cs.gridwidth = 1;
 		nameLabel.setFont(customFont);
 		panel.add(nameLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 0;
 		cs.gridwidth = 1;
 		n.setFont(customFont);
 		panel.add(n, cs);
-		
+
 		cs.gridx = 0;
 		cs.gridy = 1;
 		cs.gridwidth = 1;
 		seatLabel.setFont(customFont);
 		panel.add(seatLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 1;
 		cs.gridwidth = 1;
@@ -96,7 +92,7 @@ public class ViewPostInfo extends JDialog {
 		cs.gridwidth = 1;
 		origLabel.setFont(customFont);
 		panel.add(origLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 2;
 		cs.gridwidth = 1;
@@ -108,19 +104,19 @@ public class ViewPostInfo extends JDialog {
 		cs.gridwidth = 2;
 		destLabel.setFont(customFont);
 		panel.add(destLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 3;
 		cs.gridwidth = 2;
 		d.setFont(customFont);
 		panel.add(d, cs);
-		
+
 		cs.gridx = 0;
 		cs.gridy = 4;
 		cs.gridwidth = 2;
 		dateLabel.setFont(customFont);
 		panel.add(dateLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 4;
 		cs.gridwidth = 2;
@@ -143,16 +139,18 @@ public class ViewPostInfo extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
-			
-					// Keep track of user logged in
-				//	Application.loggedIn = u;
-					
-			//		ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-			//		JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
-			//				JOptionPane.INFORMATION_MESSAGE, icon);
-			//		Application.log.log(Level.INFO, Application.loggedIn + " accepted a ride from " + name);
-					dispose();
-			
+
+				// Keep track of user logged in
+				// Application.loggedIn = u;
+
+				// ImageIcon icon = new ImageIcon("src/main/resources/poolfloat
+				// icon-yellow.png");
+				// JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to
+				// Bearpool!", "Login",
+				// JOptionPane.INFORMATION_MESSAGE, icon);
+				// Application.log.log(Level.INFO, Application.loggedIn + " accepted a ride from
+				// " + name);
+				dispose();
 
 			}
 		});
@@ -176,7 +174,7 @@ public class ViewPostInfo extends JDialog {
 				dispose();
 			}
 		});
-		
+
 		JButton removePost = new JButton("Report Post");
 		removePost.setFont(customFont);
 		removePost.setFont(customFont);
@@ -201,9 +199,9 @@ public class ViewPostInfo extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(acceptRide);
 		bp.add(btnCancel);
-		if(Application.loggedIn.getUsername().equals(name))
+		if (Application.loggedIn.getUsername().equals(name))
 			bp.add(removePost);
-		
+
 		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -215,16 +213,16 @@ public class ViewPostInfo extends JDialog {
 		setResizable(false);
 		setLocationRelativeTo(parent);
 	}
-	
+
 	/**
 	 * Shows info of selected driver post
 	 * 
-	 * @param parent frame for encapsulating data, name, origin, destination, date of ride
+	 * @param parent frame for encapsulating data, name, origin, destination, date
+	 *               of ride
 	 * @return
 	 */
 	public ViewPostInfo(JFrame parent, String name, String orig, String dest, String date) {
 		super(parent, "Post Info", true);
-
 
 		JPanel panel = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
@@ -234,7 +232,6 @@ public class ViewPostInfo extends JDialog {
 		JLabel o = new JLabel(orig);
 		JLabel d = new JLabel(dest);
 		JLabel dt = new JLabel(date);
-		
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -254,7 +251,7 @@ public class ViewPostInfo extends JDialog {
 		cs.gridy = 0;
 		nameLabel.setFont(customFont);
 		panel.add(nameLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 0;
 		n.setFont(customFont);
@@ -264,7 +261,7 @@ public class ViewPostInfo extends JDialog {
 		cs.gridy = 1;
 		origLabel.setFont(customFont);
 		panel.add(origLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 1;
 		o.setFont(customFont);
@@ -274,17 +271,17 @@ public class ViewPostInfo extends JDialog {
 		cs.gridy = 2;
 		destLabel.setFont(customFont);
 		panel.add(destLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 2;
 		d.setFont(customFont);
 		panel.add(d, cs);
-		
+
 		cs.gridx = 0;
 		cs.gridy = 3;
 		dateLabel.setFont(customFont);
 		panel.add(dateLabel, cs);
-		
+
 		cs.gridx = 1;
 		cs.gridy = 3;
 		dt.setFont(customFont);
@@ -306,16 +303,17 @@ public class ViewPostInfo extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
-			
-					// Keep track of user logged in
-				//	Application.loggedIn = u;
-					
-			//		ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-			//		JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to Bearpool!", "Login",
-			//				JOptionPane.INFORMATION_MESSAGE, icon);
-			//		Application.log.log(Level.INFO, "You have offered " + name + " a ride!");
-					dispose();
-			
+
+				// Keep track of user logged in
+				// Application.loggedIn = u;
+
+				// ImageIcon icon = new ImageIcon("src/main/resources/poolfloat
+				// icon-yellow.png");
+				// JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to
+				// Bearpool!", "Login",
+				// JOptionPane.INFORMATION_MESSAGE, icon);
+				// Application.log.log(Level.INFO, "You have offered " + name + " a ride!");
+				dispose();
 
 			}
 		});
@@ -339,8 +337,7 @@ public class ViewPostInfo extends JDialog {
 				dispose();
 			}
 		});
-		
-		
+
 		JButton removePost = new JButton("Remove Post");
 		removePost.setFont(customFont);
 		removePost.setFont(customFont);
@@ -361,14 +358,13 @@ public class ViewPostInfo extends JDialog {
 				dispose();
 			}
 		});
-			
 
 		JPanel bp = new JPanel();
 		bp.add(offerRide);
 		bp.add(btnCancel);
-		if(Application.loggedIn.getUsername().equals(name))
+		if (Application.loggedIn.getUsername().equals(name))
 			bp.add(removePost);
-		
+
 		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);

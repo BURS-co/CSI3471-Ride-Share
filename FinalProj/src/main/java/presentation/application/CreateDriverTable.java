@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
 import javax.swing.RowSorter.SortKey;
@@ -18,11 +17,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import data.databaseControllers.PostDatabase;
 import data.post.AbstractPost;
 import data.post.Driver;
-import data.post.DriverPost;
-import data.post.Post;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph

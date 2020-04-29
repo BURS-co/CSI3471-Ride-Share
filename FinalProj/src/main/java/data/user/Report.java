@@ -1,7 +1,7 @@
 package data.user;
 
 /**
- * @author Andrew Ammentorp,
+ * @author Andrew Ammentorp, Joseph Yu, Joshua Huertas
  *	Class for a report
  */
 public class Report {

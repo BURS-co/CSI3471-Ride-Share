@@ -6,15 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
-import data.post.DriverPost;
-import data.post.Post;
 import data.survey.Survey;
-//bruh
+
 public class SurveyDatabase {
 	// singleton
 	private static SurveyDatabase surveyDatabase = null;
@@ -59,8 +57,16 @@ public class SurveyDatabase {
 		}
 	}
 
-	public static void write() {
+	public static void write() throws IOException {
+		// open file
+		BufferedWriter write = new BufferedWriter(new FileWriter("surveyDatabase.txt"));
 
+		for (Survey s : surveyData) {
+			write.write(s.toString());
+		}
+
+		write.flush();
+		write.close();
 	}
 
 	public static void addSurvey(Survey s) {

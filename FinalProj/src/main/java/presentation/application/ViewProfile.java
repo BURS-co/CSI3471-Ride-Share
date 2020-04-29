@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import business.UserService;
 import business.ValidateAccountInfo;
 import data.databaseControllers.UserDatabase;
 import data.user.User;
@@ -185,12 +186,12 @@ public class ViewProfile extends JDialog {
 				EditProfile ep = new EditProfile(parent, u);
 				ep.setVisible(true);
 				if (ep.isSucceeded()) {
-					name.setText(Application.loggedIn.getUsername());
-					baylorEmail.setText(Application.loggedIn.getEmail());
-					phoneNum.setText(Application.loggedIn.getPhoneNumber());
-					gradMonth.setText(Application.loggedIn.getGradMonth());
-					gradYear.setText(Application.loggedIn.getGradYear());
-					String pass = String.join("", Collections.nCopies(Application.loggedIn.getPassword().length(), "*"));
+					name.setText(UserService.getInstance().getCurrentUser().getUsername());
+					baylorEmail.setText(UserService.getInstance().getCurrentUser().getEmail());
+					phoneNum.setText(UserService.getInstance().getCurrentUser().getPhoneNumber());
+					gradMonth.setText(UserService.getInstance().getCurrentUser().getGradMonth());
+					gradYear.setText(UserService.getInstance().getCurrentUser().getGradYear());
+					String pass = String.join("", Collections.nCopies(UserService.getInstance().getCurrentUser().getPassword().length(), "*"));
 					newPassword.setText(pass);
 
 				}
@@ -227,7 +228,7 @@ public class ViewProfile extends JDialog {
 
 		deleteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserDatabase.getInstance().removeUser(Application.loggedIn);
+				UserDatabase.getInstance().removeUser(UserService.getInstance().getCurrentUser());
 				try {
 					UserDatabase.getInstance().write();
 				} catch (IOException e1) {

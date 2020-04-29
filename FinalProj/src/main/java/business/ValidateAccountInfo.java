@@ -21,7 +21,7 @@ public class ValidateAccountInfo {
 			String reenterPass, String gradMonth, String gradYear) {
 		
 		String[] info = {name, email, phone, password, reenterPass, gradMonth, gradYear};
-		Failures result = UserService.ValidateAccInfo(info);
+		Failures result = UserService.getInstance().verify(info);
 		
 //		switch(result) {
 //			case emptyField:

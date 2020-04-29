@@ -20,7 +20,7 @@ public class UserDatabase {
 	// multi-thread protection
 	private static ReentrantLock lock = new ReentrantLock();
 	// array to hold users
-	private ArrayList<User> userData = new ArrayList<User>();
+	private static ArrayList<User> userData = new ArrayList<User>();
 
 	// private constructor
 	private UserDatabase() {
@@ -46,7 +46,7 @@ public class UserDatabase {
 	 * 
 	 * @param User u
 	 */
-	public void addUser(User u) {
+	public static void addUser(User u) {
 		userData.add(u);
 	}
 

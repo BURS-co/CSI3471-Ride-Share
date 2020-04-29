@@ -217,12 +217,6 @@ public class Application {
 		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);
 		driverTable.getColumn(driverPostLabels[3]).setPreferredWidth(50);
 		driverTable.getColumn(driverPostLabels[4]).setPreferredWidth(100);
-		TableColumnModel columnModel1 = driverTable.getColumnModel();
-		columnModel1.getColumn(0).setPreferredWidth(30);
-		columnModel1.getColumn(1).setPreferredWidth(100);
-		columnModel1.getColumn(2).setPreferredWidth(35);
-		columnModel1.getColumn(3).setPreferredWidth(50);
-		columnModel1.getColumn(4).setPreferredWidth(100);
 
 		/******* First Row **********/
 		gc.gridx = 0;

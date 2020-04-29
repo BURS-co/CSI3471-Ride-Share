@@ -49,7 +49,23 @@ public class PostService implements IService {
 			result = Failures.emptyField;
 		}
 
-		if (result == Failures.emptyField) {
+		if (input[0].equals(input[1])) {
+			result = Failures.SameOriginandDestination;
+		}
+		
+		if(input.length == 9) {
+			try {
+				int temp = Integer.valueOf(input[8]);
+				
+				if(!(temp > 0 && temp < 99)) {
+					result = Failures.PostField8NotInRange;
+				}
+			} catch(Exception e) {
+				result = Failures.PostField8notANumber;
+			}
+		}
+
+		if (result != Failures.SUCCESS) {
 			return result;
 		}
 
@@ -64,11 +80,10 @@ public class PostService implements IService {
 		String dayTime;
 		Date inputDate;
 		int comp = 0;
-		
+
 		try {
 			todaysDay = f.parse(todayDay);
-			dayTime = input[2] + " " + input[3] + " " + input[4] + " " + input[5] + ":" + input[6] + " "
-					+ input[7];
+			dayTime = input[2] + " " + input[3] + " " + input[4] + " " + input[5] + ":" + input[6] + " " + input[7];
 			inputDate = f.parse(dayTime);
 			comp = todaysDay.compareTo(inputDate);
 
@@ -77,9 +92,6 @@ public class PostService implements IService {
 			e.printStackTrace();
 		}
 
-		if (input[0].equals(input[1])) {
-			result = Failures.SameOriginandDestination;
-		}
 		if (comp > 0) {
 			result = Failures.BadDate;
 		}
@@ -121,10 +133,9 @@ public class PostService implements IService {
 	public AbstractPost create(String[] list) {
 		// create the report
 		AbstractPost p = null;
-		if(list.length == 8) {
+		if (list.length == 8) {
 			p = new Rider(list);
-		}
-		else {
+		} else {
 			p = new Driver(list);
 		}
 		return p;

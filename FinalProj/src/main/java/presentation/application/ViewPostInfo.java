@@ -176,10 +176,34 @@ public class ViewPostInfo extends JDialog {
 				dispose();
 			}
 		});
+		
+		JButton removePost = new JButton("Report Post");
+		removePost.setFont(customFont);
+		removePost.setFont(customFont);
+		removePost.setBackground(new Color(255, 184, 25));
+		removePost.setFont(customFont);
+		removePost.setBorderPainted(false);
+		removePost.setOpaque(true);
+		removePost.addActionListener(new ActionListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			public void actionPerformed(ActionEvent e) {
+				Application.log.log(Level.INFO, "Post info closed");
+				dispose();
+			}
+		});
 
 		JPanel bp = new JPanel();
 		bp.add(acceptRide);
 		bp.add(btnCancel);
+		if(Application.loggedIn.getUsername().equals(name))
+			bp.add(removePost);
+		
 		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -315,10 +339,36 @@ public class ViewPostInfo extends JDialog {
 				dispose();
 			}
 		});
+		
+		
+		JButton removePost = new JButton("Remove Post");
+		removePost.setFont(customFont);
+		removePost.setFont(customFont);
+		removePost.setBackground(new Color(255, 184, 25));
+		removePost.setFont(customFont);
+		removePost.setBorderPainted(false);
+		removePost.setOpaque(true);
+		removePost.addActionListener(new ActionListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			public void actionPerformed(ActionEvent e) {
+				Application.log.log(Level.INFO, "Post info closed");
+				dispose();
+			}
+		});
+			
 
 		JPanel bp = new JPanel();
 		bp.add(offerRide);
 		bp.add(btnCancel);
+		if(Application.loggedIn.getUsername().equals(name))
+			bp.add(removePost);
+		
 		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);

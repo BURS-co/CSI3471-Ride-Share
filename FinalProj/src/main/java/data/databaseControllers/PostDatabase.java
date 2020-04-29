@@ -103,9 +103,9 @@ public class PostDatabase {
 
 	}
 
-	public void add(Post p) {
-		postData.add(0, p);
-	}
+//	public void add(Post p) {
+//		postData.add(0, p);
+//	}
 
 	public static ArrayList<Post> getPostData() {
 		return postData;
@@ -133,6 +133,10 @@ public class PostDatabase {
 		}
 
 		return query;
+	}
+
+	public static void addPost(Post p) {
+		postData.add(p);
 	}
 
 }

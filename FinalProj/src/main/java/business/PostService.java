@@ -2,7 +2,10 @@ package business;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+import data.databaseControllers.PostDatabase;
+import data.databaseControllers.ReportDatabase;
 import data.post.Post;
+import data.user.Report;
 import enums.Failures;
 
 public class PostService implements IService{
@@ -31,13 +34,11 @@ public class PostService implements IService{
 
 		if (input.length == 0) {
 			result = Failures.emptyField;
-			return result;
 		}
 
 		for (String i : input) {
 			if (i.length() == 0) {
 				result = Failures.emptyField;
-				return result;
 			}
 		}
 
@@ -46,7 +47,6 @@ public class PostService implements IService{
 
 			if (Integer.valueOf(input[9]) < 1 || Integer.valueOf(input[9]) > 99) {
 				result = Failures.invalidPassengerNumber;
-				return result;
 			}
 
 		} else {
@@ -82,13 +82,17 @@ public class PostService implements IService{
 
 	@Override
 	public void store(String[] list) {
-		// TODO Auto-generated method stub
+		PostDatabase.addPost(create(list));
 		
 	}
 
 	@Override
 	public Post create(String[] list) {
-		// TODO Auto-generated method stub
-		return null;
+		//create the report
+		Post p = new Post();
+		
+		
+		
+		return p;
 	}
 }

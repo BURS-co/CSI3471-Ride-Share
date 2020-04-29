@@ -97,6 +97,15 @@ public class Application {
 	 */
 	public static DefaultTableModel rTable;
 
+	public static JTable riderTable;
+	public static JTable driverTable;
+	public static GridBagConstraints gc;
+	public static JPanel selection;
+	public static GridBagConstraints pc;
+
+	public static boolean riderTableUp;
+	public static boolean driverTableUp;
+
 	/**
 	 * main method for the application
 	 * 
@@ -146,7 +155,7 @@ public class Application {
 
 		// Setting up GridBagLayout
 		mainFrame.setLayout(new GridBagLayout());
-		GridBagConstraints gc = new GridBagConstraints();
+		gc = new GridBagConstraints();
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -160,7 +169,7 @@ public class Application {
 			e.printStackTrace();
 		}
 
-		JPanel selection = new JPanel();
+		selection = new JPanel();
 		Border innerB = BorderFactory.createEmptyBorder();
 		Border outerB = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		selection.setBorder(BorderFactory.createCompoundBorder(outerB, innerB));
@@ -176,8 +185,8 @@ public class Application {
 		ArrayList<Post> dlist = pDat.searchDatabase("driver");
 
 		// create table of posts
-		JTable riderTable = CreateRiderTable.createTable(rlist);
-		JTable driverTable = CreateDriverTable.createTable(dlist);
+		riderTable = CreateRiderTable.createTable(rlist);
+		driverTable = CreateDriverTable.createTable(dlist);
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -188,9 +197,11 @@ public class Application {
 		gc.gridy = 0;
 		gc.fill = GridBagConstraints.BOTH;
 		mainFrame.add(new JScrollPane(riderTable), gc);
-		gc.gridx = 2;
-		gc.gridy = 0;
-		mainFrame.add(new JScrollPane(driverTable), gc);
+		riderTableUp = true;
+		driverTableUp = !riderTableUp;
+		// gc.gridx = 2;
+		// gc.gridy = 0;
+		// mainFrame.add(new JScrollPane(driverTable), gc);
 
 		riderTable.setFillsViewportHeight(true);
 		driverTable.setFillsViewportHeight(true);
@@ -287,13 +298,45 @@ public class Application {
 		ridesBtn.setFocusPainted(false);
 		// JButton ridesBtn = new JButton();
 		selection.setLayout(new GridBagLayout());
-		GridBagConstraints pc = new GridBagConstraints();
+		pc = new GridBagConstraints();
 		pc.weightx = 1;
 		pc.weighty = 1;
 
 		pc.gridx = 0;
 		pc.gridy = 0;
 		pc.anchor = GridBagConstraints.CENTER;
+
+		ridesBtn.addActionListener(new ActionListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			public void actionPerformed(ActionEvent e) {
+				if (!riderTableUp) {
+					//Set coordinates
+					gc.gridx = 1;
+					gc.gridy = 0;
+					gc.fill = GridBagConstraints.BOTH;
+
+					mainFrame.add(new JScrollPane(riderTable), gc);
+					// TODO fix
+					pc.weightx = 1;
+					pc.weighty = 1;
+
+					pc.gridx = 0;
+					pc.gridy = 0;
+					mainFrame.add(selection, pc);
+
+					mainFrame.pack();
+
+					riderTableUp = true;
+					driverTableUp = false;
+				}
+			}
+		});
 
 		// rides button image label
 		// TODO
@@ -330,6 +373,37 @@ public class Application {
 		 * System.out.println(ex.getStackTrace()); }
 		 */
 		selection.add(drivesBtn, pc);
+
+		drivesBtn.addActionListener(new ActionListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			public void actionPerformed(ActionEvent e) {
+				if (!driverTableUp) {
+					gc.gridx = 1;
+					gc.gridy = 0;
+					gc.fill = GridBagConstraints.BOTH;
+
+					mainFrame.add(new JScrollPane(driverTable), gc);
+					// TODO fix
+					pc.weightx = 1;
+					pc.weighty = 1;
+
+					pc.gridx = 0;
+					pc.gridy = 0;
+					mainFrame.add(selection, pc);
+
+					mainFrame.pack();
+					
+					driverTableUp = true;
+					riderTableUp = false;
+				}
+			}
+		});
 
 		/**** Third Row of Panel ****/
 		ImageIcon pIcn = new ImageIcon("src/main/resources/profile.png");
@@ -437,8 +511,9 @@ public class Application {
 		if (loggedIn instanceof Admin) {
 			ImageIcon reportIcn = new ImageIcon("src/main/resources/report.png");
 			Image reportimage = reportIcn.getImage(); // transform it
-			Image reportnewimg = reportimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth
-																																																// way
+			Image reportnewimg = reportimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the
+																										// smooth
+																										// way
 			rIcn = new ImageIcon(reportnewimg); // transform it back
 			JButton reportBtn = new JButton(rIcn);
 			profileBtn.setOpaque(false);

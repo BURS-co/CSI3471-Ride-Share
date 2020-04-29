@@ -8,6 +8,7 @@ import enums.Failures;
 
 public class UserService implements IService {
 
+	private static User currentUser;
 	private static UserService userService = null;
 	private static ReentrantLock lock = new ReentrantLock();
 	// private SurveyDatabase database;
@@ -63,11 +64,21 @@ public class UserService implements IService {
 		user.setGradMonth(list[4]);
 		user.setGradYear(list[5]);
 
+		UserService.currentUser = user;
+		
 		return user;
 	}
 
 	public void store(String[] list) {
 		UserDatabase.addUser(create(list));
+	}
+	
+	public User getCurrentUser() {
+		return UserService.currentUser;
+	}
+	
+	public void setCurrentUser(User c) {
+		UserService.currentUser = c;
 	}
 
 }

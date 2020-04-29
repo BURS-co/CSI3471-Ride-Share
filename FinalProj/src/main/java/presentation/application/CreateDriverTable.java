@@ -31,6 +31,9 @@ import data.post.Post;
 public class CreateDriverTable {
 	private static Font customFont = null;
 	
+	//2D array
+	static Object[][] driverData;
+	
 	/**
 	 * Creates the table of driver posts
 	 * @param dlist the list of driver posts

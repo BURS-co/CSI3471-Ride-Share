@@ -27,6 +27,10 @@ import data.post.Post;
 public class CreateRiderTable {
 	private static Font customFont = null;
 	
+	//@D array
+	static Object[][] riderData;
+	
+	
 	/**
 	 * @param rlist the list of rider posts to be displayed
 	 * @return JTable the table encapsulating the formatted rider posts
@@ -44,7 +48,7 @@ public class CreateRiderTable {
 	    }
 		
 		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
-		Object[][] riderData = new Object[rlist.size()][riderPostLabels.length];
+		riderData = new Object[rlist.size()][riderPostLabels.length];
 
 		for (int r = 0; r < rlist.size(); r++) {
 			for (int c = 0; c < 4; c++) {

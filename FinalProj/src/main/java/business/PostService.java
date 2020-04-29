@@ -8,7 +8,6 @@ import java.util.concurrent.locks.ReentrantLock;
 import data.databaseControllers.PostDatabase;
 import data.post.AbstractPost;
 import data.post.Driver;
-import data.post.Post;
 import data.post.Rider;
 import enums.Failures;
 
@@ -17,7 +16,6 @@ public class PostService implements IService {
 	private static PostService postService = null;
 	private static ReentrantLock lock = new ReentrantLock();
 	// private SurveyDatabase database;
-	
 
 	private PostService() {
 		// database = SurveyDatabase.getInstance();
@@ -53,15 +51,15 @@ public class PostService implements IService {
 		if (input[0].equals(input[1])) {
 			result = Failures.SameOriginandDestination;
 		}
-		
-		if(input.length == 9) {
+
+		if (input.length == 9) {
 			try {
 				int temp = Integer.valueOf(input[8]);
-				
-				if(!(temp > 0 && temp < 99)) {
+
+				if (!(temp > 0 && temp < 99)) {
 					result = Failures.PostField8NotInRange;
 				}
-			} catch(Exception e) {
+			} catch (Exception e) {
 				result = Failures.PostField8notANumber;
 			}
 		}
@@ -84,7 +82,7 @@ public class PostService implements IService {
 
 		try {
 			todaysDay = f.parse(todayDay);
-			dayTime = input[2] + " " + input[3] + " " + input[4] + " " + input[5] + ":" + input[6] + " " + input[7];
+			dayTime = input[3] + " " + input[2] + " " + input[4] + " " + input[5] + ":" + input[6] + " " + input[7];
 			inputDate = f.parse(dayTime);
 			comp = todaysDay.compareTo(inputDate);
 
@@ -125,12 +123,12 @@ public class PostService implements IService {
 //		// should this create a post object to store in the database?
 //	}
 
-	@Override
+	// @Override
 	public void store(String[] list) {
 		PostDatabase.addPost(create(list));
 	}
 
-	@Override
+	// @Override
 	public AbstractPost create(String[] list) {
 		// create the report
 		AbstractPost p = null;

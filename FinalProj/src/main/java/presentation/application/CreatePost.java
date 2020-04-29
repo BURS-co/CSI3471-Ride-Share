@@ -22,8 +22,8 @@ import javax.swing.JPanel;
 
 import business.CreatePostValidate;
 import business.PostService;
-import data.post.Post;
 import data.user.User;
+import enums.Failures;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
@@ -45,7 +45,6 @@ public class CreatePost extends JDialog {
 	private static boolean succeeded = false;
 	CreatePostValidate vPI;
 	Font customFont = null;
-	static Post p = null;
 
 	/**
 	 * Airports to travel from, plus campus
@@ -189,7 +188,6 @@ public class CreatePost extends JDialog {
 		createPost.setBorderPainted(false);
 		createPost.setOpaque(true);
 		createPost.addActionListener(new ActionListener() {
-			@SuppressWarnings("static-access")
 			/*
 			 * (non-Javadoc)
 			 * 
@@ -217,7 +215,21 @@ public class CreatePost extends JDialog {
 				}
 
 				// pass to PostService for validation and creation
-				PostService.getInstance().verify(input);
+				// TODO
+				Failures result = PostService.getInstance().verify(input);
+				if (result == Failures.SUCCESS) {
+					succeeded = true;
+					
+				} else if (result == Failures.SameOriginandDestination) {
+					
+				} else if (result == Failures.BadDate) {
+					
+				} else if (result == Failures.PostField8notANumber) {
+					
+				} else if (result == Failures.PostField8NotInRange) {
+					
+				}
+				
 			}
 		});
 

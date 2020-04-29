@@ -15,7 +15,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import data.post.AbstractPost;
 import data.post.Driver;
-import data.post.Post;
 import data.post.Prospects;
 import data.post.Rider;
 
@@ -51,44 +50,43 @@ public class PostDatabase {
 
 				String[] split = line.split("-");
 				AbstractPost p = null;
-				
+
 				if (split[0].equals("Driver")) {
 					p = new Driver();
 				} else {
 					p = new Rider();
 				}
-				
+
 				p.setPoster(split[1]);
 				p.setOrigin(split[2]);
 				p.setDest(split[3]);
-				
+
 				Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[4]);
 				p.setDate(d);
-				
-				if(p instanceof Driver) {
+
+				if (p instanceof Driver) {
 					((Driver) p).setRiderLimit(Integer.valueOf(split[5]));
-					
-					for(int i = 6; i < split.length-1; i++) {
+
+					for (int i = 6; i < split.length - 1; i++) {
 						if (list == null) {
 							list = new ArrayList<Prospects>();
 						}
-						
+
 						Prospects temp = new Prospects();
-						
+
 						temp.setName(split[i++]);
 						temp.setStatus(split[i]);
-						
+
 						list.add(temp);
 					}
-					
+
 					((Driver) p).setRiders(list);
 				}
 				postData.add(p);
 			}
 			loader.close();
 
-	}catch(FileNotFoundException e)
-	{
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -115,7 +113,7 @@ public class PostDatabase {
 		return postData;
 	}
 
-	final public ArrayList<Post> queryDatabase() {
+	final public ArrayList<AbstractPost> queryDatabase() {
 		// The queryDatabase could be instead searching for a specific post
 
 		return null;

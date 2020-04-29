@@ -18,13 +18,13 @@ public class Driver extends AbstractPost {
 		// TODO Auto-generated constructor stub
 	}
 
-	boolean addProspects() {
-		boolean result = true;
-
-		// TODO adding a prospect to the riders list
-
-		return result;
-	}
+//	boolean addProspects() {
+//		boolean result = true;
+//
+//		// TODO adding a prospect to the riders list
+//
+//		return result;
+//	}
 
 	public Integer getRiderLimit() {
 		return riderLimit;
@@ -47,10 +47,10 @@ public class Driver extends AbstractPost {
 		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 		String str = df.format(getDate());
 		String s = "Driver" + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
-		s += "-" + getPoster() + "-" + riderLimit + "-" + riders;
+		s += "-" + riderLimit;
 		if (riders != null) {
 			for (Prospects p : riders) {
-				s = "-" + p.getName() + "-" + p.isStatus();
+				s += "-" + p.getName() + "-" + p.isStatus();
 			}
 		}
 		s += "\n";

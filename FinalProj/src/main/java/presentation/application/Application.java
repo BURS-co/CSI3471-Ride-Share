@@ -25,9 +25,11 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
@@ -37,7 +39,7 @@ import javax.swing.table.DefaultTableModel;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
-import data.post.DriverPost;
+import data.post.Driver;
 import data.user.Admin;
 import data.user.User;
 
@@ -95,18 +97,28 @@ public class Application {
 	 * Rider posts table model
 	 */
 	public static DefaultTableModel rTable;
+	/**
+	 * User's rides table model
+	 */
+	public static DefaultTableModel myRidesModel;
 
 	public static JTable riderTable;
 	public static JTable driverTable;
+	public static JTable myRidesTable;
 	public static GridBagConstraints gc;
 	public static JPanel selection;
 	public static GridBagConstraints pc;
 
 	public static boolean riderTableUp;
 	public static boolean driverTableUp;
+	public static boolean myRidesTableUp;
 
 	public static JScrollPane pane;
 
+	public static JTextField filterField;
+	public static JPanel jp;
+	public static GridBagConstraints fc;
+	public static JLabel filterLabel = new JLabel("Filter posts:");
 	/**
 	 * main method for the application
 	 * 
@@ -188,6 +200,31 @@ public class Application {
 		// create table of posts
 		riderTable = CreateRiderTable.createTable(rlist);
 		driverTable = CreateDriverTable.createTable(dlist);
+		
+		
+		//Add filtering here
+		fc = new GridBagConstraints();
+		/*fc.weightx=1;
+		fc.weighty=1;*/
+		fc.gridx=2;
+		fc.gridy=0;
+
+		
+
+		// Add filtering here
+
+		filterField = RowFilterUtil.createRowFilter(riderTable);
+		jp = new JPanel();
+
+	    jp.add(filterField);
+	    
+	    mainFrame.add(filterLabel,fc);
+	    
+	    //fc.gridx++;
+	    fc.gridx+=1;
+	    
+	    mainFrame.add(jp,fc);
+
 
 		// make it so columns may not be dragged around for
 		// driver or rider posts
@@ -201,6 +238,7 @@ public class Application {
 		mainFrame.add(pane, gc);
 		riderTableUp = true;
 		driverTableUp = !riderTableUp;
+		myRidesTableUp = !riderTableUp;
 		// gc.gridx = 2;
 		// gc.gridy = 0;
 		// mainFrame.add(new JScrollPane(driverTable), gc);
@@ -278,13 +316,13 @@ public class Application {
 		/******* First Row **********/
 		gc.gridx = 0;
 		gc.gridy = 0;
-		gc.insets = new Insets(0, 5, 0, 0);
+		gc.insets = new Insets(0, 6, 0, 0);
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		gc.fill = GridBagConstraints.BOTH;
 
 		/***** First Row of Panel ****/
 
-		ImageIcon rIcn = new ImageIcon("src/main/resources/car.png");
+		ImageIcon rIcn = new ImageIcon("src/main/resources/ridesIcon.png");
 		Image rimage = rIcn.getImage(); // transform it
 		// 60 makes it a tad wider
 		Image rnewimg = rimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -325,6 +363,23 @@ public class Application {
 					pane = new JScrollPane(riderTable);
 					mainFrame.add(pane, gc);
 
+					mainFrame.remove(jp);
+					// Add filtering here
+					filterField = RowFilterUtil.createRowFilter(riderTable);
+					jp = new JPanel();
+					
+					fc.gridx=2;
+					fc.gridy=0;
+					jp.add(filterField);
+				    
+				    mainFrame.add(filterLabel,fc);
+				    
+				    //fc.gridx++;
+				    fc.gridx+=1;
+				    
+				    mainFrame.add(jp,fc);
+
+
 					mainFrame.repaint();
 					// TODO fix
 					/*
@@ -338,6 +393,7 @@ public class Application {
 
 					riderTableUp = true;
 					driverTableUp = false;
+					myRidesTableUp = false;
 				}
 			}
 		});
@@ -356,7 +412,7 @@ public class Application {
 		selection.add(ridesBtn, pc);
 
 		/**** Second Row of Panel ****/
-		ImageIcon drIcn = new ImageIcon("src/main/resources/steering-wheel.png");
+		ImageIcon drIcn = new ImageIcon("src/main/resources/drivesIcon.png");
 		Image drimage = drIcn.getImage(); // transform it
 		Image drnewimg = drimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		drIcn = new ImageIcon(drnewimg); // transform it back
@@ -395,24 +451,34 @@ public class Application {
 					// new pane
 					pane = new JScrollPane(driverTable);
 					mainFrame.add(pane, gc);
-					// TODO fix
-					// pc.weightx = 1;
-					// pc.weighty = 1;
 
-					// pc.gridx = 0;
-					// pc.gridy = 0;
-					// mainFrame.add(selection, pc);
+					mainFrame.remove(jp);
+					// Add filtering here
+					filterField = RowFilterUtil.createRowFilter(driverTable);
+					jp = new JPanel();
+
+					fc.gridx=2;
+					fc.gridy=0;
+					jp.add(filterField);
+				    
+				    mainFrame.add(filterLabel,fc);
+				    
+				    //fc.gridx++;
+				    fc.gridx+=1;
+				    
+				    mainFrame.add(jp,fc);
 
 					mainFrame.pack();
 
 					driverTableUp = true;
 					riderTableUp = false;
+					myRidesTableUp = false;
 				}
 			}
 		});
 
 		/**** Third Row of Panel ****/
-		ImageIcon pIcn = new ImageIcon("src/main/resources/profile.png");
+		ImageIcon pIcn = new ImageIcon("src/main/resources/profileIcon.png");
 		Image pimage = pIcn.getImage(); // transform it
 		Image pnewimg = pimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		pIcn = new ImageIcon(pnewimg); // transform it back
@@ -447,9 +513,102 @@ public class Application {
 		 * System.out.println(ex.getStackTrace()); }
 		 */
 		selection.add(profileBtn, pc);
+		
+		/**** Fourth Row of Panel ****/
+		ImageIcon rideIcn = new ImageIcon("src/main/resources/myRidesIcon.png");
+		Image img = rideIcn.getImage(); // transform it
+		Image newImage = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+		rideIcn = new ImageIcon(newImage); // transform it back
+		JButton myRidesBtn = new JButton(rideIcn);
+		myRidesBtn.setOpaque(false);
+		myRidesBtn.setContentAreaFilled(false);
+		myRidesBtn.setBorderPainted(false);
+		myRidesBtn.setFocusPainted(false);
+		pc.gridx = 0;
+		pc.gridy = 3;
+		
+		// query for rider posts
+		ArrayList<AbstractPost> myList = pDat.searchDatabase(Application.loggedIn.getUsername());
+		
+		myRidesTable = CreateMyRidesTable.createTable(myList);
+
+		// make it so columns may not be dragged around for
+		// driver or rider posts
+		myRidesTable.getTableHeader().setReorderingAllowed(false);
+
+		myRidesTable.setFillsViewportHeight(true);
+
+		myRidesTable.setOpaque(true);
+
+		String[] myRidesLabels = { "Type", "Poster", "Origin", "Destination", "Date" };
+		myRidesModel = (DefaultTableModel) myRidesTable.getModel();
+
+		myRidesTable.getColumn(myRidesLabels[0]).setPreferredWidth(25);
+		myRidesTable.getColumn(myRidesLabels[1]).setPreferredWidth(100);
+		myRidesTable.getColumn(myRidesLabels[2]).setPreferredWidth(50);
+		myRidesTable.getColumn(myRidesLabels[3]).setPreferredWidth(50);
+		myRidesTable.getColumn(myRidesLabels[4]).setPreferredWidth(100);
+
+		if(myList.size() > 0) {
+			myRidesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			// When selection changes, provide user with row numbers for both view & model.
+			myRidesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent event) {
+					int viewRow = myRidesTable.getSelectedRow();
+					if (viewRow < 0) {
+						// Selection got filtered away.
+						// statusText.setText("");
+					} else {
+					//	String type = (String) myRidesTable.getValueAt(viewRow, 0);
+						String name = (String) myRidesTable.getValueAt(viewRow, 1);
+						String orig = (String) myRidesTable.getValueAt(viewRow, 2);
+						String dest = (String) myRidesTable.getValueAt(viewRow, 3);
+						String date = (String) myRidesTable.getValueAt(viewRow, 4);
+						ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date);
+						vpi.setVisible(true);
+	
+					}
+				}
+			});
+		}
+
+		myRidesBtn.addActionListener(new ActionListener() {
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			public void actionPerformed(ActionEvent e) {
+				if (!myRidesTableUp) {
+					// Set coordinates
+					gc.gridx = 1;
+					gc.gridy = 0;
+					gc.fill = GridBagConstraints.BOTH;
+
+					// remove pane
+					mainFrame.remove(pane);
+
+					pane = new JScrollPane(myRidesTable);
+					mainFrame.add(pane, gc);
+
+					mainFrame.repaint();
+					
+
+					mainFrame.pack();
+
+					myRidesTableUp = true;
+					riderTableUp = false;
+					driverTableUp = false;
+				}
+
+			}
+		});
+		selection.add(myRidesBtn, pc);
 
 		/**** Fourth Row of Panel ****/
-		ImageIcon crtIcn = new ImageIcon("src/main/resources/pencil.png");
+		ImageIcon crtIcn = new ImageIcon("src/main/resources/creatPostIcon.png");
 		Image image = crtIcn.getImage(); // transform it
 		Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		crtIcn = new ImageIcon(newimg); // transform it back
@@ -459,7 +618,7 @@ public class Application {
 		createBtn.setBorderPainted(false);
 		createBtn.setFocusPainted(false);
 		pc.gridx = 0;
-		pc.gridy = 3;
+		pc.gridy = 4;
 
 		createBtn.addActionListener(new ActionListener() {
 
@@ -473,32 +632,32 @@ public class Application {
 				SelectPostType cp = new SelectPostType(mainFrame, loggedIn);
 				cp.setVisible(true);
 				if (CreatePost.isSucceeded()) {
-					if (CreatePost.p.getType() == "driver") {
-						String driver = ((DriverPost) CreatePost.p).getDriver();
-						Integer riderLimit = ((DriverPost) CreatePost.p).getRiderLimit();
-						String origin = CreatePost.p.getOrigin();
-						String dest = CreatePost.p.getDest();
-						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
-						String date = df.format(CreatePost.p.getDate());
-
-						Object[] row = { riderLimit, driver, origin, dest, date };
-
-						dTable.addRow(row);
-						dTable.fireTableDataChanged();
-						CreatePost.setSucceeded(false);
-					} else {
-						String poster = CreatePost.p.getPoster();
-						String origin = CreatePost.p.getOrigin();
-						String dest = CreatePost.p.getDest();
-						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
-						String date = df.format(CreatePost.p.getDate());
-
-						Object[] row = { poster, origin, dest, date };
-
-						rTable.addRow(row);
-						rTable.fireTableDataChanged();
-						CreatePost.setSucceeded(false);
-					}
+//					if (CreatePost.p.getType() == "driver") {
+//						String driver = ((Driver) CreatePost.p).getDriver();
+//						Integer riderLimit = ((Driver) CreatePost.p).getRiderLimit();
+//						String origin = CreatePost.p.getOrigin();
+//						String dest = CreatePost.p.getDest();
+//						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+//						String date = df.format(CreatePost.p.getDate());
+//
+//						Object[] row = { riderLimit, driver, origin, dest, date };
+//
+//						dTable.addRow(row);
+//						dTable.fireTableDataChanged();
+//						CreatePost.setSucceeded(false);
+//					} else {
+//						String poster = CreatePost.p.getPoster();
+//						String origin = CreatePost.p.getOrigin();
+//						String dest = CreatePost.p.getDest();
+//						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
+//						String date = df.format(CreatePost.p.getDate());
+//
+//						Object[] row = { poster, origin, dest, date };
+//
+//						rTable.addRow(row);
+//						rTable.fireTableDataChanged();
+//						CreatePost.setSucceeded(false);
+//					}
 				}
 
 			}
@@ -515,7 +674,7 @@ public class Application {
 
 		/**** Fifth Row of Panel (ADMIN) ****/
 		if (loggedIn instanceof Admin) {
-			ImageIcon reportIcn = new ImageIcon("src/main/resources/report.png");
+			ImageIcon reportIcn = new ImageIcon("src/main/resources/reportsIcon.png");
 			Image reportimage = reportIcn.getImage(); // transform it
 			Image reportnewimg = reportimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the
 			// smooth
@@ -527,7 +686,7 @@ public class Application {
 			profileBtn.setBorderPainted(false);
 			profileBtn.setFocusPainted(false);
 			pc.gridx = 0;
-			pc.gridy = 4;
+			pc.gridy = 5;
 
 			// TODO
 			/*
@@ -536,6 +695,18 @@ public class Application {
 			 * ImageIcon(img)); } catch (Exception ex) {
 			 * System.out.println(ex.getStackTrace()); }
 			 */
+			
+			reportBtn.addActionListener(new ActionListener() {
+
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					//Make report
+					AdminReport a = new AdminReport(mainFrame);
+					a.setVisible(true);
+				}
+				
+			});
+			
 			selection.add(reportBtn, pc);
 		}
 

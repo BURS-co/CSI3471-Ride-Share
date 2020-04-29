@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
+import business.PostService;
+import business.UserService;
 import data.post.AbstractPost;
 import data.post.Driver;
 import data.post.Prospects;
@@ -82,9 +84,13 @@ public class PostDatabase {
 						list.add(temp);
 					}
 
-					((Driver) p).setRiders(list);
+					PostService.getInstance().addProspects(UserService.getInstance().getCurrentUser(), p.getPoster());
 				}
 				postData.add(p);
+				if(list != null && list.size() > 0) {
+					list.clear();
+				}
+				System.out.println(p.toString());
 			}
 			loader.close();
 

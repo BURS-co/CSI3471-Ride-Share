@@ -17,6 +17,7 @@ public class PostService implements IService {
 	private static PostService postService = null;
 	private static ReentrantLock lock = new ReentrantLock();
 	// private SurveyDatabase database;
+	
 
 	private PostService() {
 		// database = SurveyDatabase.getInstance();

@@ -52,6 +52,7 @@ public class SurveyService {
 		return null;
 	}
 
+	//test
 	public void storeSurvey(Survey s) {
 		// should call the survay database storeSurvey()
 		SurveyDatabase database = SurveyDatabase.getInstance();

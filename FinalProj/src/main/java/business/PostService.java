@@ -34,13 +34,11 @@ public class PostService implements IService{
 
 		if (input.length == 0) {
 			result = Failures.emptyField;
-			return result;
 		}
 
 		for (String i : input) {
 			if (i.length() == 0) {
 				result = Failures.emptyField;
-				return result;
 			}
 		}
 
@@ -49,7 +47,6 @@ public class PostService implements IService{
 
 			if (Integer.valueOf(input[9]) < 1 || Integer.valueOf(input[9]) > 99) {
 				result = Failures.invalidPassengerNumber;
-				return result;
 			}
 
 		} else {

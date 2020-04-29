@@ -2,6 +2,7 @@ package business;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+import data.databaseControllers.PostDatabase;
 import data.databaseControllers.ReportDatabase;
 import data.post.Post;
 import data.user.Report;

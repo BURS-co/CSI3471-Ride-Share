@@ -80,7 +80,7 @@ public class Application {
 	/**
 	 * Singleton of the post database
 	 */
-	public static User loggedIn = null;
+	public static User loggedIn;
 	/**
 	 * For using fonts on the graphics
 	 */
@@ -94,6 +94,7 @@ public class Application {
 	 */
 	public static DefaultTableModel rTable;
 
+
 	/**
 	 * main method for the application
 	 * 
@@ -104,16 +105,18 @@ public class Application {
 	 * @throws HeadlessException   if key/mouse function not available on machine
 	 */
 	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
+		
+		loggedIn = null;
 
 		// Load all users from database
 		UserDatabase uDat = UserDatabase.getInstance();
 		uDat.load();
-		
+
 		JFrame mainFrame = new JFrame("BearPool");
 
 		OpenPage openDlg = new OpenPage(mainFrame);
 		openDlg.setVisible(true);
-		
+
 		// if login is successful
 		if (openDlg.isSucceeded()) {
 			log.log(Level.INFO, "User successfully logged in");
@@ -426,7 +429,7 @@ public class Application {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		UserDatabase.getInstance().write();
-		PostDatabase.getInstance().write();;
+		PostDatabase.getInstance().write();
 
 	}
 

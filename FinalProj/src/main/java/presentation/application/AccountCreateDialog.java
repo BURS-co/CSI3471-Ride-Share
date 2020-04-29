@@ -219,7 +219,6 @@ public class AccountCreateDialog extends JDialog {
 					dispose();
 				}
 							 
-//
 //							// Keep track of user logged in
 //							Application.loggedIn.setEmail(user.getEmail());
 //							Application.loggedIn.setGradMonth(user.getGradMonth());

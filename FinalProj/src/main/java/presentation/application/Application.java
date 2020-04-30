@@ -345,7 +345,6 @@ public class Application extends JPanel {
 		// make it so columns may not be dragged around for
 		// driver or rider posts
 		myRidesTable.getTableHeader().setReorderingAllowed(false);
-
 		myRidesTable.setFillsViewportHeight(true);
 
 		myRidesTable.setOpaque(true);

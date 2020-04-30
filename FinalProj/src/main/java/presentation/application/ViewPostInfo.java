@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import business.PostService;
 import business.UserService;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
@@ -247,7 +248,7 @@ public class ViewPostInfo extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				PostDatabase.getInstance().delete(postID);
+				PostService.getInstance().delete(Integer.parseInt(postID));
 				Application.log.log(Level.INFO, "Post info closed");
 				dispose();
 			}
@@ -440,7 +441,7 @@ public class ViewPostInfo extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				PostDatabase.getInstance().delete(postID);
+				PostService.getInstance().delete(Integer.parseInt(postID));
 				Application.log.log(Level.INFO, "Post Removed from Database");
 				dispose();
 			}

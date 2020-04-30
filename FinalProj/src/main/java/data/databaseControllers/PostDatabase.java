@@ -145,8 +145,9 @@ public class PostDatabase {
 				}
 			} else {
 				if (p instanceof Rider) {
-					if (type.equalsIgnoreCase(((Rider) p).getDriver().getName()))
-						query.add(p);
+					if(((Rider) p).getDriver() != null)
+						if (type.equalsIgnoreCase(((Rider) p).getDriver().getName()))
+							query.add(p);
 				} else if (p instanceof Driver)
 					if (((Driver) p).getRiders() != null)
 						for(Prospects pr : ((Driver) p).getRiders())

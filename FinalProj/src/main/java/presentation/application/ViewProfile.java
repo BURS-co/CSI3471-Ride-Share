@@ -67,6 +67,11 @@ public class ViewProfile extends JDialog {
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
 	public static JComboBox<String> box;
 	public static JDialog selectPst;
+	
+	public static JButton select;
+	public static JComboBox<String> accDec;
+	public static AbstractPost p;
+	public static ArrayList<JComboBox<String>> boxes ;
 
 	/**
 	 * Creates and displays the user's profile
@@ -288,7 +293,7 @@ public class ViewProfile extends JDialog {
 				box = new JComboBox<String>(arr);
 				box.setSelectedIndex(-1);
 
-				JButton select = new JButton("select");
+				select = new JButton("select");
 				select.setBackground(new Color(255, 184, 25));
 				select.setBorderPainted(false);
 				select.setFont(customFont);
@@ -306,13 +311,13 @@ public class ViewProfile extends JDialog {
 						confirmPnl.setLayout(new GridBagLayout());
 						GridBagConstraints gc = new GridBagConstraints();
 
-						AbstractPost p = PostDatabase.getInstance().searchDatabase(Integer.valueOf(split[0]));
+						p= PostDatabase.getInstance().searchDatabase(Integer.valueOf(split[0]));
 
 						if (p instanceof Rider) {
 							
 							if (((Rider) p).getDriver() != null && !((Rider) p).getDriver().getStatus()) {
 								JLabel label = new JLabel(((Rider) p).getDriver().getName());
-								JComboBox<String> accDec = new JComboBox<String>(two);
+								accDec= new JComboBox<String>(two);
 
 								gc.gridx = 0;
 								gc.gridy = 0;
@@ -333,7 +338,6 @@ public class ViewProfile extends JDialog {
 								done.setOpaque(true);
 								select.addActionListener(new ActionListener() {
 
-									@Override
 									public void actionPerformed(ActionEvent e) {
 										boolean[] results = null;
 										results = new boolean[1];
@@ -351,7 +355,7 @@ public class ViewProfile extends JDialog {
 
 							if (((Driver) p).getRiders() != null) {
 								int j = 0;
-								ArrayList<JComboBox<String>> boxes = new ArrayList<JComboBox<String>>();
+								boxes= new ArrayList<JComboBox<String>>();
 								
 								for (Prospects i : ((Driver) p).getRiders()) {
 									if (!i.getStatus()) {
@@ -374,7 +378,7 @@ public class ViewProfile extends JDialog {
 									
 								}
 								
-								int x = j;
+								final int x = j;
 								confirmation.add(confirmPnl);
 								
 								JButton done = new JButton("done");
@@ -384,7 +388,6 @@ public class ViewProfile extends JDialog {
 								done.setOpaque(true);
 								select.addActionListener(new ActionListener() {
 
-									@Override
 									public void actionPerformed(ActionEvent e) {
 										boolean[] results = null;
 										results = new boolean[x];

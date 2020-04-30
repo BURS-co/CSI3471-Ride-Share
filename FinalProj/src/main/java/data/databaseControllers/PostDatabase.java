@@ -183,7 +183,7 @@ public class PostDatabase {
 		try {
 			this.write();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block 
 			e.printStackTrace();
 		}
 		System.out.println(this.postData.get(this.searchDatabaseInt(p.getID())).toString());

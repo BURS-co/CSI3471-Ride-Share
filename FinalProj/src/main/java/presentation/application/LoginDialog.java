@@ -270,6 +270,7 @@ public class LoginDialog extends JDialog {
 
 					ss.fill = GridBagConstraints.HORIZONTAL;
 
+					//Start
 					JLabel lbEmail = new JLabel("Your baylor email: ");
 					lbEmail.setFont(customFont);
 					ss.gridx = 0;

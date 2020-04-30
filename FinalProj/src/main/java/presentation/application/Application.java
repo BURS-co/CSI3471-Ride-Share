@@ -657,7 +657,7 @@ public class Application extends JPanel {
 
 		setVisible(true);
 		
-		ArrayList<AbstractPost> ps = PostDatabase.getInstance().getPostData();
+		//ArrayList<AbstractPost> ps = PostDatabase.getInstance().getPostData();
 
 		UserDatabase.getInstance().write();
 		PostDatabase.getInstance().write();

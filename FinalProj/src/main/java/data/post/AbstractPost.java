@@ -83,7 +83,7 @@ public abstract class AbstractPost {
 	public abstract String toString();
 
 	public boolean isExpired() {
-    // 
-		return new Date().after(this.date);
+		Date now = new Date();
+		return now.after(getDate());
 	}
 }

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 
 public class Rider extends AbstractPost {
 
-	private String driver;
+	private Prospects driver;
 
 	public Rider(String[] list) {
 		super(list);
@@ -31,11 +31,11 @@ public class Rider extends AbstractPost {
 		return result;
 	}
 
-	public void setDriver(String n) {
+	public void setDriver(Prospects n) {
 		this.driver = n;
 	}
 
-	public String getDriver() {
+	public Prospects getDriver() {
 		return this.driver;
 	}
 

@@ -20,6 +20,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import business.UserService;
+import data.post.Rider;
+import data.databaseControllers.PostDatabase;
+import data.databaseControllers.UserDatabase;
+import data.post.Prospects;
 
 public class ViewPostInfo extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -306,6 +310,16 @@ public class ViewPostInfo extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent event) {
 
+				Rider r = ((Rider)PostDatabase.getInstance().searchDatabase(0/***post id goes here***/));
+				
+				Prospects driver = new Prospects();
+				driver.setName(UserService.getInstance().getCurrentUser().getUsername());
+				driver.setStatus(false);
+				
+				r.setDriver(driver);
+				
+				UserDatabase.getInstance().queryDatabase(/***email goes here***/).setJoinNotif(true);
+				
 				// Keep track of user logged in
 				// Application.loggedIn = u;
 

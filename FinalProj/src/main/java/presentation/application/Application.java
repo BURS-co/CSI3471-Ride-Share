@@ -647,6 +647,7 @@ public class Application extends JPanel {
 		gc.fill = GridBagConstraints.BOTH;
 		add(searchPnl, gc);
 
+		
 		setVisible(true);
 		UserDatabase.getInstance().write();
 		PostDatabase.getInstance().write();

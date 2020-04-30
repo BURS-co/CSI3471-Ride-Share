@@ -189,10 +189,10 @@ public class Application {
 		gc.weighty = 1;
 
 		// query for rider posts
-		ArrayList<AbstractPost> rlist = pDat.searchDatabase("rider");
+		ArrayList<AbstractPost> rlist = pDat.quereyDatabase("rider");
 
 		// query for driver posts
-		ArrayList<AbstractPost> dlist = pDat.searchDatabase("driver");
+		ArrayList<AbstractPost> dlist = pDat.quereyDatabase("driver");
 
 		// create table of posts
 		riderTable = CreateRiderTable.createTable(rlist);

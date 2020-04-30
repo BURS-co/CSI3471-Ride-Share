@@ -280,6 +280,8 @@ public class LoginDialog extends JDialog {
 
 
 					String[] info = {};
+					
+					//TODO parse field
 
 					Failures result = SurveyService.getInstance().verify(info);
 

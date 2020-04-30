@@ -491,7 +491,7 @@ public class Application extends JPanel {
 					  
 					  if(riderTableUp) { 
 				//		  rTable.addRow(row); 
-						  rTable.fireTableRowsInserted(rTable.getRowCount(), rTable.getRowCount());
+						  rTable.fireTableDataChanged();
 						  CreatePost.setSucceeded(false); 
 					  } 
 				}	 

@@ -228,7 +228,38 @@ public class LoginDialog extends JDialog {
 			for(AbstractPost i : PostDatabase.getInstance().quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
 				if(i.isExpired()) {
 					/*trigger pop up for survey and pass the results to survey service*/
+					JPanel surveyPanel = new JPanel(new GridBagLayout());
+					GridBagConstraints ss = new GridBagConstraints();
+					
+					JLabel lbName;
 
+					try {
+						customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+								.deriveFont(12f);
+						GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+						// register the font
+						ge.registerFont(customFont);
+					} catch (IOException e) {
+						e.printStackTrace();
+					} catch (FontFormatException e) {
+						e.printStackTrace();
+					}
+					
+
+					ss.fill = GridBagConstraints.HORIZONTAL;
+
+					lbName = new JLabel("Your name: ");
+					ss.gridx = 0;
+					ss.gridy = 0;
+					ss.gridwidth = 1;
+					//lbEmail.setFont(customFont);
+					surveyPanel.add(lbName, ss);
+
+					//change this - tfEmail = new JTextField(20);
+					ss.gridx = 1;
+					ss.gridy = 0;
+					ss.gridwidth = 2;
+					surveyPanel.add(tfEmail, ss);
 					
 					String[] info = {};
 					

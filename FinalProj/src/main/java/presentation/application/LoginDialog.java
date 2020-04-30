@@ -222,15 +222,15 @@ public class LoginDialog extends JDialog {
 	public void authenticate() {
 		if (Login.authenticate(tfEmail.getText(), getPassword())) {
 			succeeded = true;
-			
-			
-			//*******************************TODO************************
-			for(AbstractPost i : PostDatabase.getInstance().quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
-				if(i.isExpired()) {
-					/*trigger pop up for survey and pass the results to survey service*/
+
+			// *******************************TODO************************
+			for (AbstractPost i : PostDatabase.getInstance()
+					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
+				if (i.isExpired()) {
+					/* trigger pop up for survey and pass the results to survey service */
 					JPanel surveyPanel = new JPanel(new GridBagLayout());
 					GridBagConstraints ss = new GridBagConstraints();
-					
+
 					JLabel lbName;
 
 					try {
@@ -244,7 +244,6 @@ public class LoginDialog extends JDialog {
 					} catch (FontFormatException e) {
 						e.printStackTrace();
 					}
-					
 
 					ss.fill = GridBagConstraints.HORIZONTAL;
 
@@ -252,42 +251,48 @@ public class LoginDialog extends JDialog {
 					ss.gridx = 0;
 					ss.gridy = 0;
 					ss.gridwidth = 1;
-					//lbEmail.setFont(customFont);
+					// lbEmail.setFont(customFont);
 					surveyPanel.add(lbName, ss);
 
-					//change this - tfEmail = new JTextField(20);
+					// change this - tfEmail = new JTextField(20);
 					ss.gridx = 1;
 					ss.gridy = 0;
 					ss.gridwidth = 2;
 					surveyPanel.add(tfEmail, ss);
-					
+
 					String[] info = {};
-					
+
 					Failures result = SurveyService.getInstance().verify(info);
-					
-					switch(result) {
+
+					switch (result) {
 					case emptyField:
-						//do thing
-					break;
+						JOptionPane.showMessageDialog(null, "Fields must not be empty. Please Fill in All Fields", "Survey",
+								JOptionPane.ERROR_MESSAGE);
+						break;
 					case SurveyField2notANumber:
-						//do thing
-					break;
+						JOptionPane.showMessageDialog(null, "Please Enter A Valid Number For Rating", "Survey",
+								JOptionPane.ERROR_MESSAGE);
+						break;
 					case SurveyField3TooLong:
-						//do thing
-					break;
+						JOptionPane.showMessageDialog(null, "Your Comment is Too Long, Please Enter >300 Characters", "Survey",
+								JOptionPane.ERROR_MESSAGE);
+						break;
+					default:
+						break;
 					}
 
 				}
 			}
-			
-			if(UserService.getInstance().getCurrentUser().getJoinNotif()) {
-				//trigger pop up that tells user another user wants to join their post
+
+			if (UserService.getInstance().getCurrentUser().getJoinNotif()) {
+				// trigger pop up that tells user another user wants to join their post
 			}
-			
-			if(UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
-				//trigger pop up that tells user a post they were trying to become a prospect for has been canceled
+
+			if (UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
+				// trigger pop up that tells user a post they were trying to become a prospect
+				// for has been canceled
 			}
-			
+
 			ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 			JOptionPane.showMessageDialog(null,
 					"Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",

@@ -229,8 +229,9 @@ public class LoginDialog extends JDialog {
 			for (AbstractPost i : PostDatabase.getInstance()
 					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
 				if (i.isExpired()) {
+					System.out.println("Bruh");
 					/* trigger pop up for survey and pass the results to survey service */
-					JPanel surveyPanel = new JPanel(new GridBagLayout());
+					JDialog surveyPanel = new JDialog();
 					GridBagConstraints ss = new GridBagConstraints();
 					
 					String[] ratings = { "0", "1", "2", "3", "4", "5"};
@@ -338,6 +339,9 @@ public class LoginDialog extends JDialog {
 							dispose();
 						}
 					});
+					
+					surveyPanel.setVisible(true);
+					surveyPanel.pack();
 					
 					//TODO parse field
 

@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
@@ -334,7 +335,10 @@ public class ViewProfile extends JDialog {
 
 									@Override
 									public void actionPerformed(ActionEvent e) {
-										PostService.getInstance().updateProspect(p, b);
+										boolean[] results = null;
+										results = new boolean[1];
+										results[1] = String.valueOf(accDec.getSelectedItem()).equalsIgnoreCase("accept");
+										PostService.getInstance().updateProspect(p, results);
 									}
 								};
 								selectPst.pack();
@@ -347,11 +351,14 @@ public class ViewProfile extends JDialog {
 
 							if (((Driver) p).getRiders() != null) {
 								int j = 0;
+								ArrayList<JComboBox<String>> boxes = new ArrayList<JComboBox<String>>();
+								
 								for (Prospects i : ((Driver) p).getRiders()) {
 									if (!i.getStatus()) {
 										JLabel label = new JLabel(((Rider) p).getDriver().getName());
 										JComboBox<String> accDec = new JComboBox<String>(two);
-
+										boxes.add(accDec);
+										
 										gc.gridy = j;
 										gc.gridx = 0;
 										gc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -378,7 +385,14 @@ public class ViewProfile extends JDialog {
 
 									@Override
 									public void actionPerformed(ActionEvent e) {
+										boolean[] results = null;
+										results = new boolean[j];
 										
+										for(int i = 0; i < j; i++) {
+											results[i] = String.valueOf(Boxes[i].getSelectedItem()).equalsIgnoreCase("accept");
+										}
+										
+										PostService.getInstance().updateProspect(p, results);
 									}
 								};
 								selectPst.pack();

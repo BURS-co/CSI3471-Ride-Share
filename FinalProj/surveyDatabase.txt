@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 leighton_glim1@baylor.edu,,,urmom@baylor.edu,,,-1,,,;)
+=======
+joseph_perez3@baylor.edu,,,andrew_ammentorp1@baylor.edu,,,5,,,Very chill dude know I mean dawg?
+>>>>>>> branch 'master' of https://github.com/BURS-co/CSI3471-Ride-Share.git

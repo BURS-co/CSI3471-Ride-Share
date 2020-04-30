@@ -46,7 +46,7 @@ public class ViewPostInfo extends JDialog {
 	 *               of ride
 	 * @return
 	 */
-	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date, String postID) {
+	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date, final String postID) {
 		super(parent, "Post Info", true);
 
 		JPanel panel = new JPanel(new GridBagLayout());
@@ -178,6 +178,7 @@ public class ViewPostInfo extends JDialog {
 					UserDatabase.getInstance().queryDatabase(d.getPoster()).setJoinNotif(true);
 				}
 				else {
+					//TODO
 					//pop up that this ride already has too many riders
 				}
 				
@@ -264,7 +265,7 @@ public class ViewPostInfo extends JDialog {
 	 *               of ride
 	 * @return
 	 */
-	public ViewPostInfo(JFrame parent, String name, String orig, String dest, String date, String postID) {
+	public ViewPostInfo(JFrame parent, String name, String orig, String dest, String date, final String postID) {
 		super(parent, "Post Info", true);
 
 		JPanel panel = new JPanel(new GridBagLayout());

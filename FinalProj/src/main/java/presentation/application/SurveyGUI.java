@@ -48,8 +48,6 @@ public class SurveyGUI extends JDialog {
 		surveyCnt.setLayout(new GridBagLayout());
 		GridBagConstraints ss = new GridBagConstraints();
 
-		surveyCnt.setBackground(new Color(255, 184, 25));
-
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
@@ -68,7 +66,7 @@ public class SurveyGUI extends JDialog {
 		ss.gridx = 0;
 		ss.gridy = 0;
 		ss.gridwidth = 1;
-		ss.anchor = GridBagConstraints.FIRST_LINE_START;
+		ss.fill = GridBagConstraints.FIRST_LINE_START;
 		lbEmail.setFont(customFont);
 		surveyCnt.add(lbEmail, ss);
 
@@ -76,7 +74,7 @@ public class SurveyGUI extends JDialog {
 		ss.gridx = 1;
 		ss.gridy = 0;
 		ss.gridwidth = 2;
-		ss.anchor = GridBagConstraints.FIRST_LINE_END;
+		ss.fill = GridBagConstraints.RELATIVE;
 
 		// ss.anchor = GridBagConstraints.FIRST_LINE_END;
 		tfREmail.setText(UserService.getInstance().getCurrentUser().getEmail());
@@ -87,7 +85,7 @@ public class SurveyGUI extends JDialog {
 		ss.gridx = 0;
 		ss.gridy = 1;
 		ss.gridwidth = 1;
-		ss.anchor = GridBagConstraints.FIRST_LINE_START;
+		ss.fill = GridBagConstraints.FIRST_LINE_START;
 		lbEmail.setFont(customFont);
 		surveyCnt.add(lbTarget, ss);
 
@@ -95,42 +93,38 @@ public class SurveyGUI extends JDialog {
 		ss.gridx = 1;
 		ss.gridy = 1;
 		ss.gridwidth = 2;
-		ss.anchor = GridBagConstraints.FIRST_LINE_END;
+		ss.fill = GridBagConstraints.FIRST_LINE_END;
 		surveyCnt.add(tftarget, ss);
 
 		JLabel lbReason = new JLabel("Comments: ");
 		lbReason.setFont(customFont);
 		ss.gridx = 0;
 		ss.gridy = 3;
-		ss.gridwidth = 2;
-		ss.anchor = GridBagConstraints.FIRST_LINE_START;
+		ss.fill = GridBagConstraints.RELATIVE;
 		lbReason.setFont(customFont);
 		surveyCnt.add(lbReason, ss);
 
-		tfReason = new JTextArea();
+		tfReason = new JTextArea(10,30);
+		tfReason.setLineWrap(true);
+		tfReason.setWrapStyleWord(true);
 		ss.gridx = 0;
 		ss.gridy = 4;
-		ss.gridwidth = 2;
-		ss.gridheight = 2;
-		ss.anchor = GridBagConstraints.CENTER;
 		ss.fill = GridBagConstraints.BOTH;
 		surveyCnt.add(tfReason, ss);
+		
+		
 
 		JLabel lbRate = new JLabel("Rating: ");
 		lbRate.setFont(customFont);
 		ss.gridx = 0;
-		ss.gridy = 6;
-		ss.gridwidth = 1;
-		ss.gridheight = 1;
-		ss.gridwidth = 1;
-		ss.anchor = GridBagConstraints.FIRST_LINE_START;
+		ss.gridy = 5;
+		ss.fill = GridBagConstraints.FIRST_LINE_START;
 		surveyCnt.add(lbRate, ss);
 
 		rating.setSelectedIndex(-1);
 		ss.gridx = 1;
-		ss.gridy = 6;
-		ss.gridwidth = 1;
-		ss.anchor = GridBagConstraints.FIRST_LINE_END;
+		ss.gridy = 5;
+		ss.fill = GridBagConstraints.RELATIVE;
 		surveyCnt.add(rating, ss);
 
 		JButton btnSubmit = new JButton("Submit");
@@ -180,8 +174,9 @@ public class SurveyGUI extends JDialog {
 		});
 
 		ss.gridx = 0;
-		ss.gridy = 7;
+		ss.gridy = 6;
 		ss.anchor = GridBagConstraints.CENTER;
+		ss.fill = GridBagConstraints.BOTH;
 		surveyCnt.add(btnSubmit, ss);
 		getContentPane().add(surveyCnt);
 

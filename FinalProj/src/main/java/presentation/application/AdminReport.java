@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.logging.Level;
@@ -86,28 +87,51 @@ public class AdminReport extends JDialog {
 				String[] theYears = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
 				HashMap<String,Integer> years = new HashMap<String,Integer>();
 				
-				for(String s: theYears) {
-					years.put(s, 0);
-				}
 				
-				/*for(User u : UserDatabase.getInstance().getUserData()) {
-					years.put(u.getGradYear(), years.get(u.getGradYear()) + 1);
-				}*/
+				
+				for(User u : UserDatabase.getInstance().getUserData()) {
+					//System.out.println(u.getGradYear());
+					if(years.containsKey(u.getGradYear())) {
+						years.put(u.getGradYear(), years.get(u.getGradYear()) + 1);
+					}
+					else {
+						years.put(u.getGradYear(), 1);
+					}
+					
+				}
 				
 				message+= "Number of users by graduation year:\n";
 				for(int i = 0; i < theYears.length;i++) {
-					message += theYears[i] + " : " + years.get(theYears[i]).toString() + "\n";
+					if(years.containsKey(theYears[i])) {
+						message += theYears[i] + " : " + years.get(theYears[i]).toString() + "\n";
+					}
+					else {
+						message += theYears[i] + " : " + "0\n";
+					}
+					
 				}
 				message+="\n";
 				
 				//num posts
 				Integer numPosts = PostDatabase.getInstance().getPostData().size();
-				message+="Number of active posts: " + numPosts.toString() + "\n";
+				message+="Number of active posts: " + numPosts.toString() + "\n\n";
 				//posts by month(?)
 				
 				//num reports
 				Integer numReports = ReportDatabase.getInstance().getReportData().size();
 				message+="Number of reports: " + numReports.toString() + "\n";
+				
+				if(SurveyDatabase.getInstance().getInstance().getUserData().isEmpty()) {
+					try {
+						SurveyDatabase.getInstance().getInstance().load();
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 				
 				Integer numServ = SurveyDatabase.getInstance().getUserData().size();
 				message+="Number of surveys: " + numServ.toString() + "\n";
@@ -116,16 +140,27 @@ public class AdminReport extends JDialog {
 				Integer[] ratings = { 0,1,2,3,4,5 };
 				HashMap<Integer,Integer> rating = new HashMap<Integer,Integer>();
 				
-				for(Integer s : ratings ) {
-					rating.put(s, 0);
-				}
+				
+				
 				for(Survey s : SurveyDatabase.getInstance().getUserData()) {
-					rating.put(s.getRating(), rating.get(s.getRating()) + 1);
+					if(rating.containsKey(s.getRating())) {
+						rating.put(s.getRating(), rating.get(s.getRating() + 1));
+					}
+					else {
+						rating.put(s.getRating(), 1);
+					}
+					
 				}
 				
 				message+= "Number of surveys by rating:\n";
 				for(int i = 0; i < ratings.length;i++) {
-					message += ratings[i].toString() + " star: " + rating.get(ratings[i]).toString() + "\n";
+					if(rating.containsKey(ratings[i])) {
+						message += ratings[i].toString() + " star: " + rating.get(ratings[i]).toString() + "\n";
+					}
+					else {
+						message += ratings[i].toString() + " star: " + "0\n";
+					}
+					
 				}
 				
 				

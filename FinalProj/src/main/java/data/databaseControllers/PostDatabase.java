@@ -46,7 +46,6 @@ public class PostDatabase {
 			BufferedReader loader = new BufferedReader(new FileReader(new File("postDatabase.txt")));
 			AbstractPost p = null;
 			String line = null;
-			
 
 			while ((line = loader.readLine()) != null) {
 

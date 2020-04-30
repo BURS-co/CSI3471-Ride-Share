@@ -247,8 +247,14 @@ public class LoginDialog extends JDialog {
 					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
 
 				if (i.isExpired()) {
-					SurveyGUI survey = new SurveyGUI(new JFrame());
-					survey.setVisible(true);
+
+					int res = JOptionPane.showConfirmDialog(null, "Would you like to take a Survey for Ride On:\n" + i.getDate(),
+							"Survey", JOptionPane.OK_CANCEL_OPTION);
+					// if OK give Survey
+					if (res == 1) {
+						SurveyGUI survey = new SurveyGUI(new JFrame());
+						survey.setVisible(true);
+					}
 				}
 
 			}
@@ -258,26 +264,25 @@ public class LoginDialog extends JDialog {
 					"Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
 					JOptionPane.INFORMATION_MESSAGE, icon);
 			Application.log.log(Level.INFO, getUsername() + " Login successful!");
-			
+
 			if (UserService.getInstance().getCurrentUser().getJoinNotif()) {
 				// trigger pop up that tells user another user wants to join their post
 				JOptionPane.showMessageDialog(null,
-						"Someone would like to join one of your posts. Check your posts under profile for more information.", "Post Update",
-						JOptionPane.INFORMATION_MESSAGE);
-				
+						"Someone would like to join one of your posts. Check your posts under profile for more information.",
+						"Post Update", JOptionPane.INFORMATION_MESSAGE);
+
 				UserService.getInstance().resetJoinNotif();
 			}
 
 			if (UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
 				// trigger pop up that tells user a post they were trying to become a prospect
 				// for has been canceled
-				JOptionPane.showMessageDialog(null,
-						"A post you were signed up for has been canceled.", "Post Update",
+				JOptionPane.showMessageDialog(null, "A post you were signed up for has been canceled.", "Post Update",
 						JOptionPane.INFORMATION_MESSAGE);
-				
+
 				UserService.getInstance().resetCanceledNotif();
 			}
-			
+
 			dispose();
 		} else {
 			JOptionPane.showMessageDialog(this, "Invalid username or password", "Login", JOptionPane.ERROR_MESSAGE);

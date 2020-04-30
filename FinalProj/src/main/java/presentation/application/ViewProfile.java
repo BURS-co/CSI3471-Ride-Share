@@ -247,8 +247,7 @@ public class ViewProfile extends JDialog {
 		viewBtn.setBorderPainted(false);
 		viewBtn.setOpaque(true);
 		viewBtn.addActionListener(new ActionListener() {
-
-			@Override
+			//(removed override)
 			public void actionPerformed(ActionEvent e) {
 				//TODO
 				

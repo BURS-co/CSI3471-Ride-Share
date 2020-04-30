@@ -385,6 +385,14 @@ public class ViewPostInfo extends JDialog {
 				
 				UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);
 				
+				try {
+					PostDatabase.getInstance().write();
+					UserDatabase.getInstance().write();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block 
+					e.printStackTrace();
+				}
+				
 				// Keep track of user logged in
 				// Application.loggedIn = u;
 

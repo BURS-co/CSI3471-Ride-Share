@@ -263,13 +263,11 @@ public class ViewProfile extends JDialog {
 				List<AbstractPost> posts = PostDatabase.getInstance()
 						.querey(UserService.getInstance().getCurrentUser().getEmail());
 
-				System.out.println("HEY");
-				
-				for(AbstractPost i : posts) {
+				for (AbstractPost i : posts) {
 					System.out.println(i.toString());
 				}
-				
-				JDialog selectPst = new JDialog(parent,"Select Post",true);
+
+				JDialog selectPst = new JDialog(parent, "Select Post", true);
 				JPanel selection = new JPanel();
 				selection.setLayout(new GridBagLayout());
 				GridBagConstraints sc = new GridBagConstraints();
@@ -284,6 +282,7 @@ public class ViewProfile extends JDialog {
 				}
 
 				JComboBox<String> box = new JComboBox<String>(arr);
+				box.setSelectedIndex(-1);
 
 				JButton select = new JButton("select");
 				select.setBackground(new Color(255, 184, 25));
@@ -295,35 +294,76 @@ public class ViewProfile extends JDialog {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						String info = String.valueOf(box.getSelectedItem());
-						String[] two = {"accept", "decline"};
+						String[] two = { "accept", "decline" };
 						String split[] = info.split(", ");
-						
+
+						JDialog confirmation = new JDialog(parent, "Confirm", true);
+						JPanel confirmPnl = new JPanel();
+						confirmPnl.setLayout(new GridBagLayout());
+						GridBagConstraints gc = new GridBagConstraints();
+
 						AbstractPost p = PostDatabase.getInstance().searchDatabase(Integer.valueOf(split[0]));
-						
-						if(p instanceof Rider) {
-							if(!((Rider) p).getDriver().getStatus()) {
+
+						if (p instanceof Rider) {
+							if (!((Rider) p).getDriver().getStatus()) {
 								JLabel label = new JLabel(((Rider) p).getDriver().getName());
-							JComboBox<String> accDec = new JComboBox<String>(two);
+								JComboBox<String> accDec = new JComboBox<String>(two);
+
+								gc.gridx = 0;
+								gc.gridy = 0;
+								gc.anchor = GridBagConstraints.FIRST_LINE_START;
+								confirmPnl.add(label, gc);
+
+								gc.gridx = 1;
+								gc.gridy = 0;
+								gc.anchor = GridBagConstraints.FIRST_LINE_END;
+								confirmPnl.add(accDec, gc);
+
+								confirmation.add(confirmPnl);
+								selectPst.pack();
+								selectPst.setVisible(true);
+
 							}
-						}else if(p instanceof Driver){
-							for(Prospects i : ((Driver) p).getRiders()) {
-								if(!i.getStatus()) {
-									JLabel label = new JLabel(((Rider) p).getDriver().getName());
-									JComboBox<String> accDec = new JComboBox<String>(two);
+						} else if (p instanceof Driver) {
+
+							if (((Driver) p).getRiders() != null) {
+								int j = 0;
+								for (Prospects i : ((Driver) p).getRiders()) {
+									if (!i.getStatus()) {
+										JLabel label = new JLabel(((Rider) p).getDriver().getName());
+										JComboBox<String> accDec = new JComboBox<String>(two);
+
+										gc.gridy = j;
+										gc.gridx = 0;
+										gc.anchor = GridBagConstraints.FIRST_LINE_START;
+										confirmPnl.add(label, gc);
+
+										gc.gridy = j;
+										gc.gridx = 1;
+										gc.anchor = GridBagConstraints.FIRST_LINE_END;
+										confirmPnl.add(accDec, gc);
+
+									}
+									j++;
+
 								}
+
+								confirmation.add(confirmPnl);
+								selectPst.pack();
+								selectPst.setVisible(true);
+							} else {
+								JOptionPane.showMessageDialog(null, "No one has joined your ride :(" ,"Driver Post", JOptionPane.ERROR_MESSAGE);
 							}
-							
 						}
 					}
 
 				});
 
-				
 				sc.gridx = 0;
 				sc.gridy = 0;
 				sc.anchor = GridBagConstraints.FIRST_LINE_START;
 				selection.add(box, sc);
-				
+
 				sc.gridx = 1;
 				sc.gridy = 0;
 				sc.fill = GridBagConstraints.HORIZONTAL;

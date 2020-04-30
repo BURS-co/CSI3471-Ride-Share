@@ -301,13 +301,16 @@ public class ViewProfile extends JDialog {
 						AbstractPost p = PostDatabase.getInstance().searchDatabase(Integer.valueOf(split[0]));
 						
 						if(p instanceof Rider) {
-							JLabel label = new JLabel(((Rider) p).getDriver().getName());
+							if(!((Rider) p).getDriver().getStatus()) {
+								JLabel label = new JLabel(((Rider) p).getDriver().getName());
 							JComboBox<String> accDec = new JComboBox<String>(two);
+							}
 						}else if(p instanceof Driver){
 							for(Prospects i : ((Driver) p).getRiders()) {
-								
-								JLabel label = new JLabel(((Rider) p).getDriver().getName());
-								JComboBox<String> accDec = new JComboBox<String>(two);
+								if(!i.getStatus()) {
+									JLabel label = new JLabel(((Rider) p).getDriver().getName());
+									JComboBox<String> accDec = new JComboBox<String>(two);
+								}
 							}
 							
 						}

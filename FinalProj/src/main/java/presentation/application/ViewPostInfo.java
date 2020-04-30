@@ -217,6 +217,11 @@ public class ViewPostInfo extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				PostService.getInstance().delete(Integer.parseInt(postID));
+				try {
+					PostDatabase.getInstance().write();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				Application.log.log(Level.INFO, "Post info closed");
 				dispose();
 			}
@@ -391,6 +396,11 @@ public class ViewPostInfo extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				PostService.getInstance().delete(Integer.parseInt(postID));
+				try {
+					PostDatabase.getInstance().write();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				Application.log.log(Level.INFO, "Post Removed from Database");
 				dispose();
 			}

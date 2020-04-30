@@ -262,27 +262,31 @@ public class ViewProfile extends JDialog {
 
 				JPanel selection = new JPanel();
 				selection.setLayout(new GridBagLayout());
-				
+
 				String[] arr = null;
 				arr = new String[posts.size()];
-				
-				for(int i = 0; i < posts.size(); i++) {
+
+				for (int i = 0; i < posts.size(); i++) {
 					SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 					String date = df.format(posts.get(i).getDate());
 					arr[i] = posts.get(i).getOrigin() + ", " + posts.get(i).getDest() + ", " + date;
 				}
-				
+
 				JComboBox<String> box = new JComboBox<String>(arr);
-				
+
 				JButton select = new JButton("select");
 				select.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// TODO
+
 					}
 
 				});
+
+				selection.add(box);
+				selection.add(select);
+
 			}
 
 		});

@@ -1,14 +1,5 @@
-Rider-0-bobby_baylor1@baylor.edu-Bush-Baylor-30 Mar 2020 11:09 AM-leighton_glim1@baylor.edu-false
-Driver-1-andrew_ammentorp1@baylor.edu-Hobby-Baylor-30 Mar 2020 11:00 AM-1-leighton_glim1@baylor.edu-true
-Rider-2-bobby_baylor1@baylor.edu-Baylor-Bush-30 Mar 2020 11:09 AM-andrew_ammentorp1@baylor.edu-false
-Driver-3-andrew_ammentorp1@baylor.edu-Baylor-Hobby-30 Mar 2020 11:00 AM-1-Leighton Glim-false
-Rider-4-leighton_glim1@baylor.edu-Baylor-DAL-28 Apr 2020 06:15 PM
-Driver-5-leighton_glim1@baylor.edu-DAL-Baylor-29 Apr 2020 04:20 PM-3
-Driver-6-leighton_glim1@baylor.edu-Baylor-AUS-22 Apr 2020 04:20 PM-2
 Rider-7-leighton_glim1@baylor.edu-Baylor-DAL-03 Jun 2020 03:10 PM
-Rider-8-leighton_glim1@baylor.edu-Baylor-AUS-29 Apr 2020 05:10 PM
 Rider-9-leighton_glim1@baylor.edu-DAL-Baylor-05 May 2020 03:15 PM
-Rider-10-leighton_glim1@baylor.edu-Baylor-AUS-04 May 2020 06:15 PM
 Rider-11-leighton_glim1@baylor.edu-Baylor-DFW-06 May 2020 04:10 PM
 Rider-12-leighton_glim1@baylor.edu-AUS-Baylor-04 May 2020 07:10 PM
 Rider-13-leighton_glim1@baylor.edu-Baylor-ACT-03 Jul 2020 06:10 PM
@@ -16,11 +7,6 @@ Rider-14-leighton_glim1@baylor.edu-Baylor-AUS-05 May 2020 04:25 PM
 Rider-15-leighton_glim1@baylor.edu-DAL-Baylor-05 May 2020 05:15 PM
 Driver-17-leighton_glim1@baylor.edu-AUS-Baylor-05 May 2020 04:10 PM-4
 Driver-18-leighton_glim1@baylor.edu-Baylor-AUS-06 May 2020 04:20 PM-3
-Driver-19-leighton_glim1@baylor.edu-AUS-Baylor-29 Apr 2020 05:15 PM-3
-Driver-20-leighton_glim1@baylor.edu-AUS-Baylor-27 Apr 2020 03:15 PM-5
-Rider-21-joseph_perez3@baylor.edu-Baylor-DAL-22 Apr 2020 09:10 PM
-Rider-22-joseph_perez3@baylor.edu-Baylor-Baylor-01 Jan 2020 01:00 AM
-Driver-23-joseph_perez3@baylor.edu-ACT-ACT-01 Mar 2020 01:00 PM-6
 Rider-24-leighton_glim1@baylor.edu-AUS-Baylor-04 May 2020 05:20 PM
 Rider-25-leighton_glim1@baylor.edu-Baylor-DAL-30 Apr 2020 03:15 PM
 Rider-26-leighton_glim1@baylor.edu-Baylor-AUS-30 May 2020 06:10 PM
@@ -40,3 +26,12 @@ Rider-40-andrew_ammentorp1@baylor.edu-Baylor-HOU-01 Jul 2020 01:00 AM-Joshua Hue
 Driver-41-andrew_ammentorp1@baylor.edu-Baylor-IAH-05 Aug 2020 01:00 AM-3
 Rider-42-leighton_glim1@baylor.edu-Baylor-ACT-01 May 2020 03:15 PM-Joshua Huertas-false
 Driver-43-leighton_glim1@baylor.edu-HOU-ACT-04 May 2020 05:10 PM-3
+Driver-44-Leighton Glim-HOU-ACT-01 May 2020 01:00 AM-1
+Rider-45-Leighton Glim-ACT-HOU-01 Jun 2020 01:00 AM
+Rider-46-Leighton Glim-ACT-HOU-01 Jun 2020 01:00 AM
+Rider-47-Leighton Glim-ACT-HOU-01 Jun 2020 01:00 AM
+Rider-48-Leighton Glim-ACT-Baylor-01 Jun 2020 01:00 AM
+Rider-49-Leighton Glim-Baylor-ACT-01 May 2020 01:00 AM
+Driver-50-Leighton Glim-DAL-ACT-01 May 2020 01:00 AM-1
+Driver-51-Leighton Glim-ACT-IAH-01 Jul 2020 01:00 AM-1
+Driver-52-Leighton Glim-ACT-SAT-01 Jul 2020 01:00 AM-1

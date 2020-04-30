@@ -178,6 +178,7 @@ public class ViewPostInfo extends JDialog {
 					UserDatabase.getInstance().queryDatabase(d.getPoster()).setJoinNotif(true);
 				}
 				else {
+					//TODO
 					//pop up that this ride already has too many riders
 				}
 				

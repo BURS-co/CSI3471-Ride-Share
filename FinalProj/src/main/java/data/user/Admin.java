@@ -51,5 +51,4 @@ public class Admin extends User {
 		return username + ",,," + email + ",,," + phoneNumber + ",,," + gradMonth + ",,," + gradYear + ",,," + password
 				+ ",,,true,,," + joinNotif + ",,," + postCanceledNotif + "\n";
 	}
-
 }

@@ -225,20 +225,16 @@ public class LoginDialog extends JDialog {
 		if (Login.authenticate(tfEmail.getText(), getPassword())) {
 			succeeded = true;
 
-			// *******************************TODO************************
 			for (AbstractPost i : PostDatabase.getInstance()
 					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
 				if (i.isExpired()) {
-					//debugging
+					// debugging
 					System.out.println("Bruh");
 					/* trigger pop up for survey and pass the results to survey service */
 					JDialog surveyPanel = new JDialog();
 					GridBagConstraints ss = new GridBagConstraints();
-					
-					String[] ratings = { "0", "1", "2", "3", "4", "5"};
-					
-					JLabel lbReason;
-					JTextArea tfReason;
+
+					String[] ratings = { "0", "1", "2", "3", "4", "5" };
 
 					try {
 						customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -258,74 +254,64 @@ public class LoginDialog extends JDialog {
 					ss.gridx = 0;
 					ss.gridy = 0;
 					ss.gridwidth = 1;
+					lbEmail.setFont(customFont);
 					surveyPanel.add(lbEmail, ss);
-					
+
 					JTextField tfEmail = new JTextField(20);
 					ss.gridx = 1;
 					ss.gridy = 0;
 					ss.gridwidth = 2;
-
 					tfEmail.setText(UserService.getInstance().getCurrentUser().getEmail());
-					
 					surveyPanel.add(tfEmail, ss);
-					
-					///
-					
+
+
 					JLabel lbTarget = new JLabel("Email of person you're rating: ");
 					ss.gridx = 0;
 					ss.gridy = 1;
 					ss.gridwidth = 1;
-					// lbEmail.setFont(customFont);
+					lbEmail.setFont(customFont);
 					surveyPanel.add(lbTarget, ss);
-
 
 					JTextField tftarget = new JTextField(20);
 					ss.gridx = 1;
 					ss.gridy = 1;
 					ss.gridwidth = 2;
-					surveyPanel.add(tftarget);
-					
-					
-					//Reason
-					lbReason = new JLabel("Comments: ");
+					surveyPanel.add(tftarget, ss);
+
+					JLabel lbReason = new JLabel("Comments: ");
 					ss.gridx = 0;
 					ss.gridy = 3;
-					ss.gridwidth = 1;
-					// lbEmail.setFont(customFont);
+					ss.gridwidth = 2;
+					lbReason.setFont(customFont);
 					surveyPanel.add(lbReason, ss);
 
-
-					tfReason = new JTextArea();
-					
-					
-					ss.gridx = 1;
-					ss.gridy = 3;
+					JTextArea tfReason = new JTextArea();
+					ss.gridx = 0;
+					ss.gridy = 4;
 					ss.gridwidth = 2;
-
-					
+					ss.gridheight = 2;
 					surveyPanel.add(tfReason, ss);
-					
-					JLabel lbRate = new JLabel("Rating: ");
-					ss.gridx = 2;
-					ss.gridy = 1;
-					ss.gridwidth = 1;
-					surveyPanel.add(lbRate);
-					
-					JComboBox<String> rating = new JComboBox<String>(ratings);
-					ss.gridx = 2;
-					ss.gridy = 1;
-					ss.gridwidth = 1;
-					surveyPanel.add(rating);
 
-					String[] info = {};
-					
+					JLabel lbRate = new JLabel("Rating: ");
+					ss.gridx = 0;
+					ss.gridy = 5;
+					ss.gridwidth = 1;
+					ss.gridheight = 1;
+					ss.gridwidth = 1;
+					surveyPanel.add(lbRate, ss);
+
+					JComboBox<String> rating = new JComboBox<String>(ratings);
+					ss.gridx = 1;
+					ss.gridy = 5;
+					ss.gridwidth = 1;
+					surveyPanel.add(rating, ss);
+
 					JButton btnSubmit = new JButton("Submit");
 					btnSubmit.setFont(customFont);
-					btnSubmit.setFont(customFont);
 					btnSubmit.setBackground(new Color(255, 184, 25));
-					btnSubmit.setFont(customFont);
 					btnSubmit.setBorderPainted(false);
 					btnSubmit.setOpaque(true);
+					
 					btnSubmit.addActionListener(new ActionListener() {
 
 						/*
@@ -337,33 +323,35 @@ public class LoginDialog extends JDialog {
 						public void actionPerformed(ActionEvent e) {
 							Application.log.log(Level.INFO, "Survey submitted");
 							
-							dispose();
+							String score = String.valueOf(rating.getSelectedItem());
+							
+							String[] info = {tfEmail.getText(), tftarget.getText(), tfReason.getText(), score};
+							
+							Failures result = SurveyService.getInstance().verify(info);
+							
+							switch (result) {
+							case emptyField:
+								JOptionPane.showMessageDialog(null, "Fields must not be empty. Please Fill in All Fields", "Survey",
+										JOptionPane.ERROR_MESSAGE);
+								break;
+							case SurveyField2notANumber:
+								JOptionPane.showMessageDialog(null, "Please Enter A Valid Number For Rating", "Survey",
+										JOptionPane.ERROR_MESSAGE);
+								break;
+							case SurveyField3TooLong:
+								JOptionPane.showMessageDialog(null, "Your Comment is Too Long, Please Enter >300 Characters", "Survey",
+										JOptionPane.ERROR_MESSAGE);
+								break;
+							default:
+								dispose();
+								break;
+							}
+
 						}
 					});
-					
+
 					surveyPanel.setVisible(true);
 					surveyPanel.pack();
-					
-					//TODO parse field
-
-					Failures result = SurveyService.getInstance().verify(info);
-
-					switch (result) {
-					case emptyField:
-						JOptionPane.showMessageDialog(null, "Fields must not be empty. Please Fill in All Fields", "Survey",
-								JOptionPane.ERROR_MESSAGE);
-						break;
-					case SurveyField2notANumber:
-						JOptionPane.showMessageDialog(null, "Please Enter A Valid Number For Rating", "Survey",
-								JOptionPane.ERROR_MESSAGE);
-						break;
-					case SurveyField3TooLong:
-						JOptionPane.showMessageDialog(null, "Your Comment is Too Long, Please Enter >300 Characters", "Survey",
-								JOptionPane.ERROR_MESSAGE);
-						break;
-					default:
-						break;
-					}
 
 				}
 			}

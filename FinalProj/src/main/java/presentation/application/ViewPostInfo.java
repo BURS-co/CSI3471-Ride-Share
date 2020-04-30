@@ -30,6 +30,7 @@ public class ViewPostInfo extends JDialog {
 	JLabel origLabel = new JLabel("Origin: ");
 	JLabel destLabel = new JLabel("Destination: ");
 	JLabel dateLabel = new JLabel("Date: ");
+	JLabel postLabel = new JLabel("ID: ");
 
 	/**
 	 * Shows info of selected driver post
@@ -38,7 +39,7 @@ public class ViewPostInfo extends JDialog {
 	 *               of ride
 	 * @return
 	 */
-	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date) {
+	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date, String postId) {
 		super(parent, "Post Info", true);
 
 		JPanel panel = new JPanel(new GridBagLayout());
@@ -50,6 +51,7 @@ public class ViewPostInfo extends JDialog {
 		JLabel o = new JLabel(orig);
 		JLabel d = new JLabel(dest);
 		JLabel dt = new JLabel(date);
+		JLabel postIDLabel = new JLabel(postId);
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -124,6 +126,18 @@ public class ViewPostInfo extends JDialog {
 		cs.gridwidth = 2;
 		dt.setFont(customFont);
 		panel.add(dt, cs);
+		
+		cs.gridx = 0;
+		cs.gridy = 5;
+		cs.gridwidth = 2;
+		dateLabel.setFont(customFont);
+		panel.add(postLabel, cs);
+
+		cs.gridx = 1;
+		cs.gridy = 5;
+		cs.gridwidth = 2;
+		dt.setFont(customFont);
+		panel.add(postIDLabel, cs);
 
 		JButton acceptRide = new JButton("Accept Ride");
 		acceptRide.setFont(customFont);
@@ -223,7 +237,7 @@ public class ViewPostInfo extends JDialog {
 	 *               of ride
 	 * @return
 	 */
-	public ViewPostInfo(JFrame parent, String name, String orig, String dest, String date) {
+	public ViewPostInfo(JFrame parent, String name, String orig, String dest, String date, String postID) {
 		super(parent, "Post Info", true);
 
 		JPanel panel = new JPanel(new GridBagLayout());
@@ -234,6 +248,7 @@ public class ViewPostInfo extends JDialog {
 		JLabel o = new JLabel(orig);
 		JLabel d = new JLabel(dest);
 		JLabel dt = new JLabel(date);
+		JLabel postIDLabel = new JLabel(postID);
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -288,6 +303,18 @@ public class ViewPostInfo extends JDialog {
 		cs.gridy = 3;
 		dt.setFont(customFont);
 		panel.add(dt, cs);
+		
+		cs.gridx = 0;
+		cs.gridy = 4;
+		cs.gridwidth = 2;
+		dateLabel.setFont(customFont);
+		panel.add(postLabel, cs);
+
+		cs.gridx = 1;
+		cs.gridy = 4;
+		cs.gridwidth = 2;
+		dt.setFont(customFont);
+		panel.add(postIDLabel, cs);
 
 		JButton offerRide = new JButton("Offer Ride");
 		offerRide.setFont(customFont);

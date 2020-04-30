@@ -47,11 +47,11 @@ public class CreateRiderTable {
 			e.printStackTrace();
 		}
 
-		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
+		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date", "" };
 		riderData = new Object[rlist.size()][riderPostLabels.length];
 
 		for (int r = 0; r < rlist.size(); r++) {
-			for (int c = 0; c < 4; c++) {
+			for (int c = 0; c < 5; c++) {
 				if (c == 0) {
 					riderData[r][c] = new String(rlist.get(r).getPoster());
 				} else if (c == 1) {
@@ -62,6 +62,8 @@ public class CreateRiderTable {
 					SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy hh:mm a");
 					String str = df.format(rlist.get(r).getDate());
 					riderData[r][c] = new String(str);
+				} else if (c == 4) {
+					riderData[r][c] = new String(String.valueOf((rlist.get(r).getID())));
 				}
 			}
 		}

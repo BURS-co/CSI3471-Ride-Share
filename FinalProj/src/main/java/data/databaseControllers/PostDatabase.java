@@ -99,7 +99,7 @@ public class PostDatabase {
 
 	public void write() throws IOException {
 		// Write to .txt file (postDatabase.txt)
-		BufferedWriter write = new BufferedWriter(new FileWriter("postDatabase.txt"));
+		BufferedWriter write = new BufferedWriter(new FileWriter("postDatabase.txt", false));
 
 		for (AbstractPost p : postData) {
 			write.write(p.toString());

@@ -180,6 +180,12 @@ public class PostDatabase {
 		System.out
 				.println("IN DATABASE STORE UPDATE\n\n" + this.postData.get(this.searchDatabaseInt(p.getID())).toString());
 		this.postData.set(this.searchDatabaseInt(p.getID()), p);
+		try {
+			this.write();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(this.postData.get(this.searchDatabaseInt(p.getID())).toString());
 
 	}

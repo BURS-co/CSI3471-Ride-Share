@@ -337,7 +337,8 @@ public class ViewPostInfo extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent event) {
 
-				Rider r = ((Rider)PostDatabase.getInstance().searchDatabase(0/***post id goes here***/));
+				int temp = Integer.valueOf(postID);
+				Rider r = ((Rider)PostDatabase.getInstance().searchDatabase(temp));
 				
 				Prospects driver = new Prospects();
 				driver.setName(UserService.getInstance().getCurrentUser().getUsername());
@@ -345,7 +346,7 @@ public class ViewPostInfo extends JDialog {
 				
 				r.setDriver(driver);
 				
-				UserDatabase.getInstance().queryDatabase(/***email goes here***/).setJoinNotif(true);
+				
 				
 				// Keep track of user logged in
 				// Application.loggedIn = u;

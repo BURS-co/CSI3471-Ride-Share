@@ -239,7 +239,8 @@ public class LoginDialog extends JDialog {
 
 			for (AbstractPost i : PostDatabase.getInstance()
 					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
-				/* trigger pop up for survey and pass the results to survey service */
+				
+				// Issue Survey
 				JDialog surveyPanel = new JDialog();
 				GridBagConstraints ss = new GridBagConstraints();
 

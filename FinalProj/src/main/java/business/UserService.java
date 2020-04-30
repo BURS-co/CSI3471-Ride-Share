@@ -1,5 +1,6 @@
 package business;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.locks.ReentrantLock;
@@ -222,6 +223,27 @@ public class UserService implements IService {
 		this.getCurrentUser().setGradMonth(list[4]);
 		this.getCurrentUser().setGradYear(list[5]);
 
+	}
+
+	public void resetJoinNotif() {
+		this.currentUser.setJoinNotif(false);
+		try {
+			UserDatabase.getInstance().write();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void resetCanceledNotif() {
+		this.currentUser.setPostCanceledNotif(false);
+		try {
+			UserDatabase.getInstance().write();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

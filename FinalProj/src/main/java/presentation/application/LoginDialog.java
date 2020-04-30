@@ -399,20 +399,31 @@ public class LoginDialog extends JDialog {
 
 			}
 
-			if (UserService.getInstance().getCurrentUser().getJoinNotif()) {
-				// trigger pop up that tells user another user wants to join their post
-			}
-
-			if (UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
-				// trigger pop up that tells user a post they were trying to become a prospect
-				// for has been canceled
-			}
-
 			ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 			JOptionPane.showMessageDialog(null,
 					"Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
 					JOptionPane.INFORMATION_MESSAGE, icon);
 			Application.log.log(Level.INFO, getUsername() + " Login successful!");
+			
+			if (UserService.getInstance().getCurrentUser().getJoinNotif()) {
+				// trigger pop up that tells user another user wants to join their post
+				JOptionPane.showMessageDialog(null,
+						"Someone would like to join one of your posts. Check your posts under profile for more information.", "Post Update",
+						JOptionPane.INFORMATION_MESSAGE);
+				
+				UserService.getInstance().resetJoinNotif();
+			}
+
+			if (UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
+				// trigger pop up that tells user a post they were trying to become a prospect
+				// for has been canceled
+				JOptionPane.showMessageDialog(null,
+						"A post you were signed up for has been canceled.", "Post Update",
+						JOptionPane.INFORMATION_MESSAGE);
+				
+				UserService.getInstance().resetCanceledNotif();
+			}
+			
 			dispose();
 		} else {
 			JOptionPane.showMessageDialog(this, "Invalid username or password", "Login", JOptionPane.ERROR_MESSAGE);

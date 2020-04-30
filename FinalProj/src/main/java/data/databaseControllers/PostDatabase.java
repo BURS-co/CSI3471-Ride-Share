@@ -46,7 +46,7 @@ public class PostDatabase {
 			BufferedReader loader = new BufferedReader(new FileReader(new File("postDatabase.txt")));
 			AbstractPost p = null;
 			String line = null;
-			ArrayList<Prospects> list = null;
+			
 
 			while ((line = loader.readLine()) != null) {
 
@@ -69,11 +69,9 @@ public class PostDatabase {
 
 				if (p instanceof Driver) {
 					((Driver) p).setRiderLimit(Integer.valueOf(split[6]));
-
+					ArrayList<Prospects> list = null;
 					for (int i = 7; i < split.length - 1; i++) {
-						if (list == null) {
-							list = new ArrayList<Prospects>();
-						}
+						list = new ArrayList<Prospects>();
 
 						Prospects temp = new Prospects();
 
@@ -87,9 +85,6 @@ public class PostDatabase {
 					//PostService.getInstance().addProspects(UserService.getInstance().getCurrentUser(), p.getPoster());
 				}
 				postData.add(p);
-				if (list != null && list.size() > 0) {
-					list.clear();
-				}
 			}
 			loader.close();
 

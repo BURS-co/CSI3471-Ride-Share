@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -537,7 +538,7 @@ public class Application {
 		String[] myRidesLabels = { "Type", "Poster", "Origin", "Destination", "Date" };
 		myRidesModel = (DefaultTableModel) myRidesTable.getModel();
 
-		myRidesTable.getColumn(myRidesLabels[0]).setPreferredWidth(25);
+		myRidesTable.getColumn(myRidesLabels[0]).setPreferredWidth(35);
 		myRidesTable.getColumn(myRidesLabels[1]).setPreferredWidth(100);
 		myRidesTable.getColumn(myRidesLabels[2]).setPreferredWidth(50);
 		myRidesTable.getColumn(myRidesLabels[3]).setPreferredWidth(50);
@@ -711,6 +712,8 @@ public class Application {
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		List<AbstractPost> ps = PostDatabase.getPostData();
 
 		UserDatabase.getInstance().write();
 		PostDatabase.getInstance().write();

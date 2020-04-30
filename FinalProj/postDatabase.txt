@@ -1,5 +1,5 @@
 Rider-0-Bobby Baylor-Bush-Baylor-30 Mar 2020 11:09 AM-Leighton Glim
-Driver-1-Andrew Ammentorp-Hobby-Baylor-30 Mar 2020 11:00 AM-1
+Driver-1-Andrew Ammentorp-Hobby-Baylor-30 Mar 2020 11:00 AM-1-Leighton Glim-true
 Rider-2-Bobby Baylor-Baylor-Bush-30 Mar 2020 11:09 AM
 Driver-3-Andrew Ammentorp-Baylor-Hobby-30 Mar 2020 11:00 AM-1
 Rider-4-Leighton Glim-Baylor-DAL-28 Apr 2020 06:15 PM

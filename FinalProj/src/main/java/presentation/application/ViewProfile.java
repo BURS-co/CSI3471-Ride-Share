@@ -389,7 +389,7 @@ public class ViewProfile extends JDialog {
 										results = new boolean[j];
 										
 										for(int i = 0; i < j; i++) {
-											String f = String.valueOf(boxes[i].getSelectedItem())
+											String f = String.valueOf(boxes[i].getSelectedItem());
 											results[i] = f.equalsIgnoreCase("accept");
 										}
 										

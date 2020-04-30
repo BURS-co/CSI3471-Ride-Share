@@ -1,3 +1,6 @@
+/**
+ * @author Joseph Yu, Joshua Huertas
+ */
 package enums;
 
 public enum Ratings {

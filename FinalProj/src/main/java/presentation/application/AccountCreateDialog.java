@@ -219,12 +219,25 @@ public class AccountCreateDialog extends JDialog {
 							UserService.getInstance().getCurrentUser().getUsername() + " Login successful!");
 					dispose();
 				} else if (result == Failures.emptyField) {
-					JOptionPane.showMessageDialog(null, "Fields must not be empty.", "Login", JOptionPane.INFORMATION_MESSAGE);
-				} else if (result == Failures.BadDate) {
-					JOptionPane.showMessageDialog(null, "Date is Invalid.", "Login", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Fields must not be empty.", "SignUp", JOptionPane.ERROR_MESSAGE);
+				} else if (result == Failures.invalidName) {
+					JOptionPane.showMessageDialog(null, "Fields must not be empty.", "SignUp", JOptionPane.ERROR_MESSAGE);
+				} else if (result == Failures.invalidEmail) {
+					JOptionPane.showMessageDialog(null, "Email is Invalid. Please Enter a Valid Email", "SignUp",
+							JOptionPane.ERROR_MESSAGE);
+				} else if (result == Failures.emailInUse) {
+					JOptionPane.showMessageDialog(null, "Email Already in Use.", "SignUp", JOptionPane.ERROR_MESSAGE);
+				} else if (result == Failures.invalidPasswordStandard) {
+					JOptionPane.showMessageDialog(null,
+							"Password must be >8 Characters and should hvae one uppercase letter, a lowecase leteer, a number, and one special digit: \"!\" \"@\" \"#\" \"$\" \"%\"",
+							"SignUp", JOptionPane.ERROR_MESSAGE);
+				} else if (result == Failures.passwordMismatch) {
+					JOptionPane.showMessageDialog(null, "Passwords did not match. Try Again.", "SignUp", JOptionPane.ERROR_MESSAGE);
+				} else if (result == Failures.invalidGraduationDate) {
+					JOptionPane.showMessageDialog(null, "Grduation Date is Invalid.", "SignUp", JOptionPane.ERROR_MESSAGE);
 				}
-
 			}
+
 		});
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);

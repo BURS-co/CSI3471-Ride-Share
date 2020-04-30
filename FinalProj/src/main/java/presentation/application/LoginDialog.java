@@ -220,21 +220,22 @@ public class LoginDialog extends JDialog {
 		if (Login.authenticate(tfEmail.getText(), getPassword())) {
 			succeeded = true;
 			
+			
 			//*******************************TODO************************
-			for(AbstractPost i : UserService.getInstance().getCurrentUser().getPosts()) {
-				if(i.isExpired()) {
-					/*trigger pop up for survey and pass the results to survey service*/
-					//calls verify(string [])
-				}
-			}
-			
-			if(UserService.getInstance().getCurrentUser().getJoinNotif()) {
-				//trigger pop up that tells user another user wants to join their post
-			}
-			
-			if(UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
-				//trigger pop up that tells user a post they were trying to become a prospect for has been canceled
-			}
+			//for(AbstractPost i : UserService.getInstance().getCurrentUser().getPosts()) {
+			//	if(i.isExpired()) {
+			//		/*trigger pop up for survey and pass the results to survey service*/
+			//		//calls verify(string [])
+			//	}
+			//}
+			//
+			//if(UserService.getInstance().getCurrentUser().getJoinNotif()) {
+			//	//trigger pop up that tells user another user wants to join their post
+			//}
+			//
+			//if(UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
+			//	//trigger pop up that tells user a post they were trying to become a prospect for has been canceled
+			//}
 			
 			ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 			JOptionPane.showMessageDialog(null,

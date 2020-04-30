@@ -54,24 +54,24 @@ public class PostDatabase {
 				AbstractPost p = null;
 
 				if (split[0].equals("Driver")) {
-					p = new Driver();
+					p = new Driver(split[1]);
 				} else {
-					p = new Rider();
-					if (split.length > 5)
-						((Rider) p).setDriver(split[5]);
+					p = new Rider(split[1]);
+					if (split.length > 6)
+						((Rider) p).setDriver(split[6]);
 				}
 
-				p.setPoster(split[1]);
-				p.setOrigin(split[2]);
-				p.setDest(split[3]);
+				p.setPoster(split[2]);
+				p.setOrigin(split[3]);
+				p.setDest(split[4]);
 
-				Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[4]);
+				Date d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[5]);
 				p.setDate(d);
 
 				if (p instanceof Driver) {
-					((Driver) p).setRiderLimit(Integer.valueOf(split[5]));
+					((Driver) p).setRiderLimit(Integer.valueOf(split[6]));
 
-					for (int i = 6; i < split.length - 1; i++) {
+					for (int i = 7; i < split.length - 1; i++) {
 						if (list == null) {
 							list = new ArrayList<Prospects>();
 						}

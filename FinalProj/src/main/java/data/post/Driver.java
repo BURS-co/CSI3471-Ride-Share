@@ -13,8 +13,9 @@ public class Driver extends AbstractPost {
 
 	}
 
-	public Driver() {
-		super();
+	public Driver(String id) {
+		this.ID = Integer.parseInt(id);
+		Rider.ID_counter = this.ID+1;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -50,7 +51,7 @@ public class Driver extends AbstractPost {
 	public String toString() {
 		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 		String str = df.format(getDate());
-		String s = "Driver" + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
+		String s = "Driver" + "-" + this.ID + "-" + getPoster() + "-" + getOrigin() + "-" + getDest() + "-" + str;
 		s += "-" + riderLimit;
 		if (riders != null) {
 			for (Prospects p : riders) {

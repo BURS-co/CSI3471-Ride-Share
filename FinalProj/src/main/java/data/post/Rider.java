@@ -10,8 +10,10 @@ public class Rider extends AbstractPost {
 		super(list);
 	}
 
-	public Rider() {
+	public Rider(String id) {
 		// TODO Auto-generated constructor stub
+		this.ID = Integer.parseInt(id);
+		Rider.ID_counter = this.ID+1;
 	}
 
 	@Override
@@ -19,12 +21,11 @@ public class Rider extends AbstractPost {
 		SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 		String str = df.format(date);
 
-		String result = "Rider" + "-" + poster + "-" + origin + "-" + dest + "-" + str;
+		String result = "Rider" + "-" + this.ID + "-" + poster + "-" + origin + "-" + dest + "-" + str;
 
 		if (driver != null) {
 			result += "-" + driver;
 		}
-
 		result += "\n";
 
 		return result;

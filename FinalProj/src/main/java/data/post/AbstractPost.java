@@ -7,12 +7,16 @@ import java.util.Date;
 import business.UserService;
 
 public abstract class AbstractPost {
+	protected static int ID_counter = 0;
+	protected int ID;
 	protected String poster;
 	protected String origin;
 	protected String dest;
 	protected Date date;
 
 	public AbstractPost(String[] input) {
+		this.ID = ID_counter;
+		ID_counter++;
 
 		SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 
@@ -32,6 +36,8 @@ public abstract class AbstractPost {
 
 	public AbstractPost() {
 		// TODO Auto-generated constructor stub
+		//this.ID = ID_counter;
+		//ID_counter++;
 	}
 
 	public String getPoster() {

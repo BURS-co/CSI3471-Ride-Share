@@ -387,7 +387,6 @@ public class ViewPostInfo extends JDialog {
 		removePost.setBorderPainted(false);
 		removePost.setOpaque(true);
 		removePost.addActionListener(new ActionListener() {
-
 			/*
 			 * (non-Javadoc)
 			 * 

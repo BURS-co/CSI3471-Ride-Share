@@ -260,6 +260,7 @@ public class ViewProfile extends JDialog {
 				List<AbstractPost> posts = PostDatabase.getInstance()
 						.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail());
 
+				JDialog selectPst = new JDialog(parent,"Select Post",true);
 				JPanel selection = new JPanel();
 				selection.setLayout(new GridBagLayout());
 				GridBagConstraints sc = new GridBagConstraints();
@@ -298,7 +299,9 @@ public class ViewProfile extends JDialog {
 				sc.gridy = 0;
 				sc.fill = GridBagConstraints.HORIZONTAL;
 				selection.add(select, sc);
-				selection.setVisible(true);
+				selectPst.add(selection);
+				selectPst.pack();
+				selectPst.setVisible(true);
 
 			}
 

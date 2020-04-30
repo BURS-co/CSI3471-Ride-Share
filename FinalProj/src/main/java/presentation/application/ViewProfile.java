@@ -340,7 +340,7 @@ public class ViewProfile extends JDialog {
 										results[1] = String.valueOf(accDec.getSelectedItem()).equalsIgnoreCase("accept");
 										PostService.getInstance().updateProspect(p, results);
 									}
-								};
+								});
 								selectPst.pack();
 								selectPst.setVisible(true);
 
@@ -394,7 +394,7 @@ public class ViewProfile extends JDialog {
 										
 										PostService.getInstance().updateProspect(p, results);
 									}
-								};
+								});
 								selectPst.pack();
 								selectPst.setVisible(true);
 							} else {

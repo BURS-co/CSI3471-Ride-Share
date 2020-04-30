@@ -116,12 +116,12 @@ public class PostDatabase {
 		return postData;
 	}
 
-	final public static AbstractPost searchDatabase(String post) {
+	final public static AbstractPost searchDatabase(int ID) {
 		// The queryDatabase could be instead searching for a specific post
 		AbstractPost result = null;
 
 		for (AbstractPost p : postData) {
-			if (false/* deterministic character of post like id */) {
+			if (p.getID() == ID) {
 				result = p;
 			}
 		}

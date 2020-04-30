@@ -34,6 +34,14 @@ public abstract class AbstractPost {
 		}
 	}
 
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
 	public AbstractPost() {
 		// TODO Auto-generated constructor stub
 		//this.ID = ID_counter;

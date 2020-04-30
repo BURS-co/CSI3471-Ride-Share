@@ -127,7 +127,7 @@ public class PostService implements IService {
 
 	public Failures addProspects(User u, int ID) {
 		Failures result = Failures.SUCCESS;
-		Driver p = (Driver) PostDatabase.searchDatabase(ID);
+		Driver p = (Driver) PostDatabase.getInstance().searchDatabase(ID);
 		if (p == null) {
 			result = Failures.noMatchingQuery;
 			return result;

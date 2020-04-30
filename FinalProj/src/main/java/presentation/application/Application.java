@@ -601,7 +601,7 @@ public class Application {
 		selection.add(myRidesBtn, pc);
 
 		/**** Fourth Row of Panel ****/
-		ImageIcon crtIcn = new ImageIcon("src/main/resources/creatPostIcon.png");
+		ImageIcon crtIcn = new ImageIcon("src/main/resources/createPostIcon.png");
 		Image image = crtIcn.getImage(); // transform it
 		Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		crtIcn = new ImageIcon(newimg); // transform it back

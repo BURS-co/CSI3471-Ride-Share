@@ -61,7 +61,7 @@ public class SurveyDatabase {
 		}
 	}
 
-	public static void write() throws IOException {
+	public void write() throws IOException {
 		// open file
 		BufferedWriter write = new BufferedWriter(new FileWriter("surveyDatabase.txt"));
 

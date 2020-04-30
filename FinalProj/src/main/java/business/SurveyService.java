@@ -1,5 +1,6 @@
 package business;
 
+import java.io.IOException;
 import java.util.concurrent.locks.ReentrantLock;
 
 import data.databaseControllers.SurveyDatabase;
@@ -82,5 +83,11 @@ public class SurveyService implements IService {
 
 	public void store(String[] list) {
 		SurveyDatabase.addSurvey(create(list));
+		try {
+			SurveyDatabase.getInstance().write();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

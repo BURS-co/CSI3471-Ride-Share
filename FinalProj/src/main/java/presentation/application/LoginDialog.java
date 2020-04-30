@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
@@ -224,6 +225,13 @@ public class LoginDialog extends JDialog {
 	public void authenticate() {
 		if (Login.authenticate(tfEmail.getText(), getPassword())) {
 			succeeded = true;
+			try {
+				PostDatabase.getInstance().load();
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 
 			for (AbstractPost i : PostDatabase.getInstance()
 					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {

@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
-import business.PostService;
-import business.UserService;
 import data.post.AbstractPost;
 import data.post.Driver;
 import data.post.Prospects;
@@ -57,10 +55,10 @@ public class PostDatabase {
 					p = new Rider(split[1]);
 					if (split.length > 6) {
 						Prospects temp = new Prospects();
-					
+
 						temp.setName(split[6]);
 						temp.setStatus(split[7]);
-						
+
 						((Rider) p).setDriver(temp);
 					}
 				}
@@ -87,7 +85,8 @@ public class PostDatabase {
 					}
 
 					((Driver) p).setRiders(list);
-					//PostService.getInstance().addProspects(UserService.getInstance().getCurrentUser(), p.getPoster());
+					// PostService.getInstance().addProspects(UserService.getInstance().getCurrentUser(),
+					// p.getPoster());
 				}
 				postData.add(p);
 			}
@@ -116,17 +115,17 @@ public class PostDatabase {
 	}
 
 	final public AbstractPost searchDatabase(int ID) {
-        // The queryDatabase could be instead searching for a specific post
-        AbstractPost result = null;
+		// The queryDatabase could be instead searching for a specific post
+		AbstractPost result = null;
 
-        for (AbstractPost p : postData) {
-            if (p.getID() == ID) {
-                result = p;
-            }
-        }
-        return result;
-    }
-	
+		for (AbstractPost p : postData) {
+			if (p.getID() == ID) {
+				result = p;
+			}
+		}
+		return result;
+	}
+
 	final public int searchDatabaseInt(int id) {
 		// The queryDatabase could be instead searching for a specific post
 		int result = 0;
@@ -158,12 +157,12 @@ public class PostDatabase {
 				}
 			} else {
 				if (p instanceof Rider) {
-					if(((Rider) p).getDriver() != null)
+					if (((Rider) p).getDriver() != null)
 						if (type.equalsIgnoreCase(((Rider) p).getDriver().getName()))
 							query.add(p);
 				} else if (p instanceof Driver)
 					if (((Driver) p).getRiders() != null)
-						for(Prospects pr : ((Driver) p).getRiders())
+						for (Prospects pr : ((Driver) p).getRiders())
 							if (pr.getName().equalsIgnoreCase(type))
 								query.add(p);
 			}
@@ -178,10 +177,17 @@ public class PostDatabase {
 
 	public void storeUpdate(AbstractPost p) {
 		// TODO Auto-generated method stub :(
-		System.out.println("IN DATABASE STORE UPDATE\n\n" + this.postData.get(this.searchDatabaseInt(p.getID())).toString());
+		System.out
+				.println("IN DATABASE STORE UPDATE\n\n" + this.postData.get(this.searchDatabaseInt(p.getID())).toString());
 		this.postData.set(this.searchDatabaseInt(p.getID()), p);
+		try {
+			this.write();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block 
+			e.printStackTrace();
+		}
 		System.out.println(this.postData.get(this.searchDatabaseInt(p.getID())).toString());
-		
+
 	}
 
 }

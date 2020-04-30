@@ -2,7 +2,6 @@ package presentation.application;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -251,11 +250,14 @@ public class LoginDialog extends JDialog {
 
 				if (i.isExpired()) {
 					// Issue Survey
-					surveyPanel= new JDialog(new JFrame(), "Survey", true);
-					surveyPanel.setLayout(new GridBagLayout());
+				  surveyPanel = new JDialog(new JFrame(), "Survey", true);
+				  surveyPanel.setLayout(new GridBagLayout());
+					
+					JPanel surveyCnt = new JPanel();
+					surveyCnt.setLayout(new GridBagLayout());
 					GridBagConstraints ss = new GridBagConstraints();
 					
-					surveyPanel.setBackground(new Color(255, 184, 25));
+					surveyCnt.setBackground(new Color(255, 184, 25));
 
 					try {
 						customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -269,8 +271,6 @@ public class LoginDialog extends JDialog {
 						e.printStackTrace();
 					}
 
-					ss.fill = GridBagConstraints.HORIZONTAL;
-
 					//Start
 					JLabel lbEmail = new JLabel("Your baylor email: ");
 					lbEmail.setFont(customFont);
@@ -279,16 +279,17 @@ public class LoginDialog extends JDialog {
 					ss.gridwidth = 1;
 					ss.anchor = GridBagConstraints.FIRST_LINE_START;
 					lbEmail.setFont(customFont);
-					surveyPanel.add(lbEmail, ss);
+					surveyCnt.add(lbEmail, ss);
 
 					tfREmail = new JTextField(20);
 					ss.gridx = 1;
 					ss.gridy = 0;
 					ss.gridwidth = 2;
+					ss.anchor = GridBagConstraints.FIRST_LINE_END;
 					
 					//ss.anchor = GridBagConstraints.FIRST_LINE_END;
 					tfREmail.setText(UserService.getInstance().getCurrentUser().getEmail());
-					surveyPanel.add(tfREmail, ss);
+					surveyCnt.add(tfREmail, ss);
 
 					JLabel lbTarget = new JLabel("Email of person you're rating: ");
 					lbTarget.setFont(customFont);
@@ -297,14 +298,14 @@ public class LoginDialog extends JDialog {
 					ss.gridwidth = 1;
 					ss.anchor = GridBagConstraints.FIRST_LINE_START;
 					lbEmail.setFont(customFont);
-					surveyPanel.add(lbTarget, ss);
+					surveyCnt.add(lbTarget, ss);
 
 					tftarget = new JTextField(20);
 					ss.gridx = 1;
 					ss.gridy = 1;
 					ss.gridwidth = 2;
 					ss.anchor = GridBagConstraints.FIRST_LINE_END;
-					surveyPanel.add(tftarget, ss);
+					surveyCnt.add(tftarget, ss);
 
 					JLabel lbReason = new JLabel("Comments: ");
 					lbReason.setFont(customFont);
@@ -313,33 +314,34 @@ public class LoginDialog extends JDialog {
 					ss.gridwidth = 2;
 					ss.anchor = GridBagConstraints.FIRST_LINE_START;
 					lbReason.setFont(customFont);
-					surveyPanel.add(lbReason, ss);
+					surveyCnt.add(lbReason, ss);
 
 					tfReason = new JTextArea();
-					ss.gridx = 1;
-					ss.gridy = 3;
+					ss.gridx = 0;
+					ss.gridy = 4;
 					ss.gridwidth = 2;
 					ss.gridheight = 2;
 					ss.anchor = GridBagConstraints.CENTER;
-					surveyPanel.add(tfReason, ss);
+					ss.fill = GridBagConstraints.BOTH;
+					surveyCnt.add(tfReason, ss);
 
 					JLabel lbRate = new JLabel("Rating: ");
 					lbRate.setFont(customFont);
 					ss.gridx = 0;
-					ss.gridy = 2;
+					ss.gridy = 6;
 					ss.gridwidth = 1;
 					ss.gridheight = 1;
 					ss.gridwidth = 1;
 					ss.anchor = GridBagConstraints.FIRST_LINE_START;
-					surveyPanel.add(lbRate, ss);
+					surveyCnt.add(lbRate, ss);
 
 					// rating = new JComboBox<String>(ratings);
 					rating.setSelectedIndex(-1);
 					ss.gridx = 1;
-					ss.gridy = 2;
+					ss.gridy = 6;
 					ss.gridwidth = 1;
 					ss.anchor = GridBagConstraints.FIRST_LINE_END;
-					surveyPanel.add(rating, ss);
+					surveyCnt.add(rating, ss);
 
 					JButton btnSubmit = new JButton("Submit");
 					btnSubmit.setFont(customFont);
@@ -378,7 +380,6 @@ public class LoginDialog extends JDialog {
 										JOptionPane.ERROR_MESSAGE);
 								break;
 							default:
-								dispose();
 								surveyPanel.dispose();
 								break;
 							}
@@ -386,14 +387,12 @@ public class LoginDialog extends JDialog {
 						}
 					});
 
-					ss.gridx = 1;
-					ss.gridy = 5;
-					surveyPanel.add(btnSubmit, ss);
-
-					surveyPanel.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-					surveyPanel.setBounds(300, 300, 400, 200);
+					ss.gridx = 0;
+					ss.gridy = 7;
+					ss.anchor = GridBagConstraints.CENTER;
+					surveyCnt.add(btnSubmit, ss);
+					surveyPanel.add(surveyCnt);
 					surveyPanel.setVisible(true);
-					
 					surveyPanel.pack();
 					
 				}

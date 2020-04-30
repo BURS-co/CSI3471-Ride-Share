@@ -371,7 +371,7 @@ public class ViewPostInfo extends JDialog {
 				int temp = Integer.valueOf(postID);
 				Rider r = ((Rider)PostDatabase.getInstance().searchDatabase(temp));
 				
-				System.out.println("TEST PLZ" + r.toString());
+				
 				
 				Prospects driver = new Prospects();
 				driver.setName(UserService.getInstance().getCurrentUser().getUsername());
@@ -379,8 +379,8 @@ public class ViewPostInfo extends JDialog {
 				
 				r.setDriver(driver);
 				
-				System.out.println("TEST PLZ" + r.toString());
 				
+				System.out.println(PostDatabase.getInstance().quereyDatabase(r.getID()).toString);
 				PostDatabase.getInstance().storeUpdate(r);
 				
 				UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);

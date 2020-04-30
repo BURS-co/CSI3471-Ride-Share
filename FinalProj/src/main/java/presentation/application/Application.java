@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.FileHandler;
@@ -42,6 +43,7 @@ import business.UserService;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
+import data.post.Driver;
 import data.user.Admin;
 import data.user.User;
 
@@ -453,32 +455,41 @@ public class Application extends JPanel {
 				SelectPostType cp = new SelectPostType(null, UserService.getInstance().getCurrentUser());
 				cp.setVisible(true);
 				if (CreatePost.isSucceeded()) {
-//					if (CreatePost.p.getType() == "driver") {
-//						String driver = ((Driver) CreatePost.p).getDriver();
-//						Integer riderLimit = ((Driver) CreatePost.p).getRiderLimit();
-//						String origin = CreatePost.p.getOrigin();
-//						String dest = CreatePost.p.getDest();
-//						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
-//						String date = df.format(CreatePost.p.getDate());
-//
-//						Object[] row = { riderLimit, driver, origin, dest, date };
-//
-//						dTable.addRow(row);
-//						dTable.fireTableDataChanged();
-//						CreatePost.setSucceeded(false);
-//					} else {
-//						String poster = CreatePost.p.getPoster();
-//						String origin = CreatePost.p.getOrigin();
-//						String dest = CreatePost.p.getDest();
-//						SimpleDateFormat df = new SimpleDateFormat("E, MMM dd yy hh:mm");
-//						String date = df.format(CreatePost.p.getDate());
-//
-//						Object[] row = { poster, origin, dest, date };
-//
-//						rTable.addRow(row);
-//						rTable.fireTableDataChanged();
-//						CreatePost.setSucceeded(false);
-//					}
+					try {
+						PostDatabase.getInstance().write();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+			/*		if (CreatePost.post instanceof Driver) {
+						String driver = CreatePost.post.getPoster();
+						Integer riderLimit = ((Driver) CreatePost.post).getRiderLimit();
+						String origin = CreatePost.post.getOrigin();
+						String dest = CreatePost.post.getDest();
+						SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+						String date = df.format(CreatePost.post.getDate());
+
+						Object[] row = { riderLimit, driver, origin, dest, date, CreatePost.post.getID() };
+
+						if(driverTableUp) {
+						//	dTable.addRow(row);
+							dTable.fireTableDataChanged();
+							CreatePost.setSucceeded(false);
+						}
+					} else {
+						String poster = CreatePost.post.getPoster();
+						String origin = CreatePost.post.getOrigin();
+						String dest = CreatePost.post.getDest();
+						SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+						String date = df.format(CreatePost.post.getDate());
+
+						Object[] row = { poster, origin, dest, date, CreatePost.post.getID() };
+
+						if(riderTableUp) {
+						//	rTable.addRow(row);
+							rTable.fireTableDataChanged();
+							CreatePost.setSucceeded(false);
+						}
+					}*/
 				}
 
 			}
@@ -645,6 +656,8 @@ public class Application extends JPanel {
 		add(searchPnl, gc);
 
 		setVisible(true);
+		
+		ArrayList<AbstractPost> ps = PostDatabase.getInstance().getPostData();
 
 		UserDatabase.getInstance().write();
 		PostDatabase.getInstance().write();

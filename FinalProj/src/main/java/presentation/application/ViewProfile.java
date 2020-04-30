@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
@@ -261,9 +262,18 @@ public class ViewProfile extends JDialog {
 
 				JPanel selection = new JPanel();
 				selection.setLayout(new GridBagLayout());
-
-				JComboBox<String> box = new JComboBox<String>();
-
+				
+				String[] arr = null;
+				arr = new String[posts.size()];
+				
+				for(int i = 0; i < posts.size(); i++) {
+					SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+					String date = df.format(posts.get(i).getDate());
+					arr[i] = posts.get(i).getOrigin() + ", " + posts.get(i).getDest() + ", " + date;
+				}
+				
+				JComboBox<String> box = new JComboBox<String>(arr);
+				
 				JButton select = new JButton("select");
 				select.addActionListener(new ActionListener() {
 

@@ -175,6 +175,18 @@ public class PostDatabase {
 
 		return query;
 	}
+	
+	final public ArrayList<AbstractPost> querey(String email) {
+		ArrayList<AbstractPost> query = new ArrayList<AbstractPost>();
+
+		for (AbstractPost p : postData) {
+			if (email.equals(p.getPoster())) {
+					query.add(p);
+			}
+		}
+
+		return query;
+	}
 
 	public void addPost(AbstractPost p) {
 		postData.add(p);

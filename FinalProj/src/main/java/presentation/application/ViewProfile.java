@@ -258,8 +258,14 @@ public class ViewProfile extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 
 				List<AbstractPost> posts = PostDatabase.getInstance()
-						.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail());
+						.querey(UserService.getInstance().getCurrentUser().getEmail());
 
+				System.out.println("HEY");
+				
+				for(AbstractPost i : posts) {
+					System.out.println(i.toString());
+				}
+				
 				JDialog selectPst = new JDialog(parent,"Select Post",true);
 				JPanel selection = new JPanel();
 				selection.setLayout(new GridBagLayout());
@@ -270,6 +276,7 @@ public class ViewProfile extends JDialog {
 				for (int i = 0; i < posts.size(); i++) {
 					SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 					String date = df.format(posts.get(i).getDate());
+					System.out.println(posts.get(i).getOrigin() + ", " + posts.get(i).getDest() + ", " + date);
 					arr[i] = posts.get(i).getOrigin() + ", " + posts.get(i).getDest() + ", " + date;
 				}
 

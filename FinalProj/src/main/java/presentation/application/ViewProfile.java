@@ -334,7 +334,6 @@ public class ViewProfile extends JDialog {
 
 									@Override
 									public void actionPerformed(ActionEvent e) {
-										
 										PostService.getInstance().updateProspect(p, b);
 									}
 								};

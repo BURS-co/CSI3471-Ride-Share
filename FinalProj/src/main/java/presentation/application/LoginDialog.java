@@ -231,15 +231,8 @@ public class LoginDialog extends JDialog {
 					/* trigger pop up for survey and pass the results to survey service */
 					JPanel surveyPanel = new JPanel(new GridBagLayout());
 					GridBagConstraints ss = new GridBagConstraints();
-
-					JLabel lbEmail;
-					JTextField tfEmail;
-					
-					JLabel lbtarget;
-					JTextField tftarget;
 					
 					String[] ratings = { "0", "1", "2", "3", "4", "5"};
-					JComboBox<String> rating = new JComboBox<String>(ratings);
 
 					try {
 						customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -255,28 +248,47 @@ public class LoginDialog extends JDialog {
 
 					ss.fill = GridBagConstraints.HORIZONTAL;
 
-					lbEmail = new JLabel("Your baylor email: ");
+					JLabel lbEmail = new JLabel("What is your baylor email? ");
 					ss.gridx = 0;
 					ss.gridy = 0;
 					ss.gridwidth = 1;
-					// lbEmail.setFont(customFont);
 					surveyPanel.add(lbEmail, ss);
-
-
-					tfEmail = new JTextField(20);
 					
-
-					// change this - tfEmail = new JTextField(20);
+					JTextField tfEmail = new JTextField(20);
 					ss.gridx = 1;
 					ss.gridy = 0;
 					ss.gridwidth = 2;
 
-					
 					tfEmail.setText(UserService.getInstance().getCurrentUser().getEmail());
 					
 					surveyPanel.add(tfEmail, ss);
 					
+					JLabel lbtarget = new JLabel("Who are you Rating? ");
+					ss.gridx = 0;
+					ss.gridy = 1;
+					ss.gridwidth = 1;
+					
+					surveyPanel.add(lbtarget, ss);
+					
+					JTextField tftarget = new JTextField(20);
+					ss.gridx = 1;
+					ss.gridy = 1;
+					ss.gridwidth = 2;
+					surveyPanel.add(tftarget);
+					
 					surveyPanel.setVisible(true);
+					
+					JLabel lbRate = new JLabel("Rating: ");
+					ss.gridx = 2;
+					ss.gridy = 1;
+					ss.gridwidth = 1;
+					surveyPanel.add(lbRate);
+					
+					JComboBox<String> rating = new JComboBox<String>(ratings);
+					ss.gridx = 2;
+					ss.gridy = 1;
+					ss.gridwidth = 1;
+					surveyPanel.add(rating);
 
 
 					String[] info = {};

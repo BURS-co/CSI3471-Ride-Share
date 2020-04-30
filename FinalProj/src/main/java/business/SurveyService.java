@@ -83,6 +83,7 @@ public class SurveyService implements IService {
 
 	public void store(String[] list) {
 		SurveyDatabase.addSurvey(create(list));
+		
 		try {
 			SurveyDatabase.getInstance().write();
 		} catch (IOException e) {

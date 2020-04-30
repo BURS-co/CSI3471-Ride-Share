@@ -15,7 +15,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -253,8 +255,21 @@ public class ViewProfile extends JDialog {
 				List<AbstractPost> posts = 
 						PostDatabase.getInstance().quereyDatabase(UserService.getInstance().getCurrentUser().getEmail());
 				
+				JPanel selection = new JPanel();
+				selection.setLayout(new GridBagLayout());
 				
+				JComboBox<String> box = new JComboBox<String>();
 				
+				JButton select = new JButton("select");
+				select.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						//TODO
+						
+					}
+					
+				});
 			}
 			
 		});

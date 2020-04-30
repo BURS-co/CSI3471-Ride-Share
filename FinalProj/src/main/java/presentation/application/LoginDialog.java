@@ -224,6 +224,7 @@ public class LoginDialog extends JDialog {
 			for(AbstractPost i : UserService.getInstance().getCurrentUser().getPosts()) {
 				if(i.isExpired()) {
 					/*trigger pop up for survey and pass the results to survey service*/
+					//calls verify(string [])
 				}
 			}
 			

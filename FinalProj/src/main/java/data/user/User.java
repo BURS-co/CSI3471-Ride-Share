@@ -33,7 +33,7 @@ public class User {
 	@Override
 	public String toString() {
 		return username + ",,," + email + ",,," + phoneNumber + ",,," + gradMonth + ",,," + gradYear + ",,," + password
-				+ ",,,false\n";
+				+ ",,,false,,," + joinNotif + ",,," + postCanceledNotif + "\n";
 	}
 
 	/**
@@ -224,5 +224,15 @@ public class User {
 	
 	public boolean getPostCanceledNotif() {
 		return this.postCanceledNotif;
+	}
+
+	public void setJoinNotif(String string) {
+		this.joinNotif = string.equalsIgnoreCase("true");
+		
+	}
+
+	public void setPostCanceledNotif(String string) {
+		this.postCanceledNotif = string.equalsIgnoreCase("true");
+		
 	}
 }

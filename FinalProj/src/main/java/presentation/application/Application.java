@@ -648,7 +648,6 @@ public class Application extends JPanel {
 		add(searchPnl, gc);
 
 		setVisible(true);
-
 		UserDatabase.getInstance().write();
 		PostDatabase.getInstance().write();
 	}

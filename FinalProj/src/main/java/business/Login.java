@@ -19,7 +19,6 @@ public class Login {
 		UserService.getInstance().setCurrentUser(UserDatabase.getInstance().queryDatabase(email, password));
 		
 		return UserService.getInstance().getCurrentUser() != null;
-
 	}
 
 }

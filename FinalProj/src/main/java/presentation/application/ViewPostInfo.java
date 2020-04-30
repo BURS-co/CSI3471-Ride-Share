@@ -378,9 +378,13 @@ public class ViewPostInfo extends JDialog {
 				PostDatabase.getInstance().storeUpdate(r);
 
 				UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);
-
-				// Keep track of user logged in
-				// Application.loggedIn = u;
+				try {
+					PostDatabase.getInstance().write();
+					UserDatabase.getInstance().write();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block 
+					e.printStackTrace();
+				}
 
 				// ImageIcon icon = new ImageIcon("src/main/resources/poolfloat
 				// icon-yellow.png");

@@ -49,7 +49,6 @@ public class Admin extends User {
 	@Override
 	public String toString() {
 		return username + ",,," + email + ",,," + phoneNumber + ",,," + gradMonth + ",,," + gradYear + ",,," + password
-				+ ",,,true\n";
+				+ ",,,true,,," + joinNotif + ",,," + postCanceledNotif + "\n";
 	}
-
 }

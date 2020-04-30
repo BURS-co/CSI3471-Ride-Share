@@ -98,6 +98,10 @@ public class UserDatabase {
 						u.setGradYear(split[i]);
 					} else if (i == 5) {
 						u.setPassword(split[i]);
+					} else if(i == 7) {
+						u.setJoinNotif(split[i]);
+					} else if(i == 8) {
+						u.setPostCanceledNotif(split[i]);
 					}
 				}
 				// Add data
@@ -119,7 +123,7 @@ public class UserDatabase {
 	 */
 	public void write() throws IOException {
 		// open file
-		BufferedWriter write = new BufferedWriter(new FileWriter("userDatabase.txt"));
+		BufferedWriter write = new BufferedWriter(new FileWriter("userDatabase.txt", false));
 
 		for (User u : userData) {
 			write.write(u.toString());

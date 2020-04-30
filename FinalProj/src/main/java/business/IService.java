@@ -1,3 +1,6 @@
+/**
+ * @author Joseph Yu, Joshua Huertas
+ */
 package business;
 
 import enums.Failures;

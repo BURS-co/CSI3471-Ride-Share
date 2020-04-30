@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
@@ -26,6 +29,8 @@ import business.CreatePostValidate;
 import business.PostService;
 import business.UserService;
 import data.post.AbstractPost;
+import data.post.Driver;
+import data.post.Rider;
 import data.user.User;
 import enums.Failures;
 
@@ -229,6 +234,11 @@ public class CreatePost extends JDialog {
 					JOptionPane.showMessageDialog(null,
 							"Post created successfully.", "Create Post",
 							JOptionPane.INFORMATION_MESSAGE, icon);
+					if(SelectPostType.postTypeSelected.equalsIgnoreCase("driver")) {
+						post = new Driver(input);
+					}
+					else
+						post = new Rider(input);
 					dispose();
 				} else if (result == Failures.SameOriginandDestination) {
 					Application.log.log(Level.INFO, "Same origin and destination attempted.");

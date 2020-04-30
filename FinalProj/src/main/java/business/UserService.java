@@ -100,7 +100,7 @@ public class UserService implements IService {
 		Integer month = Calendar.getInstance().get(Calendar.MONTH);
 		Integer gradMonthSelect = Integer.parseInt(list[5]);
 		Integer gradYearSelect = Integer.parseInt(list[6]);
-		if (gradMonthSelect < month && gradYearSelect == year) {
+		if (gradMonthSelect < month && gradYearSelect <= year) {
 			result = Failures.invalidGraduationDate;
 			return result;
 		}

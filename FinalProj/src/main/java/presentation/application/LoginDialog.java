@@ -400,6 +400,12 @@ public class LoginDialog extends JDialog {
 
 			}
 
+			ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+			JOptionPane.showMessageDialog(null,
+					"Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
+					JOptionPane.INFORMATION_MESSAGE, icon);
+			Application.log.log(Level.INFO, getUsername() + " Login successful!");
+			
 			if (UserService.getInstance().getCurrentUser().getJoinNotif()) {
 				// trigger pop up that tells user another user wants to join their post
 				JOptionPane.showMessageDialog(null,
@@ -418,12 +424,7 @@ public class LoginDialog extends JDialog {
 				
 				UserService.getInstance().resetCanceledNotif();
 			}
-
-			ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
-			JOptionPane.showMessageDialog(null,
-					"Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
-					JOptionPane.INFORMATION_MESSAGE, icon);
-			Application.log.log(Level.INFO, getUsername() + " Login successful!");
+			
 			dispose();
 		} else {
 			JOptionPane.showMessageDialog(this, "Invalid username or password", "Login", JOptionPane.ERROR_MESSAGE);

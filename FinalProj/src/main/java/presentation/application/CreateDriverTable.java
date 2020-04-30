@@ -106,7 +106,6 @@ public class CreateDriverTable {
 		};
 		JTable driverTable = new JTable(model);
 		
-
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(driverTable.getModel());
 
 		List<RowSorter.SortKey> sortKeys = new ArrayList<SortKey>(25);

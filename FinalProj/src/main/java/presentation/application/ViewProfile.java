@@ -32,6 +32,7 @@ import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
 import data.post.Driver;
+import data.post.Prospects;
 import data.post.Rider;
 import data.user.User;
 
@@ -294,14 +295,20 @@ public class ViewProfile extends JDialog {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						String info = String.valueOf(box.getSelectedItem());
-						
+						String[] two = {"accept", "decline"};
 						String split[] = info.split(", ");
 						
 						AbstractPost p = PostDatabase.getInstance().searchDatabase(Integer.valueOf(split[0]));
 						
 						if(p instanceof Rider) {
-							((Rider) p).getDriver().getName();
+							JLabel label = new JLabel(((Rider) p).getDriver().getName());
+							JComboBox<String> accDec = new JComboBox<String>(two);
 						}else if(p instanceof Driver){
+							for(Prospects i : ((Driver) p).getRiders()) {
+								
+								JLabel label = new JLabel(((Rider) p).getDriver().getName());
+								JComboBox<String> accDec = new JComboBox<String>(two);
+							}
 							
 						}
 					}

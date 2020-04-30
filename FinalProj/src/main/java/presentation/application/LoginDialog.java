@@ -250,6 +250,7 @@ public class LoginDialog extends JDialog {
 
 					int res = JOptionPane.showConfirmDialog(null, "Would you like to take a Survey for Ride On:\n" + i.getDate(),
 							"Survey", JOptionPane.OK_CANCEL_OPTION);
+					// if OK give Survey
 					if (res == 1) {
 						SurveyGUI survey = new SurveyGUI(new JFrame());
 						survey.setVisible(true);

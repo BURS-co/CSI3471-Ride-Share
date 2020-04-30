@@ -11,12 +11,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import data.databaseControllers.PostDatabase;
+import data.databaseControllers.ReportDatabase;
+import data.databaseControllers.SurveyDatabase;
+import data.databaseControllers.UserDatabase;
+import data.survey.Survey;
+import data.user.User;
 
 public class AdminReport extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -63,7 +73,66 @@ public class AdminReport extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent event) {
-				System.out.println("View admin report coming soon");
+				Application.log.log(Level.INFO, "Admin Report Requested");
+				
+				String message = "";
+				
+				//num users
+				Integer numUsers = UserDatabase.getInstance().getUserData().size();
+				
+				message+="Number of active users: " + numUsers.toString() + "\n";
+				
+				//users by graduation year
+				String[] theYears = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
+				HashMap<String,Integer> years = new HashMap<String,Integer>();
+				
+				for(String s: theYears) {
+					years.put(s, 0);
+				}
+				
+				/*for(User u : UserDatabase.getInstance().getUserData()) {
+					years.put(u.getGradYear(), years.get(u.getGradYear()) + 1);
+				}*/
+				
+				message+= "Number of users by graduation year:\n";
+				for(int i = 0; i < theYears.length;i++) {
+					message += theYears[i] + " : " + years.get(theYears[i]).toString() + "\n";
+				}
+				message+="\n";
+				
+				//num posts
+				Integer numPosts = PostDatabase.getInstance().getPostData().size();
+				message+="Number of active posts: " + numPosts.toString() + "\n";
+				//posts by month(?)
+				
+				//num reports
+				Integer numReports = ReportDatabase.getInstance().getReportData().size();
+				message+="Number of reports: " + numReports.toString() + "\n";
+				
+				Integer numServ = SurveyDatabase.getInstance().getUserData().size();
+				message+="Number of surveys: " + numServ.toString() + "\n";
+				
+				//surveys by rating (0-5)
+				Integer[] ratings = { 0,1,2,3,4,5 };
+				HashMap<Integer,Integer> rating = new HashMap<Integer,Integer>();
+				
+				for(Integer s : ratings ) {
+					rating.put(s, 0);
+				}
+				for(Survey s : SurveyDatabase.getInstance().getUserData()) {
+					rating.put(s.getRating(), rating.get(s.getRating()) + 1);
+				}
+				
+				message+= "Number of surveys by rating:\n";
+				for(int i = 0; i < ratings.length;i++) {
+					message += ratings[i].toString() + " star: " + rating.get(ratings[i]).toString() + "\n";
+				}
+				
+				
+				
+				JOptionPane.showMessageDialog(null, message);
+				
+				
 			}
 		});
 		JButton btnCancel = new JButton("Cancel");

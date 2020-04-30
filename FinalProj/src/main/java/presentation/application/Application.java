@@ -348,7 +348,7 @@ public class Application extends JPanel {
 		myRidesBtn.setFocusPainted(false);
 
 		// query for rider posts
-		ArrayList<AbstractPost> myList = pDat.quereyDatabase(UserService.getInstance().getCurrentUser().getUsername());
+		ArrayList<AbstractPost> myList = pDat.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail());
 
 		myRidesTable = CreateMyRidesTable.createTable(myList);
 

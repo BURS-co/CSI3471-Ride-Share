@@ -2,7 +2,6 @@ package presentation.application;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -55,8 +54,6 @@ public class LoginDialog extends JDialog {
 	private JButton btnCancel;
 	private boolean succeeded;
 	private Font customFont;
-	String[] ratings = { "0", "1", "2", "3", "4", "5" };
-	JComboBox<String> rating = new JComboBox<String>(ratings);
 
 	public static JTextField tfREmail;
 	public static JTextField tftarget;
@@ -250,152 +247,8 @@ public class LoginDialog extends JDialog {
 					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
 
 				if (i.isExpired()) {
-					// Issue Survey
-					surveyPanel= new JDialog(new JFrame(), "Survey", true);
-					surveyPanel.setLayout(new GridBagLayout());
-					GridBagConstraints ss = new GridBagConstraints();
-					
-					surveyPanel.setBackground(new Color(255, 184, 25));
-
-					try {
-						customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
-								.deriveFont(12f);
-						GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-						// register the font
-						ge.registerFont(customFont);
-					} catch (IOException e) {
-						e.printStackTrace();
-					} catch (FontFormatException e) {
-						e.printStackTrace();
-					}
-
-					ss.fill = GridBagConstraints.HORIZONTAL;
-
-					//Start
-					JLabel lbEmail = new JLabel("Your baylor email: ");
-					lbEmail.setFont(customFont);
-					ss.gridx = 0;
-					ss.gridy = 0;
-					ss.gridwidth = 1;
-					ss.anchor = GridBagConstraints.FIRST_LINE_START;
-					lbEmail.setFont(customFont);
-					surveyPanel.add(lbEmail, ss);
-
-					tfREmail = new JTextField(20);
-					ss.gridx = 1;
-					ss.gridy = 0;
-					ss.gridwidth = 2;
-					
-					//ss.anchor = GridBagConstraints.FIRST_LINE_END;
-					tfREmail.setText(UserService.getInstance().getCurrentUser().getEmail());
-					surveyPanel.add(tfREmail, ss);
-
-					JLabel lbTarget = new JLabel("Email of person you're rating: ");
-					lbTarget.setFont(customFont);
-					ss.gridx = 0;
-					ss.gridy = 1;
-					ss.gridwidth = 1;
-					ss.anchor = GridBagConstraints.FIRST_LINE_START;
-					lbEmail.setFont(customFont);
-					surveyPanel.add(lbTarget, ss);
-
-					tftarget = new JTextField(20);
-					ss.gridx = 1;
-					ss.gridy = 1;
-					ss.gridwidth = 2;
-					ss.anchor = GridBagConstraints.FIRST_LINE_END;
-					surveyPanel.add(tftarget, ss);
-
-					JLabel lbReason = new JLabel("Comments: ");
-					lbReason.setFont(customFont);
-					ss.gridx = 0;
-					ss.gridy = 3;
-					ss.gridwidth = 2;
-					ss.anchor = GridBagConstraints.FIRST_LINE_START;
-					lbReason.setFont(customFont);
-					surveyPanel.add(lbReason, ss);
-
-					tfReason = new JTextArea();
-					ss.gridx = 1;
-					ss.gridy = 3;
-					ss.gridwidth = 2;
-					ss.gridheight = 2;
-					ss.anchor = GridBagConstraints.CENTER;
-					surveyPanel.add(tfReason, ss);
-
-					JLabel lbRate = new JLabel("Rating: ");
-					lbRate.setFont(customFont);
-					ss.gridx = 0;
-					ss.gridy = 2;
-					ss.gridwidth = 1;
-					ss.gridheight = 1;
-					ss.gridwidth = 1;
-					ss.anchor = GridBagConstraints.FIRST_LINE_START;
-					surveyPanel.add(lbRate, ss);
-
-					// rating = new JComboBox<String>(ratings);
-					rating.setSelectedIndex(-1);
-					ss.gridx = 1;
-					ss.gridy = 2;
-					ss.gridwidth = 1;
-					ss.anchor = GridBagConstraints.FIRST_LINE_END;
-					surveyPanel.add(rating, ss);
-
-					JButton btnSubmit = new JButton("Submit");
-					btnSubmit.setFont(customFont);
-					btnSubmit.setBackground(new Color(255, 184, 25));
-					btnSubmit.setBorderPainted(false);
-					btnSubmit.setOpaque(true);
-
-					btnSubmit.addActionListener(new ActionListener() {
-
-						/*
-						 * (non-Javadoc)
-						 * 
-						 * @see
-						 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-						 */
-						public void actionPerformed(ActionEvent e) {
-							Application.log.log(Level.INFO, "Survey submitted");
-
-							String score = String.valueOf(rating.getSelectedItem());
-
-							String[] info = { tfREmail.getText(), tftarget.getText(), score, tfReason.getText()  };
-
-							Failures result = SurveyService.getInstance().verify(info);
-
-							switch (result) {
-							case emptyField:
-								JOptionPane.showMessageDialog(null, "Fields must not be empty. Please Fill in All Fields", "Survey",
-										JOptionPane.ERROR_MESSAGE);
-								break;
-							case SurveyField2notANumber:
-								JOptionPane.showMessageDialog(null, "Please Enter A Valid Number For Rating", "Survey",
-										JOptionPane.ERROR_MESSAGE);
-								break;
-							case SurveyField3TooLong:
-								JOptionPane.showMessageDialog(null, "Your Comment is Too Long, Please Enter >300 Characters", "Survey",
-										JOptionPane.ERROR_MESSAGE);
-								break;
-							default:
-								dispose();
-								surveyPanel.dispose();
-								break;
-							}
-
-						}
-					});
-
-					ss.gridx = 1;
-					ss.gridy = 5;
-					surveyPanel.add(btnSubmit, ss);
-
-					surveyPanel.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-					surveyPanel.setBounds(300, 300, 400, 200);
-					surveyPanel.setVisible(true);
-					
-					surveyPanel.pack();
-					
+					SurveyGUI survey = new SurveyGUI(new JFrame());
+					survey.setVisible(true);
 				}
 
 			}

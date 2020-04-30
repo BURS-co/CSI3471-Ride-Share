@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
+import data.post.AbstractPost;
+import data.post.Rider;
 import data.user.Admin;
 import data.user.User;
 
@@ -155,5 +157,11 @@ public class UserDatabase {
 		}
 		
 		return result;
+	}
+
+	public void storeUpdate(AbstractPost p) {
+		
+		//TODO this.queryDatabase(p.getPoster());
+		
 	}
 }

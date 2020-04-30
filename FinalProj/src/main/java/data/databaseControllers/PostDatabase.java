@@ -163,4 +163,9 @@ public class PostDatabase {
 		postData.add(p);
 	}
 
+	public void storeUpdate(Rider r) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

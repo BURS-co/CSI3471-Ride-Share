@@ -370,6 +370,8 @@ public class ViewPostInfo extends JDialog {
 				
 				r.setDriver(driver);
 				
+				PostDatabase.getInstance().storeUpdate(r);
+				
 				UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);
 				
 				// Keep track of user logged in

@@ -64,6 +64,8 @@ public class ViewProfile extends JDialog {
 
 	String[] months = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
 	String[] years = { "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027" };
+	public static JComboBox<String> box;
+	public static JDialog selectPst;
 
 	/**
 	 * Creates and displays the user's profile
@@ -268,7 +270,7 @@ public class ViewProfile extends JDialog {
 					System.out.println(i.toString());
 				}
 
-				JDialog selectPst = new JDialog(parent, "Select Post", true);
+				selectPst = new JDialog(parent, "Select Post", true);
 				JPanel selection = new JPanel();
 				selection.setLayout(new GridBagLayout());
 				GridBagConstraints sc = new GridBagConstraints();
@@ -282,7 +284,7 @@ public class ViewProfile extends JDialog {
 					arr[i] = posts.get(i).getID() + ", " + posts.get(i).getOrigin() + ", " + posts.get(i).getDest() + ", " + date;
 				}
 
-				JComboBox<String> box = new JComboBox<String>(arr);
+				box = new JComboBox<String>(arr);
 				box.setSelectedIndex(-1);
 
 				JButton select = new JButton("select");
@@ -292,7 +294,7 @@ public class ViewProfile extends JDialog {
 				select.setOpaque(true);
 				select.addActionListener(new ActionListener() {
 
-					@Override
+					//@Override
 					public void actionPerformed(ActionEvent e) {
 						String info = String.valueOf(box.getSelectedItem());
 						String[] two = { "accept", "decline" };

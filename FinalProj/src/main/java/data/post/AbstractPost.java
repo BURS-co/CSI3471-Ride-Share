@@ -44,8 +44,8 @@ public abstract class AbstractPost {
 
 	public AbstractPost() {
 		// TODO Auto-generated constructor stub
-		//this.ID = ID_counter;
-		//ID_counter++;
+		// this.ID = ID_counter;
+		// ID_counter++;
 	}
 
 	public String getPoster() {
@@ -83,7 +83,7 @@ public abstract class AbstractPost {
 	public abstract String toString();
 
 	public boolean isExpired() {
-		
+    // 
 		return new Date().after(this.date);
 	}
 }

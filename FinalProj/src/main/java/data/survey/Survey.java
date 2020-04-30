@@ -133,26 +133,7 @@ public class Survey {
 	@Override
 	public String toString() {
 
-		int rate;
-
-		switch (rating) {
-		case noStars:
-			rate = 0;
-		case oneStar:
-			rate = 1;
-		case twoStars:
-			rate = 2;
-		case threeStars:
-			rate = 3;
-		case fourStars:
-			rate = 4;
-		case fiveStars:
-			rate = 5;
-		default:
-			rate = -1;
-		}
-
-		return this.name + ",,," + this.target + ",,," + rate + ",,," + this.comments + "\n";
+		return this.name + ",,," + this.target + ",,," + getRating() + ",,," + this.comments + "\n";
 	}
 
 }

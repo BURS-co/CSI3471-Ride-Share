@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
@@ -25,10 +24,6 @@ import javax.swing.JPanel;
 import business.PostService;
 import business.UserService;
 import data.databaseControllers.PostDatabase;
-import data.databaseControllers.UserDatabase;
-import data.post.Driver;
-import data.post.Prospects;
-import data.post.Rider;
 
 public class ViewPostInfo extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -172,8 +167,8 @@ public class ViewPostInfo extends JDialog {
 				// Application.loggedIn = u;
 
 				ImageIcon icon = new ImageIcon("src/main/resources/poolfloaticon-yellow.png");
-				 JOptionPane.showMessageDialog(null, "You have successfully joined a ride.", "View Post Info",
-				 JOptionPane.INFORMATION_MESSAGE, icon);
+				JOptionPane.showMessageDialog(null, "You have successfully joined a ride.", "View Post Info",
+						JOptionPane.INFORMATION_MESSAGE, icon);
 				Application.log.log(Level.INFO, "A ride was joined");
 				dispose();
 
@@ -350,9 +345,9 @@ public class ViewPostInfo extends JDialog {
 
 				PostService.getInstance().joinDriver(postID);
 
-				 ImageIcon icon = new ImageIcon("src/main/resources/poolfloaticon-yellow.png");
-				 JOptionPane.showMessageDialog(null, "You have successfully offered a ride.", "View Post Info",
-				 JOptionPane.INFORMATION_MESSAGE, icon);
+				ImageIcon icon = new ImageIcon("src/main/resources/poolfloaticon-yellow.png");
+				JOptionPane.showMessageDialog(null, "You have successfully offered a ride.", "View Post Info",
+						JOptionPane.INFORMATION_MESSAGE, icon);
 				Application.log.log(Level.INFO, name + "was offered a ride");
 				dispose();
 

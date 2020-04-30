@@ -175,6 +175,8 @@ public class ViewPostInfo extends JDialog {
 					riders.add(rider);
 					d.setRiders(riders);
 					
+					System.out.println(d.toString());
+					
 					PostDatabase.getInstance().storeUpdate(d);
 					
 					UserDatabase.getInstance().queryDatabase(d.getPoster()).setJoinNotif(true);

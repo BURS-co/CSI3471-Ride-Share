@@ -1,6 +1,6 @@
 Rider-0-bobby_baylor1@baylor.edu-Bush-Baylor-30 Mar 2020 11:09 AM-leighton_glim1@baylor.edu-false
 Driver-1-andrew_ammentorp1@baylor.edu-Hobby-Baylor-30 Mar 2020 11:00 AM-1-leighton_glim1@baylor.edu-true
-Rider-2-bobby_baylor1@baylor.edu-Baylor-Bush-30 Mar 2020 11:09 AM
+Rider-2-bobby_baylor1@baylor.edu-Baylor-Bush-30 Mar 2020 11:09 AM-andrew_ammentorp1@baylor.edu-false
 Driver-3-andrew_ammentorp1@baylor.edu-Baylor-Hobby-30 Mar 2020 11:00 AM-1
 Rider-4-leighton_glim1@baylor.edu-Baylor-DAL-28 Apr 2020 06:15 PM
 Driver-5-leighton_glim1@baylor.edu-DAL-Baylor-29 Apr 2020 04:20 PM-3

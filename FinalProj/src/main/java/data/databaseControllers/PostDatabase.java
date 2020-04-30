@@ -127,12 +127,12 @@ public class PostDatabase {
         return result;
     }
 	
-	final public int searchDatabase(String email) {
+	final public int searchDatabaseInt(int id) {
 		// The queryDatabase could be instead searching for a specific post
 		int result = 0;
 
 		for (AbstractPost p : postData) {
-			if (p.getPoster().equalsIgnoreCase(email)) {
+			if (p.getID() == id) {
 				break;
 			}
 			result++;
@@ -177,9 +177,10 @@ public class PostDatabase {
 	}
 
 	public void storeUpdate(AbstractPost p) {
-		// TODO Auto-generated method stub
-		
-		this.postData.set(this.searchDatabase(p.getPoster()), p);
+		// TODO Auto-generated method stub :(
+		System.out.println("IN DATABASE STORE UPDATE\n\n" + this.postData.get(this.searchDatabaseInt(p.getID())).toString());
+		this.postData.set(this.searchDatabaseInt(p.getID()), p);
+		System.out.println(this.postData.get(this.searchDatabaseInt(p.getID())).toString());
 		
 	}
 

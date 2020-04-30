@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import business.Login;
@@ -228,14 +229,16 @@ public class LoginDialog extends JDialog {
 			for (AbstractPost i : PostDatabase.getInstance()
 					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
 				if (i.isExpired()) {
+					//debugging
+					System.out.println("Bruh");
 					/* trigger pop up for survey and pass the results to survey service */
-					JPanel surveyPanel = new JPanel(new GridBagLayout());
+					JDialog surveyPanel = new JDialog();
 					GridBagConstraints ss = new GridBagConstraints();
 					
 					String[] ratings = { "0", "1", "2", "3", "4", "5"};
 					
 					JLabel lbReason;
-					JTextField tfReason;
+					JTextArea tfReason;
 
 					try {
 						customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -282,13 +285,6 @@ public class LoginDialog extends JDialog {
 					ss.gridwidth = 2;
 					surveyPanel.add(tftarget);
 					
-					///
-					
-					//rating
-					ss.gridx = 0;
-					ss.gridy = 2;
-					ss.gridwidth = 2;
-					surveyPanel.add(rating, ss);
 					
 					//Reason
 					lbReason = new JLabel("Comments: ");
@@ -299,7 +295,7 @@ public class LoginDialog extends JDialog {
 					surveyPanel.add(lbReason, ss);
 
 
-					tfReason = new JTextField(300);
+					tfReason = new JTextArea();
 					
 					
 					ss.gridx = 1;
@@ -344,6 +340,9 @@ public class LoginDialog extends JDialog {
 							dispose();
 						}
 					});
+					
+					surveyPanel.setVisible(true);
+					surveyPanel.pack();
 					
 					//TODO parse field
 

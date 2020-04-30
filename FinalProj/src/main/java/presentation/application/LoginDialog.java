@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
@@ -224,13 +225,24 @@ public class LoginDialog extends JDialog {
 	public void authenticate() {
 		if (Login.authenticate(tfEmail.getText(), getPassword())) {
 			succeeded = true;
-
+			//System.out.println("Yer login was good chap");
+			//System.out.println(UserService.getInstance().getCurrentUser().toString());
+			try {
+				PostDatabase.getInstance().load();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			// *******************************TODO************************
-			for (AbstractPost i : PostDatabase.getInstance()
-					.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
+			for (AbstractPost i : PostDatabase.getInstance().
+					quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
+				
 				if (i.isExpired()) {
 					//debugging
-					System.out.println("Bruh");
+					//System.out.println("Bruh");
 					/* trigger pop up for survey and pass the results to survey service */
 					JDialog surveyPanel = new JDialog();
 					GridBagConstraints ss = new GridBagConstraints();

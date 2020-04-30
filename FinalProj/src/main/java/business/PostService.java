@@ -148,8 +148,9 @@ public class PostService implements IService {
 
 	// @Override
 	public void store(String[] list) {
-		PostDatabase.addPost(create(list));
+		PostDatabase.getInstance().addPost(create(list));
 	}
+	
 
 	// @Override
 	public AbstractPost create(String[] list) {

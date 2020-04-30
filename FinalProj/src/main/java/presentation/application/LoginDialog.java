@@ -227,9 +227,23 @@ public class LoginDialog extends JDialog {
 				if(i.isExpired()) {
 					/*trigger pop up for survey and pass the results to survey service*/
 
+					
 					String[] info = {};
-					SurveyService.getInstance().verify(info);
-					//calls verify(string [])
+					
+					Failures result = SurveyService.getInstance().verify(info);
+					
+					switch(result) {
+					case emptyField:
+						//do thing
+					break;
+					case SurveyField2notANumber:
+						//do thing
+					break;
+					case SurveyField3TooLong:
+						//do thing
+					break;
+					}
+
 				}
 			}
 			

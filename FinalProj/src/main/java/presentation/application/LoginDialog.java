@@ -223,7 +223,7 @@ public class LoginDialog extends JDialog {
 			succeeded = true;
 			
 			//*******************************TODO************************
-			for(AbstractPost i : PostDatabase.queryDatabase(UserService.getInstance().getCurrentUser().getEmail()))) {
+			for(AbstractPost i : PostDatabase.getInstance().quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
 				if(i.isExpired()) {
 					/*trigger pop up for survey and pass the results to survey service*/
 					String[] info = {};

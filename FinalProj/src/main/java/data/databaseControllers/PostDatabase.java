@@ -116,7 +116,7 @@ public class PostDatabase {
 		return postData;
 	}
 
-	final public static AbstractPost queryDatabase(String post) {
+	final public static AbstractPost searchDatabase(String post) {
 		// The queryDatabase could be instead searching for a specific post
 		AbstractPost result = null;
 
@@ -132,7 +132,7 @@ public class PostDatabase {
 	 * @param type
 	 * @return an array of post of said type
 	 */
-	final public ArrayList<AbstractPost> searchDatabase(String type) {
+	final public ArrayList<AbstractPost> quereyDatabase(String type) {
 		ArrayList<AbstractPost> query = new ArrayList<AbstractPost>();
 
 		for (AbstractPost p : postData) {

@@ -376,6 +376,10 @@ public class LoginDialog extends JDialog {
 
 						}
 					});
+					
+					ss.gridx = 1;
+					ss.gridy = 5;
+					surveyPanel.add(btnSubmit,ss);
 
 					surveyPanel.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 					surveyPanel.setVisible(true);

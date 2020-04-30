@@ -127,12 +127,12 @@ public class PostDatabase {
         return result;
     }
 	
-	final public int searchDatabase(String ID) {
+	final public int searchDatabase(String email) {
 		// The queryDatabase could be instead searching for a specific post
 		int result = 0;
 
 		for (AbstractPost p : postData) {
-			if (p.getPoster().equalsIgnoreCase(ID)) {
+			if (p.getPoster().equalsIgnoreCase(email)) {
 				break;
 			}
 			result++;

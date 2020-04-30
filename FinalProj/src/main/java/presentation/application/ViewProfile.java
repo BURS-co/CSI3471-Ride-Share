@@ -305,7 +305,8 @@ public class ViewProfile extends JDialog {
 						AbstractPost p = PostDatabase.getInstance().searchDatabase(Integer.valueOf(split[0]));
 
 						if (p instanceof Rider) {
-							if (!((Rider) p).getDriver().getStatus()) {
+							
+							if (((Rider) p).getDriver() != null && !((Rider) p).getDriver().getStatus()) {
 								JLabel label = new JLabel(((Rider) p).getDriver().getName());
 								JComboBox<String> accDec = new JComboBox<String>(two);
 

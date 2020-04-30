@@ -48,7 +48,7 @@ public class CreateRiderTable {
 		}
 
 		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date", "" };
-		riderData = new Object[1000][riderPostLabels.length];
+		riderData = new Object[rlist.size()][riderPostLabels.length];
 
 		for (int r = 0; r < rlist.size(); r++) {
 			for (int c = 0; c < 5; c++) {

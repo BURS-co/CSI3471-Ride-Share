@@ -663,6 +663,7 @@ public class Application extends JPanel {
 		JFrame mainFrame = new JFrame("BearPool");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
 		Application app = new Application();
 		app.setOpaque(true);
 		mainFrame.setContentPane(app);

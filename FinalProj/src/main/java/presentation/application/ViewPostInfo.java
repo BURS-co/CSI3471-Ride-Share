@@ -247,7 +247,7 @@ public class ViewPostInfo extends JDialog {
 	 *               of ride
 	 * @return
 	 */
-	public ViewPostInfo(JFrame parent, String name, String orig, String dest, String date, final String postID) {
+	public ViewPostInfo(JFrame parent, final String name, String orig, String dest, String date, final String postID) {
 		super(parent, "Post Info", true);
 
 		JPanel panel = new JPanel(new GridBagLayout());

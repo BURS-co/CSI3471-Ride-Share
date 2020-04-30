@@ -240,4 +240,35 @@ public class PostService implements IService {
 		}
 	}
 	
+	public void updateProspect(AbstractPost p, boolean [] b) {
+		int counter = 0;
+		
+		if(p instanceof Rider) {
+			
+			if(!((Rider) p).getDriver().getStatus()) {
+				((Rider) p).getDriver().setStatus(b[counter]);
+			}
+		}
+		else if (p instanceof Driver) {
+			
+			for(Prospects i : ((Driver) p).getRiders()) {
+				if(!i.getStatus()) {
+					if(b[counter]) {
+						i.setStatus(b[counter]);
+						counter++;
+					}
+				}
+			}
+			
+			ArrayList<Prospects> updated = new ArrayList<Prospects>();
+			for(Prospects i : ((Driver) p).getRiders()) {
+				if(!i.getStatus()) {
+					updated.add(i);
+				}
+			}
+			((Driver) p).setRiders(updated);
+			
+		}
+	}
+	
 }

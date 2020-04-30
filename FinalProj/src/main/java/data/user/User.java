@@ -15,7 +15,6 @@ public class User {
 	protected String gradMonth;
 	protected String gradYear;
 	
-	protected List<AbstractPost> posts;
 	protected boolean joinNotif;
 	protected boolean postCanceledNotif;
 
@@ -209,14 +208,6 @@ public class User {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
-	}
-
-	public void setPosts(List<AbstractPost> l) {
-		this.posts = l;
-	}
-	
-	public List<AbstractPost> getPosts() {
-		return this.posts;
 	}
 	
 	public boolean getJoinNotif() {

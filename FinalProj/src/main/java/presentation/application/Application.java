@@ -62,6 +62,7 @@ public class Application {
 	/*
 	 * Initializing logger
 	 */
+	
 	static {
 		try {
 			fh = new FileHandler("projectLog.txt", true);

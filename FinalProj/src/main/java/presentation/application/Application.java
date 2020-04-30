@@ -148,12 +148,11 @@ public class Application extends JPanel {
 
 		// Load posts
 		PostDatabase pDat = PostDatabase.getInstance();
-		pDat.load();
 
 		// Set up tool-tips
 		UIManager.put("ToolTip.background", Color.white);
 		UIManager.put("ToolTip.border", new LineBorder(Color.BLACK, 1));
-		
+
 		// Setting up GridBagLayout
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
@@ -460,36 +459,29 @@ public class Application extends JPanel {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-			/*		if (CreatePost.post instanceof Driver) {
-						String driver = CreatePost.post.getPoster();
-						Integer riderLimit = ((Driver) CreatePost.post).getRiderLimit();
-						String origin = CreatePost.post.getOrigin();
-						String dest = CreatePost.post.getDest();
-						SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
-						String date = df.format(CreatePost.post.getDate());
-
-						Object[] row = { riderLimit, driver, origin, dest, date, CreatePost.post.getID() };
-
-						if(driverTableUp) {
-						//	dTable.addRow(row);
-							dTable.fireTableDataChanged();
-							CreatePost.setSucceeded(false);
-						}
-					} else {
-						String poster = CreatePost.post.getPoster();
-						String origin = CreatePost.post.getOrigin();
-						String dest = CreatePost.post.getDest();
-						SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
-						String date = df.format(CreatePost.post.getDate());
-
-						Object[] row = { poster, origin, dest, date, CreatePost.post.getID() };
-
-						if(riderTableUp) {
-						//	rTable.addRow(row);
-							rTable.fireTableDataChanged();
-							CreatePost.setSucceeded(false);
-						}
-					}*/
+					/*
+					 * if (CreatePost.post instanceof Driver) { String driver =
+					 * CreatePost.post.getPoster(); Integer riderLimit = ((Driver)
+					 * CreatePost.post).getRiderLimit(); String origin =
+					 * CreatePost.post.getOrigin(); String dest = CreatePost.post.getDest();
+					 * SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a"); String
+					 * date = df.format(CreatePost.post.getDate());
+					 * 
+					 * Object[] row = { riderLimit, driver, origin, dest, date,
+					 * CreatePost.post.getID() };
+					 * 
+					 * if(driverTableUp) { // dTable.addRow(row); dTable.fireTableDataChanged();
+					 * CreatePost.setSucceeded(false); } } else { String poster =
+					 * CreatePost.post.getPoster(); String origin = CreatePost.post.getOrigin();
+					 * String dest = CreatePost.post.getDest(); SimpleDateFormat df = new
+					 * SimpleDateFormat("dd MMM yyyy hh:mm a"); String date =
+					 * df.format(CreatePost.post.getDate());
+					 * 
+					 * Object[] row = { poster, origin, dest, date, CreatePost.post.getID() };
+					 * 
+					 * if(riderTableUp) { // rTable.addRow(row); rTable.fireTableDataChanged();
+					 * CreatePost.setSucceeded(false); } }
+					 */
 				}
 
 			}
@@ -534,7 +526,7 @@ public class Application extends JPanel {
 
 		// Adding Panel to frame
 		add(selection, gc);
-		
+
 		// tables
 		// query for rider posts
 		ArrayList<AbstractPost> rlist = pDat.quereyDatabase("rider");
@@ -567,7 +559,7 @@ public class Application extends JPanel {
 		riderTable.setOpaque(true);
 		driverTable.setOpaque(true);
 
-		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date","" };
+		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date", "" };
 		rTable = (DefaultTableModel) riderTable.getModel();
 
 		riderTable.getColumn(riderPostLabels[0]).setPreferredWidth(100);
@@ -597,7 +589,7 @@ public class Application extends JPanel {
 			}
 		});
 
-		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date","" };
+		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date", "" };
 		dTable = (DefaultTableModel) driverTable.getModel();
 		driverTable.getColumn(driverPostLabels[0]).setPreferredWidth(30);
 		driverTable.getColumn(driverPostLabels[1]).setPreferredWidth(100);
@@ -627,7 +619,7 @@ public class Application extends JPanel {
 				}
 			}
 		});
-		
+
 		/** Filter Panel **/
 		searchPnl = new JPanel();
 		fc = new GridBagConstraints();
@@ -673,7 +665,6 @@ public class Application extends JPanel {
 
 		JFrame mainFrame = new JFrame("BearPool");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
 		Application app = new Application();
 		app.setOpaque(true);

@@ -494,11 +494,8 @@ public class Application extends JPanel {
 						  rTable.fireTableRowsInserted(rTable.getRowCount(), rTable.getRowCount());
 						  CreatePost.setSucceeded(false); 
 					  } 
-				
-				}
-					 
-				}
-
+				}	 
+			 }
 			}
 		});
 

@@ -48,7 +48,6 @@ public class CreateMyRidesTable {
 		DefaultTableModel model;
 		if (myRides.size() > 0) {
 			myRidesData = new Object[myRides.size()][myRidesLabels.length];
-
 			for (int r = 0; r < myRides.size(); r++) {
 				if (myRides.get(r).getPoster() != UserService.getInstance().getCurrentUser().getUsername()) {
 					for (int c = 0; c < 5; c++) {

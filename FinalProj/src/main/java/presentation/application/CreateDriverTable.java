@@ -53,10 +53,10 @@ public class CreateDriverTable {
 			e.printStackTrace();
 		}
 
-		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
+		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date", "" };
 		driverData = new Object[dlist.size()][driverPostLabels.length];
 		for (int r = 0; r < dlist.size(); r++) {
-			for (int c = 0; c < 5; c++) {
+			for (int c = 0; c < 6; c++) {
 				if (c == 0) {
 					driverData[r][c] = new String(((Driver) dlist.get(r)).getRiderLimit().toString());
 				} else if (c == 1) {
@@ -69,6 +69,8 @@ public class CreateDriverTable {
 					SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy hh:mm a");
 					String str = df.format(dlist.get(r).getDate());
 					driverData[r][c] = new String(str);
+				} else if (c == 5) {
+					driverData[r][c] = new String(String.valueOf((dlist.get(r).getID())));
 				}
 			}
 		}
@@ -103,6 +105,7 @@ public class CreateDriverTable {
 			};
 		};
 		JTable driverTable = new JTable(model);
+		
 
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(driverTable.getModel());
 

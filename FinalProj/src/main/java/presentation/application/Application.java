@@ -41,6 +41,7 @@ import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
 import data.user.Admin;
+import data.user.User;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph
@@ -257,13 +258,15 @@ public class Application {
 		// DefaultTableModel rTable = new DefaultTableModel();
 		// riderTable.setModel(rTable);
 
-		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
+		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date", "" };
 		rTable = (DefaultTableModel) riderTable.getModel();
 
 		riderTable.getColumn(riderPostLabels[0]).setPreferredWidth(100);
 		riderTable.getColumn(riderPostLabels[1]).setPreferredWidth(35);
 		riderTable.getColumn(riderPostLabels[2]).setPreferredWidth(50);
 		riderTable.getColumn(riderPostLabels[3]).setPreferredWidth(100);
+		riderTable.getColumn(riderPostLabels[4]).setPreferredWidth(0);
+		riderTable.removeColumn(riderTable.getColumn(riderPostLabels[4]));
 
 		riderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		// When selection changes, provide user with row numbers for both view & model.
@@ -278,20 +281,22 @@ public class Application {
 					String orig = (String) riderTable.getValueAt(viewRow, 1);
 					String dest = (String) riderTable.getValueAt(viewRow, 2);
 					String date = (String) riderTable.getValueAt(viewRow, 3);
-					ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date);
+					String postID = (String) riderTable.getModel().getValueAt(viewRow, 4);
+					ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date, postID);
 					vpi.setVisible(true);
 
 				}
 			}
 		});
 
-		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date" };
+		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date","" };
 		dTable = (DefaultTableModel) driverTable.getModel();
 		driverTable.getColumn(driverPostLabels[0]).setPreferredWidth(30);
 		driverTable.getColumn(driverPostLabels[1]).setPreferredWidth(100);
 		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);
 		driverTable.getColumn(driverPostLabels[3]).setPreferredWidth(50);
 		driverTable.getColumn(driverPostLabels[4]).setPreferredWidth(100);
+		driverTable.removeColumn(driverTable.getColumn(driverPostLabels[5]));
 
 		driverTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		// When selection changes, provide user with row numbers for both view & model.
@@ -307,7 +312,8 @@ public class Application {
 					String orig = (String) driverTable.getValueAt(viewRow, 2);
 					String dest = (String) driverTable.getValueAt(viewRow, 3);
 					String date = (String) driverTable.getValueAt(viewRow, 4);
-					ViewPostInfo vpi = new ViewPostInfo(mainFrame, seats, name, orig, dest, date);
+					String postID = (String) driverTable.getModel().getValueAt(viewRow, 5);
+					ViewPostInfo vpi = new ViewPostInfo(mainFrame, seats, name, orig, dest, date, postID);
 					vpi.setVisible(true);
 
 				}
@@ -535,7 +541,7 @@ public class Application {
 
 		myRidesTable.setOpaque(true);
 
-		String[] myRidesLabels = { "Type", "Poster", "Origin", "Destination", "Date" };
+		String[] myRidesLabels = { "Type", "Poster", "Origin", "Destination", "Date", "" };
 		myRidesModel = (DefaultTableModel) myRidesTable.getModel();
 
 		myRidesTable.getColumn(myRidesLabels[0]).setPreferredWidth(35);
@@ -543,6 +549,7 @@ public class Application {
 		myRidesTable.getColumn(myRidesLabels[2]).setPreferredWidth(50);
 		myRidesTable.getColumn(myRidesLabels[3]).setPreferredWidth(50);
 		myRidesTable.getColumn(myRidesLabels[4]).setPreferredWidth(100);
+		driverTable.removeColumn(driverTable.getColumn(myRidesLabels[5]));
 
 		if (myList.size() > 0) {
 			myRidesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -559,7 +566,8 @@ public class Application {
 						String orig = (String) myRidesTable.getValueAt(viewRow, 2);
 						String dest = (String) myRidesTable.getValueAt(viewRow, 3);
 						String date = (String) myRidesTable.getValueAt(viewRow, 4);
-						ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date);
+						String postId = (String) myRidesTable.getValueAt(viewRow, 5);
+						ViewPostInfo vpi = new ViewPostInfo(mainFrame, name, orig, dest, date, postId);
 						vpi.setVisible(true);
 
 					}

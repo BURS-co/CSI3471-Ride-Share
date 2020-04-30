@@ -44,11 +44,10 @@ public class CreateMyRidesTable {
 			e.printStackTrace();
 		}
 
-		String[] myRidesLabels = { "Type", "Poster", "Origin", "Destination", "Date" };
+		String[] myRidesLabels = { "Type", "Poster", "Origin", "Destination", "Date", "" };
 		DefaultTableModel model;
 		if (myRides.size() > 0) {
 			myRidesData = new Object[myRides.size()][myRidesLabels.length];
-
 			for (int r = 0; r < myRides.size(); r++) {
 				if (myRides.get(r).getPoster() != UserService.getInstance().getCurrentUser().getUsername()) {
 					for (int c = 0; c < 5; c++) {
@@ -67,6 +66,8 @@ public class CreateMyRidesTable {
 							SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy hh:mm a");
 							String str = df.format(myRides.get(r).getDate());
 							myRidesData[r][c] = new String(str);
+						} else if (c == 5) {
+							myRidesData[r][c] = new String(String.valueOf((myRides.get(r).getID())));
 						}
 					}
 				}

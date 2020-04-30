@@ -275,9 +275,14 @@ public class ViewProfile extends JDialog {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						//TODO
+						
 					}
 					
 				});
+				
+				selection.add(box);
+				selection.add(select);
+				
 			}
 			
 		});

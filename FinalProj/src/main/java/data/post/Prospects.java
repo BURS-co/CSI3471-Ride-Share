@@ -12,7 +12,7 @@ public class Prospects {
 		// TODO Auto-generated constructor stub
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 

@@ -24,7 +24,7 @@ public class Rider extends AbstractPost {
 		String result = "Rider" + "-" + this.ID + "-" + poster + "-" + origin + "-" + dest + "-" + str;
 
 		if (driver != null) {
-			result += "-" + driver;
+			result += "-" + driver.getName() + "-" + driver.getStatus();
 		}
 		result += "\n";
 

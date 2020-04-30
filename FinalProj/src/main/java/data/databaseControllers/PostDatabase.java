@@ -39,7 +39,7 @@ public class PostDatabase {
 		return postDatabase;
 	}
 
-	private static ArrayList<AbstractPost> postData = new ArrayList<AbstractPost>();
+	private ArrayList<AbstractPost> postData = new ArrayList<AbstractPost>();
 
 	public void load() throws ParseException, IOException {
 		try {
@@ -111,18 +111,31 @@ public class PostDatabase {
 
 	}
 
-	public static ArrayList<AbstractPost> getPostData() {
+	public ArrayList<AbstractPost> getPostData() {
 		return postData;
 	}
 
 	final public AbstractPost searchDatabase(int ID) {
+        // The queryDatabase could be instead searching for a specific post
+        AbstractPost result = null;
+
+        for (AbstractPost p : postData) {
+            if (p.getID() == ID) {
+                result = p;
+            }
+        }
+        return result;
+    }
+	
+	final public int searchDatabase(String ID) {
 		// The queryDatabase could be instead searching for a specific post
-		AbstractPost result = null;
+		int result = 0;
 
 		for (AbstractPost p : postData) {
-			if (p.getID() == ID) {
-				result = p;
+			if (p.getPoster().equalsIgnoreCase(ID)) {
+				break;
 			}
+			result++;
 		}
 		return result;
 	}
@@ -159,12 +172,14 @@ public class PostDatabase {
 		return query;
 	}
 
-	public static void addPost(AbstractPost p) {
+	public void addPost(AbstractPost p) {
 		postData.add(p);
 	}
 
-	public void storeUpdate(Rider r) {
+	public void storeUpdate(AbstractPost p) {
 		// TODO Auto-generated method stub
+		
+		this.postData.set(this.searchDatabase(p.getPoster()), p);
 		
 	}
 

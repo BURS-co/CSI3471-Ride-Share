@@ -380,7 +380,7 @@ public class ViewPostInfo extends JDialog {
 				r.setDriver(driver);
 				
 				
-				System.out.println(PostDatabase.getInstance().quereyDatabase(r.getID()).toString);
+				//System.out.println(PostDatabase.getInstance().quereyDatabase(r.getID()).toString);
 				PostDatabase.getInstance().storeUpdate(r);
 				
 				UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);

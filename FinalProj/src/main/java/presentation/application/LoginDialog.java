@@ -30,6 +30,7 @@ import business.SurveyService;
 import business.UserService;
 import data.databaseControllers.PostDatabase;
 import data.post.AbstractPost;
+import enums.Failures;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim

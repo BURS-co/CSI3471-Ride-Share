@@ -144,4 +144,16 @@ public class UserDatabase {
 		}
 		return result;
 	}
+
+	public User queryDatabase(String poster) {
+		User result = null;
+		
+		for (User u : userData) {
+			if (u.getEmail().toLowerCase().equals(poster.toLowerCase())) {
+				result = u;
+			}
+		}
+		
+		return result;
+	}
 }

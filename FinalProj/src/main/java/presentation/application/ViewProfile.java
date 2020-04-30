@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -24,7 +25,9 @@ import javax.swing.JTextField;
 
 import business.UserService;
 import business.ValidateAccountInfo;
+import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
+import data.post.AbstractPost;
 import data.user.User;
 
 /**
@@ -245,7 +248,12 @@ public class ViewProfile extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// code
+				//TODO
+				
+				List<AbstractPost> posts = 
+						PostDatabase.getInstance().quereyDatabase(UserService.getInstance().getCurrentUser().getEmail());
+				
+				
 				
 			}
 			

@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -23,6 +25,7 @@ import business.UserService;
 import data.post.Rider;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
+import data.post.Driver;
 import data.post.Prospects;
 
 public class ViewPostInfo extends JDialog {
@@ -43,7 +46,7 @@ public class ViewPostInfo extends JDialog {
 	 *               of ride
 	 * @return
 	 */
-	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date, String postId) {
+	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date, String postID) {
 		super(parent, "Post Info", true);
 
 		JPanel panel = new JPanel(new GridBagLayout());
@@ -55,7 +58,7 @@ public class ViewPostInfo extends JDialog {
 		JLabel o = new JLabel(orig);
 		JLabel d = new JLabel(dest);
 		JLabel dt = new JLabel(date);
-		JLabel postIDLabel = new JLabel(postId);
+		JLabel postIDLabel = new JLabel(postID);
 
 		try {
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -160,6 +163,26 @@ public class ViewPostInfo extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent event) {
 
+				int temp = Integer.valueOf(postID);
+				Driver d = ((Driver)PostDatabase.getInstance().searchDatabase(temp));
+				
+				Prospects rider = new Prospects();
+				rider.setName(UserService.getInstance().getCurrentUser().getUsername());
+				rider.setStatus(false);
+				
+				if(d.getRiderLimit() > d.getRiders().size()) {
+					ArrayList<Prospects> riders = d.getRiders();
+					riders.add(rider);
+					d.setRiders(riders);
+					
+					UserDatabase.getInstance().queryDatabase(d.getPoster()).setJoinNotif(true);
+				}
+				else {
+					//pop up that this ride already has too many riders
+				}
+				
+				
+				
 				// Keep track of user logged in
 				// Application.loggedIn = u;
 

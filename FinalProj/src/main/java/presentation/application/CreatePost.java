@@ -13,15 +13,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import business.CreatePostValidate;
 import business.PostService;
+import business.UserService;
+import data.post.AbstractPost;
 import data.user.User;
 import enums.Failures;
 
@@ -45,6 +49,7 @@ public class CreatePost extends JDialog {
 	private static boolean succeeded = false;
 	CreatePostValidate vPI;
 	Font customFont = null;
+	static AbstractPost post = null;
 
 	/**
 	 * Airports to travel from, plus campus
@@ -219,15 +224,30 @@ public class CreatePost extends JDialog {
 				Failures result = PostService.getInstance().verify(input);
 				if (result == Failures.SUCCESS) {
 					succeeded = true;
-
+					
+					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					JOptionPane.showMessageDialog(null,
+							"Post created successfully.", "Create Post",
+							JOptionPane.INFORMATION_MESSAGE, icon);
+					dispose();
 				} else if (result == Failures.SameOriginandDestination) {
-
+					Application.log.log(Level.INFO, "Same origin and destination attempted.");
+					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					JOptionPane.showMessageDialog(null,
+							"Origin and Destination cannot be the same", "Create Post",
+							JOptionPane.INFORMATION_MESSAGE, icon);
+					succeeded = false;
 				} else if (result == Failures.BadDate) {
-
+					Application.log.log(Level.INFO, "Bad date selected.");
+					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					JOptionPane.showMessageDialog(null,
+							"Invalid date/time selected.", "Create Post",
+							JOptionPane.INFORMATION_MESSAGE, icon);
+					succeeded = false;
 				} else if (result == Failures.PostField8notANumber) {
-
+					succeeded = false;
 				} else if (result == Failures.PostField8NotInRange) {
-
+					succeeded = false;
 				}
 
 			}
@@ -286,5 +306,23 @@ public class CreatePost extends JDialog {
 	 */
 	public static void setSucceeded(boolean s) {
 		succeeded = s;
+	}
+	
+	/**
+	 * Returns a post
+	 * 
+	 * @param
+	 * @return AbstractPost
+	 */
+	public static AbstractPost getPost() {
+		return post;
+	}
+
+	/**
+	 * @param AbstractPost p
+	 * @return
+	 */
+	public static void setPost(AbstractPost p) {
+		post = p;
 	}
 }

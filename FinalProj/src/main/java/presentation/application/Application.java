@@ -6,7 +6,6 @@ import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -30,6 +29,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -52,7 +52,7 @@ public class Application {
 	/**
 	 * logger log for documenting events
 	 */
-	public final static Logger log = Logger.getLogger(Application.class.getName());
+	public static final Logger log = Logger.getLogger(Application.class.getName());
 
 	/**
 	 * fh enables logging to specified file
@@ -62,7 +62,7 @@ public class Application {
 	/*
 	 * Initializing logger
 	 */
-	
+
 	static {
 		try {
 			fh = new FileHandler("projectLog.txt", true);
@@ -87,7 +87,7 @@ public class Application {
 	/**
 	 * For using fonts on the graphics
 	 */
-	public static Font customFont = null;
+	public static Font customFont;
 	/**
 	 * Driver posts table model
 	 */
@@ -101,52 +101,44 @@ public class Application {
 	 */
 	public static DefaultTableModel myRidesModel;
 
+	public static JScrollPane pane;
 	public static JTable riderTable;
 	public static JTable driverTable;
 	public static JTable myRidesTable;
 	public static GridBagConstraints gc;
 	public static JPanel selection;
+	public static JPanel searchPnl;
 	public static GridBagConstraints pc;
+	public static GridBagConstraints fc;
 
 	public static boolean riderTableUp;
 	public static boolean driverTableUp;
 	public static boolean myRidesTableUp;
-
-	public static JScrollPane pane;
-
 	public static JTextField filterField;
-
-	public static JPanel searchPnl;
-	public static GridBagConstraints fc;
 
 	/**
 	 * main method for the application
 	 * 
 	 * @param args (unused)
-	 * @throws IOException         if user database has issue reading or writing
-	 * @throws ParseException      if issue with parsing database
-	 * @throws FontFormatException if font not found
-	 * @throws HeadlessException   if key/mouse function not available on machine
 	 */
-	public static void main(String[] args) throws ParseException, IOException, HeadlessException, FontFormatException {
+	public static void main(String[] args) {
 
-		// Load all users from database
-		UserDatabase uDat = UserDatabase.getInstance();
-		uDat.load();
+		// Schedule a job for the event-dispatching thread:
+		// creating and showing this application's GUI
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					createAndShowGUI();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ParseException e) {
+					e.printStackTrace();
+				} catch (FontFormatException e) {
+					e.printStackTrace();
+				}
+			}
 
-		JFrame mainFrame = new JFrame("BearPool");
-
-		OpenPage openDlg = new OpenPage(mainFrame);
-		openDlg.setVisible(true);
-
-		// if login is successful
-		if (openDlg.isSucceeded()) {
-			log.log(Level.INFO, "User successfully logged in");
-			createRunGUI();
-		} else {
-			log.log(Level.INFO, "Application Closed");
-			System.exit(1);
-		}
+		});
 
 	}
 
@@ -154,11 +146,28 @@ public class Application {
 	 * method loads information for the application and creates the GUI and displays
 	 * it.
 	 * 
-	 * @throws IOException    if user database has issue reading or writing
-	 * @throws ParseException if issue with parsing database
+	 * @throws IOException         if user database has issue reading or writing
+	 * @throws ParseException      if issue with parsing database
+	 * @throws FontFormatException
 	 */
-	public static void createRunGUI() throws IOException, ParseException {
-		final JFrame mainFrame = new JFrame("Bearpool");
+	public static void createAndShowGUI() throws IOException, ParseException, FontFormatException {
+
+		JFrame mainFrame = new JFrame("BearPool");
+
+		// Load all users from database
+		UserDatabase uDat = UserDatabase.getInstance();
+		uDat.load();
+
+		OpenPage openDlg = new OpenPage(mainFrame);
+		openDlg.setVisible(true);
+
+		// if login is successful
+		if (openDlg.isSucceeded()) {
+			log.log(Level.INFO, "User successfully logged in");
+		} else {
+			log.log(Level.INFO, "Application Closed");
+			System.exit(1);
+		}
 
 		// Load posts
 		PostDatabase pDat = PostDatabase.getInstance();
@@ -239,9 +248,6 @@ public class Application {
 		riderTableUp = true;
 		driverTableUp = !riderTableUp;
 		myRidesTableUp = !riderTableUp;
-		// gc.gridx = 2;
-		// gc.gridy = 0;
-		// mainFrame.add(new JScrollPane(driverTable), gc);
 
 		riderTable.setFillsViewportHeight(true);
 		driverTable.setFillsViewportHeight(true);
@@ -249,12 +255,6 @@ public class Application {
 		// mainFrame.setContentPane(table);
 		riderTable.setOpaque(true);
 		driverTable.setOpaque(true);
-
-		// TODO sorting of rows
-
-		// TODO make table fit to screen
-		// DefaultTableModel rTable = new DefaultTableModel();
-		// riderTable.setModel(rTable);
 
 		String[] riderPostLabels = { "Poster", "Origin", "Destination", "Date" };
 		rTable = (DefaultTableModel) riderTable.getModel();

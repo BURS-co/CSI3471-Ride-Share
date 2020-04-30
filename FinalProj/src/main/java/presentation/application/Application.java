@@ -474,7 +474,7 @@ public class Application extends JPanel {
 					  Integer.toString(CreatePost.post.getID()) };
 					  
 					  if(driverTableUp) { 
-						  dTable.addRow(row); 
+						//  dTable.addRow(row); 
 						  dTable.fireTableDataChanged();
 						  CreatePost.setSucceeded(false); 
 					  } 
@@ -490,15 +490,12 @@ public class Application extends JPanel {
 					  Object[] row = { poster, origin, dest, date, Integer.toString(CreatePost.post.getID()) };
 					  
 					  if(riderTableUp) { 
-						  rTable.addRow(row); 
+				//		  rTable.addRow(row); 
 						  rTable.fireTableRowsInserted(rTable.getRowCount(), rTable.getRowCount());
 						  CreatePost.setSucceeded(false); 
 					  } 
-				
-				}
-					 
-				}
-
+				}	 
+			 }
 			}
 		});
 

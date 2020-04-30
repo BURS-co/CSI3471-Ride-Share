@@ -170,6 +170,10 @@ public class ViewPostInfo extends JDialog {
 				rider.setName(UserService.getInstance().getCurrentUser().getUsername());
 				rider.setStatus(false);
 
+				if(d.getRiders() == null) {
+					d.setRiders(new ArrayList<Prospects>());
+				}
+				
 				if (d.getRiderLimit() > d.getRiders().size()) {
 
 					ArrayList<Prospects> riders = d.getRiders();

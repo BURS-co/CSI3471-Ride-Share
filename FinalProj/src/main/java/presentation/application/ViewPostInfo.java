@@ -14,10 +14,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import business.UserService;
@@ -200,13 +202,10 @@ public class ViewPostInfo extends JDialog {
 				// Keep track of user logged in
 				// Application.loggedIn = u;
 
-				// ImageIcon icon = new ImageIcon("src/main/resources/poolfloat
-				// icon-yellow.png");
-				// JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to
-				// Bearpool!", "Login",
-				// JOptionPane.INFORMATION_MESSAGE, icon);
-				// Application.log.log(Level.INFO, Application.loggedIn + " accepted a ride from
-				// " + name);
+				ImageIcon icon = new ImageIcon("src/main/resources/poolfloaticon-yellow.png");
+				 JOptionPane.showMessageDialog(null, "You have successfully joined a ride.", "View Post Info",
+				 JOptionPane.INFORMATION_MESSAGE, icon);
+				Application.log.log(Level.INFO, "A ride was joined");
 				dispose();
 
 			}
@@ -232,7 +231,7 @@ public class ViewPostInfo extends JDialog {
 			}
 		});
 
-		JButton removePost = new JButton("Report Post");
+		JButton removePost = new JButton("Remove Post");
 		removePost.setFont(customFont);
 		removePost.setFont(customFont);
 		removePost.setBackground(new Color(255, 184, 25));
@@ -248,6 +247,7 @@ public class ViewPostInfo extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
+				PostDatabase.getInstance().delete(postID);
 				Application.log.log(Level.INFO, "Post info closed");
 				dispose();
 			}
@@ -256,7 +256,7 @@ public class ViewPostInfo extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(acceptRide);
 		bp.add(btnCancel);
-		if (UserService.getInstance().getCurrentUser().getUsername().equals(name))
+		if (UserService.getInstance().getCurrentUser().getEmail().equals(name))
 			bp.add(removePost);
 
 		bp.setBackground(new Color(28, 60, 52));
@@ -395,12 +395,10 @@ public class ViewPostInfo extends JDialog {
 					e.printStackTrace();
 				}
 
-				// ImageIcon icon = new ImageIcon("src/main/resources/poolfloat
-				// icon-yellow.png");
-				// JOptionPane.showMessageDialog(null, "Hi " + u.getUsername() + "! Welcome to
-				// Bearpool!", "Login",
-				// JOptionPane.INFORMATION_MESSAGE, icon);
-				// Application.log.log(Level.INFO, "You have offered " + name + " a ride!");
+				 ImageIcon icon = new ImageIcon("src/main/resources/poolfloaticon-yellow.png");
+				 JOptionPane.showMessageDialog(null, "You have successfully offered a ride.", "View Post Info",
+				 JOptionPane.INFORMATION_MESSAGE, icon);
+				Application.log.log(Level.INFO, name + "was offered a ride");
 				dispose();
 
 			}
@@ -442,7 +440,8 @@ public class ViewPostInfo extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				Application.log.log(Level.INFO, "Post info closed");
+				PostDatabase.getInstance().delete(postID);
+				Application.log.log(Level.INFO, "Post Removed from Database");
 				dispose();
 			}
 		});
@@ -450,7 +449,7 @@ public class ViewPostInfo extends JDialog {
 		JPanel bp = new JPanel();
 		bp.add(offerRide);
 		bp.add(btnCancel);
-		if (UserService.getInstance().getCurrentUser().getUsername().equals(name))
+		if (UserService.getInstance().getCurrentUser().getEmail().equals(name))
 			bp.add(removePost);
 
 		bp.setBackground(new Color(28, 60, 52));

@@ -346,7 +346,7 @@ public class ViewPostInfo extends JDialog {
 				
 				r.setDriver(driver);
 				
-				
+				UserService
 				
 				// Keep track of user logged in
 				// Application.loggedIn = u;

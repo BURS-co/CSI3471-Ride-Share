@@ -56,11 +56,11 @@ public class LoginDialog extends JDialog {
 	private Font customFont;
 	String[] ratings = { "0", "1", "2", "3", "4", "5" };
 	JComboBox<String> rating = new JComboBox<String>(ratings);
-	
+
 	public static JTextField tfREmail;
 	public static JTextField tftarget;
 	public static JTextArea tfReason;
-	
+
 	// Sign up variables
 	// private User u = new User();
 
@@ -325,7 +325,7 @@ public class LoginDialog extends JDialog {
 					ss.anchor = GridBagConstraints.FIRST_LINE_START;
 					surveyPanel.add(lbRate, ss);
 
-					//rating = new JComboBox<String>(ratings);
+					// rating = new JComboBox<String>(ratings);
 					rating.setSelectedIndex(-1);
 					ss.gridx = 1;
 					ss.gridy = 4;
@@ -376,10 +376,10 @@ public class LoginDialog extends JDialog {
 
 						}
 					});
-					
+
 					ss.gridx = 1;
 					ss.gridy = 5;
-					surveyPanel.add(btnSubmit,ss);
+					surveyPanel.add(btnSubmit, ss);
 
 					surveyPanel.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 					surveyPanel.setVisible(true);

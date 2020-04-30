@@ -13,9 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +31,6 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -43,9 +40,7 @@ import business.UserService;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
-import data.post.Driver;
 import data.user.Admin;
-import data.user.User;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim, Joshua Huertas, Joseph
@@ -145,9 +140,13 @@ public class Application extends JPanel {
 			log.log(Level.INFO, "Application Closed");
 			System.exit(1);
 		}
+		
 
 		// Load posts
 		PostDatabase pDat = PostDatabase.getInstance();
+		if (pDat.getPostData() == null || pDat.getPostData().isEmpty()) {
+			pDat.load();
+		}
 
 		// Set up tool-tips
 		UIManager.put("ToolTip.background", Color.white);

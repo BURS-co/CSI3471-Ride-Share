@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import business.PostService;
 import business.UserService;
 import business.ValidateAccountInfo;
 import data.databaseControllers.PostDatabase;
@@ -321,9 +322,25 @@ public class ViewProfile extends JDialog {
 								confirmPnl.add(accDec, gc);
 
 								confirmation.add(confirmPnl);
+								
+								JButton done = new JButton("done");
+								done.setBackground(new Color(255, 184, 25));
+								done.setBorderPainted(false);
+								done.setFont(customFont);
+								done.setOpaque(true);
+								select.addActionListener(new ActionListener() {
+
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										
+										PostService.getInstance().updateProspect(p, b);
+									}
+								};
 								selectPst.pack();
 								selectPst.setVisible(true);
 
+							} else {
+								JOptionPane.showMessageDialog(null, "No one has offered you a ride :(" ,"Driver Post", JOptionPane.ERROR_MESSAGE);
 							}
 						} else if (p instanceof Driver) {
 
@@ -350,6 +367,19 @@ public class ViewProfile extends JDialog {
 								}
 
 								confirmation.add(confirmPnl);
+								
+								JButton done = new JButton("done");
+								done.setBackground(new Color(255, 184, 25));
+								done.setBorderPainted(false);
+								done.setFont(customFont);
+								done.setOpaque(true);
+								select.addActionListener(new ActionListener() {
+
+									@Override
+									public void actionPerformed(ActionEvent e) {
+										
+									}
+								};
 								selectPst.pack();
 								selectPst.setVisible(true);
 							} else {

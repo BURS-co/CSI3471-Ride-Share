@@ -656,8 +656,6 @@ public class Application extends JPanel {
 		add(searchPnl, gc);
 
 		setVisible(true);
-		
-		ArrayList<AbstractPost> ps = PostDatabase.getInstance().getPostData();
 
 		UserDatabase.getInstance().write();
 		PostDatabase.getInstance().write();

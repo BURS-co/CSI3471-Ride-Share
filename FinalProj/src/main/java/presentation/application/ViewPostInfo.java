@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 
 import javax.swing.JButton;
@@ -22,11 +21,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import business.UserService;
-import data.post.Rider;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.Driver;
 import data.post.Prospects;
+import data.post.Rider;
 
 public class ViewPostInfo extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -46,7 +45,8 @@ public class ViewPostInfo extends JDialog {
 	 *               of ride
 	 * @return
 	 */
-	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date, final String postID) {
+	public ViewPostInfo(JFrame parent, String seats, String name, String orig, String dest, String date,
+			final String postID) {
 		super(parent, "Post Info", true);
 
 		JPanel panel = new JPanel(new GridBagLayout());
@@ -133,7 +133,7 @@ public class ViewPostInfo extends JDialog {
 		cs.gridwidth = 2;
 		dt.setFont(customFont);
 		panel.add(dt, cs);
-		
+
 		cs.gridx = 0;
 		cs.gridy = 5;
 		cs.gridwidth = 2;
@@ -164,33 +164,30 @@ public class ViewPostInfo extends JDialog {
 			public void actionPerformed(ActionEvent event) {
 
 				int temp = Integer.valueOf(postID);
-				Driver d = ((Driver)PostDatabase.getInstance().searchDatabase(temp));
-				
+				Driver d = ((Driver) PostDatabase.getInstance().searchDatabase(temp));
+
 				Prospects rider = new Prospects();
 				rider.setName(UserService.getInstance().getCurrentUser().getUsername());
 				rider.setStatus(false);
-				
-				if(d.getRiderLimit() > d.getRiders().size()) {
-					
+
+				if (d.getRiderLimit() > d.getRiders().size()) {
+
 					System.out.println("TEST PLZ" + d.toString());
-					
+
 					ArrayList<Prospects> riders = d.getRiders();
 					riders.add(rider);
 					d.setRiders(riders);
-					
+
 					System.out.println(d.toString());
-					
+
 					PostDatabase.getInstance().storeUpdate(d);
-					
+
 					UserDatabase.getInstance().queryDatabase(d.getPoster()).setJoinNotif(true);
+				} else {
+					// TODO
+					// pop up that this ride already has too many riders
 				}
-				else {
-					//TODO
-					//pop up that this ride already has too many riders
-				}
-				
-				
-				
+
 				// Keep track of user logged in
 				// Application.loggedIn = u;
 
@@ -338,7 +335,7 @@ public class ViewPostInfo extends JDialog {
 		cs.gridy = 3;
 		dt.setFont(customFont);
 		panel.add(dt, cs);
-		
+
 		cs.gridx = 0;
 		cs.gridy = 4;
 		cs.gridwidth = 2;
@@ -369,22 +366,19 @@ public class ViewPostInfo extends JDialog {
 			public void actionPerformed(ActionEvent event) {
 
 				int temp = Integer.valueOf(postID);
-				Rider r = ((Rider)PostDatabase.getInstance().searchDatabase(temp));
-				
-				
-				
+				Rider r = ((Rider) PostDatabase.getInstance().searchDatabase(temp));
+
 				Prospects driver = new Prospects();
 				driver.setName(UserService.getInstance().getCurrentUser().getUsername());
 				driver.setStatus(false);
-				
+
 				r.setDriver(driver);
-				
-				
-				//System.out.println(PostDatabase.getInstance().quereyDatabase(r.getID()).toString);
+
+				// System.out.println(PostDatabase.getInstance().quereyDatabase(r.getID()).toString);
 				PostDatabase.getInstance().storeUpdate(r);
-				
+
 				UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);
-				
+
 				// Keep track of user logged in
 				// Application.loggedIn = u;
 

@@ -38,7 +38,6 @@ public class OpenPage extends JDialog {
 	private JButton btnLogin;
 	private JButton btnCreateAccount;
 	private boolean succeeded;
-	// private User u = new User();
 
 	/**
 	 * Creates the open page
@@ -49,6 +48,8 @@ public class OpenPage extends JDialog {
 	 */
 	public OpenPage(final JFrame parent) throws FontFormatException, IOException {
 		super(parent, "BearPool Login or Signup", true);
+		
+		succeeded = false;
 
 		// For the Dialog constraints
 		setLayout(new GridBagLayout());

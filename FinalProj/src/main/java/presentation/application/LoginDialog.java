@@ -61,6 +61,7 @@ public class LoginDialog extends JDialog {
 	public static JTextField tfREmail;
 	public static JTextField tftarget;
 	public static JTextArea tfReason;
+	public static JDialog surveyPanel;
 
 	// Sign up variables
 	// private User u = new User();
@@ -250,7 +251,7 @@ public class LoginDialog extends JDialog {
 
 				if (i.isExpired()) {
 					// Issue Survey
-					JDialog surveyPanel = new JDialog(new JFrame(), "Survey", true);
+					surveyPanel= new JDialog(new JFrame(), "Survey", true);
 					surveyPanel.setLayout(new GridBagLayout());
 					GridBagConstraints ss = new GridBagConstraints();
 					
@@ -359,7 +360,7 @@ public class LoginDialog extends JDialog {
 
 							String score = String.valueOf(rating.getSelectedItem());
 
-							String[] info = { tfREmail.getText(), tftarget.getText(), tfReason.getText(), score };
+							String[] info = { tfREmail.getText(), tftarget.getText(), score, tfReason.getText()  };
 
 							Failures result = SurveyService.getInstance().verify(info);
 
@@ -378,6 +379,7 @@ public class LoginDialog extends JDialog {
 								break;
 							default:
 								dispose();
+								surveyPanel.dispose();
 								break;
 							}
 

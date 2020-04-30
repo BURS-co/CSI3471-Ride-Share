@@ -172,17 +172,22 @@ public class ViewPostInfo extends JDialog {
 
 				if (d.getRiderLimit() > d.getRiders().size()) {
 
-					System.out.println("TEST PLZ" + d.toString());
-
 					ArrayList<Prospects> riders = d.getRiders();
 					riders.add(rider);
 					d.setRiders(riders);
 
-					System.out.println(d.toString());
-
 					PostDatabase.getInstance().storeUpdate(d);
 
 					UserDatabase.getInstance().queryDatabase(d.getPoster()).setJoinNotif(true);
+					
+					try {
+						PostDatabase.getInstance().write();
+						UserDatabase.getInstance().write();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block 
+						e.printStackTrace();
+					}
+					
 				} else {
 					// TODO
 					// pop up that this ride already has too many riders

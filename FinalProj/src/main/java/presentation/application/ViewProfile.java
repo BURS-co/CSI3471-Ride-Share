@@ -171,7 +171,6 @@ public class ViewProfile extends JDialog {
 		JButton editProfile = new JButton("Edit Profile");
 		editProfile.setFont(customFont);
 		editProfile.setBackground(new Color(255, 184, 25));
-		editProfile.setFont(customFont);
 		editProfile.setBorderPainted(false);
 		editProfile.setOpaque(true);
 		editProfile.addActionListener(new ActionListener() {
@@ -200,9 +199,7 @@ public class ViewProfile extends JDialog {
 		});
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setFont(customFont);
-		btnCancel.setFont(customFont);
 		btnCancel.setBackground(new Color(255, 184, 25));
-		btnCancel.setFont(customFont);
 		btnCancel.setBorderPainted(false);
 		btnCancel.setOpaque(true);
 		btnCancel.addActionListener(new ActionListener() {
@@ -221,9 +218,7 @@ public class ViewProfile extends JDialog {
 
 		JButton deleteBtn = new JButton("Delete Account");
 		deleteBtn.setFont(customFont);
-		deleteBtn.setFont(customFont);
 		deleteBtn.setBackground(new Color(255, 184, 25));
-		deleteBtn.setFont(customFont);
 		deleteBtn.setBorderPainted(false);
 		deleteBtn.setOpaque(true);
 
@@ -240,11 +235,27 @@ public class ViewProfile extends JDialog {
 				System.exit(0);
 			}
 		});
+		
+		JButton viewBtn = new JButton("View Posts");
+		viewBtn.setFont(customFont);
+		viewBtn.setBackground(new Color(255,184,25));
+		viewBtn.setBorderPainted(false);
+		viewBtn.setOpaque(true);
+		viewBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 
 		JPanel bp = new JPanel();
 		bp.add(editProfile);
 		bp.add(btnCancel);
 		bp.add(deleteBtn);
+		bp.add(viewBtn);
 		bp.setBackground(new Color(28, 60, 52));
 
 		getContentPane().add(panel, BorderLayout.CENTER);

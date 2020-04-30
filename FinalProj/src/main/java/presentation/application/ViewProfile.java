@@ -235,7 +235,7 @@ public class ViewProfile extends JDialog {
 						JOptionPane.OK_CANCEL_OPTION);
 
 				// only delete wiht secondary confirmation
-				if (res == 1) {
+				if (res == JOptionPane.OK_OPTION) {
 					UserDatabase.getInstance().removeUser(UserService.getInstance().getCurrentUser());
 					try {
 						UserDatabase.getInstance().write();

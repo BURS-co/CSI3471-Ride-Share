@@ -44,14 +44,13 @@ public class PostDatabase {
 	public void load() throws ParseException, IOException {
 		try {
 			BufferedReader loader = new BufferedReader(new FileReader(new File("postDatabase.txt")));
-
+			AbstractPost p = null;
 			String line = null;
 			ArrayList<Prospects> list = null;
 
 			while ((line = loader.readLine()) != null) {
 
 				String[] split = line.split("-");
-				AbstractPost p = null;
 
 				if (split[0].equals("Driver")) {
 					p = new Driver(split[1]);

@@ -1,3 +1,6 @@
+/**
+ * @author Joseph Yu, Joshua Huertas
+ */
 package data.databaseControllers;
 
 import java.io.BufferedReader;

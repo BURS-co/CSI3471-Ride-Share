@@ -31,7 +31,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -146,6 +148,10 @@ public class Application extends JPanel {
 		PostDatabase pDat = PostDatabase.getInstance();
 		pDat.load();
 
+		// Set up tool-tips
+		UIManager.put("ToolTip.background", Color.white);
+		UIManager.put("ToolTip.border", new LineBorder(Color.BLACK, 1));
+		
 		// Setting up GridBagLayout
 		setLayout(new GridBagLayout());
 		gc = new GridBagConstraints();
@@ -185,6 +191,7 @@ public class Application extends JPanel {
 		Image rnewimg = rimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		rIcn = new ImageIcon(rnewimg); // transform it back
 		JButton ridesBtn = new JButton(rIcn);
+		ridesBtn.setToolTipText("View All Needing A Ride");
 		ridesBtn.setOpaque(false);
 		ridesBtn.setContentAreaFilled(false);
 		ridesBtn.setBorderPainted(false);
@@ -247,6 +254,7 @@ public class Application extends JPanel {
 		Image drnewimg = drimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		drIcn = new ImageIcon(drnewimg); // transform it back
 		JButton drivesBtn = new JButton(drIcn);
+		drivesBtn.setToolTipText("View All Available Rides");
 		drivesBtn.setOpaque(false);
 		drivesBtn.setContentAreaFilled(false);
 		drivesBtn.setBorderPainted(false);
@@ -303,6 +311,7 @@ public class Application extends JPanel {
 		Image pnewimg = pimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		pIcn = new ImageIcon(pnewimg); // transform it back
 		JButton profileBtn = new JButton(pIcn);
+		profileBtn.setToolTipText("Your Profile");
 		profileBtn.setOpaque(false);
 		profileBtn.setContentAreaFilled(false);
 		profileBtn.setBorderPainted(false);
@@ -332,6 +341,7 @@ public class Application extends JPanel {
 		Image newImage = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		rideIcn = new ImageIcon(newImage); // transform it back
 		JButton myRidesBtn = new JButton(rideIcn);
+		myRidesBtn.setToolTipText("View All Your Rides");
 		myRidesBtn.setOpaque(false);
 		myRidesBtn.setContentAreaFilled(false);
 		myRidesBtn.setBorderPainted(false);
@@ -425,6 +435,7 @@ public class Application extends JPanel {
 		Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		crtIcn = new ImageIcon(newimg); // transform it back
 		JButton createBtn = new JButton(crtIcn);
+		createBtn.setToolTipText("Create A Post");
 		createBtn.setOpaque(false);
 		createBtn.setContentAreaFilled(false);
 		createBtn.setBorderPainted(false);
@@ -486,6 +497,7 @@ public class Application extends JPanel {
 			// way
 			rIcn = new ImageIcon(reportnewimg); // transform it back
 			JButton reportBtn = new JButton(rIcn);
+			reportBtn.setToolTipText("View Reports");
 			profileBtn.setOpaque(false);
 			profileBtn.setContentAreaFilled(false);
 			profileBtn.setBorderPainted(false);

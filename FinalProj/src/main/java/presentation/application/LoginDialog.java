@@ -283,6 +283,7 @@ public class LoginDialog extends JDialog {
 					surveyPanel.add(tftarget);
 					
 					///
+					
 					//rating
 					ss.gridx = 0;
 					ss.gridy = 2;

@@ -246,7 +246,6 @@ public class ViewProfile extends JDialog {
 		viewBtn.setOpaque(true);
 		viewBtn.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				//TODO
 				

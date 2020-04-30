@@ -166,39 +166,7 @@ public class ViewPostInfo extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent event) {
 
-				int temp = Integer.valueOf(postID);
-				Driver d = ((Driver) PostDatabase.getInstance().searchDatabase(temp));
-
-				Prospects rider = new Prospects();
-				rider.setName(UserService.getInstance().getCurrentUser().getUsername());
-				rider.setStatus(false);
-
-				if(d.getRiders() == null) {
-					d.setRiders(new ArrayList<Prospects>());
-				}
-				
-				if (d.getRiderLimit() > d.getRiders().size()) {
-
-					ArrayList<Prospects> riders = d.getRiders();
-					riders.add(rider);
-					d.setRiders(riders);
-
-					PostDatabase.getInstance().storeUpdate(d);
-
-					UserDatabase.getInstance().queryDatabase(d.getPoster()).setJoinNotif(true);
-					
-					try {
-						PostDatabase.getInstance().write();
-						UserDatabase.getInstance().write();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block 
-						e.printStackTrace();
-					}
-					
-				} else {
-					// TODO
-					// pop up that this ride already has too many riders
-				}
+				PostService.getInstance().joinRider(postID);
 
 				// Keep track of user logged in
 				// Application.loggedIn = u;
@@ -248,7 +216,7 @@ public class ViewPostInfo extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				PostService.getInstance().delete(Integer.parseInt(postID));
+				PostDatabase.getInstance().delete(postID);
 				Application.log.log(Level.INFO, "Post info closed");
 				dispose();
 			}
@@ -375,26 +343,7 @@ public class ViewPostInfo extends JDialog {
 			 */
 			public void actionPerformed(ActionEvent event) {
 
-				int temp = Integer.valueOf(postID);
-				Rider r = ((Rider) PostDatabase.getInstance().searchDatabase(temp));
-
-				Prospects driver = new Prospects();
-				driver.setName(UserService.getInstance().getCurrentUser().getUsername());
-				driver.setStatus(false);
-
-				r.setDriver(driver);
-
-				// System.out.println(PostDatabase.getInstance().quereyDatabase(r.getID()).toString);
-				PostDatabase.getInstance().storeUpdate(r);
-
-				UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);
-				try {
-					PostDatabase.getInstance().write();
-					UserDatabase.getInstance().write();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block 
-					e.printStackTrace();
-				}
+				PostService.getInstance().joinDriver(postID);
 
 				 ImageIcon icon = new ImageIcon("src/main/resources/poolfloaticon-yellow.png");
 				 JOptionPane.showMessageDialog(null, "You have successfully offered a ride.", "View Post Info",
@@ -441,7 +390,7 @@ public class ViewPostInfo extends JDialog {
 			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 			 */
 			public void actionPerformed(ActionEvent e) {
-				PostService.getInstance().delete(Integer.parseInt(postID));
+				PostDatabase.getInstance().delete(postID);
 				Application.log.log(Level.INFO, "Post Removed from Database");
 				dispose();
 			}

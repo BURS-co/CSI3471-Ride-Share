@@ -1,11 +1,18 @@
 package business;
 
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
+import javax.swing.JButton;
+
 import data.databaseControllers.PostDatabase;
+import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
 import data.post.Driver;
 import data.post.Prospects;
@@ -168,4 +175,66 @@ public class PostService implements IService {
 		}
 		return p;
 	}
+	
+	public void joinRider(String postID) {
+		
+		int temp = Integer.valueOf(postID);
+		Driver d = ((Driver) PostDatabase.getInstance().searchDatabase(temp));
+
+		Prospects rider = new Prospects();
+		rider.setName(UserService.getInstance().getCurrentUser().getUsername());
+		rider.setStatus(false);
+
+		if(d.getRiders() == null) {
+			d.setRiders(new ArrayList<Prospects>());
+		}
+		
+		if (d.getRiderLimit() > d.getRiders().size()) {
+
+			ArrayList<Prospects> riders = d.getRiders();
+			riders.add(rider);
+			d.setRiders(riders);
+
+			PostDatabase.getInstance().storeUpdate(d);
+
+			UserDatabase.getInstance().queryDatabase(d.getPoster()).setJoinNotif(true);
+			
+			try {
+				PostDatabase.getInstance().write();
+				UserDatabase.getInstance().write();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block 
+				e.printStackTrace();
+			}
+			
+		} else {
+			// TODO
+			// pop up that this ride already has too many riders
+		}
+	}
+	
+	public void joinDriver(String postID) {
+		
+		int temp = Integer.valueOf(postID);
+		Rider r = ((Rider) PostDatabase.getInstance().searchDatabase(temp));
+
+		Prospects driver = new Prospects();
+		driver.setName(UserService.getInstance().getCurrentUser().getUsername());
+		driver.setStatus(false);
+
+		r.setDriver(driver);
+
+		// System.out.println(PostDatabase.getInstance().quereyDatabase(r.getID()).toString);
+		PostDatabase.getInstance().storeUpdate(r);
+
+		UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);
+		try {
+			PostDatabase.getInstance().write();
+			UserDatabase.getInstance().write();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block 
+			e.printStackTrace();
+		}
+	}
+	
 }

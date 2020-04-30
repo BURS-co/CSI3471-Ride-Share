@@ -23,7 +23,7 @@ public abstract class AbstractPost {
 
 		SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 
-		this.poster = UserService.getInstance().getCurrentUser().getUsername();
+		this.poster = UserService.getInstance().getCurrentUser().getEmail();
 		// this.poster = Application.loggedIn.getUsername();
 		this.origin = input[0];
 		this.dest = input[1];

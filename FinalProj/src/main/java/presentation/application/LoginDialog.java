@@ -330,11 +330,12 @@ public class LoginDialog extends JDialog {
 					
 					
 					surveyPanel.setVisible(true);
+					add(surveyPanel);
 
 
 					String[] info = {};
 					
-					JButton btnSubmit = new JButton("Cancel");
+					JButton btnSubmit = new JButton("Submit");
 					btnSubmit.setFont(customFont);
 					btnSubmit.setFont(customFont);
 					btnSubmit.setBackground(new Color(255, 184, 25));

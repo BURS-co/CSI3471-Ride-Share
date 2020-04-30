@@ -26,7 +26,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.Login;
+import business.SurveyService;
 import business.UserService;
+import data.databaseControllers.PostDatabase;
 import data.post.AbstractPost;
 
 /**
@@ -221,9 +223,11 @@ public class LoginDialog extends JDialog {
 			succeeded = true;
 			
 			//*******************************TODO************************
-			for(AbstractPost i : UserService.getInstance().getCurrentUser().getPosts()) {
+			for(AbstractPost i : PostDatabase.queryDatabase(UserService.getInstance().getCurrentUser().getEmail()))) {
 				if(i.isExpired()) {
 					/*trigger pop up for survey and pass the results to survey service*/
+					String[] info = {};
+					SurveyService.getInstance().verify(info);
 				}
 			}
 			

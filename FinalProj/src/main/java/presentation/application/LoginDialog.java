@@ -2,6 +2,7 @@ package presentation.application;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -252,8 +253,8 @@ public class LoginDialog extends JDialog {
 					JDialog surveyPanel = new JDialog(new JFrame(), "Survey", true);
 					surveyPanel.setLayout(new GridBagLayout());
 					GridBagConstraints ss = new GridBagConstraints();
-
-					String[] ratings = { "0", "1", "2", "3", "4", "5" };
+					
+					surveyPanel.setBackground(new Color(255, 184, 25));
 
 					try {
 						customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -269,7 +270,8 @@ public class LoginDialog extends JDialog {
 
 					ss.fill = GridBagConstraints.HORIZONTAL;
 
-					JLabel lbEmail = new JLabel("What is your baylor email? ");
+					JLabel lbEmail = new JLabel("Your baylor email: ");
+					lbEmail.setFont(customFont);
 					ss.gridx = 0;
 					ss.gridy = 0;
 					ss.gridwidth = 1;
@@ -281,11 +283,13 @@ public class LoginDialog extends JDialog {
 					ss.gridx = 1;
 					ss.gridy = 0;
 					ss.gridwidth = 2;
-					ss.anchor = GridBagConstraints.FIRST_LINE_END;
+					
+					//ss.anchor = GridBagConstraints.FIRST_LINE_END;
 					tfREmail.setText(UserService.getInstance().getCurrentUser().getEmail());
 					surveyPanel.add(tfREmail, ss);
 
 					JLabel lbTarget = new JLabel("Email of person you're rating: ");
+					lbTarget.setFont(customFont);
 					ss.gridx = 0;
 					ss.gridy = 1;
 					ss.gridwidth = 1;
@@ -301,15 +305,16 @@ public class LoginDialog extends JDialog {
 					surveyPanel.add(tftarget, ss);
 
 					JLabel lbReason = new JLabel("Comments: ");
+					lbReason.setFont(customFont);
 					ss.gridx = 0;
-					ss.gridy = 2;
+					ss.gridy = 3;
 					ss.gridwidth = 2;
 					ss.anchor = GridBagConstraints.FIRST_LINE_START;
 					lbReason.setFont(customFont);
 					surveyPanel.add(lbReason, ss);
 
 					tfReason = new JTextArea();
-					ss.gridx = 0;
+					ss.gridx = 1;
 					ss.gridy = 3;
 					ss.gridwidth = 2;
 					ss.gridheight = 2;
@@ -317,8 +322,9 @@ public class LoginDialog extends JDialog {
 					surveyPanel.add(tfReason, ss);
 
 					JLabel lbRate = new JLabel("Rating: ");
+					lbRate.setFont(customFont);
 					ss.gridx = 0;
-					ss.gridy = 4;
+					ss.gridy = 2;
 					ss.gridwidth = 1;
 					ss.gridheight = 1;
 					ss.gridwidth = 1;
@@ -328,7 +334,7 @@ public class LoginDialog extends JDialog {
 					//rating = new JComboBox<String>(ratings);
 					rating.setSelectedIndex(-1);
 					ss.gridx = 1;
-					ss.gridy = 4;
+					ss.gridy = 2;
 					ss.gridwidth = 1;
 					ss.anchor = GridBagConstraints.FIRST_LINE_END;
 					surveyPanel.add(rating, ss);
@@ -382,8 +388,11 @@ public class LoginDialog extends JDialog {
 					surveyPanel.add(btnSubmit,ss);
 
 					surveyPanel.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					surveyPanel.setBounds(300, 300, 400, 200);
 					surveyPanel.setVisible(true);
+					
 					surveyPanel.pack();
+					
 				}
 
 			}

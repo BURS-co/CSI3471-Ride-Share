@@ -124,6 +124,11 @@ public class PostService implements IService {
 //
 //		// should this create a post object to store in the database?
 //	}
+	
+	public void delete(int ID) {
+		int index = PostDatabase.getInstance().searchDatabaseInt(ID);
+		PostDatabase.getInstance().getPostData().remove(index);
+	}
 
 	public Failures addProspects(User u, int ID) {
 		Failures result = Failures.SUCCESS;

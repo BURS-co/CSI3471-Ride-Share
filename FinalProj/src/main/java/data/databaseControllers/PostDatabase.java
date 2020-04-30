@@ -101,7 +101,8 @@ public class PostDatabase {
 		// Write to .txt file (postDatabase.txt)
 		BufferedWriter write = new BufferedWriter(new FileWriter("postDatabase.txt", false));
 		for (AbstractPost p : postData) {
-			write.write(p.toString());
+			if(!p.isExpired())
+				write.write(p.toString());
 		}
 
 		write.flush();

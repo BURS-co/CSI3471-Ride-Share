@@ -54,6 +54,13 @@ public class LoginDialog extends JDialog {
 	private JButton btnCancel;
 	private boolean succeeded;
 	private Font customFont;
+	String[] ratings = { "0", "1", "2", "3", "4", "5" };
+	JComboBox<String> rating = new JComboBox<String>(ratings);
+	
+	public static JTextField tfREmail;
+	public static JTextField tftarget;
+	public static JTextArea tfReason;
+	
 	// Sign up variables
 	// private User u = new User();
 
@@ -270,13 +277,13 @@ public class LoginDialog extends JDialog {
 					lbEmail.setFont(customFont);
 					surveyPanel.add(lbEmail, ss);
 
-					JTextField tfEmail = new JTextField(20);
+					tfREmail = new JTextField(20);
 					ss.gridx = 1;
 					ss.gridy = 0;
 					ss.gridwidth = 2;
 					ss.anchor = GridBagConstraints.FIRST_LINE_END;
-					tfEmail.setText(UserService.getInstance().getCurrentUser().getEmail());
-					surveyPanel.add(tfEmail, ss);
+					tfREmail.setText(UserService.getInstance().getCurrentUser().getEmail());
+					surveyPanel.add(tfREmail, ss);
 
 					JLabel lbTarget = new JLabel("Email of person you're rating: ");
 					ss.gridx = 0;
@@ -286,7 +293,7 @@ public class LoginDialog extends JDialog {
 					lbEmail.setFont(customFont);
 					surveyPanel.add(lbTarget, ss);
 
-					JTextField tftarget = new JTextField(20);
+					tftarget = new JTextField(20);
 					ss.gridx = 1;
 					ss.gridy = 1;
 					ss.gridwidth = 2;
@@ -301,7 +308,7 @@ public class LoginDialog extends JDialog {
 					lbReason.setFont(customFont);
 					surveyPanel.add(lbReason, ss);
 
-					JTextArea tfReason = new JTextArea();
+					tfReason = new JTextArea();
 					ss.gridx = 0;
 					ss.gridy = 3;
 					ss.gridwidth = 2;
@@ -318,7 +325,7 @@ public class LoginDialog extends JDialog {
 					ss.anchor = GridBagConstraints.FIRST_LINE_START;
 					surveyPanel.add(lbRate, ss);
 
-					JComboBox<String> rating = new JComboBox<String>(ratings);
+					//rating = new JComboBox<String>(ratings);
 					rating.setSelectedIndex(-1);
 					ss.gridx = 1;
 					ss.gridy = 4;
@@ -345,7 +352,7 @@ public class LoginDialog extends JDialog {
 
 							String score = String.valueOf(rating.getSelectedItem());
 
-							String[] info = { tfEmail.getText(), tftarget.getText(), tfReason.getText(), score };
+							String[] info = { tfREmail.getText(), tftarget.getText(), tfReason.getText(), score };
 
 							Failures result = SurveyService.getInstance().verify(info);
 

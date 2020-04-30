@@ -26,8 +26,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import business.Login;
+import business.SurveyService;
 import business.UserService;
+import data.databaseControllers.PostDatabase;
 import data.post.AbstractPost;
+import enums.Failures;
 
 /**
  * @author Joseph Perez, Andrew Ammentorp, Leighton Glim
@@ -222,20 +225,37 @@ public class LoginDialog extends JDialog {
 			
 			
 			//*******************************TODO************************
-			//for(AbstractPost i : UserService.getInstance().getCurrentUser().getPosts()) {
-			//	if(i.isExpired()) {
-			//		/*trigger pop up for survey and pass the results to survey service*/
-			//		//calls verify(string [])
-			//	}
-			//}
-			//
-			//if(UserService.getInstance().getCurrentUser().getJoinNotif()) {
-			//	//trigger pop up that tells user another user wants to join their post
-			//}
-			//
-			//if(UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
-			//	//trigger pop up that tells user a post they were trying to become a prospect for has been canceled
-			//}
+			for(AbstractPost i : PostDatabase.getInstance().quereyDatabase(UserService.getInstance().getCurrentUser().getEmail())) {
+				if(i.isExpired()) {
+					/*trigger pop up for survey and pass the results to survey service*/
+
+					
+					String[] info = {};
+					
+					Failures result = SurveyService.getInstance().verify(info);
+					
+					switch(result) {
+					case emptyField:
+						//do thing
+					break;
+					case SurveyField2notANumber:
+						//do thing
+					break;
+					case SurveyField3TooLong:
+						//do thing
+					break;
+					}
+
+				}
+			}
+			
+			if(UserService.getInstance().getCurrentUser().getJoinNotif()) {
+				//trigger pop up that tells user another user wants to join their post
+			}
+			
+			if(UserService.getInstance().getCurrentUser().getPostCanceledNotif()) {
+				//trigger pop up that tells user a post they were trying to become a prospect for has been canceled
+			}
 			
 			ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
 			JOptionPane.showMessageDialog(null,

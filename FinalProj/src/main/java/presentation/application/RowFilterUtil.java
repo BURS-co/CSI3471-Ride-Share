@@ -25,7 +25,7 @@ public class RowFilterUtil {
 			throw new RuntimeException("Cannot find appropriate rowSorter: " + rs);
 		}
 
-		final JTextField tf = new JTextField(15);
+		final JTextField tf = new JTextField(25);
 		tf.getDocument().addDocumentListener(new DocumentListener() {
 			public void insertUpdate(DocumentEvent e) {
 				update(e);
@@ -41,10 +41,10 @@ public class RowFilterUtil {
 
 			private void update(DocumentEvent e) {
 				String text = tf.getText();
-				if (text.trim().length() == 0) {
+				if (text.length() == 0) {
 					rowSorter.setRowFilter(null);
 				} else {
-					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+					rowSorter.setRowFilter(RowFilter.regexFilter(text));
 				}
 			}
 		});

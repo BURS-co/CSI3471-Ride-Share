@@ -62,6 +62,7 @@ public class Application {
 	/*
 	 * Initializing logger
 	 */
+	
 	static {
 		try {
 			fh = new FileHandler("projectLog.txt", true);
@@ -189,10 +190,10 @@ public class Application {
 		gc.weighty = 1;
 
 		// query for rider posts
-		ArrayList<AbstractPost> rlist = pDat.searchDatabase("rider");
+		ArrayList<AbstractPost> rlist = pDat.quereyDatabase("rider");
 
 		// query for driver posts
-		ArrayList<AbstractPost> dlist = pDat.searchDatabase("driver");
+		ArrayList<AbstractPost> dlist = pDat.quereyDatabase("driver");
 
 		// create table of posts
 		riderTable = CreateRiderTable.createTable(rlist);
@@ -521,7 +522,7 @@ public class Application {
 		pc.gridy = 3;
 
 		// query for rider posts
-		ArrayList<AbstractPost> myList = pDat.searchDatabase(UserService.getInstance().getCurrentUser().getUsername());
+		ArrayList<AbstractPost> myList = pDat.quereyDatabase(UserService.getInstance().getCurrentUser().getUsername());
 
 		myRidesTable = CreateMyRidesTable.createTable(myList);
 

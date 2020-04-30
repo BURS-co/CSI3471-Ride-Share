@@ -55,8 +55,14 @@ public class PostDatabase {
 					p = new Driver(split[1]);
 				} else {
 					p = new Rider(split[1]);
-					if (split.length > 6)
-						((Rider) p).setDriver(split[6]);
+					if (split.length > 6) {
+						Prospects temp = new Prospects();
+					
+						temp.setName(split[6]);
+						temp.setStatus(split[7]);
+						
+						((Rider) p).setDriver(temp);
+					}
 				}
 
 				p.setPoster(split[2]);

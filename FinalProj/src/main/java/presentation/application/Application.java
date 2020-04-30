@@ -713,8 +713,6 @@ public class Application {
 		mainFrame.setVisible(true);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		List<AbstractPost> ps = PostDatabase.getPostData();
-
 		UserDatabase.getInstance().write();
 		PostDatabase.getInstance().write();
 

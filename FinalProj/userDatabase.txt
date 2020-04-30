@@ -1,0 +1,8 @@
+Andrew Ammentorp,,,andrew_ammentorp1@baylor.edu,,,7138284639,,,12,,,2022,,,Andrew8726!,,,true
+Leighton Glim,,,leighton_glim1@baylor.edu,,,6303351841,,,12,,,2050,,,glim1234,,,true
+test test,,,test7@baylor.edu,,,1234567890,,,05,,,2022,,,Test1234,,,false
+Josh Test,,,Test123@baylor.edu,,,1234567890,,,02,,,2022,,,123TestTest,,,false
+Joseph Perez,,,joseph_perez3@baylor.edu,,,4696647176,,,05,,,2022,,,Raygun69!,,,true
+Joshua Huertas,,,joshua_huertas1@baylor.edu,,,2102625729,,,03,,,2022,,,College$18,,,true
+Joseph Yu,,,Joseph_Yu@baylor.edu,,,8329203102,,,05,,,2022,,,J5684129u!!,,,true
+Bobby Baylor,,,bobby_baylor1@baylor.edu,,,1234567890,,,Password123!,,,05,,,Password123!,,,false

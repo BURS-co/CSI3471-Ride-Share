@@ -521,7 +521,7 @@ public class Application {
 		pc.gridy = 3;
 
 		// query for rider posts
-		ArrayList<AbstractPost> myList = pDat.searchDatabase(UserService.getInstance().getCurrentUser().getUsername());
+		ArrayList<AbstractPost> myList = pDat.quereyDatabase(UserService.getInstance().getCurrentUser().getUsername());
 
 		myRidesTable = CreateMyRidesTable.createTable(myList);
 

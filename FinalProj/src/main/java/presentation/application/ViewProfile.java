@@ -371,9 +371,10 @@ public class ViewProfile extends JDialog {
 
 									}
 									j++;
-
+									
 								}
-
+								
+								int x = j;
 								confirmation.add(confirmPnl);
 								
 								JButton done = new JButton("done");
@@ -386,10 +387,10 @@ public class ViewProfile extends JDialog {
 									@Override
 									public void actionPerformed(ActionEvent e) {
 										boolean[] results = null;
-										results = new boolean[j];
+										results = new boolean[x];
 										
-										for(int i = 0; i < j; i++) {
-											String f = String.valueOf(boxes[i].getSelectedItem());
+										for(int i = 0; i < x; i++) {
+											String f = String.valueOf(boxes.get(i).getSelectedItem());
 											results[i] = f.equalsIgnoreCase("accept");
 										}
 										

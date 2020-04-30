@@ -31,6 +31,8 @@ import business.ValidateAccountInfo;
 import data.databaseControllers.PostDatabase;
 import data.databaseControllers.UserDatabase;
 import data.post.AbstractPost;
+import data.post.Driver;
+import data.post.Rider;
 import data.user.User;
 
 /**
@@ -277,7 +279,7 @@ public class ViewProfile extends JDialog {
 					SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
 					String date = df.format(posts.get(i).getDate());
 					System.out.println(posts.get(i).getOrigin() + ", " + posts.get(i).getDest() + ", " + date);
-					arr[i] = posts.get(i).getOrigin() + ", " + posts.get(i).getDest() + ", " + date;
+					arr[i] = posts.get(i).getID() + ", " + posts.get(i).getOrigin() + ", " + posts.get(i).getDest() + ", " + date;
 				}
 
 				JComboBox<String> box = new JComboBox<String>(arr);
@@ -291,7 +293,17 @@ public class ViewProfile extends JDialog {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-
+						String info = String.valueOf(box.getSelectedItem());
+						
+						String split[] = info.split(", ");
+						
+						AbstractPost p = PostDatabase.getInstance().searchDatabase(Integer.valueOf(split[0]));
+						
+						if(p instanceof Rider) {
+							((Rider) p).getDriver().getName();
+						}else if(p instanceof Driver){
+							
+						}
 					}
 
 				});

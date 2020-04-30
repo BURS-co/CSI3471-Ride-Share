@@ -54,7 +54,7 @@ public class CreateDriverTable {
 		}
 
 		String[] driverPostLabels = { "Seats", "Driver", "Origin", "Destination", "Date", "" };
-		driverData = new Object[1000][driverPostLabels.length];
+		driverData = new Object[dlist.size()][driverPostLabels.length];
 		for (int r = 0; r < dlist.size(); r++) {
 			for (int c = 0; c < 6; c++) {
 				if (c == 0) {
@@ -106,7 +106,6 @@ public class CreateDriverTable {
 		};
 		JTable driverTable = new JTable(model);
 		
-
 		TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(driverTable.getModel());
 
 		List<RowSorter.SortKey> sortKeys = new ArrayList<SortKey>(25);

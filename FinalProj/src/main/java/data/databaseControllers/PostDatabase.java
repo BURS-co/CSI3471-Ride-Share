@@ -99,9 +99,12 @@ public class PostDatabase {
 
 	public void write() throws IOException {
 		// Write to .txt file (postDatabase.txt)
+		//false is no appending
 		BufferedWriter write = new BufferedWriter(new FileWriter("postDatabase.txt", false));
 		for (AbstractPost p : postData) {
-			write.write(p.toString());
+			//if not expired, write
+			if(!p.isExpired())
+				write.write(p.toString());
 		}
 
 		write.flush();

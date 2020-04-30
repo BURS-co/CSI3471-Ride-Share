@@ -358,7 +358,7 @@ public class Application extends JPanel {
 		myRidesTable.getColumn(myRidesLabels[2]).setPreferredWidth(50);
 		myRidesTable.getColumn(myRidesLabels[3]).setPreferredWidth(50);
 		myRidesTable.getColumn(myRidesLabels[4]).setPreferredWidth(100);
-		myRidesTable.removeColumn(myRidesTable.getColumn(myRidesLabels[5]));
+		myRidesTable.getColumnModel().removeColumn(myRidesTable.getColumn(myRidesLabels[5]));
 
 		if (myList.size() > 0) {
 			myRidesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -552,7 +552,7 @@ public class Application extends JPanel {
 		riderTable.getColumn(riderPostLabels[1]).setPreferredWidth(35);
 		riderTable.getColumn(riderPostLabels[2]).setPreferredWidth(50);
 		riderTable.getColumn(riderPostLabels[3]).setPreferredWidth(100);
-		riderTable.removeColumn(riderTable.getColumn(myRidesLabels[4]));
+		riderTable.getColumnModel().removeColumn(riderTable.getColumn(riderPostLabels[4]));
 
 		riderTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		// When selection changes, provide user with row numbers for both view & model.
@@ -582,7 +582,7 @@ public class Application extends JPanel {
 		driverTable.getColumn(driverPostLabels[2]).setPreferredWidth(35);
 		driverTable.getColumn(driverPostLabels[3]).setPreferredWidth(50);
 		driverTable.getColumn(driverPostLabels[4]).setPreferredWidth(100);
-		driverTable.removeColumn(driverTable.getColumn(myRidesLabels[5]));
+		driverTable.getColumnModel().removeColumn(driverTable.getColumn(driverPostLabels[5]));
 
 		driverTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		// When selection changes, provide user with row numbers for both view & model.

@@ -4,7 +4,6 @@
 package business;
 
 import data.databaseControllers.UserDatabase;
-import data.post.AbstractPost;
 
 public class Login {
 	// private static User user;

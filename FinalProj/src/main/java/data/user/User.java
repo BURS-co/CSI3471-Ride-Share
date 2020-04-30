@@ -225,5 +225,4 @@ public class User {
 	public boolean getPostCanceledNotif() {
 		return this.postCanceledNotif;
 	}
-	
 }

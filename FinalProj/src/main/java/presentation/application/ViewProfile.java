@@ -262,9 +262,9 @@ public class ViewProfile extends JDialog {
 
 				JPanel selection = new JPanel();
 				selection.setLayout(new GridBagLayout());
+				GridBagConstraints sc = new GridBagConstraints();
 
-				String[] arr = null;
-				arr = new String[posts.size()];
+				String[] arr = new String[posts.size()];
 
 				for (int i = 0; i < posts.size(); i++) {
 					SimpleDateFormat df = new SimpleDateFormat("dd MMM yyyy hh:mm a");
@@ -275,6 +275,10 @@ public class ViewProfile extends JDialog {
 				JComboBox<String> box = new JComboBox<String>(arr);
 
 				JButton select = new JButton("select");
+				select.setBackground(new Color(255, 184, 25));
+				select.setBorderPainted(false);
+				select.setFont(customFont);
+				select.setOpaque(true);
 				select.addActionListener(new ActionListener() {
 
 					@Override
@@ -284,8 +288,17 @@ public class ViewProfile extends JDialog {
 
 				});
 
-				selection.add(box);
-				selection.add(select);
+				
+				sc.gridx = 0;
+				sc.gridy = 0;
+				sc.anchor = GridBagConstraints.FIRST_LINE_START;
+				selection.add(box, sc);
+				
+				sc.gridx = 1;
+				sc.gridy = 0;
+				sc.fill = GridBagConstraints.HORIZONTAL;
+				selection.add(select, sc);
+				selection.setVisible(true);
 
 			}
 

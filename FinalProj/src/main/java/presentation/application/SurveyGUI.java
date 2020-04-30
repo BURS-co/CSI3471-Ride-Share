@@ -70,7 +70,7 @@ public class SurveyGUI extends JDialog {
 		lbEmail.setFont(customFont);
 		surveyCnt.add(lbEmail, ss);
 
-		tfREmail = new JTextField(20);
+		tfREmail = new JTextField(20);//comment
 		ss.gridx = 1;
 		ss.gridy = 0;
 		ss.gridwidth = 2;

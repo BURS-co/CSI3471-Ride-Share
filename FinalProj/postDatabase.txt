@@ -42,6 +42,10 @@ Rider-40-andrew_ammentorp1@baylor.edu-Baylor-HOU-01 Jul 2020 01:00 AM
 Driver-41-andrew_ammentorp1@baylor.edu-Baylor-IAH-05 Aug 2020 01:00 AM-3
 Rider-42-leighton_glim1@baylor.edu-Baylor-ACT-01 May 2020 03:15 PM
 Driver-43-leighton_glim1@baylor.edu-HOU-ACT-04 May 2020 05:10 PM-3
+<<<<<<< HEAD
+Driver-44-Leighton Glim-ACT-IAH-01 Jun 2020 01:00 AM-1
+Driver-45-Leighton Glim-ACT-SAT-01 Jul 2020 01:00 AM-1
+=======
 Rider-0-bobby_baylor1@baylor.edu-Bush-Baylor-30 Mar 2020 11:09 AM-leighton_glim1@baylor.edu-false
 Driver-1-andrew_ammentorp1@baylor.edu-Hobby-Baylor-30 Mar 2020 11:00 AM-1-leighton_glim1@baylor.edu-true
 Rider-2-bobby_baylor1@baylor.edu-Baylor-Bush-30 Mar 2020 11:09 AM-andrew_ammentorp1@baylor.edu-false
@@ -130,3 +134,4 @@ Rider-40-andrew_ammentorp1@baylor.edu-Baylor-HOU-01 Jul 2020 01:00 AM
 Driver-41-andrew_ammentorp1@baylor.edu-Baylor-IAH-05 Aug 2020 01:00 AM-3
 Rider-42-leighton_glim1@baylor.edu-Baylor-ACT-01 May 2020 03:15 PM
 Driver-43-leighton_glim1@baylor.edu-HOU-ACT-04 May 2020 05:10 PM-3
+>>>>>>> branch 'master' of https://github.com/BURS-co/CSI3471-Ride-Share.git

@@ -171,6 +171,9 @@ public class ViewPostInfo extends JDialog {
 				rider.setStatus(false);
 				
 				if(d.getRiderLimit() > d.getRiders().size()) {
+					
+					System.out.println("TEST PLZ" + d.toString());
+					
 					ArrayList<Prospects> riders = d.getRiders();
 					riders.add(rider);
 					d.setRiders(riders);
@@ -368,12 +371,16 @@ public class ViewPostInfo extends JDialog {
 				int temp = Integer.valueOf(postID);
 				Rider r = ((Rider)PostDatabase.getInstance().searchDatabase(temp));
 				
+				
+				
 				Prospects driver = new Prospects();
 				driver.setName(UserService.getInstance().getCurrentUser().getUsername());
 				driver.setStatus(false);
 				
 				r.setDriver(driver);
 				
+				
+				//System.out.println(PostDatabase.getInstance().quereyDatabase(r.getID()).toString);
 				PostDatabase.getInstance().storeUpdate(r);
 				
 				UserDatabase.getInstance().queryDatabase(r.getPoster()).setJoinNotif(true);

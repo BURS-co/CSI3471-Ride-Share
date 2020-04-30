@@ -17,6 +17,7 @@ import java.util.logging.Level;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -232,6 +233,13 @@ public class LoginDialog extends JDialog {
 					GridBagConstraints ss = new GridBagConstraints();
 					
 					JLabel lbName;
+					JTextField tfName;
+					
+					JLabel lbtarget;
+					JTextField tftarget;
+					
+					String[] ratings = { "0", "1", "2", "3", "4", "5"};
+					JComboBox<String> rating = new JComboBox<String>(ratings);
 
 					try {
 						customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
@@ -248,18 +256,26 @@ public class LoginDialog extends JDialog {
 
 					ss.fill = GridBagConstraints.HORIZONTAL;
 
-					lbName = new JLabel("Your name: ");
+					lbName = new JLabel("Your baylor email: ");
 					ss.gridx = 0;
 					ss.gridy = 0;
 					ss.gridwidth = 1;
 					//lbEmail.setFont(customFont);
 					surveyPanel.add(lbName, ss);
 
-					//change this - tfEmail = new JTextField(20);
+					tfName = new JTextField(20);
+					
 					ss.gridx = 1;
 					ss.gridy = 0;
 					ss.gridwidth = 2;
-					surveyPanel.add(tfEmail, ss);
+					
+					tfName.setText(UserService.getInstance().getCurrentUser().getEmail());
+					
+					surveyPanel.add(tfName, ss);
+					
+					surveyPanel.setVisible(true);
+					
+					
 					
 					String[] info = {};
 					

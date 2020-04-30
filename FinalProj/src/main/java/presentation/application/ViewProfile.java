@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -227,36 +228,40 @@ public class ViewProfile extends JDialog {
 
 		deleteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserDatabase.getInstance().removeUser(UserService.getInstance().getCurrentUser());
-				try {
-					UserDatabase.getInstance().write();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+
+				int res = JOptionPane.showConfirmDialog(null, "Confirm Deletion?", "Delete Account",
+						JOptionPane.OK_CANCEL_OPTION);
+
+				// only delete wiht secondary confirmation
+				if (res == 1) {
+					UserDatabase.getInstance().removeUser(UserService.getInstance().getCurrentUser());
+					try {
+						UserDatabase.getInstance().write();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					dispose();
+					System.exit(0);
 				}
-				dispose();
-				System.exit(0);
 			}
 		});
-		
+
 		JButton viewBtn = new JButton("View Posts");
 		viewBtn.setFont(customFont);
-		viewBtn.setBackground(new Color(255,184,25));
+		viewBtn.setBackground(new Color(255, 184, 25));
 		viewBtn.setBorderPainted(false);
 		viewBtn.setOpaque(true);
 		viewBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//TODO
-				
-				List<AbstractPost> posts = 
-						PostDatabase.getInstance().quereyDatabase(UserService.getInstance().getCurrentUser().getEmail());
-				
-				
-				
+				// TODO
+
+				List<AbstractPost> posts = PostDatabase.getInstance()
+						.quereyDatabase(UserService.getInstance().getCurrentUser().getEmail());
+
 			}
-			
+
 		});
 
 		JPanel bp = new JPanel();

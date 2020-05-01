@@ -25,10 +25,10 @@ public class SurveyServiceTest {
 
 		assertEquals(result, Failures.emptyField);
 
-		result = SurveyService.getInstance().verify(new String[] { "andrew_ammentorp1@baylor.edu",
+		/*result = SurveyService.getInstance().verify(new String[] { "andrew_ammentorp1@baylor.edu",
 				"joseph_perez3@baylor.edu", "0", "This guy can't stay in his lane" });
 		
-		assertEquals(result, Failures.SUCCESS);
+		assertEquals(result, Failures.SUCCESS);*/
 
 		
 	}

@@ -28,7 +28,6 @@ presentation\application\CreateRiderTable$1.class
 presentation\application\SurveyGUI.class
 presentation\application\SelectPostType$1.class
 presentation\application\ViewPostInfo$5.class
-data\databaseControllers\Database.class
 data\databaseControllers\PostDatabase.class
 presentation\application\SelectPostType$2.class
 business\ValidateAccountInfo$1.class
@@ -55,10 +54,12 @@ data\post\Rider.class
 enums\Failures.class
 presentation\application\AdminReport$1.class
 presentation\application\SurveyGUI$1.class
+business\WriteToFile.class
 presentation\application\Application$7.class
 presentation\application\OpenPage$2.class
 presentation\application\CreatePost.class
 presentation\application\Application$9.class
+data\databaseControllers\IWrite.class
 presentation\application\AccountCreateDialog$2.class
 presentation\application\CreateRiderTable.class
 presentation\application\RowFilterUtil.class
@@ -83,6 +84,7 @@ presentation\application\ViewProfile.class
 presentation\application\SelectPostType.class
 presentation\application\CreateDriverTable.class
 business\UserDatabaseService.class
+data\databaseControllers\AbstractDatabase.class
 presentation\application\LoginDialog$2.class
 presentation\application\ViewPostInfo$1.class
 data\post\Prospects.class

@@ -86,7 +86,7 @@ public class AccountCreateDialog extends JDialog {
 		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
 
 		try {
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font
@@ -211,7 +211,7 @@ public class AccountCreateDialog extends JDialog {
 
 				if (result == Failures.SUCCESS) {
 					succeeded = true;
-					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					ImageIcon icon = new ImageIcon("../src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null,
 							"Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
 							JOptionPane.INFORMATION_MESSAGE, icon);

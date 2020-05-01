@@ -36,7 +36,7 @@ public class CreateRiderTable {
 	 */
 	public static JTable createTable(ArrayList<AbstractPost> rlist) {
 		try {
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font

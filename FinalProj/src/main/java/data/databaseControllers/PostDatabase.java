@@ -44,7 +44,7 @@ public class PostDatabase {
 
 	public void load() throws ParseException, IOException {
 		try {
-			BufferedReader loader = new BufferedReader(new FileReader(new File("postDatabase.txt")));
+			BufferedReader loader = new BufferedReader(new FileReader(new File("../src/main/resources/postDatabase.txt")));
 			AbstractPost p = null;
 			String line = null;
 
@@ -103,7 +103,7 @@ public class PostDatabase {
 	public void write() throws IOException {
 		// Write to .txt file (postDatabase.txt)
 		//false is no appending
-		BufferedWriter write = new BufferedWriter(new FileWriter("postDatabase.txt", false));
+		BufferedWriter write = new BufferedWriter(new FileWriter("../src/main/resources/postDatabase.txt", false));
 		for (AbstractPost p : postData) {
 			//if not expired, write
 			if(!p.isExpired())

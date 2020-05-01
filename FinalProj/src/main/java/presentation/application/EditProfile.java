@@ -76,7 +76,7 @@ public class EditProfile extends JDialog {
 		JLabel confirmPasswordLabel = new JLabel("Confirm Password: ");
 
 		try {
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font
@@ -219,7 +219,7 @@ public class EditProfile extends JDialog {
 						e.printStackTrace();
 					}
 
-					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					ImageIcon icon = new ImageIcon("../src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null, "Changes successfully made. ", "Edit Profile",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					succeeded = true;

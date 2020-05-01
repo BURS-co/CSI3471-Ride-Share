@@ -9,7 +9,6 @@ Rider-15-leighton_glim1@baylor.edu-DAL-Baylor-05 May 2020 05:15 PM
 Driver-17-leighton_glim1@baylor.edu-AUS-Baylor-05 May 2020 04:10 PM-4
 Driver-18-leighton_glim1@baylor.edu-Baylor-AUS-06 May 2020 04:20 PM-3
 Rider-24-leighton_glim1@baylor.edu-AUS-Baylor-04 May 2020 05:20 PM
-Rider-25-leighton_glim1@baylor.edu-Baylor-DAL-30 Apr 2020 03:15 PM
 Rider-26-leighton_glim1@baylor.edu-Baylor-AUS-30 May 2020 06:10 PM
 Rider-27-leighton_glim1@baylor.edu-AUS-Baylor-05 May 2020 03:05 PM
 Rider-28-leighton_glim1@baylor.edu-Baylor-Baylor-01 Jun 2020 03:05 PM
@@ -21,11 +20,8 @@ Rider-34-test7@baylor.edu-DAL-Baylor-05 May 2020 05:15 PM
 Rider-35-test7@baylor.edu-DAL-Baylor-02 Jun 2020 03:05 PM-Joshua Huertas-false
 Rider-36-test7@baylor.edu-AUS-Baylor-03 May 2020 03:05 PM-Joshua Huertas-false
 Driver-37-test7@baylor.edu-DAL-ACT-04 May 2020 04:15 PM-3
-Rider-38-leighton_glim1@baylor.edu-Baylor-AUS-30 Apr 2020 05:00 PM
 Driver-39-joseph_perez3@baylor.edu-ACT-AUS-01 Jun 2020 04:25 AM-4
 Rider-40-andrew_ammentorp1@baylor.edu-Baylor-HOU-01 Jul 2020 01:00 AM-Joshua Huertas-false
 Driver-41-andrew_ammentorp1@baylor.edu-Baylor-IAH-05 Aug 2020 01:00 AM-3
 Rider-42-leighton_glim1@baylor.edu-Baylor-ACT-01 May 2020 03:15 PM-Joshua Huertas-false
 Driver-43-leighton_glim1@baylor.edu-HOU-ACT-04 May 2020 05:10 PM-3
-Rider-44-joshua_huertas1@baylor.edu-Baylor-ACT-01 May 2020 01:00 AM
-Driver-46-joshua_huertas1@baylor.edu-ACT-DAL-01 May 2020 07:30 AM-4

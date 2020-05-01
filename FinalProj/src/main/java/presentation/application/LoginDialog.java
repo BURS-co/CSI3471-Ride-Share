@@ -75,7 +75,7 @@ public class LoginDialog extends JDialog {
 		GridBagConstraints cs = new GridBagConstraints();
 
 		try {
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font
@@ -259,7 +259,7 @@ public class LoginDialog extends JDialog {
 
 			}
 
-			ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+			ImageIcon icon = new ImageIcon("../src/main/resources/poolfloat icon-yellow.png");
 			JOptionPane.showMessageDialog(null,
 					"Hi " + UserService.getInstance().getCurrentUser().getUsername() + "! Welcome to Bearpool!", "Login",
 					JOptionPane.INFORMATION_MESSAGE, icon);

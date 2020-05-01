@@ -73,7 +73,7 @@ public class Application extends JPanel {
 
 	static {
 		try {
-			fh = new FileHandler("projectLog.txt", true);
+			fh = new FileHandler("../projectLog.txt", true);
 			log.addHandler(fh);
 			SimpleFormatter formatter = new SimpleFormatter();
 			fh.setFormatter(formatter);
@@ -160,7 +160,7 @@ public class Application extends JPanel {
 
 		// load in our font
 		try {
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font
@@ -188,7 +188,7 @@ public class Application extends JPanel {
 
 		/***** First Row of Panel ****/
 
-		ImageIcon rIcn = new ImageIcon("src/main/resources/ridesIcon.png");
+		ImageIcon rIcn = new ImageIcon("../src/main/resources/ridesIcon.png");
 		Image rimage = rIcn.getImage(); // transform it
 		Image rnewimg = rimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		rIcn = new ImageIcon(rnewimg); // transform it back
@@ -251,7 +251,7 @@ public class Application extends JPanel {
 		selection.add(ridesBtn, pc);
 
 		/**** Second Row of Panel ****/
-		ImageIcon drIcn = new ImageIcon("src/main/resources/drivesIcon.png");
+		ImageIcon drIcn = new ImageIcon("../src/main/resources/drivesIcon.png");
 		Image drimage = drIcn.getImage(); // transform it
 		Image drnewimg = drimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		drIcn = new ImageIcon(drnewimg); // transform it back
@@ -308,7 +308,7 @@ public class Application extends JPanel {
 		selection.add(drivesBtn, pc);
 
 		/**** Third Row of Panel ****/
-		ImageIcon pIcn = new ImageIcon("src/main/resources/profileIcon.png");
+		ImageIcon pIcn = new ImageIcon("../src/main/resources/profileIcon.png");
 		Image pimage = pIcn.getImage(); // transform it
 		Image pnewimg = pimage.getScaledInstance(60, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		pIcn = new ImageIcon(pnewimg); // transform it back
@@ -338,7 +338,7 @@ public class Application extends JPanel {
 		selection.add(profileBtn, pc);
 
 		/**** Fourth Row of Panel ****/
-		ImageIcon rideIcn = new ImageIcon("src/main/resources/myRidesIcon.png");
+		ImageIcon rideIcn = new ImageIcon("../src/main/resources/myRidesIcon.png");
 		Image img = rideIcn.getImage(); // transform it
 		Image newImage = img.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		rideIcn = new ImageIcon(newImage); // transform it back
@@ -432,7 +432,7 @@ public class Application extends JPanel {
 		selection.add(myRidesBtn, pc);
 
 		/**** Fourth Row of Panel ****/
-		ImageIcon crtIcn = new ImageIcon("src/main/resources/createPostIcon.png");
+		ImageIcon crtIcn = new ImageIcon("../src/main/resources/createPostIcon.png");
 		Image image = crtIcn.getImage(); // transform it
 		Image newimg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		crtIcn = new ImageIcon(newimg); // transform it back
@@ -505,7 +505,7 @@ public class Application extends JPanel {
 
 		/**** Fifth Row of Panel (ADMIN) ****/
 		if (UserService.getInstance().getCurrentUser() instanceof Admin) {
-			ImageIcon reportIcn = new ImageIcon("src/main/resources/reportsIcon.png");
+			ImageIcon reportIcn = new ImageIcon("../src/main/resources/reportsIcon.png");
 			Image reportimage = reportIcn.getImage(); // transform it
 			Image reportnewimg = reportimage.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); // scale it the
 			// smooth

@@ -38,7 +38,7 @@ public class SurveyDatabase {
 
 	public void load() throws ParseException, IOException {
 		try {
-			BufferedReader loader = new BufferedReader(new FileReader(new File("surveyDatabase.txt")));
+			BufferedReader loader = new BufferedReader(new FileReader(new File("../src/main/resources/surveyDatabase.txt")));
 
 			String line = null;
 
@@ -66,7 +66,7 @@ public class SurveyDatabase {
 
 	public void write() throws IOException {
 		// open file
-		BufferedWriter write = new BufferedWriter(new FileWriter("surveyDatabase.txt"));
+		BufferedWriter write = new BufferedWriter(new FileWriter("../src/main/resources/surveyDatabase.txt"));
 
 		for (Survey s : surveyData) {
 			write.write(s.toString());

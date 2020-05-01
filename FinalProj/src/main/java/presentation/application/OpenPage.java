@@ -56,7 +56,7 @@ public class OpenPage extends JDialog {
 		GridBagConstraints dc = new GridBagConstraints();
 
 		// Loading the image
-		BufferedImage myPicture = ImageIO.read(new File("src/main/resources/new open page logo.png"));
+		BufferedImage myPicture = ImageIO.read(new File("../src/main/resources/new open page logo.png"));
 		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
 		picLabel.setBackground(new Color(255, 184, 25));
 		picLabel.setOpaque(true);
@@ -84,7 +84,7 @@ public class OpenPage extends JDialog {
 		Font customFont = null;
 		try {
 
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font

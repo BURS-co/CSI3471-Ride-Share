@@ -59,7 +59,7 @@ public class ViewPostInfo extends JDialog {
 		JLabel postIDLabel = new JLabel(postID);
 
 		try {
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font
@@ -166,7 +166,7 @@ public class ViewPostInfo extends JDialog {
 				// Keep track of user logged in
 				// Application.loggedIn = u;
 
-				ImageIcon icon = new ImageIcon("src/main/resources/poolfloaticon-yellow.png");
+				ImageIcon icon = new ImageIcon("../src/main/resources/poolfloaticon-yellow.png");
 				JOptionPane.showMessageDialog(null, "You have successfully joined a ride.", "View Post Info",
 						JOptionPane.INFORMATION_MESSAGE, icon);
 				Application.log.log(Level.INFO, "A ride was joined");
@@ -261,7 +261,7 @@ public class ViewPostInfo extends JDialog {
 		JLabel postIDLabel = new JLabel(postID);
 
 		try {
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font
@@ -345,7 +345,7 @@ public class ViewPostInfo extends JDialog {
 
 				PostService.getInstance().joinDriver(postID);
 
-				ImageIcon icon = new ImageIcon("src/main/resources/poolfloaticon-yellow.png");
+				ImageIcon icon = new ImageIcon("../src/main/resources/poolfloaticon-yellow.png");
 				JOptionPane.showMessageDialog(null, "You have successfully offered a ride.", "View Post Info",
 						JOptionPane.INFORMATION_MESSAGE, icon);
 				Application.log.log(Level.INFO, name + "was offered a ride");

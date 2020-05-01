@@ -73,7 +73,7 @@ public class UserDatabase {
 		// In order username email phone number password isAdmin
 		// open file
 		try {
-			BufferedReader loader = new BufferedReader(new FileReader(new File("userDatabase.txt")));
+			BufferedReader loader = new BufferedReader(new FileReader(new File("../src/main/resources/userDatabase.txt")));
 
 			String line = null;
 			User u = null;
@@ -126,7 +126,7 @@ public class UserDatabase {
 	 */
 	public void write() throws IOException {
 		// open file
-		BufferedWriter write = new BufferedWriter(new FileWriter("userDatabase.txt", false));
+		BufferedWriter write = new BufferedWriter(new FileWriter("../src/main/resources/userDatabase.txt", false));
 
 		for (User u : userData) {
 			write.write(u.toString());

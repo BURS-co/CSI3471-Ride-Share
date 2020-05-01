@@ -101,7 +101,7 @@ public class CreatePost extends JDialog {
 		JLabel seatsLabel = new JLabel("Seats Available: ");
 
 		try {
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/OpenSans-Bold.ttf"))
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("../src/main/resources/OpenSans-Bold.ttf"))
 					.deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			// register the font
@@ -230,7 +230,7 @@ public class CreatePost extends JDialog {
 				if (result == Failures.SUCCESS) {
 					succeeded = true;
 					
-					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					ImageIcon icon = new ImageIcon("../src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null,
 							"Post created successfully.", "Create Post",
 							JOptionPane.INFORMATION_MESSAGE, icon);
@@ -242,14 +242,14 @@ public class CreatePost extends JDialog {
 					dispose();
 				} else if (result == Failures.SameOriginandDestination) {
 					Application.log.log(Level.INFO, "Same origin and destination attempted.");
-					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					ImageIcon icon = new ImageIcon("../src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null,
 							"Origin and Destination cannot be the same", "Create Post",
 							JOptionPane.INFORMATION_MESSAGE, icon);
 					succeeded = false;
 				} else if (result == Failures.BadDate) {
 					Application.log.log(Level.INFO, "Bad date selected.");
-					ImageIcon icon = new ImageIcon("src/main/resources/poolfloat icon-yellow.png");
+					ImageIcon icon = new ImageIcon("../src/main/resources/poolfloat icon-yellow.png");
 					JOptionPane.showMessageDialog(null,
 							"Invalid date/time selected.", "Create Post",
 							JOptionPane.INFORMATION_MESSAGE, icon);

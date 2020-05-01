@@ -38,7 +38,7 @@ public class ReportDatabase {
 
 	public void load() throws ParseException, IOException {
 		try {
-			BufferedReader loader = new BufferedReader(new FileReader(new File("reportDatabase.txt")));
+			BufferedReader loader = new BufferedReader(new FileReader(new File("../src/main/resources/reportDatabase.txt")));
 
 			String line = null;
 
@@ -65,7 +65,7 @@ public class ReportDatabase {
 
 	public static void write() throws IOException {
 		// open file
-		BufferedWriter write = new BufferedWriter(new FileWriter("reportDatabase.txt"));
+		BufferedWriter write = new BufferedWriter(new FileWriter("../src/main/resources/reportDatabase.txt"));
 
 		for (Report s : reportData) {
 			write.write(s.toString());

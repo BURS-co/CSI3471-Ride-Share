@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import data.post.AbstractPost;
 import data.post.Driver;
 import data.post.Prospects;
 public class DriverTest {

@@ -19,7 +19,7 @@ public class DriverTest {
 	@Test
 	public void testProspects() {
 		Driver d = new Driver("1");
-		//comment
+		//comment pt2
 		Prospects p = new Prospects();
 		p.setName("Andrew Ammentorp");
 		p.setStatus(true);

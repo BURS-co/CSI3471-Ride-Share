@@ -26,7 +26,7 @@ public class DriverTest {
 		p.setStatus(true);
 		
 		d.addRiders(p);
-		
+		//make sure spot is same
 		assertEquals(d.getRiders().get(0),p);
 		
 		ArrayList<Prospects> ap = new ArrayList<Prospects>();

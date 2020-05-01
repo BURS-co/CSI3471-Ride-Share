@@ -47,6 +47,7 @@ public class AbstractPostTest {
 		AbstractPost p = new Driver("1");
 		Date d = new Date();
 		p.setDate(d);
+		//pause for a second
 		Thread.sleep(1000);
 		assertTrue(p.isExpired());
 		

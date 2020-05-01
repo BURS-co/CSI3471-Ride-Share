@@ -8,6 +8,7 @@ import data.post.Prospects;
 public class RiderTest {
 	@Test
 	public void testDriver() {
+		//new rider
 		Rider r = new Rider("1");
 		
 		Prospects p = new Prospects();

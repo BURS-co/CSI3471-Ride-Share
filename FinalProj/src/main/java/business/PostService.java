@@ -46,8 +46,13 @@ public class PostService implements IService {
 	public Failures verify(String[] input) {
 
 		Failures result = Failures.SUCCESS;
+		
+		if(input == null) {
+			result = Failures.emptyField;
+			return result;
+		}
 
-		if (input.length != 0) {
+		else if (input.length != 0) {
 			for (String field : input) {
 				if (field.isEmpty()) {
 					// result = false;

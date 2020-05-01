@@ -1,10 +1,12 @@
 package business.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 import business.PostService;
+import data.post.AbstractPost;
+import data.user.User;
 import enums.Failures;
 
 public class PostServiceTest {
@@ -45,5 +47,26 @@ public class PostServiceTest {
 		
 		/** Couldn't assert normal posts because of no current user **/
 
+	}
+	
+	@Test
+	public void testAddProspects() {
+		User u = new User();
+		u.setEmail("andrew_ammentorp1@baylor.edu");
+		u.setGradMonth("05");
+		u.setGradYear("2022");
+		u.setPassword("Andrew8726!");
+		u.setPhoneNumber("0123456789");
+		u.setUsername("andrew ammentorp");
+		
+		Failures result = PostService.getInstance().addProspects(u, 1);
+		
+		assertEquals(result,Failures.noMatchingQuery);
+	}
+	
+	@Test
+	public void testCreate() {
+		
+		assertThrows(NullPointerException.class , () -> {AbstractPost p = null;p = PostService.getInstance().create(null); });
 	}
 }

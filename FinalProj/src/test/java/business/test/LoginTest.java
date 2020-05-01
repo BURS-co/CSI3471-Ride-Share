@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import business.Login;
 
 public class LoginTest {
-	@SuppressWarnings("unused")
 	@Test
 	public void testAuthenticate() {
 		//correct login info

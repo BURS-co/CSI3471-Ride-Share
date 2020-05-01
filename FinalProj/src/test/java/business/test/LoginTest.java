@@ -1,16 +1,10 @@
 package business.test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+
 import org.junit.jupiter.api.Test;
 
 import business.Login;
-
-import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 public class LoginTest {
 	@SuppressWarnings("unused")

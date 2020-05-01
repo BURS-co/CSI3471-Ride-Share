@@ -12,11 +12,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 import data.user.Report;
 
-public class ReportDatabase {
+public class ReportDatabase extends AbstractDatabase implements IWrite{
 	// singleton
 	private static ReportDatabase reportDatabase = null;
 	private static ReentrantLock lock = new ReentrantLock();
@@ -63,7 +64,7 @@ public class ReportDatabase {
 		}
 	}
 
-	public static void write() throws IOException {
+	public void write() throws IOException {
 		// open file
 		BufferedWriter write = new BufferedWriter(new FileWriter("../src/main/resources/reportDatabase.txt"));
 
@@ -80,6 +81,11 @@ public class ReportDatabase {
 	}
 
 	public static ArrayList<Report> getReportData() {
+		return reportData;
+	}
+
+	@Override
+	public ArrayList<Report> getData() {
 		return reportData;
 	}
 }

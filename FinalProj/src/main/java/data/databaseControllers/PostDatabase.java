@@ -21,7 +21,7 @@ import data.post.Driver;
 import data.post.Prospects;
 import data.post.Rider;
 
-public class PostDatabase {
+public class PostDatabase extends AbstractDatabase implements IWrite{
 	// singleton
 	private static PostDatabase postDatabase = null;
 
@@ -206,6 +206,11 @@ public class PostDatabase {
 		}
 		// System.out.println(this.postData.get(this.searchDatabaseInt(p.getID())).toString());
 
+	}
+
+	@Override
+	public ArrayList<AbstractPost> getData() {
+		return postData;
 	}
 
 }

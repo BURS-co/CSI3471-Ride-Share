@@ -18,7 +18,7 @@ import data.post.Rider;
 import data.user.Admin;
 import data.user.User;
 
-public class UserDatabase {
+public class UserDatabase extends AbstractDatabase implements IWrite{
 
 	// singleton instance.
 	private static UserDatabase userDatabase = null;// new UserDatabase();
@@ -170,5 +170,10 @@ public class UserDatabase {
 		
 		//TODO this.queryDatabase(p.getPoster());
 		
+	}
+
+	@Override
+	public ArrayList<User> getData() {
+		return userData;
 	}
 }

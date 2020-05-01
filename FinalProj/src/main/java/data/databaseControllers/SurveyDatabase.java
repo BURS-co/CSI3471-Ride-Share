@@ -16,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import data.survey.Survey;
 
-public class SurveyDatabase {
+public class SurveyDatabase extends AbstractDatabase implements IWrite{
 	// singleton
 	private static SurveyDatabase surveyDatabase = null;
 	private static ReentrantLock lock = new ReentrantLock();
@@ -81,6 +81,11 @@ public class SurveyDatabase {
 	}
 
 	public static ArrayList<Survey> getUserData() {
+		return surveyData;
+	}
+
+	@Override
+	public ArrayList<Survey> getData() {
 		return surveyData;
 	}
 }

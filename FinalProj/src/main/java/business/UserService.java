@@ -144,16 +144,6 @@ public class UserService implements IService {
 		this.currentUser = c;
 	}
 
-	/*
-	 * public Failures addProspect(User u) {
-	 * 
-	 * Prospects p = new Prospects();
-	 * 
-	 * p.setName(u.getUsername()); p.setStatus(false);
-	 * 
-	 * return Failures.SUCCESS; }
-	 */
-
 	public Failures update(String[] list) {
 		Failures result = Failures.SUCCESS;
 		if (list.length != 0) {

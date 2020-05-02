@@ -49,7 +49,7 @@ public class CreateMyRidesTable {
 		if (myRides.size() > 0) {
 			myRidesData = new Object[myRides.size()][myRidesLabels.length];
 			for (int r = 0; r < myRides.size(); r++) {
-				if (myRides.get(r).getPoster() != UserService.getInstance().getCurrentUser().getUsername()) {
+				if (!myRides.get(r).getPoster().equalsIgnoreCase(UserService.getInstance().getCurrentUser().getUsername())) {
 					for (int c = 0; c < 6; c++) {
 						if (c == 0) {
 							if (myRides.get(r) instanceof Driver)

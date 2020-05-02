@@ -341,7 +341,7 @@ public class ViewProfile extends JDialog {
 									public void actionPerformed(ActionEvent e) {
 										boolean[] results = null;
 										results = new boolean[1];
-										results[1] = String.valueOf(accDec.getSelectedItem()).equalsIgnoreCase("accept");
+										results[0] = String.valueOf(accDec.getSelectedItem()).equalsIgnoreCase("accept");
 										PostService.getInstance().updateProspect(p, results);
 									}
 								});
@@ -349,7 +349,8 @@ public class ViewProfile extends JDialog {
 								selectPst.setVisible(true);
 
 							} else {
-								JOptionPane.showMessageDialog(null, "No one has offered you a ride :(" ,"Driver Post", JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(null, "No one has offered you a ride :(" ,
+										"Driver Post", JOptionPane.ERROR_MESSAGE);
 							}
 						} else if (p instanceof Driver) {
 
@@ -403,7 +404,8 @@ public class ViewProfile extends JDialog {
 								selectPst.pack();
 								selectPst.setVisible(true);
 							} else {
-								JOptionPane.showMessageDialog(null, "No one has joined your ride :(" ,"Driver Post", JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(null, "No one has joined your ride :(" ,
+										"Driver Post", JOptionPane.ERROR_MESSAGE);
 							}
 						}
 					}

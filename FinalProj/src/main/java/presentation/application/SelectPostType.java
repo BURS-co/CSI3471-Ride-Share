@@ -151,7 +151,7 @@ public class SelectPostType extends JDialog {
 	 * 
 	 * @param postTypeSelected the string of the post type selected
 	 */
-	public void setPostTypeSelected(String postTypeSelected) {
-		this.postTypeSelected = postTypeSelected;
+	public static void setPostTypeSelected(String postTypeSelected) {
+		SelectPostType.postTypeSelected = postTypeSelected;
 	}
 }

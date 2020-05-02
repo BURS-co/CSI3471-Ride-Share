@@ -16,7 +16,7 @@ import enums.Failures;
 
 public class UserService implements IService {
 	// this is the service class for user
-	private static User currentUser;
+	private User currentUser;
 	private static UserService userService = null;
 	private static ReentrantLock lock = new ReentrantLock();
 	// private SurveyDatabase database;
@@ -127,7 +127,7 @@ public class UserService implements IService {
 		user.setGradMonth(list[4]);
 		user.setGradYear(list[5]);
 
-		UserService.currentUser = user;
+		this.currentUser = user;
 
 		return user;
 	}
@@ -137,11 +137,11 @@ public class UserService implements IService {
 	}
 
 	public User getCurrentUser() {
-		return UserService.currentUser;
+		return this.currentUser;
 	}
 
 	public void setCurrentUser(User c) {
-		UserService.currentUser = c;
+		this.currentUser = c;
 	}
 
 	/*
@@ -201,9 +201,11 @@ public class UserService implements IService {
 		Integer month = Calendar.getInstance().get(Calendar.MONTH);
 		Integer gradMonthSelect = Integer.parseInt(list[4]);
 		Integer gradYearSelect = Integer.parseInt(list[5]);
-		if (gradMonthSelect < month && gradYearSelect == year) {
-			result = Failures.invalidGraduationDate;
-			return result;
+		if (year != null && month != null && gradMonthSelect != null && gradYearSelect != null) {
+			if (gradMonthSelect < month && gradYearSelect == year) {
+				result = Failures.invalidGraduationDate;
+				return result;
+			}
 		}
 
 //		for(String i : list) {
@@ -236,7 +238,7 @@ public class UserService implements IService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void resetCanceledNotif() {

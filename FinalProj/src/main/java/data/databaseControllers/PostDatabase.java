@@ -234,7 +234,6 @@ public class PostDatabase extends AbstractDatabase implements IWrite{
 			p = new Rider(split[1]);
 			if (split.length > 6) {
 				Prospects temp = new Prospects();
-
 				temp.setName(split[6]);
 				temp.setStatus(split[7]);
 

@@ -28,6 +28,8 @@ public class PostDatabase extends AbstractDatabase implements IWrite{
 	private static ReentrantLock lock = new ReentrantLock();
 
 	private PostDatabase() {
+		//This is a private constructor
+		//This can only be accessed within the class
 	}
 
 	public static PostDatabase getInstance() {
@@ -212,5 +214,65 @@ public class PostDatabase extends AbstractDatabase implements IWrite{
 	public ArrayList<AbstractPost> getData() {
 		return postData;
 	}
+    
+	@Override
+	public String getDelimiter() {
+		return "-";
+	}
 
+	@Override
+	public void add(Object item) {
+		postData.add((AbstractPost) item);
+	}
+
+	@Override
+	public Object makeItem(String[] split) {
+		AbstractPost p = null;
+		if (split[0].equals("Driver")) {
+			p = new Driver(split[1]);
+		} else {
+			p = new Rider(split[1]);
+			if (split.length > 6) {
+				Prospects temp = new Prospects();
+
+				temp.setName(split[6]);
+				temp.setStatus(split[7]);
+
+				((Rider) p).setDriver(temp);
+			}
+		}
+
+		p.setPoster(split[2]);
+		p.setOrigin(split[3]);
+		p.setDest(split[4]);
+
+		Date d = null;
+		try {
+			d = new SimpleDateFormat("dd MMM yyyy hh:mm a").parse(split[5]);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		p.setDate(d);
+
+		if (p instanceof Driver) {
+			((Driver) p).setRiderLimit(Integer.valueOf(split[6]));
+			ArrayList<Prospects> list = null;
+			for (int i = 7; i < split.length - 1; i++) {
+				list = new ArrayList<Prospects>();
+
+				Prospects temp = new Prospects();
+
+				temp.setName(split[i++]);
+				temp.setStatus(split[i]);
+
+				list.add(temp);
+			}
+
+			((Driver) p).setRiders(list);
+			// PostService.getInstance().addProspects(UserService.getInstance().getCurrentUser(),
+			// p.getPoster());
+		}
+		return (Object)p;
+	}
 }

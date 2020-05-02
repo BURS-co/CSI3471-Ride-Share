@@ -88,4 +88,27 @@ public class SurveyDatabase extends AbstractDatabase implements IWrite{
 	public ArrayList<Survey> getData() {
 		return surveyData;
 	}
+
+	@Override
+	public String getDelimiter() {
+		return ",,,";
+	}
+
+	@Override
+	public void add(Object item) {
+		surveyData.add((Survey) item);
+	}
+
+	@Override
+	public Object makeItem(String[] split) {
+		Survey s = new Survey();
+
+		// supply s with info
+		s.setName(split[0]);
+		s.setTarget(split[1]);
+		s.setRating(Integer.valueOf(split[2]));
+		s.setComments(split[3]);
+		
+		return (Object)s;
+	}
 }

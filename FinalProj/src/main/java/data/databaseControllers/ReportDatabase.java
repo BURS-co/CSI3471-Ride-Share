@@ -88,4 +88,26 @@ public class ReportDatabase extends AbstractDatabase implements IWrite{
 	public ArrayList<Report> getData() {
 		return reportData;
 	}
+
+	@Override
+	public String getDelimiter() {
+		return ",,,";
+	}
+
+	@Override
+	public void add(Object item) {
+		reportData.add((Report) item);		
+	}
+
+	@Override
+	public Object makeItem(String[] split) {
+		Report r = new Report();
+
+		// supply s with info
+		r.setReportee(split[0]);
+		r.setReporter(split[1]);
+		r.setReason(split[2]);
+		
+		return (Object)r;
+	}
 }

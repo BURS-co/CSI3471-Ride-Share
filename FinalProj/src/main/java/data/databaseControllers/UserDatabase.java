@@ -176,4 +176,45 @@ public class UserDatabase extends AbstractDatabase implements IWrite{
 	public ArrayList<User> getData() {
 		return userData;
 	}
+
+	@Override
+	public String getDelimiter() {
+		return ",,,";
+	}
+
+	@Override
+	public void add(Object item) {
+		userData.add((User) item);
+	}
+
+	@Override
+	public Object makeItem(String[] split) {
+		User u = null;
+		if (split[6].equals("true")) {
+			u = new Admin();
+		} else {
+			u = new User();
+		}
+
+		for (int i = 0; i < split.length; i++) {
+			if (i == 0) {
+				u.setUsername(split[i]);
+			} else if (i == 1) {
+				u.setEmail(split[i]);
+			} else if (i == 2) {
+				u.setPhoneNumber(split[i]);
+			} else if (i == 3) {
+				u.setGradMonth(split[i]);
+			} else if (i == 4) {
+				u.setGradYear(split[i]);
+			} else if (i == 5) {
+				u.setPassword(split[i]);
+			} else if(i == 7) {
+				u.setJoinNotif(split[i]);
+			} else if(i == 8) {
+				u.setPostCanceledNotif(split[i]);
+			}
+		}
+		return (Object)u;
+	}
 }

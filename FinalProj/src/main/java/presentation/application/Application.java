@@ -140,6 +140,7 @@ public class Application extends JPanel {
 			log.log(Level.INFO, "User successfully logged in");
 		} else {
 			log.log(Level.INFO, "Application Closed");
+			//kill program
 			System.exit(1);
 		}
 		
